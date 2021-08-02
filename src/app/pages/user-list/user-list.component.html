@@ -1,0 +1,610 @@
+<!--site header ends -->
+<section class="admin-content">
+    <div class="bg-dark">
+        <div class="container-fluid  m-b-30">
+            <div class="row">
+                <div class="col-12 text-white p-t-40 p-b-90">
+                    <div class="ex-main">
+                        <h4 class=""> <span class="btn btn-white-translucent">
+                                <i class="mdi mdi-account"></i></span> Manage Users
+                        </h4>
+                        <div>
+                            <a routerLink="/pages/user-list/add-user" class="btn btn-white-translucent mr-3">Add User</a>
+                            <a href="#" class="btn btn-white-translucent">Export CSV</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid pull-up">
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="card m-b-30">
+                    <div class="card-header seachbar">
+                        <h5></h5>
+                        <div class="form-group col-md-4 pl-0 pr-0 mb-0">
+                            <input type="email" class="form-control" id="inputEmail4" placeholder="">
+                            <div class="search-ic">
+                                <i class="mdi mdi-magnify"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab-z" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Pending</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="profile-tab-z" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Approved</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="splash-tab-z" data-toggle="tab" href="#splash" role="tab" aria-controls="splash" aria-selected="false">Rejected</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="flag-tab-z" data-toggle="tab" href="#flag" role="tab" aria-controls="flag" aria-selected="false">Flagged</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent1">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <div class="table-responsive">
+                                    <table class="table table-hover ">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Image</th>
+                                                <th>ID</th>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Phone Number</th>
+                                                <th class="address">Address</th>
+                                                <th>Currency</th>
+                                                <th>Documents</th>
+                                                <th>Account No.</th>
+                                                <th>Bank Name</th>
+                                                <th>Transaction Type</th>
+                                                <th>Facial Verification</th>
+                                                <th>Flag</th>
+                                                <th>Status</th>
+                                                <!-- <th>Buy</th>
+                                                <th>Sell</th> -->
+                                                <th class="text-center">Account Status</th>
+                                                <th class="text-center">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>
+                                                    <div class="avatar avatar-sm " data-toggle="modal" data-target="#userclick">
+                                                        <img src="assets/img/users/user-1.jpg" class="avatar-img avatar-sm rounded-circle" alt="">
+                                                    </div>
+                                                </td>
+                                                <td>258963</td>
+                                                <td>Eli</td>
+                                                <td>abc@gmail.com</td>
+                                                <td>000-000-0000</td>
+                                                <td class="address">
+                                                    <p class="mb-0"><b>Building No: </b>258</p>
+                                                    <p class="mb-0"><b>Street: </b>abc</p>
+                                                    <p class="mb-0"><b>Zone: </b>India</p>
+                                                </td>
+                                                <td>Bitcoin</td>
+                                                <td>
+                                                    <ul class="action">
+                                                        <li>
+                                                            <a class="btn btn-primary" data-toggle="modal" data-target="#viewdocument">
+                                                                <i class="mdi mdi-eye-settings" title="View" style="color: #fff;"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                                <td>786-987-987-987</td>
+                                                <td>BOI</td>
+                                                <td>Sell</td>
+                                                <td>
+                                                    <ul class="action">
+                                                        <li>
+                                                            <a class="btn btn-primary" data-toggle="modal" data-target="#facialverification">
+                                                                <i class="mdi mdi-eye-settings" title="View" style="color: #fff;"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                                <td>
+                                                    <label class="switch" data-target="#rejectrequest" data-toggle="modal">
+                                                        <input type="checkbox">
+                                                        <span class="slider round"></span>
+                                                    </label>
+                                                </td>
+                                                <td>
+                                                    <ul class="action">
+                                                        <li>
+                                                            <a href="#" class="btn btn-primary">
+                                                                Approve
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <button class="btn btn-danger" data-target="#rejectrequest" data-toggle="modal">Reject</button>
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                                <td>
+                                                    <select name="" id="" class="form-control">
+                                                        <option value="">Banned</option>
+                                                        <option value="">Suspend</option>
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <ul class="action">
+                                                        <li><a routerLink="/pages/user-list/view-user" class="btn btn-primary"><i class="mdi mdi-eye-settings" title="View"></i></a></li>
+                                                        <li><a routerLink="/pages/user-list/edit-user" class="btn btn-primary"><i class="mdi mdi-pen"
+                                                                    title="Edit"></i></a></li>
+                                                        <li>
+                                                            <a href="#" class="btn btn-danger">
+                                                                <i class="mdi mdi-delete" title="Delete"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                <div class="table-responsive">
+                                    <table class="table table-hover ">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Image</th>
+                                                <th>ID</th>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Phone Number</th>
+                                                <th class="address">Address</th>
+                                                <th>Currency</th>
+                                                <th>Documents</th>
+                                                <th>Account No.</th>
+                                                <th>Bank Name</th>
+                                                <th>Transaction Type</th>
+                                                <th>Facial Verification</th>
+                                                <th>Flag</th>
+                                                <th>Status</th>
+                                                <!-- <th>Buy</th>
+                                                <th>Sell</th> -->
+                                                <th class="text-center">Account Status</th>
+                                                <th class="text-center">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>
+                                                    <div class="avatar avatar-sm " data-toggle="modal" data-target="#userclick">
+                                                        <img src="assets/img/users/user-1.jpg" class="avatar-img avatar-sm rounded-circle" alt="">
+                                                    </div>
+                                                </td>
+                                                <td>258963</td>
+                                                <td>Eli</td>
+                                                <td>abc@gmail.com</td>
+                                                <td>000-000-0000</td>
+                                                <td class="address">
+                                                    <p class="mb-0"><b>Building No: </b>258</p>
+                                                    <p class="mb-0"><b>Street: </b>abc</p>
+                                                    <p class="mb-0"><b>Zone: </b>India</p>
+                                                </td>
+                                                <td>Bitcoin</td>
+                                                <td>
+                                                    <ul class="action">
+                                                        <li>
+                                                            <a class="btn btn-primary" data-toggle="modal" data-target="#viewdocumentapproved">
+                                                                <i class="mdi mdi-eye-settings" title="View" style="color: #fff;"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                                <td>786-987-987-987</td>
+                                                <td>BOI</td>
+                                                <td>Sell</td>
+                                                <td>
+                                                    <ul class="action">
+                                                        <li>
+                                                            <a class="btn btn-primary" data-toggle="modal" data-target="#facialverification">
+                                                                <i class="mdi mdi-eye-settings" title="View" style="color: #fff;"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                                <td>
+                                                    <label class="switch" data-target="#rejectrequest" data-toggle="modal">
+                                                        <input type="checkbox">
+                                                        <span class="slider round"></span>
+                                                    </label>
+                                                </td>
+                                                <td>
+                                                    <span class="text-success">Approved</span>
+                                                </td>
+                                                <td>
+                                                    <select name="" id="" class="form-control">
+                                                        <option value="">Banned</option>
+                                                        <option value="">Suspend</option>
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <ul class="action">
+                                                        <li><a routerLink="/pages/user-list/view-user" class="btn btn-primary"><i class="mdi mdi-eye-settings" title="View"></i></a></li>
+                                                        <li><a routerLink="/pages/user-list/edit-user" class="btn btn-primary"><i class="mdi mdi-pen"
+                                                                    title="Edit"></i></a></li>
+                                                        <li>
+                                                            <a href="#" class="btn btn-danger">
+                                                                <i class="mdi mdi-delete" title="Delete"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="splash" role="tabpanel" aria-labelledby="splash-tab">
+                                <div class="table-responsive">
+                                    <table class="table table-hover ">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Image</th>
+                                                <th>ID</th>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Phone Number</th>
+                                                <th class="address">Address</th>
+                                                <th>Currency</th>
+                                                <th>Documents</th>
+                                                <th>Account No.</th>
+                                                <th>Bank Name</th>
+                                                <th>Reason</th>
+                                                <th>Transaction Type</th>
+                                                <th>Facial Verification</th>
+                                                <th>Flag</th>
+                                                <th>Status</th>
+                                                <!-- <th>Buy</th>
+                                                <th>Sell</th> -->
+                                                <th class="text-center">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>
+                                                    <div class="avatar avatar-sm " data-toggle="modal" data-target="#userclick">
+                                                        <img src="assets/img/users/user-1.jpg" class="avatar-img avatar-sm rounded-circle" alt="">
+                                                    </div>
+                                                </td>
+                                                <td>258963</td>
+                                                <td>Eli</td>
+                                                <td>abc@gmail.com</td>
+                                                <td>000-000-0000</td>
+                                                <td class="address">
+                                                    <p class="mb-0"><b>Building No: </b>258</p>
+                                                    <p class="mb-0"><b>Street: </b>abc</p>
+                                                    <p class="mb-0"><b>Zone: </b>India</p>
+                                                </td>
+                                                <td>Bitcoin</td>
+                                                <td>
+                                                    <ul class="action">
+                                                        <li>
+                                                            <a class="btn btn-primary" data-toggle="modal" data-target="#viewdocumentapproved">
+                                                                <i class="mdi mdi-eye-settings" title="View" style="color: #fff;"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                                <td>786-987-987-987</td>
+                                                <td>BOI</td>
+                                                <td>Lorem Ipsum...</td>
+                                                <td>Sell</td>
+                                                <td>
+                                                    <ul class="action">
+                                                        <li>
+                                                            <a class="btn btn-primary" data-toggle="modal" data-target="#facialverification">
+                                                                <i class="mdi mdi-eye-settings" title="View" style="color: #fff;"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                                <td>
+                                                    <label class="switch" data-target="#rejectrequest" data-toggle="modal">
+                                                        <input type="checkbox">
+                                                        <span class="slider round"></span>
+                                                    </label>
+                                                </td>
+                                                <td>
+                                                    <span class="text-danger">Rejected</span>
+                                                </td>
+                                                <!-- <td>$56,98</td>
+                                                <td>$56,98</td> -->
+                                                <td>
+                                                    <ul class="action">
+                                                        <li><a routerLink="/pages/user-list/view-user" class="btn btn-primary"><i class="mdi mdi-eye-settings" title="View"></i></a></li>
+                                                        <li><a routerLink="/pages/user-list/edit-user" class="btn btn-primary"><i class="mdi mdi-pen"
+                                                                    title="Edit"></i></a></li>
+                                                        <li>
+                                                            <a href="#" class="btn btn-danger">
+                                                                <i class="mdi mdi-delete" title="Delete"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="flag" role="tabpanel" aria-labelledby="flag-tab">
+                                <div class="table-responsive">
+                                    <table class="table table-hover ">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Image</th>
+                                                <th>ID</th>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Phone Number</th>
+                                                <th class="address">Address</th>
+                                                <th>Currency</th>
+                                                <th>Documents</th>
+                                                <th>Account No.</th>
+                                                <th>Bank Name</th>
+                                                <th>Reason</th>
+                                                <th>Transaction Type</th>
+                                                <th>Facial Verification</th>
+                                                <th>Flag</th>
+                                                <th class="text-center">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>
+                                                    <div class="avatar avatar-sm " data-toggle="modal" data-target="#userclick">
+                                                        <img src="assets/img/users/user-1.jpg" class="avatar-img avatar-sm rounded-circle" alt="">
+                                                    </div>
+                                                </td>
+                                                <td>258963</td>
+                                                <td>Eli</td>
+                                                <td>abc@gmail.com</td>
+                                                <td>000-000-0000</td>
+                                                <td class="address">
+                                                    <p class="mb-0"><b>Building No: </b>258</p>
+                                                    <p class="mb-0"><b>Street: </b>abc</p>
+                                                    <p class="mb-0"><b>Zone: </b>India</p>
+                                                </td>
+                                                <td>Bitcoin</td>
+                                                <td>
+                                                    <ul class="action">
+                                                        <li>
+                                                            <a class="btn btn-primary" data-toggle="modal" data-target="#viewdocumentapproved">
+                                                                <i class="mdi mdi-eye-settings" title="View" style="color: #fff;"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                                <td>786-987-987-987</td>
+                                                <td>BOI</td>
+                                                <td>Lorem Ipsum...</td>
+                                                <td>Sell</td>
+                                                <td>
+                                                    <ul class="action">
+                                                        <li>
+                                                            <a class="btn btn-primary" data-toggle="modal" data-target="#facialverification">
+                                                                <i class="mdi mdi-eye-settings" title="View" style="color: #fff;"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                                <td>
+                                                    <label class="switch">
+                                                        <input type="checkbox">
+                                                        <span class="slider round"></span>
+                                                    </label>
+                                                </td>
+                                                <td>
+                                                    <ul class="action">
+                                                        <li><a routerLink="/pages/user-list/view-user" class="btn btn-primary"><i class="mdi mdi-eye-settings" title="View"></i></a></li>
+                                                        <li><a routerLink="/pages/user-list/edit-user" class="btn btn-primary"><i class="mdi mdi-pen"
+                                                                    title="Edit"></i></a></li>
+                                                        <li>
+                                                            <a href="#" class="btn btn-danger">
+                                                                <i class="mdi mdi-delete" title="Delete"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade userclick" id="userclick" tabindex="-1" role="dialog" aria-labelledby="userclickTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <img src="assets/img/ngn.png" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade viewdocument" id="viewdocument" tabindex="-1" role="dialog" aria-labelledby="viewdocumentTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Documents</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+            </div>
+            <div class="modal-body">
+                <div class="images">
+                    <figure class="mr-3 mb-3">
+                        <img src="assets/img/doc.jpg" alt="">
+                    </figure>
+                    <figure class="mr-3 mb-3">
+                        <img src="assets/img/doc.jpg" alt="">
+                    </figure>
+                    <figure class="mr-3 mb-3">
+                        <img src="assets/img/doc.jpg" alt="">
+                    </figure>
+                    <figure class="mr-3 mb-3">
+                        <img src="assets/img/doc.jpg" alt="">
+                    </figure>
+                    <figure class="mr-3 mb-3">
+                        <img src="assets/img/doc.jpg" alt="">
+                    </figure>
+                    <figure class="mr-3 mb-3">
+                        <img src="assets/img/doc.jpg" alt="">
+                    </figure>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle="modal" data-target="#reasonmodal">Reject</button>
+                <button type="button" class="btn btn-primary">Approve</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade viewdocument" id="viewdocumentapproved" tabindex="-1" role="dialog" aria-labelledby="viewdocumentapprovedTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Documents</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+            </div>
+            <div class="modal-body">
+                <div class="images">
+                    <figure class="mr-3 mb-3">
+                        <img src="assets/img/doc.jpg" alt="">
+                    </figure>
+                    <figure class="mr-3 mb-3">
+                        <img src="assets/img/doc.jpg" alt="">
+                    </figure>
+                    <figure class="mr-3 mb-3">
+                        <img src="assets/img/doc.jpg" alt="">
+                    </figure>
+                    <figure class="mr-3 mb-3">
+                        <img src="assets/img/doc.jpg" alt="">
+                    </figure>
+                    <figure class="mr-3 mb-3">
+                        <img src="assets/img/doc.jpg" alt="">
+                    </figure>
+                    <figure class="mr-3 mb-3">
+                        <img src="assets/img/doc.jpg" alt="">
+                    </figure>
+                </div>
+            </div>
+            <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle="modal" data-target="#reasonmodal">Reject</button>
+                <button type="button" class="btn btn-primary">Approved</button>
+            </div> -->
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade reasonmodal" id="reasonmodal" tabindex="-1" role="dialog" aria-labelledby="reasonmodalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Reason</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-row">
+                    <div class="col-md-12">
+                        <label for="">Reason</label>
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Reject</button> -->
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade rejectrequest" id="rejectrequest" tabindex="-1" role="dialog" aria-labelledby="rejectrequestTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Reject Reason</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-row mt-3">
+                    <div class="form-group col-md-12">
+                        <label for="inputPassword4">Reason</label>
+                        <input type="password" class="form-control" id="inputPassword4">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Send</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade facialverification" id="facialverification" tabindex="-1" role="dialog" aria-labelledby="facialverificationTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Facial Verification</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+            </div>
+            <div class="modal-body">
+                <div class="images justify-content-center">
+                    <figure class="d-flex justify-content-center">
+                        <img src="assets/img/doc.jpg" alt="">
+                    </figure>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle="modal" data-target="#reasonmodal">Reject</button>
+                <button type="button" class="btn btn-primary">Approve</button>
+            </div>
+        </div>
+    </div>
+</div>

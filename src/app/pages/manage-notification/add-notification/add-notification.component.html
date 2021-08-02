@@ -1,0 +1,82 @@
+<section class="admin-content">
+    <div class="bg-dark">
+        <div class="container-fluid  m-b-30">
+            <div class="col-12 text-white p-t-40 p-b-90">
+                <div class="ex-main">
+                    <h4 class=""> <span class="btn btn-white-translucent">
+                            <i class="mdi mdi-bell"></i></span> Add Notification
+                    </h4>
+                    <a routerLink="/pages/manage-notification" class="btn btn-white-translucent">Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid  pull-up">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card m-b-30">
+                    <div class="card-body">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4">Select Type</label>
+                                <select name="" id="" class="form-control">
+                                    <option value="User"></option>
+                                    <option value="User">Payment</option>
+                                    <option value="Merchant">Transactions</option>
+                                    <option value="Content">Content</option>
+                                    <option value="Activity">Activity</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4">Notification Mode</label>
+                                <select name="" id="" class="form-control">
+                                    <option value="Email"></option>
+                                    <option value="Email">Email</option>
+                                    <option value="Notification">Notification</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputAddress">Title</label>
+                                <input type="text" class="form-control" id="inputAddress" placeholder="">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputAddress">Select User</label>
+                                <dl class="dropdown">
+
+                                    <dt>
+                                    <a href="#">
+                                      <span class="hida">Select</span>    
+                                      <p class="multiSel"></p>  
+                                    </a>
+                                    </dt>
+                                    <dd>
+                                        <div class="mutliSelect">
+                                            <ul>
+                                                <li>
+                                                    <input type="checkbox" value="All User" />All User</li>
+                                                <li>
+                                                    <input type="checkbox" value="Naina" />Naina</li>
+                                                <li>
+                                                    <input type="checkbox" value="Ahmed" />Ahmed</li>
+                                                <li>
+                                                    <input type="checkbox" value="Anshu" />Anshu</li>
+                                            </ul>
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputAddress2">Message</label>
+                                <textarea id="" name="" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary">Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

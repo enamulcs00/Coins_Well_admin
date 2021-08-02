@@ -1,0 +1,96 @@
+<section class="admin-content">
+    <div class="bg-dark">
+        <div class="container-fluid  m-b-30">
+            <div class="row">
+                <div class="col-12 text-white p-t-40 p-b-90">
+                    <div class="ex-main">
+                        <h4 class=""> <span class="btn btn-white-translucent">
+                            <i class="icon-placeholder mdi mdi-account-card-details "></i></span> Bank List
+                        </h4>
+                        <div>
+                            <a routerLink="/pages/banknamelist/addbank" class="btn btn-white-translucent mr-3">Add</a>
+                            <a href="#" class="btn btn-white-translucent">Export CSV</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid pull-up">
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="card m-b-30">
+                    <div class="card-header seachbar">
+                        <h5></h5>
+                        <div class="form-group col-md-4 pl-0 pr-0 mb-0">
+                            <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                            <div class="search-ic">
+                                <i class="mdi mdi-magnify"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover ">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Image</th>
+                                        <th>ID</th>
+                                        <th>Account Number</th>
+                                        <th>Account Holder Name</th>
+                                        <th>Bank Name</th>
+                                        <th>Bank Branch</th>
+                                        <th>IFSC Code</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>
+                                            <div class="avatar avatar-sm " data-toggle="modal" data-target="#userclick">
+                                                <img src="assets/img/ngn.png" class="avatar-img avatar-sm rounded-circle" alt="">
+                                            </div>
+                                        </td>
+                                        <td>258963</td>
+                                        <td>888-999-987-987</td>
+                                        <td>Anshu Bharti</td>
+                                        <td>BOI</td>
+                                        <td>Mohali</td>
+                                        <td>BARB0MOH</td>
+                                        <td>
+                                            <ul class="action">
+                                                <li>
+                                                    <a routerLink="/pages/banknamelist/editbank" class="btn btn-primary mr-2">
+                                                        <i class="mdi mdi-pencil" title="Edit"></i>
+                                                    </a>
+                                                    <a href="#" class="btn btn-danger">
+                                                        <i class="mdi mdi-delete" title="Delete"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade userclick" id="userclick" tabindex="-1" role="dialog" aria-labelledby="userclickTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <img src="assets/img/ngn.png" alt="">
+            </div>
+        </div>
+    </div>
+</div>
