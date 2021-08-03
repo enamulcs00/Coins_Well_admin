@@ -9,7 +9,7 @@
                                 <i class="mdi mdi-account"></i></span> Manage Users
                         </h4>
                         <div>
-                            <a routerLink="/pages/user-list/add-user" class="btn btn-white-translucent mr-3">Add User</a>
+                            <a routerLink="add" class="btn btn-white-translucent mr-3">Add User</a>
                             <a href="#" class="btn btn-white-translucent">Export CSV</a>
                         </div>
                     </div>
@@ -35,124 +35,45 @@
                     <div class="card-body">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" id="home-tab-z" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Pending</a>
+                                <a class="nav-link active" id="home-tab-z" data-toggle="tab" href="#home" role="tab"
+                                    aria-controls="home" aria-selected="true">Pending</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="profile-tab-z" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Approved</a>
+                                <a class="nav-link" id="profile-tab-z" data-toggle="tab" href="#profile" role="tab"
+                                    aria-controls="profile" aria-selected="false">Approved</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="splash-tab-z" data-toggle="tab" href="#splash" role="tab" aria-controls="splash" aria-selected="false">Rejected</a>
+                                <a class="nav-link" id="splash-tab-z" data-toggle="tab" href="#splash" role="tab"
+                                    aria-controls="splash" aria-selected="false">Rejected</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="flag-tab-z" data-toggle="tab" href="#flag" role="tab" aria-controls="flag" aria-selected="false">Flagged</a>
+                                <a class="nav-link" id="flag-tab-z" data-toggle="tab" href="#flag" role="tab"
+                                    aria-controls="flag" aria-selected="false">Flagged</a>
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent1">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                 <div class="table-responsive">
-                                    <table class="table table-hover ">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Image</th>
-                                                <th>ID</th>
-                                                <th>Name</th>
-                                                <th>Email</th>
-                                                <th>Phone Number</th>
-                                                <th class="address">Address</th>
-                                                <th>Currency</th>
-                                                <th>Documents</th>
-                                                <th>Account No.</th>
-                                                <th>Bank Name</th>
-                                                <th>Transaction Type</th>
-                                                <th>Facial Verification</th>
-                                                <th>Flag</th>
-                                                <th>Status</th>
-                                                <!-- <th>Buy</th>
-                                                <th>Sell</th> -->
-                                                <th class="text-center">Account Status</th>
-                                                <th class="text-center">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>
-                                                    <div class="avatar avatar-sm " data-toggle="modal" data-target="#userclick">
-                                                        <img src="assets/img/users/user-1.jpg" class="avatar-img avatar-sm rounded-circle" alt="">
-                                                    </div>
-                                                </td>
-                                                <td>258963</td>
-                                                <td>Eli</td>
-                                                <td>abc@gmail.com</td>
-                                                <td>000-000-0000</td>
-                                                <td class="address">
-                                                    <p class="mb-0"><b>Building No: </b>258</p>
-                                                    <p class="mb-0"><b>Street: </b>abc</p>
-                                                    <p class="mb-0"><b>Zone: </b>India</p>
-                                                </td>
-                                                <td>Bitcoin</td>
-                                                <td>
-                                                    <ul class="action">
-                                                        <li>
-                                                            <a class="btn btn-primary" data-toggle="modal" data-target="#viewdocument">
-                                                                <i class="mdi mdi-eye-settings" title="View" style="color: #fff;"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </td>
-                                                <td>786-987-987-987</td>
-                                                <td>BOI</td>
-                                                <td>Sell</td>
-                                                <td>
-                                                    <ul class="action">
-                                                        <li>
-                                                            <a class="btn btn-primary" data-toggle="modal" data-target="#facialverification">
-                                                                <i class="mdi mdi-eye-settings" title="View" style="color: #fff;"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </td>
-                                                <td>
-                                                    <label class="switch" data-target="#rejectrequest" data-toggle="modal">
-                                                        <input type="checkbox">
-                                                        <span class="slider round"></span>
-                                                    </label>
-                                                </td>
-                                                <td>
-                                                    <ul class="action">
-                                                        <li>
-                                                            <a href="#" class="btn btn-primary">
-                                                                Approve
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <button class="btn btn-danger" data-target="#rejectrequest" data-toggle="modal">Reject</button>
-                                                        </li>
-                                                    </ul>
-                                                </td>
-                                                <td>
-                                                    <select name="" id="" class="form-control">
-                                                        <option value="">Banned</option>
-                                                        <option value="">Suspend</option>
-                                                    </select>
-                                                </td>
-                                                <td>
-                                                    <ul class="action">
-                                                        <li><a routerLink="/pages/user-list/view-user" class="btn btn-primary"><i class="mdi mdi-eye-settings" title="View"></i></a></li>
-                                                        <li><a routerLink="/pages/user-list/edit-user" class="btn btn-primary"><i class="mdi mdi-pen"
-                                                                    title="Edit"></i></a></li>
-                                                        <li>
-                                                            <a href="#" class="btn btn-danger">
-                                                                <i class="mdi mdi-delete" title="Delete"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </td>
-                                            </tr>
+                                    <ngx-datatable class="bootstrap" [rows]="rows" [columnMode]="ColumnMode.force"
+                                        [limit]="10" [headerHeight]="50" [footerHeight]="50" rowHeight="auto"
+                                        [externalPaging]="true" [count]="page.totalElements" [offset]="page.pageNumber"
+                                        [limit]="page.size" (page)="setPage($event)">
+                                        <ngx-datatable-column name="Company" prop="company">
+                                            <ng-template let-row="row" ngx-datatable-cell-template>
+                                                {{row.company}}
+                                            </ng-template>
+                                        </ngx-datatable-column>
 
-                                        </tbody>
-                                    </table>
+                                        <ngx-datatable-column name="Name">
+                                            <ng-template let-row="row" ngx-datatable-cell-template>
+                                                {{row.name}}
+                                            </ng-template>
+                                        </ngx-datatable-column>
+
+                                        <ngx-datatable-column name="Gender">
+                                        </ngx-datatable-column>
+
+                                    </ngx-datatable>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
@@ -185,8 +106,10 @@
                                             <tr>
                                                 <td>1</td>
                                                 <td>
-                                                    <div class="avatar avatar-sm " data-toggle="modal" data-target="#userclick">
-                                                        <img src="assets/img/users/user-1.jpg" class="avatar-img avatar-sm rounded-circle" alt="">
+                                                    <div class="avatar avatar-sm " data-toggle="modal"
+                                                        data-target="#userclick">
+                                                        <img src="assets/img/users/user-1.jpg"
+                                                            class="avatar-img avatar-sm rounded-circle" alt="">
                                                     </div>
                                                 </td>
                                                 <td>258963</td>
@@ -202,8 +125,10 @@
                                                 <td>
                                                     <ul class="action">
                                                         <li>
-                                                            <a class="btn btn-primary" data-toggle="modal" data-target="#viewdocumentapproved">
-                                                                <i class="mdi mdi-eye-settings" title="View" style="color: #fff;"></i>
+                                                            <a class="btn btn-primary" data-toggle="modal"
+                                                                data-target="#viewdocumentapproved">
+                                                                <i class="mdi mdi-eye-settings" title="View"
+                                                                    style="color: #fff;"></i>
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -214,14 +139,17 @@
                                                 <td>
                                                     <ul class="action">
                                                         <li>
-                                                            <a class="btn btn-primary" data-toggle="modal" data-target="#facialverification">
-                                                                <i class="mdi mdi-eye-settings" title="View" style="color: #fff;"></i>
+                                                            <a class="btn btn-primary" data-toggle="modal"
+                                                                data-target="#facialverification">
+                                                                <i class="mdi mdi-eye-settings" title="View"
+                                                                    style="color: #fff;"></i>
                                                             </a>
                                                         </li>
                                                     </ul>
                                                 </td>
                                                 <td>
-                                                    <label class="switch" data-target="#rejectrequest" data-toggle="modal">
+                                                    <label class="switch" data-target="#rejectrequest"
+                                                        data-toggle="modal">
                                                         <input type="checkbox">
                                                         <span class="slider round"></span>
                                                     </label>
@@ -237,9 +165,11 @@
                                                 </td>
                                                 <td>
                                                     <ul class="action">
-                                                        <li><a routerLink="/pages/user-list/view-user" class="btn btn-primary"><i class="mdi mdi-eye-settings" title="View"></i></a></li>
-                                                        <li><a routerLink="/pages/user-list/edit-user" class="btn btn-primary"><i class="mdi mdi-pen"
-                                                                    title="Edit"></i></a></li>
+                                                        <li><a routerLink="view" class="btn btn-primary"><i
+                                                                    class="mdi mdi-eye-settings" title="View"></i></a>
+                                                        </li>
+                                                        <li><a routerLink="edit" class="btn btn-primary"><i
+                                                                    class="mdi mdi-pen" title="Edit"></i></a></li>
                                                         <li>
                                                             <a href="#" class="btn btn-danger">
                                                                 <i class="mdi mdi-delete" title="Delete"></i>
@@ -283,8 +213,10 @@
                                             <tr>
                                                 <td>1</td>
                                                 <td>
-                                                    <div class="avatar avatar-sm " data-toggle="modal" data-target="#userclick">
-                                                        <img src="assets/img/users/user-1.jpg" class="avatar-img avatar-sm rounded-circle" alt="">
+                                                    <div class="avatar avatar-sm " data-toggle="modal"
+                                                        data-target="#userclick">
+                                                        <img src="assets/img/users/user-1.jpg"
+                                                            class="avatar-img avatar-sm rounded-circle" alt="">
                                                     </div>
                                                 </td>
                                                 <td>258963</td>
@@ -300,8 +232,10 @@
                                                 <td>
                                                     <ul class="action">
                                                         <li>
-                                                            <a class="btn btn-primary" data-toggle="modal" data-target="#viewdocumentapproved">
-                                                                <i class="mdi mdi-eye-settings" title="View" style="color: #fff;"></i>
+                                                            <a class="btn btn-primary" data-toggle="modal"
+                                                                data-target="#viewdocumentapproved">
+                                                                <i class="mdi mdi-eye-settings" title="View"
+                                                                    style="color: #fff;"></i>
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -313,14 +247,17 @@
                                                 <td>
                                                     <ul class="action">
                                                         <li>
-                                                            <a class="btn btn-primary" data-toggle="modal" data-target="#facialverification">
-                                                                <i class="mdi mdi-eye-settings" title="View" style="color: #fff;"></i>
+                                                            <a class="btn btn-primary" data-toggle="modal"
+                                                                data-target="#facialverification">
+                                                                <i class="mdi mdi-eye-settings" title="View"
+                                                                    style="color: #fff;"></i>
                                                             </a>
                                                         </li>
                                                     </ul>
                                                 </td>
                                                 <td>
-                                                    <label class="switch" data-target="#rejectrequest" data-toggle="modal">
+                                                    <label class="switch" data-target="#rejectrequest"
+                                                        data-toggle="modal">
                                                         <input type="checkbox">
                                                         <span class="slider round"></span>
                                                     </label>
@@ -332,9 +269,11 @@
                                                 <td>$56,98</td> -->
                                                 <td>
                                                     <ul class="action">
-                                                        <li><a routerLink="/pages/user-list/view-user" class="btn btn-primary"><i class="mdi mdi-eye-settings" title="View"></i></a></li>
-                                                        <li><a routerLink="/pages/user-list/edit-user" class="btn btn-primary"><i class="mdi mdi-pen"
-                                                                    title="Edit"></i></a></li>
+                                                        <li><a routerLink="view" class="btn btn-primary"><i
+                                                                    class="mdi mdi-eye-settings" title="View"></i></a>
+                                                        </li>
+                                                        <li><a routerLink="edit" class="btn btn-primary"><i
+                                                                    class="mdi mdi-pen" title="Edit"></i></a></li>
                                                         <li>
                                                             <a href="#" class="btn btn-danger">
                                                                 <i class="mdi mdi-delete" title="Delete"></i>
@@ -375,8 +314,10 @@
                                             <tr>
                                                 <td>1</td>
                                                 <td>
-                                                    <div class="avatar avatar-sm " data-toggle="modal" data-target="#userclick">
-                                                        <img src="assets/img/users/user-1.jpg" class="avatar-img avatar-sm rounded-circle" alt="">
+                                                    <div class="avatar avatar-sm " data-toggle="modal"
+                                                        data-target="#userclick">
+                                                        <img src="assets/img/users/user-1.jpg"
+                                                            class="avatar-img avatar-sm rounded-circle" alt="">
                                                     </div>
                                                 </td>
                                                 <td>258963</td>
@@ -392,8 +333,10 @@
                                                 <td>
                                                     <ul class="action">
                                                         <li>
-                                                            <a class="btn btn-primary" data-toggle="modal" data-target="#viewdocumentapproved">
-                                                                <i class="mdi mdi-eye-settings" title="View" style="color: #fff;"></i>
+                                                            <a class="btn btn-primary" data-toggle="modal"
+                                                                data-target="#viewdocumentapproved">
+                                                                <i class="mdi mdi-eye-settings" title="View"
+                                                                    style="color: #fff;"></i>
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -405,8 +348,10 @@
                                                 <td>
                                                     <ul class="action">
                                                         <li>
-                                                            <a class="btn btn-primary" data-toggle="modal" data-target="#facialverification">
-                                                                <i class="mdi mdi-eye-settings" title="View" style="color: #fff;"></i>
+                                                            <a class="btn btn-primary" data-toggle="modal"
+                                                                data-target="#facialverification">
+                                                                <i class="mdi mdi-eye-settings" title="View"
+                                                                    style="color: #fff;"></i>
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -419,9 +364,11 @@
                                                 </td>
                                                 <td>
                                                     <ul class="action">
-                                                        <li><a routerLink="/pages/user-list/view-user" class="btn btn-primary"><i class="mdi mdi-eye-settings" title="View"></i></a></li>
-                                                        <li><a routerLink="/pages/user-list/edit-user" class="btn btn-primary"><i class="mdi mdi-pen"
-                                                                    title="Edit"></i></a></li>
+                                                        <li><a routerLink="view" class="btn btn-primary"><i
+                                                                    class="mdi mdi-eye-settings" title="View"></i></a>
+                                                        </li>
+                                                        <li><a routerLink="edit" class="btn btn-primary"><i
+                                                                    class="mdi mdi-pen" title="Edit"></i></a></li>
                                                         <li>
                                                             <a href="#" class="btn btn-danger">
                                                                 <i class="mdi mdi-delete" title="Delete"></i>
@@ -443,7 +390,8 @@
 </section>
 
 <!-- Modal -->
-<div class="modal fade userclick" id="userclick" tabindex="-1" role="dialog" aria-labelledby="userclickTitle" aria-hidden="true">
+<div class="modal fade userclick" id="userclick" tabindex="-1" role="dialog" aria-labelledby="userclickTitle"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-body text-center">
@@ -454,14 +402,15 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade viewdocument" id="viewdocument" tabindex="-1" role="dialog" aria-labelledby="viewdocumentTitle" aria-hidden="true">
+<div class="modal fade viewdocument" id="viewdocument" tabindex="-1" role="dialog" aria-labelledby="viewdocumentTitle"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLongTitle">Documents</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
                 <div class="images">
@@ -486,7 +435,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle="modal" data-target="#reasonmodal">Reject</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle="modal"
+                    data-target="#reasonmodal">Reject</button>
                 <button type="button" class="btn btn-primary">Approve</button>
             </div>
         </div>
@@ -494,14 +444,15 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade viewdocument" id="viewdocumentapproved" tabindex="-1" role="dialog" aria-labelledby="viewdocumentapprovedTitle" aria-hidden="true">
+<div class="modal fade viewdocument" id="viewdocumentapproved" tabindex="-1" role="dialog"
+    aria-labelledby="viewdocumentapprovedTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLongTitle">Documents</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
                 <div class="images">
@@ -534,14 +485,15 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade reasonmodal" id="reasonmodal" tabindex="-1" role="dialog" aria-labelledby="reasonmodalTitle" aria-hidden="true">
+<div class="modal fade reasonmodal" id="reasonmodal" tabindex="-1" role="dialog" aria-labelledby="reasonmodalTitle"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLongTitle">Reason</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
                 <div class="form-row">
@@ -560,14 +512,15 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade rejectrequest" id="rejectrequest" tabindex="-1" role="dialog" aria-labelledby="rejectrequestTitle" aria-hidden="true">
+<div class="modal fade rejectrequest" id="rejectrequest" tabindex="-1" role="dialog"
+    aria-labelledby="rejectrequestTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLongTitle">Reject Reason</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
                 <div class="form-row mt-3">
@@ -585,14 +538,15 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade facialverification" id="facialverification" tabindex="-1" role="dialog" aria-labelledby="facialverificationTitle" aria-hidden="true">
+<div class="modal fade facialverification" id="facialverification" tabindex="-1" role="dialog"
+    aria-labelledby="facialverificationTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLongTitle">Facial Verification</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
                 <div class="images justify-content-center">
@@ -602,7 +556,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle="modal" data-target="#reasonmodal">Reject</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle="modal"
+                    data-target="#reasonmodal">Reject</button>
                 <button type="button" class="btn btn-primary">Approve</button>
             </div>
         </div>

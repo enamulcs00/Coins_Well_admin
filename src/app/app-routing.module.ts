@@ -6,7 +6,7 @@ import { LoggedGuard } from '../app/_gurads/logged.guard';
 const routes: Routes = [
 
 	{
-		path: 'pages',
+		path: '',
 		loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)
 	},
 	{
