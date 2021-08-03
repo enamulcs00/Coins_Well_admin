@@ -1,18 +1,51 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs'
+import { urls } from './urls';
 @Injectable({
 	providedIn: 'root'
 })
 export class CommonService {
-	nationalities = [];
-	languages = [];
 	constructor(private _http: HttpClient) { }
 
-	getProfileInfo(params: any) {
-		return this._http.get<any>(`${environment.baseUrl}admin/customers${this.obj_to_query(params)}`)
+	post(url: string, postData: any = {}) {
+		return this._http.post<any>(`${environment.baseUrl}${url}`, postData)
+			.pipe(map((data: any) => {
+				return data;
+			}));
+	}
+
+	get(url: string) {
+		return this._http.get<any>(`${environment.baseUrl}${url}`)
+			.pipe(map((data: any) => {
+				return data;
+			}));
+	}
+
+	put(url: string, putData: any = {}) {
+		return this._http.put<any>(`${environment.baseUrl}${url}`, putData)
+			.pipe(map((data: any) => {
+				return data;
+			}));
+	}
+
+	delete(url: string) {
+		return this._http.delete<any>(`${environment.baseUrl}${urls[url]}`)
+			.pipe(map((data: any) => {
+				return data;
+			}));
+	}
+
+	deleteById(url: string, id: string) {
+		return this._http.delete<any>(`${environment.baseUrl}${urls[url]}/${id}`)
+			.pipe(map((data: any) => {
+				return data;
+			}));
+	}
+
+	getWithQuery(url: string, queryData: any = {}) {
+		return this._http.get<any>(`${environment.baseUrl}${urls[url]}${this.obj_to_query(queryData)}`)
 			.pipe(map((data: any) => {
 				return data;
 			}));
@@ -27,4 +60,27 @@ export class CommonService {
 		}
 		return "?" + parts.join('&');
 	}
+
+
+	getById(url: string, id: string) {
+		return this._http.get<any>(`${environment.baseUrl}${urls[url]}/${id}`)
+			.pipe(map((data: any) => {
+				return data;
+			}));
+	}
+
+	putById(url: string, id: string, formData: any = {}) {
+		return this._http.put<any>(`${environment.baseUrl}${urls[url]}/${id}`, formData)
+			.pipe(map((data: any) => {
+				return data;
+			}));
+	}
+
+	uploadMedia(formData) {
+		return this._http.post<any>(`${environment.baseUrl}upload/media/`, formData)
+			.pipe(map((data: any) => {
+				return data;
+			}));
+	}
+
 }
