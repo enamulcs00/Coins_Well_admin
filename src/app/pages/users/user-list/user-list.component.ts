@@ -71,7 +71,7 @@ export class UserListComponent implements OnInit {
 				"value": "",
 				"regex": false
 			}
-		}).subscribe(pagedData => {
+		}).subscribe(_pagedData => {
 			// this.page = pagedData.page;
 			// this.rows = pagedData.data;
 		});

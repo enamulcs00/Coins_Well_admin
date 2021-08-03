@@ -6,6 +6,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { MaterialModule } from '../material/material.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,12 +15,16 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 	imports: [
 		CommonModule,
 		CoreRoutingModule,
-		NgxDatatableModule
+		NgxDatatableModule,
+		MaterialModule,
+		ReactiveFormsModule
 	],
 	exports: [
 		SidebarComponent,
 		HeaderComponent,
-		NgxDatatableModule
+		NgxDatatableModule,
+		MaterialModule,
+		ReactiveFormsModule
 	]
 })
 export class CoreModule { }

@@ -21,6 +21,7 @@ import { ReferAmountComponent } from './refer-amount/refer-amount.component';
 import { EditBankComponent } from './bank-name-list/edit-bank/edit-bank.component';
 import { AddNotificationComponent } from './manage-notification/add-notification/add-notification.component';
 import { ChatComponent } from './chat/chat.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
