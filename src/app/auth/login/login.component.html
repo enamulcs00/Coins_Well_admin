@@ -1,29 +1,37 @@
 <main class="admin-main">
     <div class="auth_module" style="background-image: url('assets/img/auth.jpeg');">
-        <!-- <figure>
-            <img src="assets/img/auth.jpeg" alt="">
-        </figure> -->
-        <div class="mx-auto center_auth">
+        <form class="mx-auto center_auth" [formGroup]="loginForm" (ngSubmit)="loginNow()">
             <div class="p-b-20 text-center">
                 <figure class="logo-auth"><img src="assets/img/nav-logo.png" alt="Logo"></figure>
-                <!-- <h5 class="text-center coinwell mt-2">Coinwells</h5> -->
             </div>
-            <!-- <form class="needs-validation"> -->
             <div class="form-row">
-                <div class="form-group floating-label col-md-12">
-                    <label>Email</label>
-                    <input type="email" class="form-control" placeholder="Email">
-                </div>
-                <div class="form-group floating-label col-md-12">
-                    <label>Password</label>
-                    <input type="password" class="form-control " placeholder="Password">
-                </div>
+                <mat-form-field class="col-md-12" appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="Enter email address" formControlName="email">
+                    <mat-error
+                        *ngIf="!loginForm.get('email').hasError('validEmail') && loginForm.get('email').hasError('required')">
+                        Please enter email.
+                    </mat-error>
+                    <mat-error
+                        *ngIf="loginForm.get('email').hasError('email') || loginForm.get('email').hasError('validEmail')">
+                        Please enter valid email.
+                    </mat-error>
+                </mat-form-field>
+
+
+                <mat-form-field class="col-md-12" appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input [type]="'password'" formControlName="password" name="password" matInput
+                        placeholder="Password">
+                    <mat-error *ngIf="loginForm.get('password').hasError('required')">Please enter password.
+                    </mat-error>
+                </mat-form-field>
             </div>
-            <a routerLink="/pages/dashboard"> <button class="btn btn-primary btn-block btn-lg">Login</button></a>
-            <!-- </form> -->
+            <button type="submit" class="btn btn-primary btn-block btn-lg" [attr.disabled]="(isLoading)?true : null">{{
+                (isLoading)?'Processing...':'Login' }}</button>
             <p class="text-right p-t-10">
                 <a routerLink="/auth/forgetpassword" class="text-underline">Forgot Password?</a>
             </p>
-        </div>
+        </form>
     </div>
 </main>
