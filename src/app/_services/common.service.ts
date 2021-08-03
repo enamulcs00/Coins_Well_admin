@@ -83,4 +83,19 @@ export class CommonService {
 			}));
 	}
 
+	getColumns(definedColumns) {
+		return definedColumns.map(x=>{
+			return {
+				"data": x.data,
+				"name": x.name || '',
+				"searchable": (x.searchable != undefined) ? x.searchable : true,
+				"orderable": (x.orderable != undefined) ? x.orderable : true,
+				"search": {
+					"value": "",
+					"regex": false
+				}
+			}
+		})
+	}
+
 }

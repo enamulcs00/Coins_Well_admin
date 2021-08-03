@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { Subject, Observable } from 'rxjs';
 import { ConfirmDialogComponent } from '../components/confirm-dialog/confirm-dialog.component';
@@ -10,7 +9,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 })
 export class NotificationsService {
 
-	constructor(private _toast: ToastrService, private dialog: MatDialog, private modalService: BsModalService) { }
+	constructor(private _toast: ToastrService, private modalService: BsModalService) { }
 	bsModalRef: BsModalRef;
 	show(type: any, message: string, title) {
 		message = message.charAt(0).toUpperCase() + message.slice(1).toLowerCase();
