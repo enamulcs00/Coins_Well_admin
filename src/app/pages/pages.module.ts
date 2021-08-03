@@ -22,7 +22,7 @@ import { EditBankComponent } from './bank-name-list/edit-bank/edit-bank.componen
 import { AddNotificationComponent } from './manage-notification/add-notification/add-notification.component';
 import { ChatComponent } from './chat/chat.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { NgxMatIntlTelInputModule } from '../ngx-input-tel'
 
 @NgModule({
 	declarations: [
@@ -48,7 +48,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 	imports: [
 		CommonModule,
 		PagesRoutingModule,
-		CoreModule
+		CoreModule,
+		NgxMatIntlTelInputModule
 	]
 })
 export class PagesModule { }

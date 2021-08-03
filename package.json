@@ -23,6 +23,7 @@
     "@angular/router": "~10.0.0",
     "@swimlane/ngx-datatable": "^19.0.0",
     "bootstrap": "4.1.1",
+    "libphonenumber-js": "^1.9.23",
     "ng-otp-input": "^1.7.0",
     "ngx-bootstrap": "^6.2.0",
     "ngx-toastr": "^14.0.0",

@@ -34,10 +34,7 @@ export class ChangePasswordComponent implements OnInit {
 			this._common.put(urls.changePassword, formData).subscribe(res => {
 				this._noti.show("success", "Password changed successfully.", "Success!");
 				this.setPasswordForm.reset();
-				setTimeout(()=>{
-					this.setPasswordForm.markAsUntouched();
-					this.setPasswordForm.markAsPending();
-				},100)
+				this._router.navigate(['/dashbaord']);
 				this.isLoading = false;
 			}, _ => {
 				this.isLoading = false
