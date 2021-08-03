@@ -472,3 +472,19 @@ h5.coinwell {
 .country-selector {
     opacity: 1 !important;
 }
+
+.ngx-datatable .datatable-header .datatable-header-cell .datatable-header-cell-template-wrap {
+    height: inherit;
+    font-size: 0.7875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #000;
+    border-bottom-width: 1px;
+    white-space: nowrap;
+    background-color: #f9fbfd;
+}
+
+.datatable-body-cell-label {
+    font-size: initial;
+}

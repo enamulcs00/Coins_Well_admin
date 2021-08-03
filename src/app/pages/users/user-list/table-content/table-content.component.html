@@ -1,0 +1,133 @@
+<div class="table-responsive">
+    <!-- [externalPaging]="true" [count]="page.totalElements" [offset]="page.pageNumber"
+        [limit]="page.size" (page)="setPage($event)" -->
+    <ngx-datatable class="bootstrap" [scrollbarH]="true" [rows]="[{},{},{},{},{}]"
+        [columnMode]="ColumnMode.force" [limit]="10" [headerHeight]="50"
+        [footerHeight]="50" rowHeight="auto">
+        <ngx-datatable-column [width]="40" name="#" prop="#">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+                1
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column [width]="80" name="Image" prop="image">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+                <div class="avatar avatar-sm " data-toggle="modal"
+                    data-target="#userclick">
+                    <img src="assets/img/users/user-1.jpg"
+                        class="avatar-img avatar-sm rounded-circle" alt="">
+                </div>
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column [width]="100" name="Id" prop="id">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+                250205
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column [width]="100" name="Name" prop="name">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+                Eli Sena
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Email" prop="email">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+                eilsena@yopmail.com
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="PHONE NUMBER" prop="phone">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+                000-000-0000
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="ADDRESS" prop="address">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+                Building No: 258, Street: abc, Zone: India
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="DOCUMENTS" prop="documents">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+                <ul class="action">
+                    <li>
+                        <a class="btn btn-primary" data-toggle="modal"
+                            data-target="#viewdocumentapproved">
+                            <i class="mdi mdi-eye-settings" title="View"
+                                style="color: #fff;"></i>
+                        </a>
+                    </li>
+                </ul>
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="ACCOUNT NO.	" prop="account_number">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+                786-987-987-987
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="BANK NAME" prop="bank_name">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+                BOI
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column [width]="80" name="FV" prop="facial_verification">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+                <ul class="action">
+                    <li>
+                        <a class="btn btn-primary" data-toggle="modal"
+                            data-target="#facialverification">
+                            <i class="mdi mdi-eye-settings" title="View"
+                                style="color: #fff;"></i>
+                        </a>
+                    </li>
+                </ul>
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column [width]="80" name="FLAG" prop="flag">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+                <label class="switch" data-target="#rejectrequest" data-toggle="modal">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column [width]="100" name="STATUS" prop="status">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+                <span class="text-success">Approved</span>
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="ACCOUNT STATUS" prop="account_status">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+                <select name="" id="" class="form-control">
+                    <option value="">Banned</option>
+                    <option value="">Suspend</option>
+                </select>
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="ACTION" prop="status">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+                <ul class="action">
+                    <li><a routerLink="view" class="btn btn-primary"><i
+                                class="mdi mdi-eye-settings" title="View"></i></a>
+                    </li>
+                    <li><a routerLink="edit" class="btn btn-primary"><i
+                                class="mdi mdi-pen" title="Edit"></i></a></li>
+                    <li>
+                        <a href="#" class="btn btn-danger">
+                            <i class="mdi mdi-delete" title="Delete"></i>
+                        </a>
+                    </li>
+                </ul>
+            </ng-template>
+        </ngx-datatable-column>
+    </ngx-datatable>
+</div>
