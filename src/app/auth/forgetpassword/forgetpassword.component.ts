@@ -29,8 +29,9 @@ export class ForgetpasswordComponent implements OnInit {
 			this.isLoading = true;
 			this._auth.forgot(this.forgotPassword.value).subscribe(res => {
 				this.isLoading = false;
-				this._noti.show('success', "Admin logged in successfully.", "Login!");
-				this.router.navigate(['/dashboard']);
+				this._auth.otpEmail = this.forgotPassword.controls.email.value
+				this._noti.show('success', res.message,"Otp");
+				this.router.navigate(['/auth/otpscreen']);
 			}, _ => {
 				this.isLoading = false;
 			})

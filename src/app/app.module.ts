@@ -14,6 +14,7 @@ import { NotificationsService } from './_services/notifications.service';
 import { ToastrModule } from 'ngx-toastr';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { NgOtpInputModule } from 'ng-otp-input';
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -25,6 +26,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 		BrowserAnimationsModule,
 		MaterialModule,
 		HttpClientModule,
+		NgOtpInputModule,
 		ToastrModule.forRoot(),
 		ModalModule.forRoot()
 	],

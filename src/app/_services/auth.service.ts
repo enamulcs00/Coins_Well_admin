@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 	providedIn: 'root'
 })
 export class AuthService {
+	otpEmail:any = false
 	onLogin: Subject<any> = new Subject();
 	onProfileUpdate : Subject<any> = new Subject();
 	constructor(private _http : HttpClient) { }
@@ -41,7 +42,10 @@ export class AuthService {
 				return data;
 			}));
 	}
-
+	postApi(url,data)
+	{
+	  return this._http.post(`${environment.baseUrl}`+url,data);
+	}
 	getProfileInfo() {
 		return this._http.get<any>(`${environment.baseUrl}admin/profile`)
 			.pipe(map((data : any) => {	
