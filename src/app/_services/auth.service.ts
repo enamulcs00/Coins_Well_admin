@@ -46,6 +46,14 @@ export class AuthService {
 	{
 	  return this._http.post(`${environment.baseUrl}`+url,data);
 	}
+	putApi(url,data)
+	{
+	  return this._http.put(`${environment.baseUrl}`+url,data);
+	}
+	getApi(url)
+    {
+      return this._http.get(`${environment.baseUrl}`+url);
+    }
 	getProfileInfo() {
 		return this._http.get<any>(`${environment.baseUrl}admin/profile`)
 			.pipe(map((data : any) => {	

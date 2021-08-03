@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
 			this._auth.login(this.loginForm.value).subscribe(res => {
 				this.isLoading = false;
 				this._noti.show('success', "Admin logged in successfully.", "Login!");
-				this.router.navigate(['/pages/dashboard']);
+				this.router.navigate(['/dashboard']);
 			}, error => {
 				this.isLoading = false;
 			})

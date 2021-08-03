@@ -11,7 +11,7 @@ export class LoggedGuard implements CanActivate {
         if ((userInfo == null)) {
             return true;
         } else {
-            this.router.navigate(['/pages/dashboard']);
+            this.router.navigate(['/dashboard']);
             // Notify.info('Please login to continue.');
         }
     }
