@@ -53,7 +53,7 @@ export class MyProfileComponent implements OnInit {
 				address: userInfo?.address
 			});
 			this.files = userInfo?.image?.id
-			this.imgurl = environment.homeURL + userInfo?.image?.path
+			this.imgurl = environment.homeURL + userInfo?.image?.media_file
 		})
 	}
 	Update() {

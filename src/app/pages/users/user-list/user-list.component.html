@@ -26,25 +26,30 @@
                     <div class="card-header seachbar">
                         <h5></h5>
                         <div class="form-group col-md-4 pl-0 pr-0 mb-0">
-                            <input type="email" class="form-control" id="inputEmail4" placeholder="">
-                            <div class="search-ic">
+                            <input type="text" name="searchField" [(ngModel)]="searchData.value" class="form-control"
+                                id="searchField" placeholder="Search by email, name">
+                            <div class="search-ic" (click)="searchHere()">
                                 <i class="mdi mdi-magnify"></i>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
                         <tabset>
-                            <tab heading="Pending" id="tab1">
-                                <user-list-table-content [status]="null"></user-list-table-content>
+                            <tab (selectTab)="onSelect($event)" heading="Pending" id="tab1">
+                                <user-list-table-content *ngIf="value == 'Pending'" [status]="null"
+                                    [searchData]="searchData"></user-list-table-content>
                             </tab>
-                            <tab heading="Approved">
-                                <user-list-table-content [status]="true"></user-list-table-content>
+                            <tab (selectTab)="onSelect($event)" heading="Approved">
+                                <user-list-table-content *ngIf="value == 'Approved'" [status]="true"
+                                    [searchData]="searchData"></user-list-table-content>
                             </tab>
-                            <tab heading="Rejected">
-                                <user-list-table-content [status]="false"></user-list-table-content>
+                            <tab (selectTab)="onSelect($event)" heading="Rejected">
+                                <user-list-table-content *ngIf="value == 'Rejected'" [status]="false"
+                                    [searchData]="searchData"></user-list-table-content>
                             </tab>
-                            <tab heading="Flagged">
-                                <user-list-table-content></user-list-table-content>
+                            <tab (selectTab)="onSelect($event)" heading="Flagged">
+                                <user-list-table-content *ngIf="value == 'Flagged'" [searchData]="searchData">
+                                </user-list-table-content>
                             </tab>
                         </tabset>
                     </div>
