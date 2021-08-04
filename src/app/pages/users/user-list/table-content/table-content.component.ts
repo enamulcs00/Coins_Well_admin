@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ColumnMode } from '@swimlane/ngx-datatable';
 import { CommonService } from 'src/app/_services/common.service';
 import { urls } from 'src/app/_services/urls';
@@ -10,6 +10,8 @@ import { Page } from '../../../modal/page';
 	styleUrls: ['./table-content.component.scss']
 })
 export class TableContentComponent implements OnInit {
+	@Input('status') status: boolean | null;
+	@Input('flag') flag: boolean | null;
 	page = new Page();
 	rows = new Array<any>();
 	ColumnMode = ColumnMode;
@@ -18,49 +20,22 @@ export class TableContentComponent implements OnInit {
 			"data": "id"
 		},
 		{
-			"data": "full_name"
+			"data": "first_name"
+		},
+		{
+			"data": "last_name"
 		},
 		{
 			"data": "email"
-		},
-		{
-			"data": "address"
-		},
-		{
-			"data": "phone"
-		},
-		{
-			"data": "user_documents",
-			"name": "",
-			"searchable": false,
-			"orderable": false,
-		},
-		{
-			"data": "account_number"
-		},
-		{
-			"data": "bank_name"
-		},
-		{
-			"data": "facial_verification"
-		},
-		{
-			"data": "flag"
-		},
-		{
-			"data": "status"
-		},
-		{
-			"data": "account_status"
 		}
 	]
 	formData: any = {
-		"status": false,
+		"status": status,
 		"draw": 0,
 		"columns": this._common.getColumns(this.definedColumns),
 		"order": [
 			{
-				"column": 2,
+				"column": 0,
 				"dir": "desc"
 			}
 		],
@@ -83,10 +58,16 @@ export class TableContentComponent implements OnInit {
 
 
 	setPage(pageInfo) {
-		// this.page.pageNumber = pageInfo.offset;
-		// this._common.post(urls.getUsers, this.formData).subscribe(_pagedData => {
-		// 	// this.page = pagedData.page;
-		// 	// this.rows = pagedData.data;
-		// });
+		if (this.status != undefined) {
+			this.formData.status = this.status;
+		}
+		if (this.flag != undefined) {
+			this.formData.flag = true;
+		}
+		this.page.pageNumber = pageInfo.offset;
+		this._common.post(urls.getUsers, this.formData).subscribe(_pagedData => {
+			// this.page = pagedData.page;
+			// this.rows = pagedData.data;
+		});
 	}
 }

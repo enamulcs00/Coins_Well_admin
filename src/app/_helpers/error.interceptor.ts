@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { NotificationsService } from '../_services/notifications.service';
+import { environment } from 'src/environments/environment';
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
     constructor(private _noti: NotificationsService, private router: Router) { }
@@ -21,8 +22,8 @@ export class ErrorInterceptor implements HttpInterceptor {
             catchError(err => {
                 if (err.status === 401) {
                     this._noti.show("error", "Not authorized", "Error!");
-                    localStorage.clear();
-                    this.router.navigate(['/login']);
+                    localStorage.removeItem(environment.storageKey);
+                    this.router.navigate(['/auth/login']);
                 }
                 else {
                     var error = err.error.error_description || err.error.message || err.statusText || err.message;

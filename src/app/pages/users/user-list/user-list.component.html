@@ -35,13 +35,13 @@
                     <div class="card-body">
                         <tabset>
                             <tab heading="Pending" id="tab1">
-                                <user-list-table-content></user-list-table-content>
+                                <user-list-table-content [status]="null"></user-list-table-content>
                             </tab>
                             <tab heading="Approved">
-                                <user-list-table-content></user-list-table-content>
+                                <user-list-table-content [status]="true"></user-list-table-content>
                             </tab>
                             <tab heading="Rejected">
-                                <user-list-table-content></user-list-table-content>
+                                <user-list-table-content [status]="false"></user-list-table-content>
                             </tab>
                             <tab heading="Flagged">
                                 <user-list-table-content></user-list-table-content>

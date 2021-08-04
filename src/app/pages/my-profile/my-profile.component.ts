@@ -6,6 +6,9 @@ import { validEmail } from 'src/app/_validators/validEmail';
 import { urls } from 'src/app/_services/urls';
 import { Router } from '@angular/router';
 import { NotificationsService } from 'src/app/_services/notifications.service';
+import { removeSpaces } from 'src/app/_validators/remove-spaces';
+import { environment } from 'src/environments/environment';
+import { AuthService } from 'src/app/_services/auth.service';
 @Component({
 	selector: 'app-my-profile',
 	templateUrl: './my-profile.component.html',
@@ -17,17 +20,19 @@ export class MyProfileComponent implements OnInit {
 	isLoading: boolean = false;
 	files: any;
 	imgurl: string | ArrayBuffer;
-	constructor(private _fb: FormBuilder,private service:CommonService,private router:Router,private _noti: NotificationsService) { }
+	fileData;
+	constructor(private _fb: FormBuilder, private service: CommonService, private router: Router, private _noti: NotificationsService, private _auth: AuthService) { }
 
 	ngOnInit(): void {
-this.getProfile()
+		this.getProfile()
 
 		this.updateProfile = this._fb.group({
-			name: [null, [Validators.required, Validators.maxLength(30), Validators.minLength(4), validString]],
+			first_name: [null, [Validators.required, Validators.maxLength(15), Validators.minLength(4), validString]],
+			last_name: [null, [Validators.required, Validators.maxLength(15), Validators.minLength(4), validString, removeSpaces]],
 			email: [null, [validEmail, Validators.required, Validators.email]],
 			phone: [null, Validators.required],
 			address: [null, [Validators.required]],
-			
+
 		});
 	}
 
@@ -37,70 +42,78 @@ this.getProfile()
 		}
 	}
 
-	signUpNow() {
-		// if (this.signUpForm.get('full_phone').value) {
-		// 	let phones = this.signUpForm.get('full_phone').value.split(this.selectedCountry.dialCode);
-		// 	this.signUpForm.get('phone_number').setValue(phones[1]);
-		// 	this.signUpForm.get('country_code').setValue('+' + this.selectedCountry.dialCode);
-		// }
+	getProfile() {
+		this.service.get('admin/get-profile/').subscribe((res: any) => {
+			let userInfo = res.data;
+			this.updateProfile.patchValue({
+				first_name: userInfo?.first_name,
+				last_name: userInfo?.last_name,
+				phone: userInfo?.phone_number,
+				email: userInfo?.email,
+				address: userInfo?.address
+			});
+			this.files = userInfo?.image?.id
+			this.imgurl = environment.homeURL + userInfo?.image?.path
+		})
 	}
-	getProfile(){
-this.service.get('admin/get-profile/').subscribe((res:any)=>{
-	console.log('Get profile',res);
-	
-})
-	}
-	Update(){
-		let name = this.updateProfile.controls.name.value?this.updateProfile.controls.name.value.split(' '):null
+	Update() {
 		if (this.updateProfile.valid) {
 			this.isLoading = true;
-			let obj = {
-				"first_name":name[0],
-				"last_name":name[1],
-				"phone_number":this.updateProfile.controls.phone.value,
-				"profile_image":this.files,
-				"address":this.updateProfile.controls.address.value
+			if (this.fileData) {
+				this.sendFile();
+			} else {
+				this.updateProfileFn();
 			}
-			this.service.put(urls.updateProfile, obj).subscribe(res => {
-				this._noti.show("success", "Password changed successfully.", "Success!");
-				this.router.navigate(['/dashbaord']);
-				this.isLoading = false;
-			}, _ => {
-				this.isLoading = false
-			})
 		} else {
 			this.updateProfile.markAllAsTouched();
 		}
 	}
-	sendFile(fileData) {
-		
-	   let formdata = new FormData()
-		formdata.append('media', fileData);
-		this.service.uploadMedia(formdata).subscribe((res: any) => {
-		 
-		  if (res.code==200) {
-			// this.service.subject.next(true)
-		 this._noti.show('success','File updated successfully','File')
-			console.log("upload data res=>>", res.data[0].id)
-			this.files = res.data[0].id
-			
-		  } 
-		});
-	  }
-	  uploadFile(event) {
-		if (event.target.files && event.target.files[0]) {
-		  var type = event.target.files[0].type;
-		  var reader = new FileReader();
-		  reader.readAsDataURL(event.target.files[0]);
-		  if (type === 'image/png' || type === 'image/jpg' || type === 'image/jpeg') {
-			let fileData = event.target.files[0];
-			this.sendFile(fileData)
-			reader.onload = (event) => { // called once readAsDataURL is completed
-				this.imgurl = event.target.result;
-			  }
-			 console.log('imgUrl',this.imgurl);
-			 
-		  }
+
+	updateProfileFn() {
+		let obj = {
+			"first_name": this.updateProfile.controls.first_name.value,
+			"last_name": this.updateProfile.controls.last_name.value,
+			"phone_number": this.updateProfile.controls.phone.value,
+			"image": this.files,
+			"address": this.updateProfile.controls.address.value
 		}
-	  }
+		this.service.put(urls.updateProfile, obj).subscribe(res => {
+			this.service.get('admin/get-profile/').subscribe((res: any) => {
+				var tempData = JSON.parse(localStorage.getItem(environment.storageKey));
+				tempData = { ...tempData, ...res.data };
+				localStorage.setItem(environment.storageKey, JSON.stringify(tempData));
+				this._noti.show("success", "Profile updated successfully.", "Success!");
+				this._auth.onProfileUpdate.next();
+				this.router.navigate(['/dashboard']);
+				this.isLoading = false;
+			})
+		}, _ => {
+			this.isLoading = false
+		})
+	}
+
+	sendFile() {
+		let formdata = new FormData()
+		formdata.append('media', this.fileData);
+		this.service.uploadMedia(formdata).subscribe((res: any) => {
+			if (res.code == 200) {
+				this.files = res.data[0].id
+				this.updateProfileFn();
+			}
+		});
+	}
+	uploadFile(event) {
+		if (event.target.files && event.target.files[0]) {
+			var type = event.target.files[0].type;
+			var reader = new FileReader();
+			reader.readAsDataURL(event.target.files[0]);
+			if (type === 'image/png' || type === 'image/jpg' || type === 'image/jpeg') {
+				let fileData = event.target.files[0];
+				this.fileData = fileData;
+				reader.onload = (event) => { // called once readAsDataURL is completed
+					this.imgurl = event.target.result;
+				}
+			}
+		}
+	}
 }

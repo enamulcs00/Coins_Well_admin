@@ -31,12 +31,26 @@
                     <form [formGroup]="updateProfile">
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="inputPassword4">Full name</label>
+                                <label for="inputPassword4">First name</label>
                                 <mat-form-field class="row col-12" appearance="outline">
-                                    <input type="text" name="name" matInput placeholder="Name" formControlName="name">
-                                    <mat-error *ngIf="updateProfile.get('name').hasError('required')">Please enter full name.
+                                    <input type="text" name="first_name" matInput placeholder="Name" formControlName="first_name">
+                                    <mat-error *ngIf="updateProfile.get('first_name').hasError('required')">Please enter first name.
                                     </mat-error>
-                                    <mat-error *ngIf="updateProfile.get('name').hasError('validString')">Please enter alphabetic only.
+                                    <mat-error *ngIf="updateProfile.get('first_name').hasError('validString')">Please enter alphabetic only.
+                                    </mat-error>
+                                    <mat-error *ngIf="!updateProfile.get('first_name').hasError('validString') && (updateProfile.get('first_name').hasError('minlength') || updateProfile.get('first_name').hasError('maxlength'))">First name has to be between 4 and 15 characters long.
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4">Last name</label>
+                                <mat-form-field class="row col-12" appearance="outline">
+                                    <input type="text" name="last_name" matInput placeholder="Name" formControlName="last_name">
+                                    <mat-error *ngIf="updateProfile.get('last_name').hasError('required')">Please enter last name.
+                                    </mat-error>
+                                    <mat-error *ngIf="updateProfile.get('last_name').hasError('validString')">Please enter alphabetic only.
+                                    </mat-error>
+                                    <mat-error *ngIf="!updateProfile.get('last_name').hasError('validString') && (updateProfile.get('last_name').hasError('minlength') || updateProfile.get('last_name').hasError('maxlength'))">Last name has to be between 4 and 15 characters long.
                                     </mat-error>
                                 </mat-form-field>
                             </div>
