@@ -77,28 +77,10 @@ export class TableContentComponent implements OnInit {
 				this.toastr.success(res.message,"Success",{timeOut:1050})
 			});
 		}
-		this._common.confirm("Confirm", "Do you want to "+((row.flag)?'flag':'unflag')+" selected user ?").subscribe(res => {
+		this._common.confirm("Confirm", "Do you want to  Change Status ?").subscribe(res => {
 			if(res) {
-					if(row.flag) {
 						//reason popup open here
-						this._common.reasonConfirm("Reject Reason", "").subscribe((x : any) => {
-							console.log(x);
-							if(x) {
-								//Simple API call here with descripition
-								callAPI({
-									flag : row.flag,
-									description : x
-								});
-							} else {
-								row.flag = !row.flag;
-							}
-						})
-					} else {
-						callAPI({
-							flag : row.flag
-						});
-						//simple API call here
-					}
+						callAPI({action:row.status});
 					//Reject API call here
 				} else {
 					row.flag = !row.flag;
@@ -117,7 +99,6 @@ export class TableContentComponent implements OnInit {
 			if(res) {
 				callAPI();
 				} else {
-					row.flag = !row.flag;
 				}
 			})
 	}
