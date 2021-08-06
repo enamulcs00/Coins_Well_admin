@@ -1,14 +1,21 @@
+import { ConfirmDialogComponent } from './../components/confirm-dialog/confirm-dialog.component';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
 import { urls } from './urls';
+import { Observable } from 'rxjs';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { DocumentsComponent } from '../components/confirm-dialog/documents/documents.component';
+import { FvComponent } from '../components/confirm-dialog/fv/fv.component';
+import { ReasonComponent } from '../components/confirm-dialog/reason/reason.component';
+
 @Injectable({
 	providedIn: 'root'
 })
 export class CommonService {
-	constructor(private _http: HttpClient) { }
-
+	constructor(private _http: HttpClient,private modalService: BsModalService) { }
+    bsModalRef: BsModalRef;
 	post(url: string, postData: any = {}) {
 		return this._http.post<any>(`${environment.baseUrl}${url}`, postData)
 			.pipe(map((data: any) => {
@@ -31,7 +38,7 @@ export class CommonService {
 	}
 
 	delete(url: string) {
-		return this._http.delete<any>(`${environment.baseUrl}${urls[url]}`)
+		return this._http.delete<any>(`${environment.baseUrl}${url}`)
 			.pipe(map((data: any) => {
 				return data;
 			}));
@@ -96,6 +103,62 @@ export class CommonService {
 				}
 			}
 		})
+	}
+
+	confirm(title, text): Observable<boolean> {
+		return new Observable((resolve) => {
+			this.bsModalRef = this.modalService.show(ConfirmDialogComponent, {
+				initialState: {
+					title: title,
+					message: text
+				}
+			});
+			this.bsModalRef.onHidden.subscribe(x => {
+				resolve.next(this.bsModalRef.content.status);
+			});
+		});
+	}
+    
+    dconfirm(title, text): Observable<boolean> {
+		return new Observable((resolve) => {
+			this.bsModalRef = this.modalService.show(DocumentsComponent, {
+				initialState: {
+					title: title,
+					message: text
+				}
+			});
+			this.bsModalRef.onHidden.subscribe(x => {
+				resolve.next(this.bsModalRef.content.status);
+			});
+		});
+	}
+
+    fvConfirm(title, text): Observable<boolean> {
+		return new Observable((resolve) => {
+			this.bsModalRef = this.modalService.show(FvComponent, {
+				initialState: {
+					title: title,
+					message: text
+				}
+			});
+			this.bsModalRef.onHidden.subscribe(x => {
+				resolve.next(this.bsModalRef.content.status);
+			});
+		});
+	}
+
+	reasonConfirm(title, text): Observable<boolean> {
+		return new Observable((resolve) => {
+			this.bsModalRef = this.modalService.show(ReasonComponent, {
+				initialState: {
+					title: title,
+					message: text
+				}
+			});
+			this.bsModalRef.onHidden.subscribe(x => {
+				resolve.next(this.bsModalRef.content.descripition);
+			});
+		});
 	}
 
 }

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ColumnMode } from '@swimlane/ngx-datatable';
+import { ToastrService } from 'ngx-toastr';
 import { Block } from 'notiflix';
 import { Subject } from 'rxjs';
 import { CommonService } from 'src/app/_services/common.service';
@@ -55,7 +56,7 @@ export class TableContentComponent implements OnInit {
 	};
 	
 	baseUrl : string = environment.homeURL;
-	constructor(private _common: CommonService) {
+	constructor(private _common: CommonService,private toastr:ToastrService) {
 		this.page.pageNumber = 0;
 		this.page.size = 20;
 	}
@@ -68,7 +69,110 @@ export class TableContentComponent implements OnInit {
 			})
 		})
 	}
+    
+    ChangeStatus(row)
+	{
+		const callAPI  = (param : any) => {
+			this._common.put(`${urls.changeStatus}${row.id}/`,param).subscribe((res)=>{
+				this.toastr.success(res.message,"Success",{timeOut:1050})
+			});
+		}
+		this._common.confirm("Confirm", "Do you want to "+((row.flag)?'flag':'unflag')+" selected user ?").subscribe(res => {
+			if(res) {
+					if(row.flag) {
+						//reason popup open here
+						this._common.reasonConfirm("Reject Reason", "").subscribe((x : any) => {
+							console.log(x);
+							if(x) {
+								//Simple API call here with descripition
+								callAPI({
+									flag : row.flag,
+									description : x
+								});
+							} else {
+								row.flag = !row.flag;
+							}
+						})
+					} else {
+						callAPI({
+							flag : row.flag
+						});
+						//simple API call here
+					}
+					//Reject API call here
+				} else {
+					row.flag = !row.flag;
+				}
+			})
+	}
+    
+    deleteUser(row)
+	{
+		const callAPI  = () => {
+			this._common.delete(`${urls.deleteUser}${row.id}/`).subscribe((res)=>{
+				this.toastr.success(res.message,"Success",{timeOut:1050})
+			});
+		}
+		this._common.confirm("Confirm", "Do you want to  Delete user ?").subscribe(res => {
+			if(res) {
+				callAPI();
+				} else {
+					row.flag = !row.flag;
+				}
+			})
+	}
 
+    changeFlag(row)
+	{
+		const callAPI  = (param : any) => {
+			this._common.put(`${urls.changeFlag}${row.id}/`,param).subscribe((res)=>{
+				this.toastr.success(res.message,"Success",{timeOut:1050})
+			});
+		}
+		this._common.confirm("Confirm", "Do you want to "+((row.flag)?'flag':'unflag')+" selected user ?").subscribe(res => {
+			if(res) {
+					if(row.flag) {
+						//reason popup open here
+						this._common.reasonConfirm("Reject Reason", "").subscribe((x : any) => {
+							console.log(x);
+							if(x) {
+								//Simple API call here with descripition
+								callAPI({
+									flag : row.flag,
+									description : x
+								});
+							} else {
+								row.flag = !row.flag;
+							}
+						})
+					} else {
+						callAPI({
+							flag : row.flag
+						});
+						//simple API call here
+					}
+					//Reject API call here
+				} else {
+					row.flag = !row.flag;
+				}
+			})
+	}
+
+	documentModal() {
+		this._common.dconfirm("Documents", "Do you want to logout ?").subscribe(x => {
+		})
+	}
+
+	fvModal() {
+		this._common.fvConfirm("Facial Verification", "Do you want to logout ?").subscribe(x => {
+		})
+	}
+
+	reasonModal()
+	{
+		this._common.reasonConfirm("Reject Reason", "").subscribe(x => {
+		})
+	}
 
 	setPage(pageInfo) {
 		Block.circle('#users-list-page');

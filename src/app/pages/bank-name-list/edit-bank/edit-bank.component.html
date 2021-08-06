@@ -6,7 +6,7 @@
                     <h4 class=""> <span class="btn btn-white-translucent">
                             <i class="mdi mdi-account"></i></span> Edit Bank
                     </h4>
-                    <a routerLink="/pages/banknamelist" class="btn btn-white-translucent">Back</a>
+                    <a routerLink="/banknamelist" class="btn btn-white-translucent">Back</a>
                 </div>
             </div>
         </div>
@@ -19,44 +19,48 @@
                     <div class="card-body ">
                         <div class="user-profile">
                             <figure>
-                                <img src="assets/img/ngn.png">
+                                <img [src]="imgurl?imgurl:'assets/img/ngn.png'">
                             </figure>
                             <div class="upload-avatar">
-                                <input type="file" id="myfile" name="myfile">
+                                <input type="file" #myFIle id="myfile" name="myfile" (change)="uploadFile($event)" accept="image/x-png,image/gif,image/jpeg">
                             </div>
-                            <div class="hover_change">
+                            <div class="hover_change" (click)="myFIle.click()">
                                 <h5>+</h5>
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="inputEmail4">Account Number</label>
-                                <input type="email" class="form-control" id="inputEmail4" placeholder="">
+                        <form [formGroup]="AddBankForm">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputEmail4">Bank Name</label>
+                                    <mat-form-field class="row col-12" appearance="outline">
+                                        <input type="text" name="first_name" matInput placeholder="Name" formControlName="name">
+                                        <mat-error *ngIf="submitted && AddBankForm.get('name').hasError('required')">Please enter bank name.
+                                        </mat-error>
+                                        
+                                    </mat-form-field>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputPassword4">Bank Branch</label>
+                                    <mat-form-field class="row col-12" appearance="outline">
+                                        <input type="text" name="first_name" matInput placeholder="Name" formControlName="branch">
+                                        <mat-error *ngIf="submitted && AddBankForm.get('branch').hasError('required')">Please enter branch name.
+                                        </mat-error>
+                                      
+                                    </mat-form-field>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputAddress">IFSC Code</label>
+                                    <mat-form-field class="row col-12" appearance="outline">
+                                        <input type="text" name="first_name" matInput placeholder="Name" formControlName="ifsc_code">
+                                        <mat-error *ngIf="submitted && AddBankForm.get('ifsc_code').hasError('required')">Please enter ifsc code.
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
                             </div>
-                            <div class="form-group col-md-6">
-                                <label for="inputEmail4">Account Holder Name</label>
-                                <input type="email" class="form-control" id="inputEmail4" placeholder="">
+                            <div class="form-group">
+                                <button class="btn btn-primary" (click)="AddBank()">{{ (isLoading)?'Processing...':'Update' }}</button>
                             </div>
-                            <div class="form-group col-md-6">
-                                <label for="inputEmail4">Bank Name</label>
-                                <input type="email" class="form-control" id="inputEmail4" placeholder="">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="inputPassword4">Bank Branch</label>
-                                <input type="password" class="form-control" id="inputPassword4">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="inputAddress">IFSC Code</label>
-                                <input type="text" class="form-control" id="inputAddress" placeholder="">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="inputAddress">Payment Instruction</label>
-                                <input type="text" class="form-control" id="inputAddress" placeholder="">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <button class="btn btn-primary">Save</button>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

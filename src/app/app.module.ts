@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -15,10 +16,16 @@ import { ToastrModule } from 'ngx-toastr';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { NgOtpInputModule } from 'ng-otp-input';
+import { DocumentsComponent } from './components/confirm-dialog/documents/documents.component';
+import { FvComponent } from './components/confirm-dialog/fv/fv.component';
+import { ReasonComponent } from './components/confirm-dialog/reason/reason.component';
 @NgModule({
 	declarations: [
 		AppComponent,
-		ConfirmDialogComponent
+		ConfirmDialogComponent,
+		DocumentsComponent,
+		FvComponent,
+		ReasonComponent
 	],
 	imports: [
 		BrowserModule,
@@ -27,6 +34,7 @@ import { NgOtpInputModule } from 'ng-otp-input';
 		MaterialModule,
 		HttpClientModule,
 		NgOtpInputModule,
+		FormsModule,
 		ToastrModule.forRoot(),
 		ModalModule.forRoot()
 	],

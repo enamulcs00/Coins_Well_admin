@@ -26,9 +26,9 @@ this.AddBankForm = this.fb.group({
   ifsc_code:['',Validators.required],
 })
   }
-  sendFile() {
+  sendFile(fileData) {
 		let formdata = new FormData()
-		formdata.append('media', this.fileData);
+		formdata.append('media', fileData);
 		this.service.uploadMedia(formdata).subscribe((res: any) => {
 			if (res.code == 200) {
 				this.files = res.data[0].id
@@ -43,6 +43,7 @@ this.AddBankForm = this.fb.group({
 			if (type === 'image/png' || type === 'image/jpg' || type === 'image/jpeg') {
 				let fileData = event.target.files[0];
 				this.fileData = fileData;
+        this.sendFile(fileData)
 				reader.onload = (event) => { // called once readAsDataURL is completed
 					this.imgurl = event.target.result;
 				}
