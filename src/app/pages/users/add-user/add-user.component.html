@@ -24,9 +24,9 @@
                             <div class="upload-avatar">
                                 <input type="file" id="myfile" name="myfile">
                             </div>
-                            <div class="hover_change">
+                            <!-- <div class="hover_change">
                                 <h5>+</h5>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="form-row">
                             <!-- <div class="form-group col-md-6">
@@ -34,28 +34,36 @@
                                 <input type="email" class="form-control" id="inputEmail4" placeholder="">
                             </div> -->
                             <div class="form-group col-md-6">
-                                <label for="inputPassword4">Name</label>
-                                <input type="password" class="form-control" id="inputPassword4">
+                                <label for="first_name">First Name</label>
+                                <input type="text" class="form-control" formControlName="first_name" id="first_name">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="inputAddress">Email</label>
-                                <input type="text" class="form-control" id="inputAddress" placeholder="">
+                                <label for="last_name">Last Name</label>
+                                <input type="text" class="form-control" formControlName="last_name" id="last_name">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="inputAddress2">Phone Number</label>
-                                <input type="text" class="form-control" id="" placeholder="">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" formControlName="password" id="password">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="inputCity">Building No</label>
-                                <input type="text" class="form-control" id="">
+                                <label for="email">Email</label>
+                                <input type="text" class="form-control" id="email" formControlName="email" placeholder="">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="inputZip">Street</label>
-                                <input type="text" class="form-control" id="">
+                                <label for="phone_number">Phone Number</label>
+                                <input type="text" class="form-control" formControlName="phone_number" id="phone_number">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="inputZip">Zone</label>
-                                <input type="text" class="form-control" id="">
+                                <label for="building_no">Building No</label>
+                                <input type="text" class="form-control" id="building_no">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="street">Street</label>
+                                <input type="text" class="form-control" formControlName="street" id="street">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="zone">Zone</label>
+                                <input type="text" class="form-control" formControlName="zone" id="zone">
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputZip">Add Cash</label>
@@ -69,22 +77,22 @@
                                 <label for="inputZip">Attachment</label>
                                 <input type="file" class="form-control" id="" style="height: auto;">
                             </div>
-                            <div class="form-group col-md-6">
+                            <!-- <div class="form-group col-md-6">
                                 <label for="inputZip">Currency</label>
                                 <select class="form-control" name="" id="">
                                     <option value="">Bitcoin</option>
                                     <option value="">Bitcoin</option>
                                     <option value="">Bitcoin</option>
                                 </select>
-                            </div>
-                            <div class="form-group col-md-6">
+                            </div> -->
+                            <!-- <div class="form-group col-md-6">
                                 <label for="inputZip">Type of transaction</label>
                                 <select class="form-control" name="" id="">
                                     <option value="">Sell</option>
                                     <option value="">Buy</option>
                                     <option value="">Withdraw</option>
                                 </select>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="form-group">
                             <button class="btn btn-primary">Add</button>

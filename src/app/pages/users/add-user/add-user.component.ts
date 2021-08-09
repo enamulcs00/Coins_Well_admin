@@ -1,3 +1,4 @@
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,8 +7,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-user.component.scss']
 })
 export class AddUserComponent implements OnInit {
-
-  constructor() { }
+  userForm:FormGroup;
+  constructor(private fb:FormBuilder) { 
+    this.userForm=this.fb.group({
+      phone_number:[''],
+      first_name:[''],
+      last_name:[''],
+      building_no:[''],
+      image:[''],
+      street:[''],
+      zone:[''],
+      currency:[''],
+      country_code:[''],
+      user_documnets:[''],
+      email:[''],
+      password:['']
+    });
+   }
 
   ngOnInit(): void {
   }
