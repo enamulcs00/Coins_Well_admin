@@ -50,7 +50,7 @@
                                 <div id="summernote"></div>
                                 <div class="form-row mt-3">
                                     <div class="form-group col-md-12">
-                                        <textarea class="form-control" name="" id="" cols="30" rows="5"></textarea>
+                                        <textarea class="form-control" name="" id="" [(ngModel)]="terms" cols="30" rows="5"></textarea>
                                     </div>
                                 </div>
                                 <button class="btn btn-primary">Save</button>
@@ -60,7 +60,7 @@
                                 <div id="summernote"></div>
                                 <div class="form-row mt-3">
                                     <div class="form-group col-md-12">
-                                        <textarea class="form-control" name="" id="" cols="30" rows="5"></textarea>
+                                        <textarea class="form-control" name="" [(ngModel)]="privacy" id="" cols="30" rows="5"></textarea>
                                     </div>
                                 </div>
                                 <button class="btn btn-primary">Save</button>
@@ -101,7 +101,7 @@
                                 <div id="summernote"></div>
                                 <div class="form-row mt-3">
                                     <div class="form-group col-md-12">
-                                        <textarea class="form-control" name="" id="" cols="30" rows="5"></textarea>
+                                        <textarea class="form-control" name="" id="" cols="30" rows="5" [(ngModel)]="aboutUs"></textarea>
                                     </div>
                                 </div>
                                 <button class="btn btn-primary">Save</button>
@@ -111,7 +111,7 @@
                                 <div class="form-row mt-3">
                                     <div class="form-group col-md-6">
                                         <label for="inputEmail4">Location</label>
-                                        <input type="email" class="form-control" id="" placeholder="">
+                                        <input type="email" class="form-control" id="" placeholder="" [(ngModel)]="address">
                                     </div>
                                     <!-- <div class="form-group col-md-6">
                                         <label for="inputPassword4">Pin code</label>
@@ -190,7 +190,7 @@
                                 <div class="form-row mt-3">
                                     <div class="form-group col-md-6">
                                         <label for="inputPassword4">Payment Instructions</label>
-                                        <input type="password" class="form-control" id="">
+                                        <input type="password" class="form-control" id="" [(ngModel)]="precedure">
                                     </div>
                                     <!-- <div class="form-group col-md-6">
                                         <label for="inputEmail4">Company Perfect Money Address</label>

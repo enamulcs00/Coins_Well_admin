@@ -6,7 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./manage-update.component.scss']
 })
 export class ManageUpdateComponent implements OnInit {
-
+  terms:string
+  privacy:string
+  aboutUs:string
+  address:string
+  precedure:string
   constructor() { }
 
   ngOnInit(): void {
