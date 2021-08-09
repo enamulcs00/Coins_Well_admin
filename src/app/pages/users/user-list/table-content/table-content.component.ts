@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ColumnMode } from '@swimlane/ngx-datatable';
 import { ToastrService } from 'ngx-toastr';
 import { Block } from 'notiflix';
@@ -56,7 +57,7 @@ export class TableContentComponent implements OnInit {
 	};
 	
 	baseUrl : string = environment.homeURL;
-	constructor(private _common: CommonService,private toastr:ToastrService) {
+	constructor(private _common: CommonService,private toastr:ToastrService,private route:Router) {
 		this.page.pageNumber = 0;
 		this.page.size = 20;
 	}
@@ -87,7 +88,12 @@ export class TableContentComponent implements OnInit {
 	// 			}
 	// 		})
 	// }
-    
+     
+    navigate(id)
+	{
+    this.route.navigate(['edit'],{queryParams:{id:id}});
+	}
+
     deleteUser(row)
 	{
 		const callAPI  = () => {

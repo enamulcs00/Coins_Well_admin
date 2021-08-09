@@ -35,6 +35,8 @@ export class AddUserComponent implements OnInit {
   ngOnInit(): void {
   }
   
+  
+
   // User Image Select
   onImageSelect(e) {
     var files = e.target.files;
