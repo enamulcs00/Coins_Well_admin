@@ -91,7 +91,7 @@ export class TableContentComponent implements OnInit {
      
     navigate(id)
 	{
-    this.route.navigate(['edit'],{queryParams:{id:id}});
+    this.route.navigate(['users/edit'],{queryParams:{id:id}});
 	}
 
     deleteUser(row)

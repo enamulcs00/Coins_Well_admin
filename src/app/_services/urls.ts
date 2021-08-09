@@ -12,5 +12,6 @@ export const urls = {
     addMedia:'upload/media/',
     getUserById:'admin/get-user-by-pk/',
     getAllCurrency:'admin/get-all-currencies/',
-    updateCurrency:'admin/update-currency-rates-by-pk/'
+    updateCurrency:'admin/update-currency-rates-by-pk/',
+    updateUserById:'admin/update-user-by-id/'
 };
