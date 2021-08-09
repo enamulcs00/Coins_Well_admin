@@ -19,6 +19,7 @@ import { NgOtpInputModule } from 'ng-otp-input';
 import { DocumentsComponent } from './components/confirm-dialog/documents/documents.component';
 import { FvComponent } from './components/confirm-dialog/fv/fv.component';
 import { ReasonComponent } from './components/confirm-dialog/reason/reason.component';
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -35,6 +36,7 @@ import { ReasonComponent } from './components/confirm-dialog/reason/reason.compo
 		HttpClientModule,
 		NgOtpInputModule,
 		FormsModule,
+		GooglePlaceModule,
 		ToastrModule.forRoot(),
 		ModalModule.forRoot()
 	],

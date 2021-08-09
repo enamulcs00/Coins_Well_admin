@@ -23,6 +23,7 @@ import { AddNotificationComponent } from './manage-notification/add-notification
 import { ChatComponent } from './chat/chat.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxMatIntlTelInputModule } from '../ngx-input-tel'
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 
 @NgModule({
 	declarations: [
@@ -51,7 +52,8 @@ import { NgxMatIntlTelInputModule } from '../ngx-input-tel'
 		CoreModule,
 		NgxMatIntlTelInputModule,
 		FormsModule,
-		ReactiveFormsModule
+		ReactiveFormsModule,
+		GooglePlaceModule
 	]
 })
 export class PagesModule { }
