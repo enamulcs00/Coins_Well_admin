@@ -5,6 +5,7 @@
 export const environment = {
 	production: false,
 	baseUrl: 'http://3.108.67.252:2222/api/',
+	imgBaseUrl: 'http://3.108.67.252:2222',
 	storageKey: 'coinsWellAdminLogin',
 	dateFormatWithTime: 'MM-DD-YYYY hh:mm A',
 	dateFormat: 'MM-DD-YYYY',

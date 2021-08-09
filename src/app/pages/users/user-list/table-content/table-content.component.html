@@ -47,7 +47,9 @@
 
         <ngx-datatable-column name="ADDRESS" prop="address">
             <ng-template let-row="row" ngx-datatable-cell-template>
-                {{row.address || '-'}}
+                Building No:{{row?.building_no || '-'}}
+                street:{{row?.street || '-'}}
+                Zone:{{row?.zone || '-' }}
             </ng-template>
         </ngx-datatable-column>
 
@@ -65,13 +67,13 @@
         </ngx-datatable-column>
         <ngx-datatable-column name="ACCOUNT NO.	" prop="account_number">
             <ng-template let-row="row" ngx-datatable-cell-template>
-                {{row.bank_details[0].account_number}}
+                {{row?.bank_details[0]?.account_number || '-'}}
             </ng-template>
         </ngx-datatable-column>
 
         <ngx-datatable-column name="BANK NAME" prop="bank_name">
             <ng-template let-row="row" ngx-datatable-cell-template>
-                {{row.bank_details[0].bank_name}}
+                {{row?.bank_details[0]?.bank_name?.name || '-'}}
             </ng-template>
         </ngx-datatable-column>
 
@@ -97,12 +99,12 @@
             </ng-template>
         </ngx-datatable-column>
 
-        <ngx-datatable-column [width]="100" name="STATUS" prop="status">
+        <!-- <ngx-datatable-column [width]="100" name="STATUS" prop="status">
             <ng-template let-row="row" ngx-datatable-cell-template>
                 <button class="btn btn-success" (click)="ChangeStatus(row)" *ngIf="row.status==true || row.status==null">Approve</button>
                 <button class="btn btn-danger" (click)="ChangeStatus(row)" *ngIf="row.status==false || row.status==null">Reject</button>
             </ng-template>
-        </ngx-datatable-column>
+        </ngx-datatable-column> -->
 
         <!-- <ngx-datatable-column name="ACCOUNT STATUS" prop="account_status">
             <ng-template let-row="row" ngx-datatable-cell-template>

@@ -8,4 +8,7 @@ export const urls = {
     changeStatus:'admin/accept-reject--user-by-userid/',
     changeFlag:'admin/change-flag-status-by-userid/',
     deleteUser:'admin/delete-user-by-pk/',
+    addUser:'admin/add-user/',
+    addMedia:'upload/media/',
+    getUserById:'admin/get-user-by-pk/'
 };

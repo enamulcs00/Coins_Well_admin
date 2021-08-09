@@ -17,15 +17,14 @@
             <div class="col-lg-12">
                 <div class="card m-b-30">
                     <div class="card-body ">
+                        <form [formGroup]="userForm">
                         <div class="user-profile">
                             <figure>
-                                <img src="assets/img/users/user-1.jpg">
+                                <img [src]="imageUrl?imageUrl:'assets/img/users/user-1.jpg'">
                             </figure>
                             <div class="upload-avatar">
-                                <input type="file" id="myfile" name="myfile">
-                            </div>
-                            <div class="hover_change">
-                                <h5>+</h5>
+                                <input type="file" id="myfile" name="myfile" (change)="onImageSelect($event)">
+                                <span class="overlay">+</span>
                             </div>
                         </div>
                         <div class="form-row">
@@ -34,64 +33,93 @@
                                 <input type="email" class="form-control" id="inputEmail4" placeholder="">
                             </div> -->
                             <div class="form-group col-md-6">
-                                <label for="inputPassword4">Name</label>
-                                <input type="password" class="form-control" id="inputPassword4">
+                                <label for="first_name">First Name</label>
+                                <input matInput type="text" class="form-control" formControlName="first_name" id="first_name">
+                                <mat-error *ngIf="userForm.controls.first_name.touched && userForm.controls.first_name.hasError('required')"> First Name Required! </mat-error>
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="inputAddress">Email</label>
-                                <input type="text" class="form-control" id="inputAddress" placeholder="">
+                                <label for="last_name">Last Name</label>
+                                <input matInput type="text" class="form-control" formControlName="last_name" id="last_name">
+                            <mat-error *ngIf="userForm.controls.last_name.touched && userForm.controls.last_name.hasError('required')"> last Name Required! </mat-error>
+                            </div>
+                            </div>
+                            <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="password">Password</label>
+                                <input matInput type="password" class="form-control" formControlName="password" id="password">
+                                <mat-error *ngIf="userForm.controls.password.touched && userForm.controls.password.hasError('required')"> Password Required! </mat-error>
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="inputAddress2">Phone Number</label>
-                                <input type="text" class="form-control" id="" placeholder="">
+                                <label for="email">Email</label>
+                                <input type="text" matInput class="form-control" id="email" formControlName="email" placeholder="">
+                                <mat-error *ngIf="userForm.controls.email.touched && userForm.controls.email.hasError('required')"> Email Required! </mat-error>
+                                <mat-error *ngIf="userForm.controls.email.touched && userForm.controls.email.hasError('email')"> Email invalid! </mat-error>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="phone_number">Phone Number</label>
+                                <input type="text" matInput class="form-control" formControlName="phone_number" id="phone_number">
+                                <mat-error *ngIf="userForm.controls.phone_number.touched && userForm.controls.phone_number.hasError('required')"> Phone Number Required! </mat-error>
+                                <mat-error *ngIf="userForm.controls.phone_number.touched && userForm.controls.phone_number.hasError('pattern')"> Phone Number invalid! </mat-error>
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="inputCity">Building No</label>
-                                <input type="text" class="form-control" id="">
+                                <label for="building_no">Building No</label>
+                                <input type="text" matInput class="form-control" formControlName="building_no" id="building_no">
+                                <mat-error *ngIf="userForm.controls.building_no.touched && userForm.controls.building_no.hasError('required')"> Building No Required! </mat-error>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="street">Street</label>
+                                <input type="text" matInput class="form-control" formControlName="street" id="street">
+                                <mat-error *ngIf="userForm.controls.street.touched && userForm.controls.street.hasError('required')"> Street Required! </mat-error>
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="inputZip">Street</label>
-                                <input type="text" class="form-control" id="">
+                                <label for="zone">Zone</label>
+                                <input type="text" matInput class="form-control" formControlName="zone" id="zone">
+                                <mat-error *ngIf="userForm.controls.zone.touched && userForm.controls.zone.hasError('required')"> Zone Required! </mat-error>
                             </div>
-                            <div class="form-group col-md-6">
-                                <label for="inputZip">Zone</label>
-                                <input type="text" class="form-control" id="">
-                            </div>
+                        </div>
+                        <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="inputZip">Add Cash</label>
-                                <input type="text" class="form-control" id="">
+                                <input type="text" matInput formControlName="cash" class="form-control" id="">
+                                <mat-error *ngIf="userForm.controls.cash.touched && userForm.controls.cash.hasError('required')"> Cash Required! </mat-error>
+                                <mat-error *ngIf="userForm.controls.cash.touched && userForm.controls.cash.hasError('pattern')"> Cash invalid! </mat-error>
                             </div>
-                            <div class="form-group col-md-6">
+                            <!-- <div class="form-group col-md-6">
                                 <label for="inputZip">Add Coin</label>
                                 <input type="text" class="form-control" id="">
-                            </div>
+                            </div> -->
                             <div class="form-group col-md-6">
                                 <label for="inputZip">Attachment</label>
-                                <input type="file" class="form-control" id="" style="height: auto;">
+                                <input type="file" (change)="onDocumentSelect($event)" class="form-control"   style="height: auto;">
                             </div>
-                            <div class="form-group col-md-6">
+                        </div>
+                            <!-- <div class="form-group col-md-6">
                                 <label for="inputZip">Currency</label>
                                 <select class="form-control" name="" id="">
                                     <option value="">Bitcoin</option>
                                     <option value="">Bitcoin</option>
                                     <option value="">Bitcoin</option>
                                 </select>
-                            </div>
-                            <div class="form-group col-md-6">
+                            </div> -->
+                            <!-- <div class="form-group col-md-6">
                                 <label for="inputZip">Type of transaction</label>
                                 <select class="form-control" name="" id="">
                                     <option value="">Sell</option>
                                     <option value="">Buy</option>
                                     <option value="">Withdraw</option>
                                 </select>
+                            </div> -->
+                            <div class="form-group">
+                                <button class="btn btn-primary" (click)="addUser()">Add</button>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <button class="btn btn-primary">Add</button>
+                        </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 </section>
