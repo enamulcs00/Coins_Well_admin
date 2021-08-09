@@ -8,7 +8,7 @@ import { NotificationsService } from 'src/app/_services/notifications.service';
 import { urls } from 'src/app/_services/urls';
 import { environment } from 'src/environments/environment';
 import { Page } from '../modal/page';
-
+declare var $:any
 @Component({
   selector: 'app-bank-name-list',
   templateUrl: './bank-name-list.component.html',
@@ -58,6 +58,7 @@ export class BankNameListComponent implements OnInit {
   };
 
   baseUrl: string = environment.homeURL;
+  imgurl: any;
   constructor(
     private _common: CommonService,
     private router: Router,
@@ -97,6 +98,12 @@ export class BankNameListComponent implements OnInit {
           Block.remove('#users-list-page');
         }, 700);
       });
+  }
+  ShowImage(image){
+    this.imgurl = image
+    console.log("show image called");
+    $('#userclick').modal('show');
+    
   }
   Delete(id) {
     this._noti.confirm('Delete!', 'Do you want to delete ?').subscribe((x) => {

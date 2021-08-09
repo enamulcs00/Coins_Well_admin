@@ -58,6 +58,7 @@ this.AddBankForm = this.fb.group({
 		}
 	}
   AddBank(){
+	  this.submitted = true
     if(this.AddBankForm.valid){
     this.isLoading = true
     this.AddFn()
@@ -77,6 +78,7 @@ this.AddBankForm = this.fb.group({
 				this._noti.show("success", "Bank updated succesfully.", "Success!");
         this.router.navigate(['/banknamelist'])
         this.isLoading = false;
+		this.submitted = false
       }
 		}, _ => {
 			this.isLoading = false
@@ -87,7 +89,9 @@ this.AddBankForm = this.fb.group({
 			let userInfo = res.data;
 			this.AddBankForm.patchValue(userInfo);
 			this.files = userInfo?.image?.id
-			this.imgurl = environment.homeURL + userInfo?.image?.media_file
+			this.imgurl = environment.homeURL + userInfo?.bank_image?.media_file
+			console.log('Img url',res.data);
+			
 		})
 	}
 }

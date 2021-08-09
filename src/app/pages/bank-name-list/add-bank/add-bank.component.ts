@@ -21,7 +21,7 @@ export class AddBankComponent implements OnInit {
   constructor(private fb:FormBuilder,private service: CommonService, private router: Router, private _noti: NotificationsService) { }
  ngOnInit(): void {
 this.AddBankForm = this.fb.group({
-  name:['',[Validators.required,]],
+  name:['',Validators.required],
   branch:['',Validators.required],
   ifsc_code:['',Validators.required],
 })
@@ -51,6 +51,7 @@ this.AddBankForm = this.fb.group({
 		}
 	}
   AddBank(){
+	  this.submitted = true
     if(this.AddBankForm.valid){
     this.isLoading = true
     this.AddFn()
@@ -70,6 +71,7 @@ this.AddBankForm = this.fb.group({
 				this._noti.show("success", "Bank added succesfully.", "Success!");
         this.router.navigate(['/banknamelist'])
         this.isLoading = false;
+		this.submitted = false
       }
 		}, _ => {
 			this.isLoading = false
