@@ -1,3 +1,4 @@
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./rate-change.component.scss']
 })
 export class RateChangeComponent implements OnInit {
-
-  constructor() { }
+  rateForm:FormGroup;
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.rateForm=this.fb.group({
+      
+    });
   }
 
 }
