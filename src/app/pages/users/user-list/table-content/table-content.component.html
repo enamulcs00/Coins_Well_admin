@@ -121,7 +121,7 @@
                     <li><a routerLink="view" class="btn btn-primary"><i
                                 class="mdi mdi-eye-settings" title="View"></i></a>
                     </li>
-                    <li><a routerLink="edit" class="btn btn-primary"><i
+                    <li><a (click)="navigate(row?.id)" href="javascript:void(0)" class="btn btn-primary"><i
                                 class="mdi mdi-pen" title="Edit"></i></a></li>
                     <li>
                         <a href="javascript:void(0)" (click)="deleteUser(row)" class="btn btn-danger">

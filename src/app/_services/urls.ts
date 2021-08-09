@@ -10,5 +10,8 @@ export const urls = {
     deleteUser:'admin/delete-user-by-pk/',
     addUser:'admin/add-user/',
     addMedia:'upload/media/',
-    getUserById:'admin/get-user-by-pk/'
+    getUserById:'admin/get-user-by-pk/',
+    getAllCurrency:'admin/get-all-currencies/',
+    updateCurrency:'admin/update-currency-rates-by-pk/',
+    updateUserById:'admin/update-user-by-id/'
 };

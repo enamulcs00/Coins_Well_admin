@@ -1,0 +1,28 @@
+.upload-avatar {
+	input {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+		cursor: pointer;
+		font-size: 0px;
+	}
+	.overlay {
+		display: none;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		height: 100%;
+		background: rgba($color: #000000, $alpha: 0.3);
+		align-items: center;
+		justify-content: center;
+		font-size: 40px;
+		color: #fff;
+	}
+	&:hover .overlay {
+		display: flex;
+	}
+}
