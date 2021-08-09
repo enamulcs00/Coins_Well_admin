@@ -21,28 +21,28 @@
                     <div class="card-body">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" id="home-tab-z" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Terms & Condition</a>
+                                <a class="nav-link active" id="home-tab-z" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" (click)="TabRef('terms')">Terms & Condition</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="profile-tab-z" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Privacy Policy</a>
+                                <a class="nav-link" id="profile-tab-z" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false" (click)="TabRef('privacy')">Privacy Policy</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="faq-tab-z" data-toggle="tab" href="#faq" role="tab" aria-controls="faq" aria-selected="false">FAQ's</a>
+                                <a class="nav-link" id="faq-tab-z" data-toggle="tab" href="#faq" role="tab" aria-controls="faq" aria-selected="false" (click)="TabRef('faq')">FAQ's</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="csupport-tab-z" data-toggle="tab" href="#csupport" role="tab" aria-controls="csupport" aria-selected="false">Contact Us</a>
+                                <a class="nav-link" id="csupport-tab-z" data-toggle="tab" href="#csupport" role="tab" aria-controls="csupport" aria-selected="false" (click)="TabRef('contact')">Contact Us</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="aboutus-tab-z" data-toggle="tab" href="#aboutus" role="tab" aria-controls="aboutus" aria-selected="false">About Us</a>
+                                <a class="nav-link" id="aboutus-tab-z" data-toggle="tab" href="#aboutus" role="tab" aria-controls="aboutus" aria-selected="false" (click)="TabRef('aboutUs')">About Us</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="companyaddress-tab-z" data-toggle="tab" href="#companyaddress" role="tab" aria-controls="companyaddress" aria-selected="false">Company Address</a>
+                                <a class="nav-link" id="companyaddress-tab-z" data-toggle="tab" href="#companyaddress" role="tab" aria-controls="companyaddress" aria-selected="false" (click)="TabRef('address')">Company Address</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="adminbankdetail-tab-z" data-toggle="tab" href="#adminbankdetail" role="tab" aria-controls="adminbankdetail" aria-selected="false">Admin Bank Detail</a>
+                                <a class="nav-link" id="adminbankdetail-tab-z" data-toggle="tab" href="#adminbankdetail" role="tab" aria-controls="adminbankdetail" aria-selected="false" (click)="TabRef('details')">Admin Bank Detail</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="paymentprocedure-tab-z" data-toggle="tab" href="#paymentprocedure" role="tab" aria-controls="paymentprocedure" aria-selected="false">Payment Procedure</a>
+                                <a class="nav-link" id="paymentprocedure-tab-z" data-toggle="tab" href="#paymentprocedure" role="tab" aria-controls="paymentprocedure" aria-selected="false" (click)="TabRef('precedure')">Payment Procedure</a>
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent1">
@@ -50,17 +50,23 @@
                                 <div id="summernote"></div>
                                 <div class="form-row mt-3">
                                     <div class="form-group col-md-12">
-                                        <textarea class="form-control" name="" id="" cols="30" rows="5"></textarea>
+                                        <mat-form-field appearance="outline" class="col-md-12">
+                                            <mat-label>Terms & condition</mat-label>
+                                        <textarea class="form-control" matInput name="" id="" [(ngModel)]="terms" cols="30" rows="5"></textarea>
+                                        </mat-form-field>
                                     </div>
                                 </div>
-                                <button class="btn btn-primary">Save</button>
+                                <button class="btn btn-primary" (click)="UpdateTerms()">{{isLoading?'Processing':'Save'}}</button>
                                 <!-- <h4 class="pt-4 pl-4">Not Data Found</h4> -->
                             </div>
                             <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                 <div id="summernote"></div>
                                 <div class="form-row mt-3">
                                     <div class="form-group col-md-12">
-                                        <textarea class="form-control" name="" id="" cols="30" rows="5"></textarea>
+                                        <mat-form-field appearance="outline" class="col-md-12">
+                                            <mat-label>Privacy policy</mat-label>
+                                        <textarea class="form-control" matInput name="" id="" [(ngModel)]="privacy" cols="30" rows="5"></textarea>
+                                        </mat-form-field>
                                     </div>
                                 </div>
                                 <button class="btn btn-primary">Save</button>
@@ -101,7 +107,10 @@
                                 <div id="summernote"></div>
                                 <div class="form-row mt-3">
                                     <div class="form-group col-md-12">
-                                        <textarea class="form-control" name="" id="" cols="30" rows="5"></textarea>
+                                        <mat-form-field appearance="outline" class="col-md-12">
+                                            <mat-label>About us</mat-label>
+                                        <textarea class="form-control" matInput name="" id="" [(ngModel)]="aboutUs" cols="30" rows="5"></textarea>
+                                        </mat-form-field>
                                     </div>
                                 </div>
                                 <button class="btn btn-primary">Save</button>
@@ -109,9 +118,11 @@
                             </div>
                             <div class="tab-pane fade show" id="companyaddress" role="tabpanel" aria-labelledby="companyaddress-tab">
                                 <div class="form-row mt-3">
-                                    <div class="form-group col-md-6">
-                                        <label for="inputEmail4">Location</label>
-                                        <input type="email" class="form-control" id="" placeholder="">
+                                    <div class="form-group col-md-12">
+                                        <mat-form-field appearance="outline" class="col-md-12">
+                                        <mat-label>Location</mat-label>
+                                        <input type="email" matInput class="form-control" id="" placeholder="" [(ngModel)]="address">
+                                    </mat-form-field>
                                     </div>
                                     <!-- <div class="form-group col-md-6">
                                         <label for="inputPassword4">Pin code</label>
@@ -188,9 +199,11 @@
                             </div>
                             <div class="tab-pane fade show" id="paymentprocedure" role="tabpanel" aria-labelledby="paymentprocedure-tab">
                                 <div class="form-row mt-3">
-                                    <div class="form-group col-md-6">
-                                        <label for="inputPassword4">Payment Instructions</label>
-                                        <input type="password" class="form-control" id="">
+                                    <div class="form-group col-md-12">
+                                        <mat-form-field appearance="outline" class="col-md-12">
+                                        <mat-label for="inputPassword4">Payment Instructions</mat-label>
+                                        <input type="password" matInput class="form-control" id="" [(ngModel)]="precedure">
+                                    </mat-form-field>
                                     </div>
                                     <!-- <div class="form-group col-md-6">
                                         <label for="inputEmail4">Company Perfect Money Address</label>
