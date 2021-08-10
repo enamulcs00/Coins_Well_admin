@@ -14,6 +14,9 @@ export const urls = {
     getAllCurrency:'admin/get-all-currencies/',
     updateCurrency:'admin/update-currency-rates-by-pk/',
     updateUserById:'admin/update-user-by-id/',
+    searchBank:"admin/search-bank/",
+    adminbakDetails:"admin/add-update-bank-details/",
+
     getDashboard:'admin/get-admin-dashboard-counts/',
     getRevenueGraph:'admin/get-total-revenue-graph/',
     getOrderGraph:'admin/get-total-orders-graph/',

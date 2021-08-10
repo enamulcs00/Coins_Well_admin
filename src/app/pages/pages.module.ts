@@ -24,6 +24,9 @@ import { ChatComponent } from './chat/chat.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxMatIntlTelInputModule } from '../ngx-input-tel'
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
+import { MaterialExtensionsExperimentalModule, MaterialExtensionsModule } from '@ng-matero/extensions';
+import { FaqTemplateComponent } from '../components/faq-template/faq-template.component';
+
 import {MatPaginatorModule} from '@angular/material/paginator';
 @NgModule({
 	declarations: [
@@ -44,7 +47,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 		ReferAmountComponent, 
 		EditBankComponent, 
 		AddNotificationComponent, 
-		ChatComponent
+		ChatComponent,
+		FaqTemplateComponent
 	],
 	imports: [
 		CommonModule,
@@ -54,6 +58,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 		FormsModule,
 		ReactiveFormsModule,
 		GooglePlaceModule,
+		MaterialExtensionsModule,
+		MaterialExtensionsExperimentalModule,
 		MatPaginatorModule
 	]
 })
