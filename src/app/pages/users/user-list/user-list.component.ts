@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { TabDirective, TabsetComponent } from 'ngx-bootstrap/tabs';
 import { Subject } from 'rxjs';
+import { timeout } from 'rxjs/operators';
 import { CommonService } from 'src/app/_services/common.service';
 
 
@@ -28,7 +29,7 @@ export class UserListComponent implements OnInit {
 	}
 
 	searchHere() {
-		this.searchData.event.next()
+		setTimeout(()=>{this.searchData.event.next()},1050);
 	}
 
 }

@@ -24,7 +24,7 @@ import { ChatComponent } from './chat/chat.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxMatIntlTelInputModule } from '../ngx-input-tel'
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
-
+import {MatPaginatorModule} from '@angular/material/paginator';
 @NgModule({
 	declarations: [
 		PagesComponent, 
@@ -53,7 +53,8 @@ import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 		NgxMatIntlTelInputModule,
 		FormsModule,
 		ReactiveFormsModule,
-		GooglePlaceModule
+		GooglePlaceModule,
+		MatPaginatorModule
 	]
 })
 export class PagesModule { }

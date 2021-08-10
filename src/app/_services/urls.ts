@@ -17,5 +17,11 @@ export const urls = {
     getDashboard:'admin/get-admin-dashboard-counts/',
     getRevenueGraph:'admin/get-total-revenue-graph/',
     getOrderGraph:'admin/get-total-orders-graph/',
-    getNewOrderGraph:'admin/get-new-orders-graph/'
+    getNewOrderGraph:'admin/get-new-orders-graph/',
+    getReferalAmount:'admin/get-referal-amount/',
+    updateReferalAmount:'admin/add-update-referal-code-amount/',
+    getReferalHistory:'admin/get-referal-amount-history/',
+    deleteAmountHistory:'admin/delete-referal-amount-history/',
+    getUserReferHistory:'admin/get-user-refer-history/',
+    getWalletAddress:'admin/get-wallet-addresses/'
 };

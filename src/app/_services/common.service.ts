@@ -9,6 +9,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { DocumentsComponent } from '../components/confirm-dialog/documents/documents.component';
 import { FvComponent } from '../components/confirm-dialog/fv/fv.component';
 import { ReasonComponent } from '../components/confirm-dialog/reason/reason.component';
+import { UserComponent } from '../components/confirm-dialog/user/user.component';
 
 @Injectable({
 	providedIn: 'root'
@@ -150,6 +151,20 @@ export class CommonService {
 	reasonConfirm(title, text): Observable<boolean> {
 		return new Observable((resolve) => {
 			this.bsModalRef = this.modalService.show(ReasonComponent, {
+				initialState: {
+					title: title,
+					message: text
+				}
+			});
+			this.bsModalRef.onHidden.subscribe(x => {
+				resolve.next(this.bsModalRef.content.descripition);
+			});
+		});
+	}
+    
+    userConfirm(title, text): Observable<boolean> {
+		return new Observable((resolve) => {
+			this.bsModalRef = this.modalService.show(UserComponent, {
 				initialState: {
 					title: title,
 					message: text

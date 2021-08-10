@@ -1,119 +1,124 @@
 <section class="admin-content">
-    <div class="bg-dark">
-        <div class="container-fluid  m-b-30">
-            <div class="col-12 text-white p-t-40 p-b-90">
-                <div class="ex-main">
-                    <h4 class=""> <span class="btn btn-white-translucent">
-                            <i class="mdi mdi-account"></i></span> Refer Amount
-                    </h4>
-                </div>
-            </div>
+  <div class="bg-dark">
+    <div class="container-fluid  m-b-30">
+      <div class="col-12 text-white p-t-40 p-b-90">
+        <div class="ex-main">
+          <h4 class=""> <span class="btn btn-white-translucent">
+              <i class="mdi mdi-account"></i></span> Refer Amount
+          </h4>
         </div>
+      </div>
     </div>
+  </div>
 
-    <div class="container-fluid  pull-up">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card m-b-30">
+  <div class="container-fluid  pull-up">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card m-b-30">
 
-                    <div class="card-body">
-                        <ul class="nav nav-tabs" id="myTab" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="profile-tab-z" data-toggle="tab" href="#Dispute" role="tab" aria-controls="profile" aria-selected="false">Referral Code</a>
+          <div class="card-body">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="profile-tab-z" data-toggle="tab" href="#Dispute" role="tab"
+                  aria-controls="profile" aria-selected="false">Referral Code</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="home-tab-z" data-toggle="tab" href="#Queries" role="tab" aria-controls="home"
+                  aria-selected="true">User Refer History</a>
+              </li>
+            </ul>
+            <div class="tab-content" id="myTabContent1">
+              <div class="tab-pane fade show active" id="Dispute" role="tabpanel" aria-labelledby="home-tab">
+                <div class="table-responsive">
+                  <table class="table table-hover ">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Refer Amount ($)</th>
+                        <th>Change Amount</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>{{itemAmount || '-'}}</td>
+                        <td>
+                          <input type="number" (keypress)="NumOnly($event)" [(ngModel)]="amount" class="form-control">
+                        </td>
+                        <td>
+                          <ul class="action">
+                            <li>
+                              <a href="javascript:void(0)" class="btn btn-primary" (click)="updateReferalAmount()">
+                                Update
+                              </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="home-tab-z" data-toggle="tab" href="#Queries" role="tab" aria-controls="home" aria-selected="true">User Refer History</a>
+                          </ul>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <h4 class="my-3">History</h4>
+                <div class="table-responsive">
+                  <table class="table table-hover ">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Refer Amount ($)</th>
+                        <th>Change Amount</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of items;let i=index">
+                        <td>{{page==0?page+ i+1:page+i}}</td>
+                        <td>{{(item?.refer_amount) | currency}}</td>
+                        <td>{{(item?.change_amount) | currency}}</td>
+                        <td>{{item?.date | date}}</td>
+                        <td>{{item?.time.split('.')[0]}}</td>
+                        <td>
+                          <ul class="action">
+                            <li>
+                              <a href="javascript:void(0)" (click)="deleteHistoryUser(item?.id)" class="btn btn-danger">
+                                <i class="mdi mdi-delete" title="Delete"></i>
+                              </a>
                             </li>
-                        </ul>
-                        <div class="tab-content" id="myTabContent1">
-                            <div class="tab-pane fade show active" id="Dispute" role="tabpanel" aria-labelledby="home-tab">
-                                <div class="table-responsive">
-                                    <table class="table table-hover ">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Refer Amount ($)</th>
-                                                <th>Change Amount</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>$10,564</td>
-                                                <td>
-                                                    <input type="text" class="form-control">
-                                                </td>
-                                                <td>
-                                                    <ul class="action">
-                                                        <li>
-                                                            <a href="#" class="btn btn-primary">
-                                                                Update
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <h4 class="my-3">History</h4>
-                                <div class="table-responsive">
-                                    <table class="table table-hover ">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Refer Amount ($)</th>
-                                                <th>Change Amount</th>
-                                                <th>Date</th>
-                                                <th>Time</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>$10,564</td>
-                                                <td>$5,789</td>
-                                                <td>10 July 2021</td>
-                                                <td>10:00 AM</td>
-                                                <td>
-                                                    <ul class="action">
-                                                        <li>
-                                                            <a href="#" class="btn btn-danger">
-                                                                <i class="mdi mdi-delete" title="Delete"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade show" id="Queries" role="tabpanel" aria-labelledby="home-tab">
-                                <div class="table-responsive">
-                                    <table class="table table-hover ">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Refer By</th>
-                                                <th>Used By</th>
-                                                <th>Referral Code</th>
-                                                <th>Date</th>
-                                                <th>Amount ($)</th>
-                                                <!-- <th>Action</th> -->
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Anhsu Bharti</td>
-                                                <td>Anhsu Bharti</td>
-                                                <td>567GF6</td>
-                                                <td>20 August 2021</td>
-                                                <td>$56,867</td>
-                                                <!-- <td>
+                          </ul>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <mat-paginator #paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]"
+                  (page)="pageEvent = pageSizeChanged($event)">
+                </mat-paginator>
+                </div>
+              </div>
+              <div class="tab-pane fade show" id="Queries" role="tabpanel" aria-labelledby="home-tab">
+                <div class="table-responsive">
+                  <table class="table table-hover ">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Refer By</th>
+                        <th>Used By</th>
+                        <th>Referral Code</th>
+                        <th>Date</th>
+                        <th>Amount ($)</th>
+                        <!-- <th>Action</th> -->
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>Anhsu Bharti</td>
+                        <td>Anhsu Bharti</td>
+                        <td>567GF6</td>
+                        <td>20 August 2021</td>
+                        <td>$56,867</td>
+                        <!-- <td>
                                                     <ul class="action">
                                                         <li>
                                                             <a href="#" class="btn btn-primary">
@@ -125,15 +130,15 @@
                                                         </li>
                                                     </ul>
                                                 </td> -->
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </section>
