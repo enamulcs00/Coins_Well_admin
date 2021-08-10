@@ -1,4 +1,3 @@
-import { map } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { CommonService } from 'src/app/_services/common.service';
 import { urls } from 'src/app/_services/urls';
@@ -12,7 +11,7 @@ export class DashboardComponent implements OnInit {
   items: any;
   revenueItems: any=[];
   orderItems: any=[];
-  newOrderItems: any;
+  newOrderItems: any=[];
 
   constructor(private comn_:CommonService) { }
 
