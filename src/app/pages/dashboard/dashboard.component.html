@@ -14,7 +14,7 @@
         <div class="row">
             <div class="col m-b-30">
                 <div class="card ">
-                    <div class="   text-center card-body">
+                    <div routerLink="/users" class="   text-center card-body">
                         <div class="text-success   ">
                             <div class="avatar avatar-sm ">
                                 <span class="avatar-title rounded-circle badge-soft-success"><i
@@ -23,7 +23,7 @@
                             </div>
                         </div>
                         <div class=" text-center">
-                            <h3 class="mt-2 mb-2">5,000 </h3>
+                            <h3 class="mt-2 mb-2">{{items?.total_users || '-'}}</h3>
                         </div>
                         <div class="text-overline ">
                             Total Users
@@ -33,7 +33,7 @@
             </div>
             <div class="col m-b-30">
                 <div class="card ">
-                    <div class="   text-center card-body">
+                    <div routerLink="/users" class="text-center card-body">
                         <div class="text-warning   ">
                             <div class="avatar avatar-sm ">
                                 <span class="avatar-title rounded-circle badge-soft-warning"><i
@@ -43,7 +43,7 @@
 
 
                         <div class=" text-center">
-                            <h3 class="mt-2 mb-2"> 350 </h3>
+                            <h3 class="mt-2 mb-2"> {{items?.new_users || '-'}} </h3>
                         </div>
                         <div class="text-overline ">
                             New Users
@@ -52,9 +52,9 @@
                 </div>
             </div>
             <div class="col m-b-30">
-                <a href="banklist.html" class="d-block">
+                <a  class="d-block">
                     <div class="card ">
-                        <div class="text-center card-body">
+                        <div routerLink="/banknamelist" class="text-center card-body">
                             <div class="text-info">
                                 <div class="avatar avatar-sm">
                                     <span class="avatar-title rounded-circle badge-soft-info"><i
@@ -63,7 +63,7 @@
                                 </div>
                             </div>
                             <div class=" text-center">
-                                <h3 class="mt-2 mb-2">582</h3>
+                                <h3 class="mt-2 mb-2">{{items?.bank_list || '-'}}</h3>
                             </div>
                             <div class="text-overline ">
                                 Bank List
@@ -305,17 +305,17 @@
                                 <a href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="icon mdi  mdi-dots-vertical"></i> </a>
 
-                                <div class="dropdown-menu dropdown-menu-right">
+                                <!-- <div class="dropdown-menu dropdown-menu-right">
                                     <button class="dropdown-item" type="button">Weekly</button>
                                     <button class="dropdown-item" type="button">Monthly</button>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
 
                     </div>
                     <div class="card-body">
                         <figure>
-                            <img src="https://changelog.com/wp-content/uploads/chartkick.png">
+                            <div id="chartRevenue" style="height: 250px;width: 100%; margin:auto;"></div>
                         </figure>
                     </div>
                     <div class="">
@@ -341,7 +341,7 @@
                     </div>
                     <div class="card-body">
                         <figure>
-                            <img src="https://changelog.com/wp-content/uploads/chartkick.png">
+                            <div id="chartOrder" style="height: 250px;width: 100%; margin:auto;"></div>
                         </figure>
                     </div>
                     <div class="">
@@ -369,7 +369,7 @@
                     </div>
                     <div class="card-body">
                         <figure>
-                            <img src="https://changelog.com/wp-content/uploads/chartkick.png">
+                            <div id="chartNewOrder" style="height: 250px;width: 100%; margin:auto;"></div>
                         </figure>
                     </div>
                     <div class="">

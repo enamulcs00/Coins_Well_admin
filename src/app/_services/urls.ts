@@ -13,5 +13,9 @@ export const urls = {
     getUserById:'admin/get-user-by-pk/',
     getAllCurrency:'admin/get-all-currencies/',
     updateCurrency:'admin/update-currency-rates-by-pk/',
-    updateUserById:'admin/update-user-by-id/'
+    updateUserById:'admin/update-user-by-id/',
+    getDashboard:'admin/get-admin-dashboard-counts/',
+    getRevenueGraph:'admin/get-total-revenue-graph/',
+    getOrderGraph:'admin/get-total-orders-graph/',
+    getNewOrderGraph:'admin/get-new-orders-graph/'
 };
