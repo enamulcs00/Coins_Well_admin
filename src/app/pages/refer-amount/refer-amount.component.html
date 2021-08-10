@@ -111,29 +111,20 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Anhsu Bharti</td>
-                        <td>Anhsu Bharti</td>
-                        <td>567GF6</td>
-                        <td>20 August 2021</td>
-                        <td>$56,867</td>
-                        <!-- <td>
-                                                    <ul class="action">
-                                                        <li>
-                                                            <a href="#" class="btn btn-primary">
-                                                                Update
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <button class="btn btn-danger" data-target="#rejectrequest" data-toggle="modal">Reject</button>
-                                                        </li>
-                                                    </ul>
-                                                </td> -->
+                      <tr *ngFor="let item of urhItems;let i=index">
+                        <td>{{page1==0?page1+ i+1:page1+i}}</td>
+                        <td>{{item?.referred_by_name || '-'}}</td>
+                        <td>{{item?.referred_by_name || '-'}}</td>
+                        <td>{{item?.invite_code || '-'}}</td>
+                        <td>{{item?.date | date}}</td>
+                        <td>{{item?.amount | currency}}</td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
+                <mat-paginator #paginator [length]="length1" [pageSize]="pageSize1" [pageSizeOptions]="[5, 10, 25, 100]"
+                  (page)="pageEvent = pageSizeChanged1($event)">
+                </mat-paginator>
               </div>
             </div>
           </div>

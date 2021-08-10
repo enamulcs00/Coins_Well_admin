@@ -12,10 +12,14 @@ export class ReferAmountComponent implements OnInit {
   amount: any;
   itemAmount: any;
   page=0;
+  page1=0;
   pageSize=10;
+  pageSize1=10;
   items: any;
   length=0;
   pageEvent: PageEvent;
+  urhItems: any;
+  length1: any=0;
 
   constructor(private commn_:CommonService,private toastr:ToastrService) { }
 
@@ -106,6 +110,21 @@ export class ReferAmountComponent implements OnInit {
       this.getReferalHistory();
       return e;
   }
+  
+  pageSizeChanged1(e): PageEvent {
+    if (e.pageIndex == 0) {
+      this.page1 = e.pageIndex;
+    } else {
+      if (e.previousPageIndex < e.pageIndex) {
+        this.page1 = e.pageSize + 1;
+      } else {
+        this.page1 = e.pageSize;
+      }
+    }
+    this.pageSize1 = e.pageSize
+    this.getUserReferalHistory();
+    return e;
+}
 
    deleteHistoryUser(id)
    {
@@ -200,6 +219,8 @@ export class ReferAmountComponent implements OnInit {
   }
      this.commn_.post(urls.getUserReferHistory,body).subscribe(res=>{
      console.log(res);
+     this.urhItems=res.data;
+     this.length1=res.recordsTotal;
      });
    }
 

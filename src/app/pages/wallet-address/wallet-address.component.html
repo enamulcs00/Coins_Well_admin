@@ -18,79 +18,34 @@
             <div class="col-md-12">
                 <div class="card m-b-30">
                     <div class="table-responsive">
+                        <form [formGroup]="walletForm">
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <!-- <th>#</th>
-                                    <th>ID</th> -->
                                     <th>Asset</th>
                                     <th>Address</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <!-- <td>1</td>
-                                    <td>#5454545</td> -->
-                                    <td>Company Perfect Money Address</td>
+                            <tbody formArrayName="asset"
+                            *ngFor="let item of getWallet()?.controls; let i = index;">
+                                <tr [formGroupName]="i">
+                                    <td>{{name[i]}}</td>
                                     <td>
-                                        <input type="text" class="form-control" />
+                                        <input type="text" (keypress)= "NumOnly($event)" formControlName="address" class="form-control" />
                                     </td>
                                     <td>
                                         <ul class="action">
                                             <li>
-                                                <a href="#" class="btn btn-primary"> Update </a>
+                                                <a href="javascript:void(0)" (click)="updateForm(i)" class="btn btn-primary"> Update </a>
                                             </li>
                                         </ul>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <!-- <td>2</td>
-                                    <td>#5454545</td> -->
-                                    <td>Company's TRC20 Wallet Address</td>
-                                    <td>
-                                        <input type="text" class="form-control" />
-                                    </td>
-                                    <td>
-                                        <ul class="action">
-                                            <li>
-                                                <a href="#" class="btn btn-primary"> Update </a>
-                                            </li>
-                                        </ul>
-                                    </td>
-                                </tr>
-                                <!-- <tr>
-                                    <td>3</td>
-                                    <td>#5454545</td>
-                                    <td>Payment instruction for Naira Deposit</td>
-                                    <td>
-                                        <input type="text" class="form-control" />
-                                    </td>
-                                    <td>
-                                        <ul class="action">
-                                            <li>
-                                                <a href="#" class="btn btn-primary"> Update </a>
-                                            </li>
-                                        </ul>
-                                    </td>
-                                </tr> -->
-                                <!-- <tr>
-                                    <td>4</td>
-                                    <td>#5454545</td>
-                                    <td>Company's Physical Address</td>
-                                    <td>
-                                        <input type="text" class="form-control" />
-                                    </td>
-                                    <td>
-                                        <ul class="action">
-                                            <li>
-                                                <a href="#" class="btn btn-primary"> Update </a>
-                                            </li>
-                                        </ul>
-                                    </td>
-                                </tr> -->
+                                
                             </tbody>
                         </table>
+                    </form>
                     </div>
                 </div>
             </div>

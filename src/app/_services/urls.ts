@@ -23,5 +23,6 @@ export const urls = {
     getReferalHistory:'admin/get-referal-amount-history/',
     deleteAmountHistory:'admin/delete-referal-amount-history/',
     getUserReferHistory:'admin/get-user-refer-history/',
-    getWalletAddress:'admin/get-wallet-addresses/'
+    getWalletAddress:'admin/get-wallet-addresses/',
+    updateWalletAddress:'admin/update-wallet-address/'
 };
