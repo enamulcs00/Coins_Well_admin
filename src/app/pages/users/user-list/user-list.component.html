@@ -26,11 +26,8 @@
                     <div class="card-header seachbar">
                         <h5></h5>
                         <div class="form-group col-md-4 pl-0 pr-0 mb-0">
-                            <input type="text" name="searchField" [(ngModel)]="searchData.value" class="form-control"
+                            <input type="text" name="searchField" (keyup)="searchHere()" [(ngModel)]="searchData.value" class="form-control"
                                 id="searchField" placeholder="Search by email, name">
-                            <div class="search-ic" (click)="searchHere()">
-                                <i class="mdi mdi-magnify"></i>
-                            </div>
                         </div>
                     </div>
                     <div class="card-body">

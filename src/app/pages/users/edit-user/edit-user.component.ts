@@ -67,7 +67,6 @@ export class EditUserComponent implements OnInit {
     var files = e.target.files;
     if (files[0].size <= 10000000) {
       this.userDoc = files[0];
-      this.toaster.success("User Document Selected","Success",{timeOut:1050});
       this.uploadMedia();
     } else {
       this.userDoc = null;
@@ -103,12 +102,13 @@ export class EditUserComponent implements OnInit {
     {
       this.imageUrl=environment.imgBaseUrl+res.data[0].media_file;
       this.editUserForm.controls.image.setValue(res.data[0].id);
+      this.toaster.success(res.message,"Success",{timeOut:1550});
     }
     if(this.userDoc)
     {
       this.editUserForm.controls.document.setValue(res.data[0].id);
     }
-      this.toaster.success(res.message,"Success",{timeOut:1050});
+      
     }
     });
   }

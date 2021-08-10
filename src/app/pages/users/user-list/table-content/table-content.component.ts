@@ -160,6 +160,13 @@ export class TableContentComponent implements OnInit {
 		this._common.reasonConfirm("Reject Reason", "").subscribe(x => {
 		})
 	}
+    
+	userModal(ig)
+	{
+		this._common.userConfirm("User Picture",ig).subscribe(x=>{
+			
+		})
+	}
 
 	setPage(pageInfo) {
 		Block.circle('#users-list-page');

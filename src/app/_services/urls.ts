@@ -15,6 +15,17 @@ export const urls = {
     updateCurrency:'admin/update-currency-rates-by-pk/',
     updateUserById:'admin/update-user-by-id/',
     searchBank:"admin/search-bank/",
-    adminbakDetails:"admin/add-update-bank-details/"
+    adminbakDetails:"admin/add-update-bank-details/",
 
+    getDashboard:'admin/get-admin-dashboard-counts/',
+    getRevenueGraph:'admin/get-total-revenue-graph/',
+    getOrderGraph:'admin/get-total-orders-graph/',
+    getNewOrderGraph:'admin/get-new-orders-graph/',
+    getReferalAmount:'admin/get-referal-amount/',
+    updateReferalAmount:'admin/add-update-referal-code-amount/',
+    getReferalHistory:'admin/get-referal-amount-history/',
+    deleteAmountHistory:'admin/delete-referal-amount-history/',
+    getUserReferHistory:'admin/get-user-refer-history/',
+    getWalletAddress:'admin/get-wallet-addresses/',
+    updateWalletAddress:'admin/update-wallet-address/'
 };

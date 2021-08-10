@@ -1,3 +1,4 @@
+import { MaterialModule } from './../../material/material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UsersRoutingModule } from './users-routing.module';
@@ -12,7 +13,8 @@ import { TableContentComponent } from './user-list/table-content/table-content.c
 	imports: [
 		CommonModule,
 		UsersRoutingModule,
-		CoreModule
+		CoreModule,
+		MaterialModule
 	]
 })
 export class UsersModule { }

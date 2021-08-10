@@ -27,6 +27,7 @@ import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { MaterialExtensionsExperimentalModule, MaterialExtensionsModule } from '@ng-matero/extensions';
 import { FaqTemplateComponent } from '../components/faq-template/faq-template.component';
 
+import {MatPaginatorModule} from '@angular/material/paginator';
 @NgModule({
 	declarations: [
 		PagesComponent, 
@@ -58,7 +59,8 @@ import { FaqTemplateComponent } from '../components/faq-template/faq-template.co
 		ReactiveFormsModule,
 		GooglePlaceModule,
 		MaterialExtensionsModule,
-		MaterialExtensionsExperimentalModule
+		MaterialExtensionsExperimentalModule,
+		MatPaginatorModule
 	]
 })
 export class PagesModule { }

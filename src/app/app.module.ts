@@ -19,6 +19,7 @@ import { DocumentsComponent } from './components/confirm-dialog/documents/docume
 import { FvComponent } from './components/confirm-dialog/fv/fv.component';
 import { ReasonComponent } from './components/confirm-dialog/reason/reason.component';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
+import { UserComponent } from './components/confirm-dialog/user/user.component';
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -26,6 +27,7 @@ import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 		DocumentsComponent,
 		FvComponent,
 		ReasonComponent,
+		UserComponent
 	],
 	imports: [
 		BrowserModule,
