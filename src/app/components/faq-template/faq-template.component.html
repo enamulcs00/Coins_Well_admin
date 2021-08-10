@@ -1,0 +1,69 @@
+<div class="card faq-box">
+    <div class="card-body">
+       <form [formGroup]="Faqcheck">
+  <div class="row mt-3">
+    <div class="col-12">
+      <table class="table table-bordered" formArrayName="specification">
+        <tr>
+          <th width="20%">
+            <div class="input_button input_button2">
+              <button
+                type="button"
+                mat-button
+                (click)="addNewSpecification()"
+                class="btn btn-primary"
+              >
+                Add More
+              </button>
+            </div>
+          </th>
+        </tr>
+        <tr
+          *ngFor="let quantity of specification().controls; let i = index"
+          [formGroupName]="i"
+        >
+          <td style="width: 40%">
+            <mat-form-field class="row col-12" appearance="outline">
+              <mat-label> Question:</mat-label> 
+              <input
+               matInput
+                type="text"
+                min="0"
+                formControlName="question"
+              />
+            </mat-form-field>
+          </td>
+          <td style="width: 40%">
+            <mat-form-field class="row col-12" appearance="outline">
+              <mat-label>Answer:</mat-label> 
+              <input
+                matInput
+                type="text"
+                min="0"
+                formControlName="answer"
+              />
+            </mat-form-field>
+          </td>
+
+          <td style=" vertical-align: middle">
+            <button class="btn btn-primary" (click)="removeSpecification(i)">
+              Remove
+            </button>
+          </td>
+        </tr>
+      </table>
+      <div>
+        <mat-error
+          class="error"
+          style="padding-left: 216px"
+          *ngIf="submitted && !Faqcheck.get('specification').valid">
+          Please fill all the <strong>required field</strong>
+        </mat-error>
+      </div>
+
+      <button class="btn btn-primary" (click)="saveFaq()">Save</button>
+    </div>
+  </div>
+</form>
+    </div>
+</div>

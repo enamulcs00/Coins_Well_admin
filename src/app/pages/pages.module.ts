@@ -24,6 +24,8 @@ import { ChatComponent } from './chat/chat.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxMatIntlTelInputModule } from '../ngx-input-tel'
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
+import { MaterialExtensionsExperimentalModule, MaterialExtensionsModule } from '@ng-matero/extensions';
+import { FaqTemplateComponent } from '../components/faq-template/faq-template.component';
 
 @NgModule({
 	declarations: [
@@ -44,7 +46,8 @@ import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 		ReferAmountComponent, 
 		EditBankComponent, 
 		AddNotificationComponent, 
-		ChatComponent
+		ChatComponent,
+		FaqTemplateComponent
 	],
 	imports: [
 		CommonModule,
@@ -53,7 +56,9 @@ import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 		NgxMatIntlTelInputModule,
 		FormsModule,
 		ReactiveFormsModule,
-		GooglePlaceModule
+		GooglePlaceModule,
+		MaterialExtensionsModule,
+		MaterialExtensionsExperimentalModule
 	]
 })
 export class PagesModule { }

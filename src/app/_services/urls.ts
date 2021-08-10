@@ -13,5 +13,8 @@ export const urls = {
     getUserById:'admin/get-user-by-pk/',
     getAllCurrency:'admin/get-all-currencies/',
     updateCurrency:'admin/update-currency-rates-by-pk/',
-    updateUserById:'admin/update-user-by-id/'
+    updateUserById:'admin/update-user-by-id/',
+    searchBank:"admin/search-bank/",
+    adminbakDetails:"admin/add-update-bank-details/"
+
 };

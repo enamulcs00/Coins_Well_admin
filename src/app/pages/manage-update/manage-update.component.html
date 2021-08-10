@@ -1,243 +1,255 @@
 <!--site header ends -->
 <section class="admin-content">
-    <div class="bg-dark">
-        <div class="container-fluid  m-b-30">
-            <div class="row">
-                <div class="col-12 text-white p-t-40 p-b-90">
-                    <div class="ex-main">
-                        <h4 class=""> <span class="btn btn-white-translucent">
-                                <i class="mdi mdi-monitor"></i></span> Manage Update
-                        </h4>
-                    </div>
-                </div>
-            </div>
+  <div class="bg-dark">
+    <div class="container-fluid  m-b-30">
+      <div class="row">
+        <div class="col-12 text-white p-t-40 p-b-90">
+          <div class="ex-main">
+            <h4 class=""> <span class="btn btn-white-translucent">
+                <i class="mdi mdi-monitor"></i></span> Manage Update
+            </h4>
+          </div>
         </div>
+      </div>
     </div>
-    <div class="container-fluid pull-up">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card m-b-30">
+  </div>
+  <div class="container-fluid pull-up">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card m-b-30">
 
-                    <div class="card-body">
-                        <ul class="nav nav-tabs" id="myTab" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="home-tab-z" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" (click)="TabRef('terms')">Terms & Condition</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="profile-tab-z" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false" (click)="TabRef('privacy')">Privacy Policy</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="faq-tab-z" data-toggle="tab" href="#faq" role="tab" aria-controls="faq" aria-selected="false" (click)="TabRef('faq')">FAQ's</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="csupport-tab-z" data-toggle="tab" href="#csupport" role="tab" aria-controls="csupport" aria-selected="false" (click)="TabRef('contact')">Contact Us</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="aboutus-tab-z" data-toggle="tab" href="#aboutus" role="tab" aria-controls="aboutus" aria-selected="false" (click)="TabRef('aboutUs')">About Us</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="companyaddress-tab-z" data-toggle="tab" href="#companyaddress" role="tab" aria-controls="companyaddress" aria-selected="false" (click)="TabRef('address')">Company Address</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="adminbankdetail-tab-z" data-toggle="tab" href="#adminbankdetail" role="tab" aria-controls="adminbankdetail" aria-selected="false" (click)="TabRef('details')">Admin Bank Detail</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="paymentprocedure-tab-z" data-toggle="tab" href="#paymentprocedure" role="tab" aria-controls="paymentprocedure" aria-selected="false" (click)="TabRef('precedure')">Payment Procedure</a>
-                            </li>
-                        </ul>
-                        <div class="tab-content" id="myTabContent1">
-                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                <div id="summernote"></div>
-                                <div class="form-row mt-3">
-                                    <div class="form-group col-md-12">
-                                        <mat-form-field appearance="outline" class="col-md-12">
-                                            <mat-label>Terms & condition</mat-label>
-                                        <textarea class="form-control" matInput name="" id="" [(ngModel)]="terms" cols="30" rows="5"></textarea>
-                                        </mat-form-field>
-                                    </div>
-                                </div>
-                                <button class="btn btn-primary" (click)="UpdateTerms()">{{isLoading?'Processing':'Save'}}</button>
-                                <!-- <h4 class="pt-4 pl-4">Not Data Found</h4> -->
-                            </div>
-                            <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                <div id="summernote"></div>
-                                <div class="form-row mt-3">
-                                    <div class="form-group col-md-12">
-                                        <mat-form-field appearance="outline" class="col-md-12">
-                                            <mat-label>Privacy policy</mat-label>
-                                        <textarea class="form-control" matInput name="" id="" [(ngModel)]="privacy" cols="30" rows="5"></textarea>
-                                        </mat-form-field>
-                                    </div>
-                                </div>
-                                <button class="btn btn-primary" (click)="UpdateTerms()">{{isLoading?'Processing':'Save'}}</button>
-                                     
-                                <!-- <h4 class="pt-4 pl-4">Not Data Found</h4> -->
-                            </div>
-                            <div class="tab-pane fade show" id="faq" role="tabpanel" aria-labelledby="faq-tab">
-                                <div id="summernote"></div>
-                                <div class="form-row mt-3">
-                                    <div class="col-md-12 text-right">
-                                        <button class="btn btn-primary">Add</button>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="inputEmail4">Question</label>
-                                        <input type="email" class="form-control" id="" placeholder="">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="inputPassword4">Answer</label>
-                                        <input type="password" class="form-control" id="">
-                                    </div>
-                                </div>
-                                <button class="btn btn-primary">Save</button>
-                                <!-- <h4 class="pt-4 pl-4">Not Data Found</h4> -->
-                            </div>
-                            <div class="tab-pane fade show" id="csupport" role="tabpanel" aria-labelledby="csupport-tab">
-                                <div class="form-row mt-3">
-                                    <div class="form-group col-md-6">
-                                        <label for="inputEmail4">Email</label>
-                                        <input type="email" class="form-control" id="" placeholder="">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="inputPassword4">Phone Number</label>
-                                        <input type="password" class="form-control" id="">
-                                    </div>
-                                </div>
-                                <button class="btn btn-primary">Save</button>
-                            </div>
-                            <div class="tab-pane fade show" id="aboutus" role="tabpanel" aria-labelledby="aboutus-tab">
-                                <div id="summernote"></div>
-                                <div class="form-row mt-3">
-                                    <div class="form-group col-md-12">
-                                        <mat-form-field appearance="outline" class="col-md-12">
-                                            <mat-label>About us</mat-label>
-                                        <textarea class="form-control" matInput name="" id="" [(ngModel)]="aboutUs" cols="30" rows="5"></textarea>
-                                        </mat-form-field>
-                                    </div>
-                                </div>
-                                <button class="btn btn-primary" (click)="UpdateTerms()">{{isLoading?'Processing':'Save'}}</button>
-
-                                <!-- <h4 class="pt-4 pl-4">Not Data Found</h4> -->
-                            </div>
-                            <div class="tab-pane fade show" id="companyaddress" role="tabpanel" aria-labelledby="companyaddress-tab">
-                                <div class="form-row mt-3">
-                                    <div class="form-group col-md-12">
-                                        <mat-form-field appearance="outline" class="col-md-12">
-                                        <mat-label>Location</mat-label>
-                                        <input type="email" ngx-google-places-autocomplete (onAddressChange)="AddressChange($event)" matInput class="form-control" id="" placeholder="" [(ngModel)]="address">
-                                    </mat-form-field>
-                                    </div>
-                                    <!-- <div class="form-group col-md-6">
-                                        <label for="inputPassword4">Pin code</label>
-                                        <input type="password" class="form-control" id="">
-                                    </div> -->
-                                </div>
-                                <button class="btn btn-primary" (click)="UpdateTerms()">{{isLoading?'Processing':'Save'}}</button>
-                            </div>
-                            <div class="tab-pane fade show" id="adminbankdetail" role="tabpanel" aria-labelledby="adminbankdetail-tab">
-                                <div class="form-row mt-3">
-                                    <div class="form-group col-md-6">
-                                        <label for="inputPassword4">Bank Name</label>
-                                        <input type="password" class="form-control" id="">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="inputEmail4">Account Holder Name</label>
-                                        <input type="email" class="form-control" id="" placeholder="">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="inputPassword4">Account Number</label>
-                                        <input type="password" class="form-control" id="">
-                                    </div>
-                                </div>
-                                <button class="btn btn-primary">Save</button>
-                                <!-- <div class="table-responsive">
-                                    <table class="table table-hover ">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Image</th>
-                                                <th>ID</th>
-                                                <th>Account Number</th>
-                                                <th>Account Holder Name</th>
-                                                <th>Bank Name</th>
-                                                <th>Bank Branch</th>
-                                                <th>IFSC Code</th>
-                                                <th>Payment Instructions</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>
-                                                    <div class="avatar avatar-sm " data-toggle="modal" data-target="#userclick">
-                                                        <img src="assets/img/ngn.png" class="avatar-img avatar-sm rounded-circle" alt="">
-                                                    </div>
-                                                </td>
-                                                <td>258963</td>
-                                                <td>888-999-987-987</td>
-                                                <td>Anshu Bharti</td>
-                                                <td>BOI</td>
-                                                <td>Mohali</td>
-                                                <td>BARB0MOH</td>
-                                                <td>
-                                                    <ul class="d-inline-block" style="width: 300px;word-break: break-word;white-space: initial;">
-                                                        <li>1. Deposit the amount on the above given bank account using any means of transfer.</li>
-                                                        <li>2. Upload the transaction proof.</li>
-                                                    </ul>
-                                                </td>
-                                                <td>
-                                                    <ul class="action">
-                                                        <li>
-                                                            <a href="editbank.html" class="btn btn-primary">
-                                                                <i class="mdi mdi-pencil" title="Edit"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div> -->
-                            </div>
-                            <div class="tab-pane fade show" id="paymentprocedure" role="tabpanel" aria-labelledby="paymentprocedure-tab">
-                                <div class="form-row mt-3">
-                                    <div class="form-group col-md-12">
-                                        <mat-form-field appearance="outline" class="col-md-12">
-                                        <mat-label for="inputPassword4">Payment Instructions</mat-label>
-                                        <input type="text" matInput class="form-control" id="" [(ngModel)]="precedure">
-                                    </mat-form-field>
-                                    </div>
-                                    <!-- <div class="form-group col-md-6">
-                                        <label for="inputEmail4">Company Perfect Money Address</label>
-                                        <input type="email" class="form-control" id="" placeholder="">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="inputPassword4">Company's TRC20 Wallet Address</label>
-                                        <input type="password" class="form-control" id="">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="inputPassword4">Payment instruction for Naira Deposit</label>
-                                        <input type="password" class="form-control" id="">
-                                    </div> -->
-                                </div>
-                                <button class="btn btn-primary" (click)="UpdateTerms()">{{isLoading?'Processing':'Save'}}</button>
-
-                            </div>
-                        </div>
-                    </div>
+          <div class="card-body">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="home-tab-z" data-toggle="tab" href="#home" role="tab"
+                  aria-controls="home" aria-selected="true" (click)="TabRef('terms')">Terms & Condition</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="profile-tab-z" data-toggle="tab" href="#profile" role="tab"
+                  aria-controls="profile" aria-selected="false" (click)="TabRef('privacy')">Privacy Policy</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="faq-tab-z" data-toggle="tab" href="#faq" role="tab" aria-controls="faq"
+                  aria-selected="false" (click)="TabRef('faq')">FAQ's</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="csupport-tab-z" data-toggle="tab" href="#csupport" role="tab"
+                  aria-controls="csupport" aria-selected="false" (click)="TabRef('contact')">Contact Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="aboutus-tab-z" data-toggle="tab" href="#aboutus" role="tab"
+                  aria-controls="aboutus" aria-selected="false" (click)="TabRef('aboutUs')">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="companyaddress-tab-z" data-toggle="tab" href="#companyaddress" role="tab"
+                  aria-controls="companyaddress" aria-selected="false" (click)="TabRef('address')">Company Address</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="adminbankdetail-tab-z" data-toggle="tab" href="#adminbankdetail" role="tab"
+                  aria-controls="adminbankdetail" aria-selected="false" (click)="TabRef('details')">Admin Bank
+                  Detail</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="paymentprocedure-tab-z" data-toggle="tab" href="#paymentprocedure" role="tab"
+                  aria-controls="paymentprocedure" aria-selected="false" (click)="TabRef('precedure')">Payment
+                  Procedure</a>
+              </li>
+            </ul>
+            <div class="tab-content" id="myTabContent1">
+              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <div id="summernote"></div>
+                <div class="form-row mt-3">
+                  <div class="form-group col-md-12">
+                    <mat-form-field appearance="outline" class="col-md-12">
+                      <mat-label>Terms & condition</mat-label>
+                      <textarea class="form-control" matInput name="" id="" [(ngModel)]="terms" cols="30"
+                        rows="5"></textarea>
+                    </mat-form-field>
+                  </div>
                 </div>
+                <button class="btn btn-primary" (click)="UpdateTerms()">{{isLoading?'Processing':'Save'}}</button>
+                <!-- <h4 class="pt-4 pl-4">Not Data Found</h4> -->
+              </div>
+              <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <div id="summernote"></div>
+                <div class="form-row mt-3">
+                  <div class="form-group col-md-12">
+                    <mat-form-field appearance="outline" class="col-md-12">
+                      <mat-label>Privacy policy</mat-label>
+                      <textarea class="form-control" matInput name="" id="" [(ngModel)]="privacy" cols="30"
+                        rows="5"></textarea>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <button class="btn btn-primary" (click)="UpdateTerms()">{{isLoading?'Processing':'Save'}}</button>
+
+                <!-- <h4 class="pt-4 pl-4">Not Data Found</h4> -->
+              </div>
+              <div class="tab-pane fade show" id="faq" role="tabpanel" aria-labelledby="faq-tab">
+                <!-- <div id="summernote"></div>
+                <div class="form-row mt-3">
+                  <div class="col-md-12 text-right">
+                    <button class="btn btn-primary">Add</button>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputEmail4">Question</label>
+                    <input type="email" class="form-control" id="" placeholder="">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputPassword4">Answer</label>
+                    <input type="password" class="form-control" id="">
+                  </div>
+                </div> -->
+                <app-faq-template></app-faq-template>
+               
+                <!-- <h4 class="pt-4 pl-4">Not Data Found</h4> -->
+              </div>
+
+              <div class="tab-pane fade show" id="csupport" role="tabpanel" aria-labelledby="csupport-tab">
+                <form [formGroup]="contactUs">
+                  <div class="form-row mt-3">
+                    <div class="form-group col-md-6">
+                      <mat-form-field class="row col-12" appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input type="text" name="email" matInput placeholder="Email" formControlName="email">
+                        <mat-error
+                          *ngIf="!contactUs.get('email').hasError('validEmail') && contactUs.get('email').hasError('required')">
+                          Please enter email.
+                        </mat-error>
+                        <mat-error
+                          *ngIf="contactUs.get('email').hasError('email') || contactUs.get('email').hasError('validEmail')">
+                          Please enter valid email.
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <mat-form-field class="row col-12" appearance="outline">
+                        <ngx-mat-intl-tel-input [enablePlaceholder]="true" [enableSearch]="true" name="full_phone"
+                          formControlName="full_phone" (countryChanged)="countryChanged($event)"
+                          inputPlaceholder="Phone number" formControlName="phone">
+                        </ngx-mat-intl-tel-input>
+                        <mat-error *ngIf="contactUs.get('phone').hasError('required')">Please enter phone number.
+                        </mat-error>
+                        <mat-error *ngIf=" contactUs.get('phone').hasError('validatePhoneNumber')">
+                          *Invalid phone number..
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </form>
+                <button class="btn btn-primary" (click)="UpdateTerms()">{{isLoading?'Processing':'Save'}}</button>
+              </div>
+              <div class="tab-pane fade show" id="aboutus" role="tabpanel" aria-labelledby="aboutus-tab">
+                <div id="summernote"></div>
+                <div class="form-row mt-3">
+                  <div class="form-group col-md-12">
+                    <mat-form-field appearance="outline" class="col-md-12">
+                      <mat-label>About us</mat-label>
+                      <textarea class="form-control" matInput name="" id="" [(ngModel)]="aboutUs" cols="30"
+                        rows="5"></textarea>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <button class="btn btn-primary" (click)="UpdateTerms()">{{isLoading?'Processing':'Save'}}</button>
+
+                <!-- <h4 class="pt-4 pl-4">Not Data Found</h4> -->
+              </div>
+              <div class="tab-pane fade show" id="companyaddress" role="tabpanel" aria-labelledby="companyaddress-tab">
+                <div class="form-row mt-3">
+                  <div class="form-group col-md-12">
+                    <mat-form-field appearance="outline" class="col-md-12">
+                      <mat-label>Location</mat-label>
+                      <input type="text" ngx-google-places-autocomplete (onAddressChange)="AddressChange($event)"
+                        matInput class="form-control" id="" placeholder="" [(ngModel)]="address">
+                    </mat-form-field>
+                  </div>
+                </div>
+                <button class="btn btn-primary" (click)="UpdateTerms()">{{isLoading?'Processing':'Save'}}</button>
+              </div>
+              <div class="tab-pane fade show" id="adminbankdetail" role="tabpanel"
+                aria-labelledby="adminbankdetail-tab">
+                <form [formGroup]="bankDetailForm">
+                  <div class="form-row mt-3">
+                    <div class="form-group col-md-6">
+                      <mat-form-field class="row col-12 bank-dropdown" appearance="outline">
+                        <mtx-select typeToSearchText="Search bank name or IFSC code." [typeahead]="bankListEvent"
+						[loading]="bankListLoading" loadingText="Fetching banks..." [(ngModel)]="BankId"
+						notFoundText="No bank found. Try another name" [virtualScroll]="true"
+						bindLabel="Select bank name" [items]="bankList" bindLabel="name" bindValue="id"
+						formControlName="bank_name" placeholder="Select bank name">
+						<ng-template ng-label-tmp let-item="item">
+							<div class="bank-dropdown-label">
+								<div>
+									<p class="bank-heading">{{ item.name }} </p>
+									<p class="branch">{{ item.branch }}</p>
+								</div>
+							</div>
+						</ng-template>
+						<ng-template ng-option-tmp let-item="item">
+							<div class="bank-dropdown-option">
+								<div class="pr-2">
+									<img class="img" src="{{ baseUrl+item?.bank_image?.media_file }}" alt="">
+								</div>
+								<div>
+									<p class="bank-heading">{{ item.name }} </p>
+									<p class="branch">{{ item.branch }}</p>
+									<p class="ifsc"><span>IFSC: </span><span>{{ item.ifsc_code }}</span></p>
+								</div>
+							</div>
+							<!-- </div> -->
+						</ng-template>
+					</mtx-select>
+                      </mat-form-field>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <mat-form-field class="row col-12" appearance="outline">
+                        <mat-label>Account Holder Name</mat-label>
+                        <input type="text" matInput placeholder="Account holder name" formControlName="accountHolder">
+                        <mat-error *ngIf="bankDetailForm.get('accountHolder').hasError('required')">
+                                             Please enter account holder name. </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <mat-form-field class="row col-12" appearance="outline">
+                        <mat-label>Account Number</mat-label>
+                        <input type="text" matInput placeholder="Account number" formControlName="accNumber">
+                        <mat-error *ngIf="bankDetailForm.get('accNumber').hasError('required')">
+                            Please enter account number. </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </form>
+                <button class="btn btn-primary" (click)="AdminBankDetails()">{{isLoading?'Processing':'Save'}}</button>
+              </div>
+              <div class="tab-pane fade show" id="paymentprocedure" role="tabpanel"
+                aria-labelledby="paymentprocedure-tab">
+                <div class="form-row mt-3">
+                  <div class="form-group col-md-12">
+                    <mat-form-field appearance="outline" class="col-md-12">
+                      <mat-label for="inputPassword4">Payment Instructions</mat-label>
+                      <input type="text" matInput class="form-control" id="" [(ngModel)]="precedure">
+                    </mat-form-field>
+                  </div>
+                </div>
+                <button class="btn btn-primary" (click)="UpdateTerms()">{{isLoading?'Processing':'Save'}}</button>
+
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </section>
 
- <!-- Modal -->
- <div class="modal fade userclick" id="userclick" tabindex="-1" role="dialog" aria-labelledby="userclickTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-body text-center">
-                <img src="assets/img/ngn.png" alt="">
-            </div>
-        </div>
+<!-- Modal -->
+<div class="modal fade userclick" id="userclick" tabindex="-1" role="dialog" aria-labelledby="userclickTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <img src="assets/img/ngn.png" alt="">
+      </div>
     </div>
+  </div>
 </div>
