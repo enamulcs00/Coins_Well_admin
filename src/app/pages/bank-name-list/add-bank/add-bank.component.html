@@ -33,7 +33,7 @@
                                 <div class="form-group col-md-6">
                                     <mat-form-field class="row col-12" appearance="outline">
                                  <mat-label for="inputEmail4">Bank Name</mat-label>
-                                        <input type="text" name="first_name" matInput placeholder="Enter bank name" formControlName="name">
+                                        <input type="text" name="first_name" matInput placeholder="Enter bank name" formControlName="name" #space (keydown.space)="!space.value?$event.preventDefault():null">
                                         <mat-error *ngIf="AddBankForm.get('name').hasError('required')">Please enter bank name.
                                         </mat-error>
                                         
@@ -42,7 +42,7 @@
                                 <div class="form-group col-md-6">
                                     <mat-form-field class="row col-12" appearance="outline">
                                     <mat-label for="inputPassword4">Bank Branch</mat-label>
-                                        <input type="text" name="first_name" matInput placeholder="Enter branch" formControlName="branch">
+                                        <input type="text" name="first_name" matInput placeholder="Enter branch" formControlName="branch" #spac (keydown.space)="!spac.value?$event.preventDefault():null">
                                         <mat-error *ngIf="AddBankForm.get('branch').hasError('required')">Please enter branch name.
                                         </mat-error>
                                     </mat-form-field>
@@ -50,7 +50,7 @@
                                 <div class="form-group col-md-6">
                                     <mat-form-field class="row col-12" appearance="outline">
                                     <mat-label for="inputAddress">IFSC Code</mat-label>
-                                     <input type="text" name="first_name" matInput placeholder="Enter ifsc code" formControlName="ifsc_code">
+                                     <input type="text" name="first_name" matInput placeholder="Enter ifsc code" formControlName="ifsc_code" #spa (keydown.space)="!spa.value?$event.preventDefault():null">
                                         <mat-error *ngIf="AddBankForm.get('ifsc_code').hasError('required')">Please enter ifsc code.
                                         </mat-error>
                                     </mat-form-field>
