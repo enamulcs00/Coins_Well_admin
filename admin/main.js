@@ -53,7 +53,7 @@ class AuthGuard {
             return true;
         }
         else {
-            this.router.navigate(['/login']);
+            this.router.navigate(['/auth/login']);
             this._noti.show("error", "Please login to continue.", "Login");
         }
     }
@@ -621,6 +621,7 @@ const urls = {
     getUserReferHistory: 'admin/get-user-refer-history/',
     getWalletAddress: 'admin/get-wallet-addresses/',
     updateWalletAddress: 'admin/update-wallet-address/',
+    getNotification: 'admin/get-user-first-name/'
 };
 
 
@@ -831,7 +832,7 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjector
                     _components_confirm_dialog_documents_documents_component__WEBPACK_IMPORTED_MODULE_17__["DocumentsComponent"],
                     _components_confirm_dialog_fv_fv_component__WEBPACK_IMPORTED_MODULE_18__["FvComponent"],
                     _components_confirm_dialog_reason_reason_component__WEBPACK_IMPORTED_MODULE_19__["ReasonComponent"],
-                    _components_confirm_dialog_user_user_component__WEBPACK_IMPORTED_MODULE_21__["UserComponent"]
+                    _components_confirm_dialog_user_user_component__WEBPACK_IMPORTED_MODULE_21__["UserComponent"],
                 ],
                 imports: [
                     _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
