@@ -58,6 +58,7 @@ newSpecifiaction(): FormGroup {
 
   saveFaq()
   {
+    this.Faqcheck.controls['specification'].value.forEach(v => (v.id=="")?delete v.id:'')
     this.submitted = true;
     if(!this.Faqcheck.invalid)
     {

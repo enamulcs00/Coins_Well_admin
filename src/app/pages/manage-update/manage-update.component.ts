@@ -28,14 +28,34 @@ export class ManageUpdateComponent implements OnInit,AfterViewInit {
   selectedCountry: any;
   contactUs:FormGroup
   bankDetailForm:FormGroup
-  FaqForm:FormGroup
-  faqArray: FormArray;
   bankList: any = [];
   baseUrl:string = environment.homeURL
 	public bankListEvent = new Subject<string>();
 	bankListLoading: boolean = false;
   BankId: any;
-  constructor(private service: CommonService, private router: Router, private _noti: NotificationsService,private fb:FormBuilder,private _common:CommonService) { }
+  termsCondition:FormGroup
+  About:FormGroup
+  privacyPolicy:FormGroup
+  Address:FormGroup
+  procedure:FormGroup
+  REF: any;
+  constructor(private service: CommonService, private router: Router, private _noti: NotificationsService,private fb:FormBuilder,private _common:CommonService) { 
+    this.termsCondition = this.fb.group({
+      terms:['',[Validators.required,Validators.maxLength(250)]]
+    })
+    this.About = this.fb.group({
+      about:['',[Validators.required,Validators.maxLength(250)]]
+    })
+    this.privacyPolicy = this.fb.group({
+      privacy:['',[Validators.required,Validators.maxLength(250)]]
+    })
+    this.Address = this.fb.group({
+      address:['',[Validators.required,Validators.maxLength(250)]]
+    })
+    this.procedure = this.fb.group({
+      paymentprocedure:['',[Validators.required,Validators.maxLength(250)]]
+    })
+  }
  ngOnInit(): void {
 this.contactUs = this.fb.group({
   email:['',[Validators.required,validEmail,Validators.email]],
@@ -50,28 +70,55 @@ this.bankDetailForm = this.fb.group({
    this.searchBanks();
    this.bankListEvent.next('');
   }
+  Payment(){
+    if(this.procedure.valid){
+      let obj ={
+        "payment_instructions":this.procedure.controls['paymentprocedure'].value}
+      this.updateFn(obj)
+    }else{ 
+      this.procedure.markAllAsTouched() 
+    }
+  }
+  CompanyAddress(){
+    if(this.Address.valid){
+      let obj ={
+      "latitude":this.lat,
+      "longitude":this.long,
+      "address":this.Address.controls['address'].value}
+      this.updateFn(obj)
+    }else{ 
+      this.Address.markAllAsTouched() 
+    }
+  }
   countryChanged(event: any) {
 		if (event) {
 			this.selectedCountry = event;
 		}
 	}
+  Privacy(){
+    if(this.privacyPolicy.valid){
+      let obj ={"privacy_policy":this.privacyPolicy.controls['privacy'].value}
+      this.updateFn(obj)
+    }else{ 
+      this.About.markAllAsTouched() 
+    }
+  }
 ngAfterViewInit(){
   this.GetAdminBank()
-  this.FaqForm = this.fb.group({
-    faqArray: this.fb.array([this.createRow()])
-  })
 }
   GetCms(){
   	this.service.get('cms/get-details/').subscribe((res: any) => {
-     
-       this.UpdatesInfo = res?.data;
-       this.terms = res?.data?.terms_conditon
-       this.lat = res?.data.latitude
-       this.long = res.data.longitude
-       this.privacy = res.data.privacy_policy
-       this.precedure = res.data.payment_instructions
-       this.aboutUs = res.data.about_us
-       this.getAddressgeo(res?.data.latitude,res.data.longitude)
+      console.log('CMS',res);
+      this.UpdatesInfo = res?.data;
+      this.termsCondition.controls['terms'].setValue(res?.data?.terms_conditon)
+       this.lat = res?.data?.latitude
+       this.long = res?.data?.longitude
+       this.Address.controls['address'].setValue(res?.data?.address)
+       this.privacyPolicy.controls['privacy'].setValue(res?.data?.privacy_policy)
+       this.procedure.controls['paymentprocedure'].setValue(res?.data?.payment_instructions)
+       this.About.controls['about'].setValue(res?.data?.about_us)
+       this.contactUs.controls['email'].setValue(res.data.email)
+       this.contactUs.controls['phone'].setValue(res.data.phone_no)
 		})
 }
 GetAdminBank(){
@@ -88,35 +135,45 @@ GetAdminBank(){
 }
 TabRef(ref){
 this.isLoading = false
+this.REF = ref
 if(ref=='details'){
   this.searchBanks()
   this.bankDetailForm.controls['bank_name'].setValue(this.BankId)
-}else if(ref=='faq'){
-  this.FaqForm = this.fb.group({
-    faqArray: this.fb.array([])
-  })
 }
+
 }
-UpdateTerms(){
- if(this.terms || this.privacy || this.precedure || this.lat || this.long){
-  this.isLoading = true
-  this.updateFn()
-  }else{
-    this._noti.show("error", "Please enter the value.", "Failed!");
+SubmitContactUs(){
+  if(this.contactUs.valid){
+    let obj ={
+      "phone_no":this.contactUs.controls['phone'].value,
+      "email":this.contactUs.controls['email'].value
+    }
+  this.updateFn(obj)
+  }else {
+    this.contactUs.markAllAsTouched()
   }
 }
-updateFn() {
-  let obj ={
-    "terms_conditon":this.terms,
-    "about_us":this.aboutUs,
-    "payment_instructions":this.precedure,
-    "privacy_policy":this.privacy,
-    "latitude":this.lat,
-    "longitude":this.long
+AboutUs(){
+  if(this.About.valid){
+    let obj ={"about_us":this.About.controls['about'].value}
+    this.updateFn(obj)
+  }else{
+    this.About.markAllAsTouched()
+  }
 }
+Terms(){
+  if(this.termsCondition.valid){
+    let obj ={"terms_conditon":this.termsCondition.controls['terms'].value}
+    this.updateFn(obj)
+  }else{
+    this.termsCondition.markAllAsTouched()
+  }
+}
+
+updateFn(obj) {
   this.service.post(`cms/create-update/`,obj).subscribe((res:any) => {
     if(res.code==200){
-      this._noti.show("success", "Data updated succesfully.", "Success!");
+      this._noti.show("success", "Data updated successfully.", "Success!");
       this.GetCms()
       this.isLoading = false;
     }
@@ -125,17 +182,12 @@ updateFn() {
   })
 }
 public AddressChange(address: any) {
+  this.Address.controls['address'].setValue(address.formatted_address)
   this.address = address.formatted_address
   this.lat = address.geometry.location.lat()
   this.long = address.geometry.location.lng()
 }
-getAddressgeo(latitude, longitude) {
-  this.geoCoder = new google.maps.Geocoder;
-    this.geoCoder.geocode({location: {lat: latitude, lng: longitude}}, (results:any) => {
-      this.address = results[0].formatted_address
-      localStorage.setItem('address',results[0].formatted_address)
-    });
-  }
+
   searchBanks() {
 		this.bankListEvent
 			.pipe(
@@ -178,36 +230,14 @@ getAddressgeo(latitude, longitude) {
 		}
 		this.service.post(urls.adminbakDetails, obj).subscribe((res:any) => {
 			if(res.code==200){
-				this._noti.show("success", "Bank details added succesfully.", "Success!");
+				this._noti.show("success", "Bank details added successfully.", "Success!");
         this.isLoading = false;
       }
 		}, _ => {
 			this.isLoading = false
 		})
 	}
-  GetFaq(){
-    this.service.get('cms/get-all-faq/').subscribe((res: any) => {
-      console.log('Get FAQ',res);
-      let temVar = res?.data;
-      this.BankId = res?.data?.bank_name?.id
-      this.FaqForm.patchValue({
-     });
-   })
-  }
-  createRow() {
-    return this.fb.group({
-      question: new FormControl('',[Validators.required]),
-      answer:new FormControl('',[Validators.required]),
-   })
-  }
-  addRow(){
-    this.faqArray = this.FaqForm.get('faqArray') as FormArray;
-    this.faqArray.push(this.createRow());
-  }
-  removeGroup(index){
-     this.faqArray = this.FaqForm.get('faqArray') as FormArray;
-      this.faqArray.removeAt(index);
-  }
+  
 }
 
 

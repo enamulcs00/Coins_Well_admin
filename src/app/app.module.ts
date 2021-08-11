@@ -20,6 +20,7 @@ import { FvComponent } from './components/confirm-dialog/fv/fv.component';
 import { ReasonComponent } from './components/confirm-dialog/reason/reason.component';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { UserComponent } from './components/confirm-dialog/user/user.component';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -44,6 +45,7 @@ import { UserComponent } from './components/confirm-dialog/user/user.component';
 	providers: [
 		{ provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 		{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+		{provide: LocationStrategy, useClass: HashLocationStrategy} ,
 		CommonService,
 		AuthService,
 		NotificationsService,

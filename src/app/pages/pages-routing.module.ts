@@ -23,6 +23,7 @@ import { AnalyticsComponent } from './analytics/analytics.component';
 import { RateChangeComponent } from './rate-change/rate-change.component';
 import { ReferAmountComponent } from './refer-amount/refer-amount.component';
 import { ChatComponent } from './chat/chat.component';
+import { LoggedGuard } from '../_gurads/logged.guard';
 
 const routes: Routes = [
 	{
@@ -35,7 +36,7 @@ const routes: Routes = [
 		component: PagesComponent,
 		children: [
 			{
-				path: 'dashboard',
+				path: 'dashboard',canActivate : [LoggedGuard],
 				component: DashboardComponent
 			},
 			{

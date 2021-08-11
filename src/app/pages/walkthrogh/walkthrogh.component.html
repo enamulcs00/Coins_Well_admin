@@ -24,11 +24,11 @@
                                     <div class="card-body">
                                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                                             <li class="nav-item">
-                                                <a class="nav-link active" id="home-tab-z" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Splash Screen</a>
+                                                <a class="nav-link active" id="home-tab-z" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Walkthrough</a>
                                             </li>
-                                            <li class="nav-item">
+                                            <!-- <li class="nav-item">
                                                 <a class="nav-link" href="javascript:void(0)" (click)="Openmodal()">Add Splash Screen</a>
-                                            </li>
+                                            </li> -->
                                             <!-- <li class="nav-item">
                                                 <a class="nav-link" id="profile-tab-z" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Splash Screen 2</a>
                                             </li>
@@ -58,17 +58,17 @@
                                                                     </div>
                                                                 </td>
                                                                 <td>{{item?.title}}</td>
-                                                                <td>{{item?.description|slice:0:20}}<p *ngIf="item?.description?.length>20" [title]="item?.description">...</p></td>
+                                                                <td>{{item?.description|slice:0:20}}<a href="javascript:void(0)" matTooltipClass="example-tooltip-red" matTooltipPosition="above" *ngIf="item?.description?.length>20" [matTooltip]="item?.description">...</a></td>
                                                                 <td>
                                                                     <ul class="action">
                                                                         <!-- <li><a href="viewuser.html" class="btn btn-primary"><i class="mdi mdi-eye-settings" title="View"></i></a></li> -->
                                                                         <li><a class="btn btn-primary" data-toggle="modal" (click)="UpdateSplash(item)"><i class="mdi mdi-pen"
                                                                                     title="Edit"></i></a></li>
-                                                                        <!-- <li>
-                                                                            <a href="#" class="btn btn-danger">
+                                                                        <li>
+                                                                            <a  class="btn btn-danger" (click)=" Delete(item?.id)">
                                                                                 <i class="mdi mdi-delete" title="Delete"></i>
                                                                             </a>
-                                                                        </li> -->
+                                                                        </li>
                                                                     </ul>
                                                                 </td>
                                                             </tr>
@@ -189,7 +189,7 @@
                     <div class="form-group col-md-6">
                         <mat-form-field class="col-md-12" appearance="outline">
                             <mat-label for="inputPassword4">Title</mat-label>
-                            <input matInput placeholder="Enter title" formControlName="title">
+                            <input matInput placeholder="Enter title" formControlName="title" #ref (keydown.space)="!ref.value?$event.preventDefault():null">
                             <mat-error
                         *ngIf="SplashUpdateForm.get('title').hasError('required')">
                         Please enter title.
@@ -199,7 +199,7 @@
                     <div class="form-group col-md-6">
                         <mat-form-field class="col-md-12" appearance="outline">
                             <mat-label for="inputPassword4">Description</mat-label>
-                            <input type="text"  matInput formControlName="description" id="inputAddress" placeholder="description">
+                            <input type="text"  matInput formControlName="description" id="inputAddress" placeholder="description" #re (keydown.space)="!re.value?$event.preventDefault():null">
                         <mat-error
                         *ngIf="SplashUpdateForm.get('description').hasError('required')">
                         Please enter description.

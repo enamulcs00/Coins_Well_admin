@@ -115,7 +115,7 @@ export class BankNameListComponent implements OnInit {
               this.ngOnInit();
               this._noti.show(
                 'success',
-                'Bank deleted succesfully.',
+                'Bank deleted successfully.',
                 'Success!'
               );
             }

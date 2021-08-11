@@ -68,7 +68,7 @@ this.AddBankForm = this.fb.group({
 		}
 		this.service.post(urls.createBank, obj).subscribe((res:any) => {
 			if(res.code==200){
-				this._noti.show("success", "Bank added succesfully.", "Success!");
+				this._noti.show("success", "Bank added successfully.", "Success!");
         this.router.navigate(['/banknamelist'])
         this.isLoading = false;
 		this.submitted = false

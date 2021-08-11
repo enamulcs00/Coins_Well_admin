@@ -75,7 +75,7 @@ this.AddBankForm = this.fb.group({
 		}
 		this.service.put(`admin/update-bank-by-pk/${this.id}/`, obj).subscribe((res:any) => {
 			if(res.code==200){
-				this._noti.show("success", "Bank updated succesfully.", "Success!");
+				this._noti.show("success", "Bank updated successfully.", "Success!");
         this.router.navigate(['/banknamelist'])
         this.isLoading = false;
 		this.submitted = false

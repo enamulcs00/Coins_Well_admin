@@ -26,7 +26,7 @@ import { NgxMatIntlTelInputModule } from '../ngx-input-tel'
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { MaterialExtensionsExperimentalModule, MaterialExtensionsModule } from '@ng-matero/extensions';
 import { FaqTemplateComponent } from '../components/faq-template/faq-template.component';
-
+import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatPaginatorModule} from '@angular/material/paginator';
 @NgModule({
 	declarations: [
@@ -60,7 +60,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 		GooglePlaceModule,
 		MaterialExtensionsModule,
 		MaterialExtensionsExperimentalModule,
-		MatPaginatorModule
+		MatPaginatorModule,
+		MatTooltipModule
 	]
 })
 export class PagesModule { }
