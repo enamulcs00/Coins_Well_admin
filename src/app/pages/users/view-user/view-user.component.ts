@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { CommonService } from 'src/app/_services/common.service';
+import { urls } from 'src/app/_services/urls';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-view-user',
@@ -6,10 +10,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./view-user.component.scss']
 })
 export class ViewUserComponent implements OnInit {
-
-  constructor() { }
+  localId: any;
+  items: any;
+  imageUrl: string;
+  
+  constructor(private route: ActivatedRoute,private commn_:CommonService) { }
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params=>{
+    this.localId=params.id;
+    });
+    this.getUserById();
+    this.imageUrl=environment.imgBaseUrl;
   }
-
+  
+  getUserById()
+  {
+    this.commn_.get(urls.getUserById+this.localId+"/").subscribe(res=>{
+    console.log(res);
+    this.items=res.data;
+    });
+  }
 }

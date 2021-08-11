@@ -1,354 +1,352 @@
 <section class="admin-content">
-    <div class="bg-dark">
-        <div class="container-fluid  m-b-30">
-            <div class="col-12 text-white p-t-40 p-b-90">
-                <div class="ex-main">
-                    <h4 class=""> <span class="btn btn-white-translucent">
-                            <i class="mdi mdi-account"></i></span> View User
-                    </h4>
-                    <a routerLink="/users" class="btn btn-white-translucent">Back</a>
-                </div>
-            </div>
+  <div class="bg-dark">
+    <div class="container-fluid  m-b-30">
+      <div class="col-12 text-white p-t-40 p-b-90">
+        <div class="ex-main">
+          <h4 class=""> <span class="btn btn-white-translucent">
+              <i class="mdi mdi-account"></i></span> View User
+          </h4>
+          <a routerLink="/users" class="btn btn-white-translucent">Back</a>
         </div>
+      </div>
     </div>
+  </div>
 
-    <div class="container-fluid  pull-up">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card m-b-30">
-                    <div class="card-body ">
-                        <div class="row align-items-center">
-                            <!-- <div class="col-md-12 justify-content-end">
+  <div class="container-fluid  pull-up">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card m-b-30">
+          <div class="card-body ">
+            <div class="row align-items-center">
+              <!-- <div class="col-md-12 justify-content-end">
                                 <button class="btn btn-primary">Add Cash</button>
                                 <button class="btn btn-primary">Add Crypto</button>
                             </div> -->
-                            <div class="col-md-2">
-                                <div class="card-body">
-                                    <div class="user-profile">
-                                        <figure>
-                                            <img src="assets/img/users/user-1.jpg">
-                                        </figure>
-                                        <div class="upload-avatar">
-                                            <input type="file" id="myfile" name="myfile">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="card-body">
-                                    <div class="user_details">
-                                        <h4 class="m-0">Elie Rohit Chaudhary</h4>
-                                        <p class="m-0"><strong>Email :</strong>admin@gmail.com</p>
-                                        <p class="m-0"><strong>Number :</strong>9876543210</p>
-                                        <!-- <p class="m-0"><strong>Address :</strong>Mohali, punjab, 107021</p> -->
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card-body">
-                                    <div class="user_details">
-                                        <p class="m-0"><strong>Bank Name :</strong>ICICI</p>
-                                        <p class="m-0"><strong>Account Number :</strong>7867-897-897-98</p>
-                                        <p class="m-0"><strong>IFSC Code :</strong>BARB0MOH</p>
-                                        <p class="m-0"><strong>Benificiary Name :</strong>Anshu Bharti</p>
-                                        <!-- <p class="m-0"><strong>Address :</strong>Mohali, punjab, 107021</p> -->
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="card-body">
-                                    <div class="user_details d-flex justify-content-end">
-                                        <h5 class="text-success">Approved</h5>
-                                    </div>
-                                    <div class="user_details d-flex justify-content-end">
-                                        <!-- <h4 class="m-0">Wallet Details</h4> -->
-                                        <p class="m-0 mr-4"><strong>Total Balance</strong></p>
-                                        <h4 class="m-0">$456,987</h4>
-                                    </div>
-                                    <div class="user_details d-flex justify-content-end">
-                                        <!-- <h4 class="m-0">Wallet Details</h4> -->
-                                        <p class="m-0 mr-4"><strong>Naira Balance</strong></p>
-                                        <h4 class="m-0">$34,555</h4>
-                                    </div>
-                                    <div class="user_details d-flex justify-content-end">
-                                        <!-- <h4 class="m-0">Wallet Details</h4> -->
-                                        <p class="m-0 mr-4"><strong>Crypto Balance</strong></p>
-                                        <h4 class="m-0">$44,445</h4>
-                                    </div>
-                                </div>
-                            </div>
+              <div class="col-md-2">
+                <div class="card-body">
+                  <div class="user-profile">
+                    <figure>
+                      <img [src]="imageUrl+items?.image.media_file">
+                    </figure>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card-body">
+                  <div class="user_details">
+                    <h4 class="m-0">{{items?.full_name || '-'}}</h4>
+                    <p class="m-0"><strong>Email :</strong>{{items?.email || '-'}}</p>
+                    <p class="m-0"><strong>Number :</strong>{{items?.phone_number || '-'}}</p>
+                    <!-- <p class="m-0"><strong>Address :</strong>Mohali, punjab, 107021</p> -->
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card-body">
+                  <div class="user_details">
+                    <p class="m-0"><strong>Bank Name :</strong>{{items?.bank_details[0]?.bank_name?.name || '-'}}</p>
+                    <p class="m-0"><strong>Account Number :</strong>{{items?.bank_details[0]?.account_number || '-'}}</p>
+                    <p class="m-0"><strong>IFSC Code :</strong>{{items?.bank_details[0]?.ifsc_code || '-'}}</p>
+                    <p class="m-0"><strong>Benificiary Name :</strong>{{items?.bank_details[0]?.account_holder_name || '-'}}</p>
+                    <!-- <p class="m-0"><strong>Address :</strong>Mohali, punjab, 107021</p> -->
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card-body">
+                  <div class="user_details d-flex justify-content-end">
+                    <h5 [class]="(items?.status)==null?'text-primary':(items?.status)?'text-success':'text-danger'">{{(items?.status)==null?'Pending':((items?.status)?'Approved':'Rejected')}}</h5>
+                  </div>
+                  <div class="user_details d-flex justify-content-end">
+                    <!-- <h4 class="m-0">Wallet Details</h4> -->
+                    <p class="m-0 mr-4"><strong>Total Balance</strong></p>
+                    <h4 class="m-0">$456,987</h4>
+                  </div>
+                  <div class="user_details d-flex justify-content-end">
+                    <!-- <h4 class="m-0">Wallet Details</h4> -->
+                    <p class="m-0 mr-4"><strong>Naira Balance</strong></p>
+                    <h4 class="m-0">$34,555</h4>
+                  </div>
+                  <div class="user_details d-flex justify-content-end">
+                    <!-- <h4 class="m-0">Wallet Details</h4> -->
+                    <p class="m-0 mr-4"><strong>Crypto Balance</strong></p>
+                    <h4 class="m-0">$44,445</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card" style="box-shadow: none;">
+                  <div class="card-header">
+                    <h5 class="m-0">Documents</h5>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card m-b-30" style="box-shadow: none;">
+                  <div class="card-body">
+                    <div class="select_option d-flex justify-content-start">
+                      <figure class="mr-3">
+                        <img src="assets/img/ngn.png" alt="">
+                      </figure>
+                      <figure class="mr-3">
+                        <img src="assets/img/ngn.png" alt="">
+                      </figure>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card m-b-30" style="box-shadow: none;">
+                  <div class="card-body">
+                    <div class="select_option d-flex justify-content-end">
+                      <select name="" id="">
+                        <option value="">Withdraw</option>
+                        <option value="">Deposit</option>
+                        <option value="">Sell</option>
+                        <option value="">Buy</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 mb-3">
+                <div class="buttons d-flex justify-content-end">
+                  <button type="button" class="btn btn-primary mr-3">Approved</button>
+                  <button type="button" class="btn btn-danger" data-toggle="modal"
+                    data-target="#reasonmodal">Reject</button>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 m-b-30">
+                <a class="card d-block" routerLink="/users/view-user">
+                  <div class="text-center">
+                    <div class="both_content">
+                      <div class="text-success">
+                        <div class="avatar avatar-sm">
+                          <figure>
+                            <img src="assets/img/ngn.png" alt="">
+                          </figure>
                         </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card" style="box-shadow: none;">
-                                    <div class="card-header">
-                                        <h5 class="m-0">Documents</h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card m-b-30" style="box-shadow: none;">
-                                    <div class="card-body">
-                                        <div class="select_option d-flex justify-content-start">
-                                            <figure class="mr-3">
-                                                <img src="assets/img/ngn.png" alt="">
-                                            </figure>
-                                            <figure class="mr-3">
-                                                <img src="assets/img/ngn.png" alt="">
-                                            </figure>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card m-b-30" style="box-shadow: none;">
-                                    <div class="card-body">
-                                        <div class="select_option d-flex justify-content-end">
-                                            <select name="" id="">
-                                              <option value="">Withdraw</option>
-                                              <option value="">Deposit</option>
-                                              <option value="">Sell</option>
-                                              <option value="">Buy</option>
-                                          </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 mb-3">
-                                <div class="buttons d-flex justify-content-end">
-                                    <button type="button" class="btn btn-primary mr-3">Approved</button>
-                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#reasonmodal">Reject</button>
-                                </div>
-                            </div>
+                      </div>
+                      <div class="text_detail">
+                        <div class="text-right">
+                          <h6 class="mt-2 mb-2">NGN/Local </h6>
                         </div>
-                        <div class="row">
-                            <div class="col-md-3 m-b-30">
-                                <a class="card d-block" routerLink="/users/view-user">
-                                    <div class="text-center">
-                                        <div class="both_content">
-                                            <div class="text-success">
-                                                <div class="avatar avatar-sm">
-                                                    <figure>
-                                                        <img src="assets/img/ngn.png" alt="">
-                                                    </figure>
-                                                </div>
-                                            </div>
-                                            <div class="text_detail">
-                                                <div class="text-right">
-                                                    <h6 class="mt-2 mb-2">NGN/Local </h6>
-                                                </div>
-                                                <div class="text-overline">
-                                                    <strong>Balance : </strong>
-                                                    <span>$250,333</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-3 m-b-30">
-                                <div class="card">
-                                    <div class="text-center">
-                                        <div class="both_content">
-                                            <div class="text-success">
-                                                <div class="avatar avatar-sm">
-                                                    <figure>
-                                                        <img src="assets/img/bitcoin.png" alt="">
-                                                    </figure>
-                                                </div>
-                                            </div>
-                                            <div class="text_detail">
-                                                <div class="text-right">
-                                                    <h6 class="mt-2 mb-2">BTC/Bitcoin </h6>
-                                                </div>
-                                                <div class="text-overline">
-                                                    <strong>Balance : </strong>
-                                                    <span>$250,333</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 m-b-30">
-                                <div class="card">
-                                    <div class="text-center">
-                                        <div class="both_content">
-                                            <div class="text-success">
-                                                <div class="avatar avatar-sm">
-                                                    <figure>
-                                                        <img src="assets/img/eth.png" alt="">
-                                                    </figure>
-                                                </div>
-                                            </div>
-                                            <div class="text_detail">
-                                                <div class="text-right">
-                                                    <h6 class="mt-2 mb-2">ETH/Etherium </h6>
-                                                </div>
-                                                <div class="text-overline">
-                                                    <strong>Balance : </strong>
-                                                    <span>$250,333</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 m-b-30">
-                                <div class="card">
-                                    <div class="text-center">
-                                        <div class="both_content">
-                                            <div class="text-success">
-                                                <div class="avatar avatar-sm">
-                                                    <figure>
-                                                        <img src="assets/img/usdta.png" alt="">
-                                                    </figure>
-                                                </div>
-                                            </div>
-                                            <div class="text_detail">
-                                                <div class="text-right">
-                                                    <h6 class="mt-2 mb-2">USDT/ERC20 </h6>
-                                                </div>
-                                                <div class="text-overline">
-                                                    <strong>Balance : </strong>
-                                                    <span>$250,333</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 m-b-30">
-                                <div class="card">
-                                    <div class="text-center">
-                                        <div class="both_content">
-                                            <div class="text-success">
-                                                <div class="avatar avatar-sm">
-                                                    <figure>
-                                                        <img src="assets/img/xrp.png" alt="">
-                                                    </figure>
-                                                </div>
-                                            </div>
-                                            <div class="text_detail">
-                                                <div class="text-right">
-                                                    <h6 class="mt-2 mb-2">XRP </h6>
-                                                </div>
-                                                <div class="text-overline">
-                                                    <strong>Balance : </strong>
-                                                    <span>$250,333</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 m-b-30">
-                                <div class="card">
-                                    <div class="text-center">
-                                        <div class="both_content">
-                                            <div class="text-success">
-                                                <div class="avatar avatar-sm">
-                                                    <figure>
-                                                        <img src="assets/img/xlm.png" alt="">
-                                                    </figure>
-                                                </div>
-                                            </div>
-                                            <div class="text_detail">
-                                                <div class="text-right">
-                                                    <h6 class="mt-2 mb-2">XLM </h6>
-                                                </div>
-                                                <div class="text-overline">
-                                                    <strong>Balance : </strong>
-                                                    <span>$250,333</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 m-b-30">
-                                <div class="card">
-                                    <div class="text-center">
-                                        <div class="both_content">
-                                            <div class="text-success">
-                                                <div class="avatar avatar-sm">
-                                                    <figure>
-                                                        <img src="assets/img/tron.png" alt="">
-                                                    </figure>
-                                                </div>
-                                            </div>
-                                            <div class="text_detail">
-                                                <div class="text-right">
-                                                    <h6 class="mt-2 mb-2">TRON </h6>
-                                                </div>
-                                                <div class="text-overline">
-                                                    <strong>Balance : </strong>
-                                                    <span>$250,333</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="text-overline">
+                          <strong>Balance : </strong>
+                          <span>$250,333</span>
                         </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card m-b-30">
-                                    <div class="card-header seachbar">
-                                        <h5>Transactions</h5>
-                                        <div class="form-group col-md-4 pl-0 pr-0 mb-0">
-                                            <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-                                            <div class="search-ic">
-                                                <i class="mdi mdi-magnify"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="table-responsive">
-                                            <table class="table table-hover ">
-                                                <thead>
-                                                    <tr>
-                                                        <th>#</th>
-                                                        <th>Image</th>
-                                                        <th>ID</th>
-                                                        <th>Currency</th>
-                                                        <th>Bank</th>
-                                                        <th>Date</th>
-                                                        <th>Quantity</th>
-                                                        <th>Transaction</th>
-                                                        <th>Status</th>
-                                                        <th>Buy</th>
-                                                        <th>Sell</th>
-                                                        <th>Trend</th>
-                                                        <!-- <th class="text-center">Action</th> -->
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>
-                                                            <div class="avatar avatar-sm ">
-                                                                <img src="assets/img/ngn.png" class="avatar-img avatar-sm rounded-circle" alt="">
-                                                            </div>
-                                                        </td>
-                                                        <td>258963</td>
-                                                        <td>BTC/Bitcoin</td>
-                                                        <td>Citi Bank</td>
-                                                        <td>June 23, 2021 8:00 AM</td>
-                                                        <td>10</td>
-                                                        <td>
-                                                            <p class="bg-success m-0 text-center">Sell</p>
-                                                        </td>
-                                                        <td>
-                                                            <p class="text-success">Success</p>
-                                                        </td>
-                                                        <td>$76,98</td>
-                                                        <td>$76,98</td>
-                                                        <td>
-                                                            <i class="text-success mdi mdi-menu-down"></i>
-                                                            <span class="text-success">0.20%</span>
-                                                        </td>
-                                                        <!-- <td>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="col-md-3 m-b-30">
+                <div class="card">
+                  <div class="text-center">
+                    <div class="both_content">
+                      <div class="text-success">
+                        <div class="avatar avatar-sm">
+                          <figure>
+                            <img src="assets/img/bitcoin.png" alt="">
+                          </figure>
+                        </div>
+                      </div>
+                      <div class="text_detail">
+                        <div class="text-right">
+                          <h6 class="mt-2 mb-2">BTC/Bitcoin </h6>
+                        </div>
+                        <div class="text-overline">
+                          <strong>Balance : </strong>
+                          <span>$250,333</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 m-b-30">
+                <div class="card">
+                  <div class="text-center">
+                    <div class="both_content">
+                      <div class="text-success">
+                        <div class="avatar avatar-sm">
+                          <figure>
+                            <img src="assets/img/eth.png" alt="">
+                          </figure>
+                        </div>
+                      </div>
+                      <div class="text_detail">
+                        <div class="text-right">
+                          <h6 class="mt-2 mb-2">ETH/Etherium </h6>
+                        </div>
+                        <div class="text-overline">
+                          <strong>Balance : </strong>
+                          <span>$250,333</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 m-b-30">
+                <div class="card">
+                  <div class="text-center">
+                    <div class="both_content">
+                      <div class="text-success">
+                        <div class="avatar avatar-sm">
+                          <figure>
+                            <img src="assets/img/usdta.png" alt="">
+                          </figure>
+                        </div>
+                      </div>
+                      <div class="text_detail">
+                        <div class="text-right">
+                          <h6 class="mt-2 mb-2">USDT/ERC20 </h6>
+                        </div>
+                        <div class="text-overline">
+                          <strong>Balance : </strong>
+                          <span>$250,333</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 m-b-30">
+                <div class="card">
+                  <div class="text-center">
+                    <div class="both_content">
+                      <div class="text-success">
+                        <div class="avatar avatar-sm">
+                          <figure>
+                            <img src="assets/img/xrp.png" alt="">
+                          </figure>
+                        </div>
+                      </div>
+                      <div class="text_detail">
+                        <div class="text-right">
+                          <h6 class="mt-2 mb-2">XRP </h6>
+                        </div>
+                        <div class="text-overline">
+                          <strong>Balance : </strong>
+                          <span>$250,333</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 m-b-30">
+                <div class="card">
+                  <div class="text-center">
+                    <div class="both_content">
+                      <div class="text-success">
+                        <div class="avatar avatar-sm">
+                          <figure>
+                            <img src="assets/img/xlm.png" alt="">
+                          </figure>
+                        </div>
+                      </div>
+                      <div class="text_detail">
+                        <div class="text-right">
+                          <h6 class="mt-2 mb-2">XLM </h6>
+                        </div>
+                        <div class="text-overline">
+                          <strong>Balance : </strong>
+                          <span>$250,333</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 m-b-30">
+                <div class="card">
+                  <div class="text-center">
+                    <div class="both_content">
+                      <div class="text-success">
+                        <div class="avatar avatar-sm">
+                          <figure>
+                            <img src="assets/img/tron.png" alt="">
+                          </figure>
+                        </div>
+                      </div>
+                      <div class="text_detail">
+                        <div class="text-right">
+                          <h6 class="mt-2 mb-2">TRON </h6>
+                        </div>
+                        <div class="text-overline">
+                          <strong>Balance : </strong>
+                          <span>$250,333</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card m-b-30">
+                  <div class="card-header seachbar">
+                    <h5>Transactions</h5>
+                    <div class="form-group col-md-4 pl-0 pr-0 mb-0">
+                      <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                      <div class="search-ic">
+                        <i class="mdi mdi-magnify"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table table-hover ">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>Image</th>
+                            <th>ID</th>
+                            <th>Currency</th>
+                            <th>Bank</th>
+                            <th>Date</th>
+                            <th>Quantity</th>
+                            <th>Transaction</th>
+                            <th>Status</th>
+                            <th>Buy</th>
+                            <th>Sell</th>
+                            <th>Trend</th>
+                            <!-- <th class="text-center">Action</th> -->
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>1</td>
+                            <td>
+                              <div class="avatar avatar-sm ">
+                                <img src="assets/img/ngn.png" class="avatar-img avatar-sm rounded-circle" alt="">
+                              </div>
+                            </td>
+                            <td>258963</td>
+                            <td>BTC/Bitcoin</td>
+                            <td>Citi Bank</td>
+                            <td>June 23, 2021 8:00 AM</td>
+                            <td>10</td>
+                            <td>
+                              <p class="bg-success m-0 text-center">Sell</p>
+                            </td>
+                            <td>
+                              <p class="text-success">Success</p>
+                            </td>
+                            <td>$76,98</td>
+                            <td>$76,98</td>
+                            <td>
+                              <i class="text-success mdi mdi-menu-down"></i>
+                              <span class="text-success">0.20%</span>
+                            </td>
+                            <!-- <td>
                                                             <ul class="action">
                                                                 <li><a href="wallet.html"><i class="mdi mdi-wallet"
                                                                             title="Wallet"></i></a></li>
@@ -358,44 +356,45 @@
                                                                 <li><i class="mdi mdi-delete" title="Delete"></i></li>
                                                             </ul>
                                                         </td> -->
-                                                    </tr>
+                          </tr>
 
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        </tbody>
+                      </table>
                     </div>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <!-- Modal -->
-<div class="modal fade reasonmodal" id="reasonmodal" tabindex="-1" role="dialog" aria-labelledby="reasonmodalTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Reason</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-row">
-                    <div class="col-md-12">
-                        <label for="">Reason</label>
-                        <input type="text" class="form-control">
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Reject</button> -->
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
-            </div>
+<div class="modal fade reasonmodal" id="reasonmodal" tabindex="-1" role="dialog" aria-labelledby="reasonmodalTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Reason</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-row">
+          <div class="col-md-12">
+            <label for="">Reason</label>
+            <input type="text" class="form-control">
+          </div>
         </div>
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Reject</button> -->
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+      </div>
     </div>
+  </div>
 </div>

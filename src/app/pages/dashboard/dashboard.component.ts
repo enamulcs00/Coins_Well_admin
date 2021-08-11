@@ -24,28 +24,48 @@ export class DashboardComponent implements OnInit {
    this.comn_.get(urls.getDashboard).subscribe(res=>{
      this.items=res.data;
    });
-   this.comn_.get(urls.getRevenueGraph).subscribe(res=>{
-    this.revenueItems=res.data.map((row)=>{
-      return { label : row.date ,y : row.count }
-    });
-    this.getRevenueChart();
-  });
-  this.comn_.get(urls.getOrderGraph).subscribe(res=>{
-    console.log(res);
-    this.orderItems=res.data.map((row)=>{
-      return { label : row.date ,y : row.count }
-    });
-    this.getOrderChart();
-  });
-  this.comn_.get(urls.getNewOrderGraph).subscribe(res=>{
-    console.log(res);
-    this.newOrderItems=res.data.map((row)=>{
-      return { label : row.date ,y : row.count }
-    });
-    this.getNewOrderChart();
-  });
+   
+  this.getNewOrderGraph(2);
+  this.getRevenueGraph(2);
+  this.getOrderGraph(2);
+  
   }
   
+  getRevenueGraph(key)
+  {
+    let body={"filter_type":key}
+    this.comn_.post(urls.getRevenueGraph,body).subscribe(res=>{
+      this.revenueItems=res.data.map((row)=>{
+        return { label : row.date ,y : row.count }
+      });
+      this.getRevenueChart();
+    });
+  }
+
+  getOrderGraph(key)
+  {
+    let body={"filter_type":key}
+    this.comn_.post(urls.getOrderGraph,body).subscribe(res=>{
+      console.log(res);
+      this.orderItems=res.data.map((row)=>{
+        return { label : row.date ,y : row.count }
+      });
+      this.getOrderChart();
+    });
+  }
+  
+  getNewOrderGraph(key)
+  {
+    let body={"filter_type":key}
+    this.comn_.post(urls.getNewOrderGraph,body).subscribe(res=>{
+      console.log(res);
+      this.newOrderItems=res.data.map((row)=>{
+        return { label : row.date ,y : row.count }
+      });
+      this.getNewOrderChart();
+    });
+  }
+
   getRevenueChart()
   {
     let chart = new CanvasJS.Chart("chartRevenue",{

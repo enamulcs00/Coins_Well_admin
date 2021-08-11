@@ -55,9 +55,9 @@ export class TableContentComponent implements OnInit {
 			"regex": false
 		}
 	};
-	
-	baseUrl : string = environment.homeURL;
-	constructor(private _common: CommonService,private toastr:ToastrService,private route:Router) {
+
+	baseUrl: string = environment.homeURL;
+	constructor(private _common: CommonService, private toastr: ToastrService, private route: Router) {
 		this.page.pageNumber = 0;
 		this.page.size = 20;
 	}
@@ -70,8 +70,8 @@ export class TableContentComponent implements OnInit {
 			})
 		})
 	}
-    
-    // ChangeStatus(row)
+
+	// ChangeStatus(row)
 	// {
 	// 	const callAPI  = (param : any) => {
 	// 		this._common.put(`${urls.changeStatus}${row.id}/`,param).subscribe((res)=>{
@@ -88,61 +88,64 @@ export class TableContentComponent implements OnInit {
 	// 			}
 	// 		})
 	// }
-     
-    navigate(id)
+
+	navigate(id, key) 
 	{
-    this.route.navigate(['users/edit'],{queryParams:{id:id}});
+		if (key == 1) {
+			this.route.navigate(['users/edit'], { queryParams: { id: id } });
+		}
+		else {
+			this.route.navigate(['users/view'], { queryParams: { id: id } });
+		}
 	}
 
-    deleteUser(row)
-	{
-		const callAPI  = () => {
-			this._common.delete(`${urls.deleteUser}${row.id}/`).subscribe((res)=>{
-				this.toastr.success(res.message,"Success",{timeOut:1050})
+	deleteUser(row) {
+		const callAPI = () => {
+			this._common.delete(`${urls.deleteUser}${row.id}/`).subscribe((res) => {
+				this.toastr.success(res.message, "Success", { timeOut: 1050 })
 			});
 		}
 		this._common.confirm("Confirm", "Do you want to  Delete user ?").subscribe(res => {
-			if(res) {
+			if (res) {
 				callAPI();
-				} else {
-				}
-			})
+			} else {
+			}
+		})
 	}
 
-    changeFlag(row)
-	{
-		const callAPI  = (param : any) => {
-			this._common.put(`${urls.changeFlag}${row.id}/`,param).subscribe((res)=>{
-				this.toastr.success(res.message,"Success",{timeOut:1050})
+	changeFlag(row) {
+		const callAPI = (param: any) => {
+			this._common.put(`${urls.changeFlag}${row.id}/`, param).subscribe((res) => {
+				this.toastr.success(res.message, "Success", { timeOut: 1050 })
 			});
 		}
-		this._common.confirm("Confirm", "Do you want to "+((row.flag)?'flag':'unflag')+" selected user ?").subscribe(res => {
-			if(res) {
-					if(row.flag) {
-						//reason popup open here
-						this._common.reasonConfirm("Reject Reason", "").subscribe((x : any) => {
-							console.log(x);
-							if(x) {
-								//Simple API call here with descripition
-								callAPI({
-									flag : row.flag,
-									description : x
-								});
-							} else {
-								row.flag = !row.flag;
-							}
-						})
-					} else {
-						callAPI({
-							flag : row.flag
-						});
-						//simple API call here
-					}
-					//Reject API call here
+		this._common.confirm("Confirm", "Do you want to " + ((row.flag) ? 'flag' : 'unflag') + " selected user ?").subscribe(res => {
+			if (res) {
+				if (row.flag) {
+					//reason popup open here
+					this._common.reasonConfirm("Reject Reason", "").subscribe((x: any) => {
+						console.log(x);
+						if (x) {
+							//Simple API call here with descripition
+							callAPI({
+								flag: row.flag,
+								description: x
+							});
+						} else {
+							row.flag = !row.flag;
+						}
+					})
 				} else {
-					row.flag = !row.flag;
+					callAPI({
+						flag: row.flag
+					});
+					//simple API call here
 				}
-			})
+				//Reject API call here
+			} else {
+				row.flag = !row.flag;
+			}
+		})
 	}
 
 	documentModal() {
@@ -155,16 +158,14 @@ export class TableContentComponent implements OnInit {
 		})
 	}
 
-	reasonModal()
-	{
+	reasonModal() {
 		this._common.reasonConfirm("Reject Reason", "").subscribe(x => {
 		})
 	}
-    
-	userModal(ig)
-	{
-		this._common.userConfirm("User Picture",ig).subscribe(x=>{
-			
+
+	userModal(ig) {
+		this._common.userConfirm("User Picture", ig).subscribe(x => {
+
 		})
 	}
 
