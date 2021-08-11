@@ -24,10 +24,10 @@ import { ChatComponent } from './chat/chat.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxMatIntlTelInputModule } from '../ngx-input-tel'
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
-import { MaterialExtensionsExperimentalModule, MaterialExtensionsModule } from '@ng-matero/extensions';
 import { FaqTemplateComponent } from '../components/faq-template/faq-template.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { MaterialExtensionsExperimentalModule, MaterialExtensionsModule } from '@ng-matero/extensions';
 @NgModule({
 	declarations: [
 		PagesComponent, 
@@ -61,7 +61,12 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 		MaterialExtensionsModule,
 		MaterialExtensionsExperimentalModule,
 		MatPaginatorModule,
-		MatTooltipModule
+		MatTooltipModule,
+		MatPaginatorModule
+	],
+	exports:[
+		MaterialExtensionsExperimentalModule,
+		MaterialExtensionsModule,
 	]
 })
 export class PagesModule { }

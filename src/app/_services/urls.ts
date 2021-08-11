@@ -16,7 +16,6 @@ export const urls = {
     updateUserById:'admin/update-user-by-id/',
     searchBank:"admin/search-bank/",
     adminbakDetails:"admin/add-update-bank-details/",
-
     getDashboard:'admin/get-admin-dashboard-counts/',
     getRevenueGraph:'admin/get-total-revenue-graph/',
     getOrderGraph:'admin/get-total-orders-graph/',
@@ -27,5 +26,5 @@ export const urls = {
     deleteAmountHistory:'admin/delete-referal-amount-history/',
     getUserReferHistory:'admin/get-user-refer-history/',
     getWalletAddress:'admin/get-wallet-addresses/',
-    updateWalletAddress:'admin/update-wallet-address/'
+    updateWalletAddress:'admin/update-wallet-address/',
 };

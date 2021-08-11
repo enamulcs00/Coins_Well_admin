@@ -30,11 +30,7 @@ export class WalletAddressComponent implements OnInit {
     });
   }
    
-  NumOnly(event) {
-    let Numpattern = /^([0-9])*$/;
-    let resultNum =    Numpattern.test(event.key);
-    return  resultNum;
-   }
+  
 
   add(){ 
     this.asset = this.walletForm.get('asset') as FormArray;
@@ -48,6 +44,8 @@ export class WalletAddressComponent implements OnInit {
   
     getWalletAddress()
   {
+    this.name=[];
+    this.id=[];
   this.comn_.get(urls.getWalletAddress).subscribe(res=>{
     console.log(res);
   for(let i=0;i<res.data.length;i++)
@@ -60,7 +58,7 @@ export class WalletAddressComponent implements OnInit {
   this.id.push(res["data"][i]['id']);
   this.getWallet().controls[i]["controls"].address.setValue(res["data"][i].address);
   }
-  })
+  });
   }
 
   updateForm(id)
@@ -69,7 +67,7 @@ export class WalletAddressComponent implements OnInit {
       asset:this.name[id],
       address:this.getWallet().controls[id]['value'].address,
   }
-  console.log(body,id,this.id[id]);
+  console.log(body,this.id[id]);
   this.comn_.put(urls.updateWalletAddress+this.id[id]+"/",body).subscribe(res=>{
     if(res.code==200)
     {
