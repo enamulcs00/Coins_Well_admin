@@ -51,6 +51,8 @@ export class RateChangeComponent implements OnInit {
 
   getAllRateChange()
   {
+    this.name=[];
+    this.id=[];
   this.comn_.get(urls.getAllCurrency).subscribe(res=>{
     console.log(res.data);
   for(let i=0;i<res.data.length;i++)
