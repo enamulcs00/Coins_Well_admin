@@ -1,3 +1,4 @@
+import { AuthGuard } from './_gurads/auth.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MaterialModule } from './material/material.module';
@@ -7,7 +8,8 @@ const routes: Routes = [
 
 	{
 		path: '',
-		loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)
+		loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule),
+		canActivate : [AuthGuard]
 	},
 	{
 		path: 'core',

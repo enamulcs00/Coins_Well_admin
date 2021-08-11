@@ -36,7 +36,7 @@ const routes: Routes = [
 		component: PagesComponent,
 		children: [
 			{
-				path: 'dashboard',canActivate : [LoggedGuard],
+				path: 'dashboard',canActivate : [],
 				component: DashboardComponent
 			},
 			{
