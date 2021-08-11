@@ -28,7 +28,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 		DocumentsComponent,
 		FvComponent,
 		ReasonComponent,
-		UserComponent
+		UserComponent,
 	],
 	imports: [
 		BrowserModule,

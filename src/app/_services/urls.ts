@@ -27,4 +27,5 @@ export const urls = {
     getUserReferHistory:'admin/get-user-refer-history/',
     getWalletAddress:'admin/get-wallet-addresses/',
     updateWalletAddress:'admin/update-wallet-address/',
+    getNotification:'admin/get-user-first-name/'
 };

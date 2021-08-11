@@ -90,7 +90,8 @@ export class AddUserComponent implements OnInit {
   {
     if(this.userForm.valid)
     {
-
+      if(this.userPic){
+        if(this.userDoc){
       let body={
         first_name:this.userForm.value.first_name,
         last_name:this.userForm.value.last_name,
@@ -119,7 +120,18 @@ export class AddUserComponent implements OnInit {
           this.toaster.error(res.message,"Error",{timeOut:1050});
         }
       });
-      
+    }
+    else
+    {
+      this.toaster.error("Select Document","Error",{timeOut:2000});
+    }
+    }
+    else
+    {
+      this.toaster.error("Select User Image","Error",{timeOut:2000});
+    }
+    } else {
+      this.userForm.markAllAsTouched();
     }
   }
 

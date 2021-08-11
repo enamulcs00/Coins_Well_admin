@@ -27,8 +27,7 @@ export class EditUserComponent implements OnInit {
       street:['',[Validators.required]],
       document:[''],
       email:['',[Validators.required,Validators.email]],
-      password:[''],
-      cash:['',[Validators.required,Validators.pattern(/^([0-9])*$/)]]
+      password:['']
     });    
   }
   
@@ -51,7 +50,6 @@ export class EditUserComponent implements OnInit {
       this.editUserForm.controls.email.setValue(res?.data?.email);
       this.editUserForm.controls.building_no.setValue(res?.data?.building_no);
       this.editUserForm.controls.zone.setValue(res?.data?.zone);
-      this.editUserForm.controls.cash.setValue(res?.data?.cash);
       this.editUserForm.controls.street.setValue(res?.data?.street);
       this.editUserForm.controls.document.setValue(res?.data?.user_documents[0]?.document);
       this.imageUrl=environment.imgBaseUrl+res.data.image.media_file;
@@ -125,7 +123,6 @@ export class EditUserComponent implements OnInit {
         building_no:this.editUserForm.value.building_no,
         zone:this.editUserForm.value.zone,
         email:this.editUserForm.value.email,
-        cash:this.editUserForm.value.cash,
         street:this.editUserForm.value.street,
       };
       if(this.editUserForm.value.document!=""){
@@ -158,6 +155,10 @@ export class EditUserComponent implements OnInit {
         }
       });
       
+    }
+    else
+    {
+      this.editUserForm.markAllAsTouched();
     }
   }
 

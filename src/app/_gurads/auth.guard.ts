@@ -12,7 +12,7 @@ export class AuthGuard implements CanActivate {
         if((userInfo != null)) {
             return true;
         } else {
-            this.router.navigate(['/login']);
+            this.router.navigate(['/auth/login']);
             this._noti.show("error", "Please login to continue.", "Login")
         }
     }

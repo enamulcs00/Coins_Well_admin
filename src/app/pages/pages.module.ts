@@ -1,3 +1,4 @@
+import { NotificationTableComponent } from '././manage-notification/notification-table/notification-table.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -48,7 +49,8 @@ import { MaterialExtensionsExperimentalModule, MaterialExtensionsModule } from '
 		EditBankComponent, 
 		AddNotificationComponent, 
 		ChatComponent,
-		FaqTemplateComponent
+		FaqTemplateComponent,
+		NotificationTableComponent
 	],
 	imports: [
 		CommonModule,

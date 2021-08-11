@@ -71,23 +71,7 @@ export class TableContentComponent implements OnInit {
 		})
 	}
 
-	// ChangeStatus(row)
-	// {
-	// 	const callAPI  = (param : any) => {
-	// 		this._common.put(`${urls.changeStatus}${row.id}/`,param).subscribe((res)=>{
-	// 			this.toastr.success(res.message,"Success",{timeOut:1050})
-	// 		});
-	// 	}
-	// 	this._common.confirm("Confirm", "Do you want to  Change Status ?").subscribe(res => {
-	// 		if(res) {
-	// 					//reason popup open here
-	// 					callAPI({action:row.status});
-	// 				//Reject API call here
-	// 			} else {
-	// 				row.flag = !row.flag;
-	// 			}
-	// 		})
-	// }
+	
 
 	navigate(id, key) 
 	{
@@ -102,7 +86,10 @@ export class TableContentComponent implements OnInit {
 	deleteUser(row) {
 		const callAPI = () => {
 			this._common.delete(`${urls.deleteUser}${row.id}/`).subscribe((res) => {
-				this.toastr.success(res.message, "Success", { timeOut: 1050 })
+				this.toastr.success(res.message, "Success", { timeOut: 1050 });
+				this.setPage({
+					offset : this.page.pageNumber
+				})
 			});
 		}
 		this._common.confirm("Confirm", "Do you want to  Delete user ?").subscribe(res => {

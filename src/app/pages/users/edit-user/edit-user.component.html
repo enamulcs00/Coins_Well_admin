@@ -31,7 +31,7 @@
                 <div class="form-group col-md-6">
                   <mat-form-field class="row col-12" appearance="outline">
                     <mat-label for="first_name">First Name</mat-label>
-                    <input matInput type="text" class="form-control" formControlName="first_name" id="first_name">
+                    <input matInput type="text" #space (keydown.space)="!space.value?$event.preventDefault():null" class="form-control" formControlName="first_name" id="first_name">
                     <mat-error
                       *ngIf="editUserForm.controls.first_name.touched && editUserForm.controls.first_name.hasError('required')">
                       First Name Required! </mat-error>
@@ -43,7 +43,7 @@
                 <div class="form-group col-md-6">
                   <mat-form-field class="row col-12" appearance="outline">
                     <mat-label for="last_name">Last Name</mat-label>
-                    <input matInput type="text" class="form-control" formControlName="last_name" id="last_name">
+                    <input matInput type="text" class="form-control" #spac (keydown.space)="!spac.value?$event.preventDefault():null" formControlName="last_name" id="last_name">
                     <mat-error
                       *ngIf="editUserForm.controls.last_name.touched && editUserForm.controls.last_name.hasError('required')">
                       last Name Required! </mat-error>
@@ -95,7 +95,7 @@
                   <mat-form-field class="row col-12" appearance="outline">
 
                     <mat-label for="street">Street</mat-label>
-                    <input type="text" matInput class="form-control" formControlName="street" id="street">
+                    <input type="text" #spa (keydown.space)="!spa.value?$event.preventDefault():null" matInput class="form-control" formControlName="street" id="street">
                     <mat-error
                       *ngIf="editUserForm.controls.street.touched && editUserForm.controls.street.hasError('required')">
                       Street Required! </mat-error>
@@ -105,23 +105,10 @@
                   <mat-form-field class="row col-12" appearance="outline">
 
                     <mat-label for="zone">Zone</mat-label>
-                    <input type="text" matInput class="form-control" formControlName="zone" id="zone">
+                    <input type="text" #sp (keydown.space)="!sp.value?$event.preventDefault():null" matInput class="form-control" formControlName="zone" id="zone">
                     <mat-error
                       *ngIf="editUserForm.controls.zone.touched && editUserForm.controls.zone.hasError('required')">
                       Zone Required! </mat-error>
-                  </mat-form-field>
-                </div>
-                <div class="form-group col-md-6">
-                  <mat-form-field class="row col-12" appearance="outline">
-
-                    <mat-label for="inputZip">Add Cash</mat-label>
-                    <input type="text" matInput formControlName="cash" class="form-control" id="">
-                    <mat-error
-                      *ngIf="editUserForm.controls.cash.touched && editUserForm.controls.cash.hasError('required')">
-                      Cash Required! </mat-error>
-                    <mat-error
-                      *ngIf="editUserForm.controls.cash.touched && editUserForm.controls.cash.hasError('pattern')"> Cash
-                      invalid! </mat-error>
                   </mat-form-field>
                 </div>
                 <div class="form-group col-md-6">

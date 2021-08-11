@@ -41,30 +41,11 @@
                                 <input type="text" class="form-control" id="inputAddress" placeholder="">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="inputAddress">Select User</label>
-                                <dl class="dropdown">
-
-                                    <dt>
-                                    <a href="#">
-                                      <span class="hida">Select</span>    
-                                      <p class="multiSel"></p>  
-                                    </a>
-                                    </dt>
-                                    <dd>
-                                        <div class="mutliSelect">
-                                            <ul>
-                                                <li>
-                                                    <input type="checkbox" value="All User" />All User</li>
-                                                <li>
-                                                    <input type="checkbox" value="Naina" />Naina</li>
-                                                <li>
-                                                    <input type="checkbox" value="Ahmed" />Ahmed</li>
-                                                <li>
-                                                    <input type="checkbox" value="Anshu" />Anshu</li>
-                                            </ul>
-                                        </div>
-                                    </dd>
-                                </dl>
+                                <label for="">Select User</label>
+                                <mat-select name="" id="" class="form-control" (selectionChange)="selectUser($event)" multiple>
+                                    <mat-option >All User</mat-option>
+                                    <mat-option [value]="item.id" *ngFor="let item of notiItems">{{item.first_name}} {{item.last_name}}</mat-option>
+                                </mat-select>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputAddress2">Message</label>
