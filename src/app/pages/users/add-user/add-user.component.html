@@ -94,6 +94,9 @@
                     <mat-error
                       *ngIf="userForm.controls.phone_number.touched && userForm.controls.phone_number.hasError('pattern')">
                       Phone Number invalid! </mat-error>
+                      <mat-error
+                      *ngIf="userForm.controls.phone_number.touched && userForm.controls.phone_number.hasError('maxlength') && userForm.controls.phone_number.hasError('minlength')">
+                      Phone Number Character Length (7-15)! </mat-error>
                   </mat-form-field>
                 </div>
                 <div class="form-group col-md-6">
