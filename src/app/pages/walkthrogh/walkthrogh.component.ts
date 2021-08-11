@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { TooltipPosition } from '@ng-matero/extensions';
 import { CommonService } from 'src/app/_services/common.service';
 import { NotificationsService } from 'src/app/_services/notifications.service';
-import { urls } from 'src/app/_services/urls';
+
 import { environment } from 'src/environments/environment';
 declare var $:any
 @Component({
@@ -26,14 +26,13 @@ imgUrl=environment.homeURL
   files: any;
   isLoading: boolean;
   IsAdd:boolean = false
-  
   Id: any;
-  constructor(private service: CommonService, private router: Router, private _noti: NotificationsService,private fb:FormBuilder) { }
+  constructor(private service: CommonService, private _noti: NotificationsService,private fb:FormBuilder) { }
 ngOnInit(): void {
   this.GetWalthroughData()
   this.SplashUpdateForm = this.fb.group({
-    title:['',Validators.required],
-    description:['',Validators.required],
+    title:['',[Validators.required,Validators.maxLength(50)]],
+    description:['',[Validators.required,Validators.maxLength(50)]],
  })
 }
 Openmodal(){
@@ -149,22 +148,5 @@ AddFn() {
     this.isLoading = false
   })
 }
-Delete(id) {
-  this._noti.confirm('Delete!', 'Do you want to delete ?').subscribe((x) => {
-    if (x) {
-      this.service
-        .delete(`admin/delete-bank-by-pk/${id}/`)
-        .subscribe((res: any) => {
-          if (res.code == 200) {
-            this.ngOnInit();
-            this._noti.show(
-              'success',
-              'Splash screen deleted successfully.',
-              'Success!'
-            );
-          }
-        });
-    }
-  });
-}
+
 }

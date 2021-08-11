@@ -64,11 +64,11 @@
                                                                         <!-- <li><a href="viewuser.html" class="btn btn-primary"><i class="mdi mdi-eye-settings" title="View"></i></a></li> -->
                                                                         <li><a class="btn btn-primary" data-toggle="modal" (click)="UpdateSplash(item)"><i class="mdi mdi-pen"
                                                                                     title="Edit"></i></a></li>
-                                                                        <li>
+                                                                        <!-- <li>
                                                                             <a  class="btn btn-danger" (click)=" Delete(item?.id)">
                                                                                 <i class="mdi mdi-delete" title="Delete"></i>
                                                                             </a>
-                                                                        </li>
+                                                                        </li> -->
                                                                     </ul>
                                                                 </td>
                                                             </tr>
@@ -194,6 +194,10 @@
                         *ngIf="SplashUpdateForm.get('title').hasError('required')">
                         Please enter title.
                     </mat-error>
+                    <mat-error
+                        *ngIf="SplashUpdateForm.get('title').hasError('maxlength')">
+                        Maxlength should 50.
+                    </mat-error>
                     </mat-form-field>
                     </div>
                     <div class="form-group col-md-6">
@@ -204,6 +208,10 @@
                         *ngIf="SplashUpdateForm.get('description').hasError('required')">
                         Please enter description.
                     </mat-error>
+                    <mat-error
+                    *ngIf="SplashUpdateForm.get('description').hasError('maxlength')">
+                    Maxlength should 50.
+                </mat-error>
                         </mat-form-field>
                     </div>
                 </div>
