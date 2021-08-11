@@ -35,47 +35,50 @@
                 <div class="form-group col-md-6">
                   <mat-form-field class="row col-12" appearance="outline">
                     <mat-label for="first_name">First Name</mat-label>
-                    <input matInput type="text"  formControlName="first_name" id="first_name">
+                    <input matInput type="text" formControlName="first_name" id="first_name">
                     <mat-error
                       *ngIf="userForm.controls.first_name.touched && userForm.controls.first_name.hasError('required')">
                       First Name Required! </mat-error>
-                      <mat-error
+                    <mat-error
                       *ngIf="userForm.controls.first_name.touched && userForm.controls.first_name.hasError('pattern')">
                       First Name invalid! </mat-error>
                   </mat-form-field>
-                  
+
                 </div>
                 <div class="form-group col-md-6">
                   <mat-form-field class="row col-12" appearance="outline">
                     <mat-label for="last_name">Last Name</mat-label>
-                    <input matInput type="text"  formControlName="last_name" id="last_name">
+                    <input matInput type="text" formControlName="last_name" id="last_name">
                     <mat-error
                       *ngIf="userForm.controls.last_name.touched && userForm.controls.last_name.hasError('required')">
                       last Name Required! </mat-error>
-                      <mat-error
+                    <mat-error
                       *ngIf="userForm.controls.last_name.touched && userForm.controls.last_name.hasError('pattern')">
                       Last Name invalid! </mat-error>
                   </mat-form-field>
-                  
+
                 </div>
               </div>
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <mat-form-field class="row col-12" appearance="outline">
                     <mat-label for="password">Password</mat-label>
-                    <input matInput type="password"  formControlName="password" id="password">
+                    <input matInput type="password" formControlName="password" id="password">
                     <mat-error
                       *ngIf="userForm.controls.password.touched && userForm.controls.password.hasError('required')">
                       Password Required! </mat-error>
-                      <mat-error
+                    <mat-error
                       *ngIf="userForm.controls.password.touched && userForm.controls.password.hasError('pattern')">
                       Password invalid! </mat-error>
+                    <mat-error
+                      *ngIf="userForm.controls.password.touched && userForm.controls.password.hasError('minlength')">
+                      Password Min Length 8! </mat-error>
                   </mat-form-field>
                 </div>
                 <div class="form-group col-md-6">
                   <mat-form-field class="row col-12" appearance="outline">
                     <mat-label for="email">Email</mat-label>
-                    <input type="text" matInput  id="email" formControlName="email" placeholder="">
+                    <input type="text" matInput id="email" formControlName="email" placeholder="">
                     <mat-error *ngIf="userForm.controls.email.touched && userForm.controls.email.hasError('required')">
                       Email Required! </mat-error>
                     <mat-error *ngIf="userForm.controls.email.touched && userForm.controls.email.hasError('email')">
@@ -87,22 +90,25 @@
                 <div class="form-group col-md-6">
                   <mat-form-field class="row col-12" appearance="outline">
                     <mat-label for="phone_number">Phone Number</mat-label>
-                    <input type="text" matInput  formControlName="phone_number" id="phone_number">
+                    <input type="text" matInput formControlName="phone_number" id="phone_number">
                     <mat-error
                       *ngIf="userForm.controls.phone_number.touched && userForm.controls.phone_number.hasError('required')">
                       Phone Number Required! </mat-error>
                     <mat-error
                       *ngIf="userForm.controls.phone_number.touched && userForm.controls.phone_number.hasError('pattern')">
                       Phone Number invalid! </mat-error>
-                      <mat-error
-                      *ngIf="userForm.controls.phone_number.touched && userForm.controls.phone_number.hasError('maxlength') && userForm.controls.phone_number.hasError('minlength')">
-                      Phone Number Character Length (7-15)! </mat-error>
+                    <mat-error
+                      *ngIf="userForm.controls.phone_number.touched && userForm.controls.phone_number.hasError('maxlength')">
+                      Phone Number Max Length 15! </mat-error>
+                    <mat-error
+                      *ngIf="userForm.controls.phone_number.touched && userForm.controls.phone_number.hasError('minlength')">
+                      Phone Number Min Length 3! </mat-error>
                   </mat-form-field>
                 </div>
                 <div class="form-group col-md-6">
                   <mat-form-field class="row col-12" appearance="outline">
                     <mat-label for="building_no">Building No</mat-label>
-                    <input type="text" matInput  formControlName="building_no" id="building_no">
+                    <input type="text" matInput formControlName="building_no" id="building_no">
                     <mat-error
                       *ngIf="userForm.controls.building_no.touched && userForm.controls.building_no.hasError('required')">
                       Building No Required! </mat-error>
@@ -113,7 +119,7 @@
                 <div class="form-group col-md-6">
                   <mat-form-field class="row col-12" appearance="outline">
                     <mat-label for="street">Street</mat-label>
-                    <input type="text" matInput  formControlName="street" id="street">
+                    <input type="text" matInput formControlName="street" id="street">
                     <mat-error
                       *ngIf="userForm.controls.street.touched && userForm.controls.street.hasError('required')"> Street
                       Required! </mat-error>
@@ -122,7 +128,7 @@
                 <div class="form-group col-md-6">
                   <mat-form-field class="row col-12" appearance="outline">
                     <mat-label for="zone">Zone</mat-label>
-                    <input type="text" matInput  formControlName="zone" id="zone">
+                    <input type="text" matInput formControlName="zone" id="zone">
                     <mat-error *ngIf="userForm.controls.zone.touched && userForm.controls.zone.hasError('required')">
                       Zone Required! </mat-error>
                   </mat-form-field>
@@ -132,7 +138,7 @@
                 <div class="form-group col-md-6">
                   <mat-form-field class="row col-12" appearance="outline">
                     <mat-label for="inputZip">Add Cash</mat-label>
-                    <input type="text" matInput formControlName="cash"  id="">
+                    <input type="text" matInput formControlName="cash" id="">
                     <mat-error *ngIf="userForm.controls.cash.touched && userForm.controls.cash.hasError('required')">
                       Cash Required! </mat-error>
                     <mat-error *ngIf="userForm.controls.cash.touched && userForm.controls.cash.hasError('pattern')">
@@ -144,8 +150,8 @@
                                 <input type="text" class="form-control" id="">
                             </div> -->
                 <div class="form-group col-md-6">
-                    <mat-label for="inputZip">Attachment</mat-label>
-                     <input type="file"  (change)="onDocumentSelect($event)" class="form-control"   style="height: auto;"> 
+                  <mat-label for="inputZip">Attachment</mat-label>
+                  <input type="file" (change)="onDocumentSelect($event)" class="form-control" style="height: auto;">
                 </div>
               </div>
               <!-- <div class="form-group col-md-6">

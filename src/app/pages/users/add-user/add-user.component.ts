@@ -27,7 +27,7 @@ export class AddUserComponent implements OnInit {
       street:['',[Validators.required]],
       document:[''],
       email:['',[Validators.required,Validators.email]],
-      password:['',[Validators.required,Validators.pattern(new RegExp("\\S"))]],
+      password:['',[Validators.required,Validators.pattern(new RegExp("\\S")),Validators.minLength(8)]],
       cash:['',[Validators.required,Validators.pattern(/^([0-9])*$/)]]
     });
    }
@@ -121,11 +121,6 @@ export class AddUserComponent implements OnInit {
       });
       
     }
-    else
-    {
-      this.toaster.error("Fill all Required Fields!","Error",{timeOut:1050});
-    }
-    
   }
 
 }

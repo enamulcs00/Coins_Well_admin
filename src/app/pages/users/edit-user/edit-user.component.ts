@@ -18,16 +18,16 @@ export class EditUserComponent implements OnInit {
   localId: any;
   constructor(private fb:FormBuilder,private toaster:ToastrService,private commn_:CommonService,private route:ActivatedRoute,private router:Router) { 
     this.editUserForm=this.fb.group({
-      phone_number:['',[Validators.required,Validators.pattern(/^([0-9])*$/)]],
-      first_name:['',[Validators.required]],
-      last_name:['',[Validators.required]],
+      phone_number:['',[Validators.required,Validators.pattern(/^([0-9])*$/),Validators.maxLength(15),Validators.minLength(7)]],
+      first_name:['',[Validators.required,Validators.pattern(new RegExp("\\S"))]],
+      last_name:['',[Validators.required,Validators.pattern(new RegExp("\\S"))]],
       building_no:['',[Validators.required]],
       image:[''],
       zone:['',[Validators.required]],
       street:['',[Validators.required]],
       document:[''],
       email:['',[Validators.required,Validators.email]],
-      password:['',[Validators.required]],
+      password:[''],
       cash:['',[Validators.required,Validators.pattern(/^([0-9])*$/)]]
     });    
   }
@@ -159,11 +159,6 @@ export class EditUserComponent implements OnInit {
       });
       
     }
-    else
-    {
-      this.toaster.error("Fill all Required Fields!","Error",{timeOut:1050});
-    }
-    
   }
 
 }
