@@ -58,30 +58,47 @@
             <div class="tab-content" id="myTabContent1">
               <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                 <div id="summernote"></div>
-                <div class="form-row mt-3">
-                  <div class="form-group col-md-12">
-                    <mat-form-field appearance="outline" class="col-md-12">
-                      <mat-label>Terms & condition</mat-label>
-                      <textarea class="form-control" matInput name="" id="" [(ngModel)]="terms" cols="30"
-                        rows="5"></textarea>
-                    </mat-form-field>
+                <form [formGroup]="termsCondition">
+                  <div class="form-row mt-3">
+                    <div class="form-group col-md-12">
+                      <mat-form-field appearance="outline" class="col-md-12">
+                        <mat-label>Terms & condition</mat-label>
+                        <textarea  matInput name="" id="" formControlName="terms" cols="30"
+                          rows="5" maxlength="250"></textarea>
+                          <mat-error *ngIf="termsCondition.controls['terms'].hasError('required')">
+                            Please enter terms and condition
+                          </mat-error>
+                          <mat-error *ngIf="termsCondition.controls['terms'].hasError('maxlength')">
+                           Maxlength should 250
+                          </mat-error>
+                      </mat-form-field>
+                    </div>
                   </div>
-                </div>
-                <button class="btn btn-primary" (click)="UpdateTerms()">{{isLoading?'Processing':'Save'}}</button>
+                </form>
+                <button class="btn btn-primary" (click)="Terms()">{{isLoading?'Processing':'Save'}}</button>
                 <!-- <h4 class="pt-4 pl-4">Not Data Found</h4> -->
               </div>
               <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                 <div id="summernote"></div>
-                <div class="form-row mt-3">
-                  <div class="form-group col-md-12">
-                    <mat-form-field appearance="outline" class="col-md-12">
-                      <mat-label>Privacy policy</mat-label>
-                      <textarea class="form-control" matInput name="" id="" [(ngModel)]="privacy" cols="30"
-                        rows="5"></textarea>
-                    </mat-form-field>
+                <form [formGroup]="privacyPolicy">
+                  <div class="form-row mt-3">
+                    <div class="form-group col-md-12">
+                      <mat-form-field appearance="outline" class="col-md-12">
+                        <mat-label>Privacy policy</mat-label>
+                        <textarea  matInput name="" id="" formControlName="privacy" cols="30"
+                          rows="5"></textarea>
+                          <mat-error *ngIf="privacyPolicy.controls['privacy'].hasError('required')">
+                            Please enter privacy policy
+                          </mat-error>
+                          <mat-error *ngIf="privacyPolicy.controls['privacy'].hasError('maxlength')">
+                           Maxlength should 250
+                          </mat-error>
+                      </mat-form-field>
+                    </div>
                   </div>
-                </div>
-                <button class="btn btn-primary" (click)="UpdateTerms()">{{isLoading?'Processing':'Save'}}</button>
+                </form>
+                
+                <button class="btn btn-primary" (click)=" Privacy()">{{isLoading?'Processing':'Save'}}</button>
 
                 <!-- <h4 class="pt-4 pl-4">Not Data Found</h4> -->
               </div>
@@ -137,34 +154,50 @@
                     </div>
                   </div>
                 </form>
-                <button class="btn btn-primary" (click)="UpdateTerms()">{{isLoading?'Processing':'Save'}}</button>
+                <button class="btn btn-primary" (click)="SubmitContactUs()">{{isLoading?'Processing':'Save'}}</button>
               </div>
               <div class="tab-pane fade show" id="aboutus" role="tabpanel" aria-labelledby="aboutus-tab">
                 <div id="summernote"></div>
-                <div class="form-row mt-3">
-                  <div class="form-group col-md-12">
-                    <mat-form-field appearance="outline" class="col-md-12">
-                      <mat-label>About us</mat-label>
-                      <textarea class="form-control" matInput name="" id="" [(ngModel)]="aboutUs" cols="30"
-                        rows="5"></textarea>
-                    </mat-form-field>
+                <form [formGroup]="About">
+                  <div class="form-row mt-3">
+                    <div class="form-group col-md-12">
+                      <mat-form-field appearance="outline" class="col-md-12">
+                        <mat-label>About us</mat-label>
+                        <textarea  matInput name="" id="" formControlName="about" cols="30"
+                          rows="5"></textarea>
+                          <mat-error *ngIf="About.controls['about'].hasError('required')">
+                            Please enter about us
+                          </mat-error>
+                          <mat-error *ngIf="About.controls['about'].hasError('maxlength')">
+                           Maxlength should 250
+                          </mat-error>
+                      </mat-form-field>
+                    </div>
                   </div>
-                </div>
-                <button class="btn btn-primary" (click)="UpdateTerms()">{{isLoading?'Processing':'Save'}}</button>
+                </form>
+                <button class="btn btn-primary" (click)="AboutUs()">{{isLoading?'Processing':'Save'}}</button>
 
                 <!-- <h4 class="pt-4 pl-4">Not Data Found</h4> -->
               </div>
               <div class="tab-pane fade show" id="companyaddress" role="tabpanel" aria-labelledby="companyaddress-tab">
+               <form [formGroup]="Address">
                 <div class="form-row mt-3">
                   <div class="form-group col-md-12">
                     <mat-form-field appearance="outline" class="col-md-12">
                       <mat-label>Location</mat-label>
                       <input type="text" ngx-google-places-autocomplete (onAddressChange)="AddressChange($event)"
-                        matInput class="form-control" id="" placeholder="" [(ngModel)]="address">
+                        matInput  id="" placeholder="" formControlName="address" >
+                        <mat-error *ngIf="Address.controls['address'].hasError('required')">
+                          Please enter company address
+                        </mat-error>
+                        <mat-error *ngIf="Address.controls['address'].hasError('maxlength')">
+                         Maxlength should 250
+                        </mat-error>
                     </mat-form-field>
                   </div>
                 </div>
-                <button class="btn btn-primary" (click)="UpdateTerms()">{{isLoading?'Processing':'Save'}}</button>
+               </form>
+               <button class="btn btn-primary" (click)="CompanyAddress()">{{isLoading?'Processing':'Save'}}</button>
               </div>
               <div class="tab-pane fade show" id="adminbankdetail" role="tabpanel"
                 aria-labelledby="adminbankdetail-tab">
@@ -223,16 +256,23 @@
               </div>
               <div class="tab-pane fade show" id="paymentprocedure" role="tabpanel"
                 aria-labelledby="paymentprocedure-tab">
-                <div class="form-row mt-3">
-                  <div class="form-group col-md-12">
-                    <mat-form-field appearance="outline" class="col-md-12">
-                      <mat-label for="inputPassword4">Payment Instructions</mat-label>
-                      <input type="text" matInput class="form-control" id="" [(ngModel)]="precedure">
-                    </mat-form-field>
+                <form [formGroup]="procedure">
+                  <div class="form-row mt-3">
+                    <div class="form-group col-md-12">
+                      <mat-form-field appearance="outline" class="col-md-12">
+                        <mat-label for="inputPassword4">Payment Instructions</mat-label>
+                        <input type="text" matInput  id="" formControlName="paymentprocedure">
+                        <mat-error *ngIf="procedure.controls['paymentprocedure'].hasError('required')">
+                          Please enter payment procedure
+                        </mat-error>
+                        <mat-error *ngIf="procedure.controls['paymentprocedure'].hasError('maxlength')">
+                         Maxlength should 250
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
                   </div>
-                </div>
-                <button class="btn btn-primary" (click)="UpdateTerms()">{{isLoading?'Processing':'Save'}}</button>
-
+                </form>
+                <button class="btn btn-primary" (click)="Payment()">{{isLoading?'Processing':'Save'}}</button>
               </div>
             </div>
           </div>

@@ -79,7 +79,7 @@
                                 </ngx-datatable-column>
                                 <ngx-datatable-column name="ACTION" prop="status">
                                     <ng-template let-row="row" ngx-datatable-cell-template>
-                                        <ul class="action">
+                                        <ul class="action" style="padding-right: 120px;">
                                             <li><a routerLink="/banknamelist/editbank" [queryParams]="{ id: row.id}" class="btn btn-primary"><i
                                                         class="mdi mdi-pen" title="Edit"></i></a></li>
                                             <li>
@@ -93,51 +93,6 @@
                             </ngx-datatable>
                         </div>
 
-                        <!-- <div class="table-responsive">
-                            <table class="table table-hover ">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Image</th>
-                                        <th>ID</th>
-                                        <th>Account Number</th>
-                                        <th>Account Holder Name</th>
-                                        <th>Bank Name</th>
-                                        <th>Bank Branch</th>
-                                        <th>IFSC Code</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>
-                                            <div class="avatar avatar-sm " data-toggle="modal" data-target="#userclick">
-                                                <img src="assets/img/ngn.png" class="avatar-img avatar-sm rounded-circle" alt="">
-                                            </div>
-                                        </td>
-                                        <td>258963</td>
-                                        <td>888-999-987-987</td>
-                                        <td>Anshu Bharti</td>
-                                        <td>BOI</td>
-                                        <td>Mohali</td>
-                                        <td>BARB0MOH</td>
-                                        <td>
-                                            <ul class="action">
-                                                <li>
-                                                    <a routerLink="/pages/banknamelist/editbank" class="btn btn-primary mr-2">
-                                                        <i class="mdi mdi-pencil" title="Edit"></i>
-                                                    </a>
-                                                    <a href="#" class="btn btn-danger">
-                                                        <i class="mdi mdi-delete" title="Delete"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div> -->
                     </div>
                 </div>
             </div>

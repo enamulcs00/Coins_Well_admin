@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TooltipPosition } from '@ng-matero/extensions';
 import { CommonService } from 'src/app/_services/common.service';
 import { NotificationsService } from 'src/app/_services/notifications.service';
 import { urls } from 'src/app/_services/urls';
@@ -9,9 +10,12 @@ declare var $:any
 @Component({
   selector: 'app-walkthrogh',
   templateUrl: './walkthrogh.component.html',
-  styleUrls: ['./walkthrogh.component.scss']
+  styleUrls: ['./walkthrogh.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class WalkthroghComponent implements OnInit {
+  positionOptions: TooltipPosition[] = ['below', 'above', 'left', 'right'];
+  position = new FormControl(this.positionOptions[1]);
   imgurl: string;
   userInfo: any;
 imgUrl=environment.homeURL
@@ -100,7 +104,7 @@ updateFn() {
   }
   this.service.put(`splash-screen/${this.Id}/`, obj).subscribe((res:any) => {
     if(res.code==200){
-      this._noti.show("success", "Spalsh updated succesfully.", "Success!");
+      this._noti.show("success", "Spalsh updated successfully.", "Success!");
       $('#editsplashscreen').modal('hide')
       this.GetWalthroughData()
        this.isLoading = false;
@@ -129,13 +133,13 @@ console.log('Not file');
 }
 AddFn() {
   let obj = {
-    "title":this.SplashUpdateForm.controls.title.value,
-    "description":this.SplashUpdateForm.controls.description.value,
+    "title":this.SplashUpdateForm.controls.title.value.trim(),
+    "description":this.SplashUpdateForm.controls.description.value.trim(),
     "image":this.files
   }
   this.service.post(`splash-screen/create/`, obj).subscribe((res:any) => {
     if(res.code==200){
-      this._noti.show("success", "Spalsh screen added succesfully.", "Success!");
+      this._noti.show("success", "Spalsh screen added successfully.", "Success!");
       $('#editsplashscreen').modal('hide')
       this.GetWalthroughData()
        this.isLoading = false;
@@ -144,5 +148,23 @@ AddFn() {
   }, _ => {
     this.isLoading = false
   })
+}
+Delete(id) {
+  this._noti.confirm('Delete!', 'Do you want to delete ?').subscribe((x) => {
+    if (x) {
+      this.service
+        .delete(`admin/delete-bank-by-pk/${id}/`)
+        .subscribe((res: any) => {
+          if (res.code == 200) {
+            this.ngOnInit();
+            this._noti.show(
+              'success',
+              'Splash screen deleted successfully.',
+              'Success!'
+            );
+          }
+        });
+    }
+  });
 }
 }
