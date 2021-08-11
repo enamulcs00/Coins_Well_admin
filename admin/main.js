@@ -710,6 +710,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ngx_google_places_autocomplete__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ngx-google-places-autocomplete */ "./node_modules/ngx-google-places-autocomplete/__ivy_ngcc__/bundles/ngx-google-places-autocomplete.umd.js");
 /* harmony import */ var ngx_google_places_autocomplete__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(ngx_google_places_autocomplete__WEBPACK_IMPORTED_MODULE_20__);
 /* harmony import */ var _components_confirm_dialog_user_user_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/confirm-dialog/user/user.component */ "./src/app/components/confirm-dialog/user/user.component.ts");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+
 
 
 
@@ -741,6 +743,7 @@ AppModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineNgModule
 AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjector"]({ factory: function AppModule_Factory(t) { return new (t || AppModule)(); }, providers: [
         { provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_7__["HTTP_INTERCEPTORS"], useClass: _helpers_error_interceptor__WEBPACK_IMPORTED_MODULE_8__["ErrorInterceptor"], multi: true },
         { provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_7__["HTTP_INTERCEPTORS"], useClass: _helpers_jwt_interceptor__WEBPACK_IMPORTED_MODULE_9__["JwtInterceptor"], multi: true },
+        { provide: _angular_common__WEBPACK_IMPORTED_MODULE_22__["LocationStrategy"], useClass: _angular_common__WEBPACK_IMPORTED_MODULE_22__["HashLocationStrategy"] },
         _services_common_service__WEBPACK_IMPORTED_MODULE_11__["CommonService"],
         _services_auth_service__WEBPACK_IMPORTED_MODULE_10__["AuthService"],
         _services_notifications_service__WEBPACK_IMPORTED_MODULE_12__["NotificationsService"],
@@ -795,6 +798,7 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjector
                 providers: [
                     { provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_7__["HTTP_INTERCEPTORS"], useClass: _helpers_error_interceptor__WEBPACK_IMPORTED_MODULE_8__["ErrorInterceptor"], multi: true },
                     { provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_7__["HTTP_INTERCEPTORS"], useClass: _helpers_jwt_interceptor__WEBPACK_IMPORTED_MODULE_9__["JwtInterceptor"], multi: true },
+                    { provide: _angular_common__WEBPACK_IMPORTED_MODULE_22__["LocationStrategy"], useClass: _angular_common__WEBPACK_IMPORTED_MODULE_22__["HashLocationStrategy"] },
                     _services_common_service__WEBPACK_IMPORTED_MODULE_11__["CommonService"],
                     _services_auth_service__WEBPACK_IMPORTED_MODULE_10__["AuthService"],
                     _services_notifications_service__WEBPACK_IMPORTED_MODULE_12__["NotificationsService"],
