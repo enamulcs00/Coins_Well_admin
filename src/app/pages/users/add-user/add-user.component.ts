@@ -19,13 +19,13 @@ export class AddUserComponent implements OnInit {
   constructor(private fb:FormBuilder,private commn_:CommonService,private toaster:ToastrService,private router:Router) { 
     this.userForm=this.fb.group({
       phone_number:['',[Validators.required,Validators.pattern(/^([0-9])*$/),Validators.maxLength(15),Validators.minLength(7)]],
-      first_name:['',[Validators.required,Validators.pattern(new RegExp("\\S"))]],
-      last_name:['',[Validators.required,Validators.pattern(new RegExp("\\S"))]],
+      first_name:['',[Validators.required,Validators.minLength(3),Validators.maxLength(15),Validators.pattern(new RegExp("\\S"))]],
+      last_name:['',[Validators.required,Validators.minLength(3),Validators.maxLength(15),Validators.pattern(new RegExp("\\S"))]],
       building_no:['',[Validators.required]],
       image:[''],
       zone:['',[Validators.required]],
       street:['',[Validators.required]],
-      document:[''],
+      document:['',[Validators.required]],
       email:['',[Validators.required,Validators.email]],
       password:['',[Validators.required,Validators.pattern(new RegExp("\\S")),Validators.minLength(8)]],
       cash:['',[Validators.required,Validators.pattern(/^([0-9])*$/)]]
