@@ -27,6 +27,7 @@ imgUrl=environment.homeURL
   isLoading: boolean;
   IsAdd:boolean = false
   Id: any;
+  IsFileSend:boolean = false
   constructor(private service: CommonService, private _noti: NotificationsService,private fb:FormBuilder) { }
 ngOnInit(): void {
   this.GetWalthroughData()
@@ -67,7 +68,7 @@ sendFile(fileData) {
   formdata.append('media', fileData);
   this.service.uploadMedia(formdata).subscribe((res: any) => {
     if (res.code == 200) {
-      
+      this.IsFileSend = true
       this.files = res.data[0].id
     }
   });
@@ -100,7 +101,7 @@ updateFn() {
   let obj = {
     "title":this.SplashUpdateForm.controls.title.value,
     "description":this.SplashUpdateForm.controls.description.value,
-    "image":this.files?this.files:this.Id
+    "image":(this.IsFileSend)?this.files:this.Id
   }
   this.service.put(`splash-screen/${this.Id}/`, obj).subscribe((res:any) => {
     if(res.code==200){
@@ -108,7 +109,7 @@ updateFn() {
       $('#editsplashscreen').modal('hide')
       this.GetWalthroughData()
        this.isLoading = false;
-      
+      this.IsFileSend = false
     }
   }, _ => {
     this.isLoading = false

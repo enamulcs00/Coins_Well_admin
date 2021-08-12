@@ -33,5 +33,7 @@ export const urls = {
     acceptFv:'admin/accept-facials-by-userid/',
     rejectFvDocByUserId:'admin/reject-user-by-userid/',
     acceptDoc:'admin/accept-documents-by-userid/',
-    createNotification:'admin/create-notifications/'
+    createNotification:'admin/create-notifications/',
+    getAllNotifiation:'admin/get-all-notifications/',
+    getAllPayment:'admin/get-transaction-requests/'
 };
