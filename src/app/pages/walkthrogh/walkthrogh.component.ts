@@ -67,6 +67,7 @@ sendFile(fileData) {
   formdata.append('media', fileData);
   this.service.uploadMedia(formdata).subscribe((res: any) => {
     if (res.code == 200) {
+      
       this.files = res.data[0].id
     }
   });
@@ -99,7 +100,7 @@ updateFn() {
   let obj = {
     "title":this.SplashUpdateForm.controls.title.value,
     "description":this.SplashUpdateForm.controls.description.value,
-    "image":this.Id
+    "image":this.files?this.files:this.Id
   }
   this.service.put(`splash-screen/${this.Id}/`, obj).subscribe((res:any) => {
     if(res.code==200){

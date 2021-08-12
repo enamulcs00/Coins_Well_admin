@@ -27,5 +27,8 @@ export const urls = {
     getUserReferHistory:'admin/get-user-refer-history/',
     getWalletAddress:'admin/get-wallet-addresses/',
     updateWalletAddress:'admin/update-wallet-address/',
-    getNotification:'admin/get-user-first-name/'
+    getNotification:'admin/get-user-first-name/',
+    getDocumentByUserId:'admin/get-user-documents-by-userid/',
+    getFvByUserId:'admin/get-user-facial-images-by-userid/',
+    acceptFv:'/api/admin/accept-facials-by-userid/'
 };

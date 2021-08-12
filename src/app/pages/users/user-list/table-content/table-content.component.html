@@ -55,7 +55,7 @@
       <ng-template let-row="row" ngx-datatable-cell-template>
         <ul class="action">
           <li>
-            <a class="btn btn-primary" (click)="documentModal()">
+            <a class="btn btn-primary" (click)="documentModal(row.id)">
               <i class="mdi mdi-eye-settings" title="View" style="color: #fff;"></i>
             </a>
           </li>
@@ -78,7 +78,7 @@
       <ng-template let-row="row" ngx-datatable-cell-template>
         <ul class="action">
           <li>
-            <a class="btn btn-primary" (click)="fvModal()">
+            <a class="btn btn-primary" (click)="fvModal(row.id)">
               <i class="mdi mdi-eye-settings" title="View" style="color: #fff;"></i>
             </a>
           </li>

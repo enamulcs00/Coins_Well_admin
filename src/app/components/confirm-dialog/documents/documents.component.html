@@ -4,13 +4,10 @@
 		<span aria-hidden="true">&times;</span>
 	</button>
 </div>
-<div class="modal-body">
-	<div class="images">
-		<div class="row">
-		<figure class="mb-3 col-6">
-			<img src="assets/img/doc.jpg" alt="">
-			{{message}}
+<div class="modal-body row" *ngIf="items">
+	<div *ngFor="let item of items" class="col-md-6">
+		<figure class="cstm_img">
+			<img [src]="item?.document?.media_file?image+item?.document?.media_file:'assets/img/doc.jpg'" alt="">
 		</figure>
-	</div>
 	</div>
 </div>

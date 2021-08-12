@@ -135,13 +135,31 @@ export class TableContentComponent implements OnInit {
 		})
 	}
 
-	documentModal() {
-		this._common.dconfirm("Documents", "Do you want to logout ?").subscribe(x => {
+	documentModal(id) {
+		this._common.dconfirm("Documents",id).subscribe(x => {
 		})
 	}
 
-	fvModal() {
-		this._common.fvConfirm("Facial Verification", "Do you want to logout ?").subscribe(x => {
+	fvModal(id) {
+		const callAPI = () => {
+			this._common.get(`${urls.acceptFv}${id}/`).subscribe((res) => {
+				this.toastr.success(res.message, "Success", { timeOut: 1050 });
+			});
+		}
+		this._common.fvConfirm("Facial Verification",id).subscribe(x => {
+			if(x)
+			{
+				this._common.reasonConfirm("Reject Reason", "").subscribe((x: any) => {
+					console.log(x);
+					if (x) {
+						
+					}
+				});
+			}
+			else
+			{
+				callAPI();
+			}
 		})
 	}
 
