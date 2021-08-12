@@ -11,7 +11,7 @@ import { Block } from 'notiflix';
   styleUrls: ['./request-table.component.scss']
 })
 export class RequestTableComponent implements OnInit {
-  @Input('status') status: boolean | null;
+  @Input('status') status: string | null;
 	@Input('flag') flag: boolean | null;
 	@Input('searchData') searchData = {
 		event: new Subject(),
@@ -56,15 +56,9 @@ export class RequestTableComponent implements OnInit {
 
   setPage(pageInfo) {
 		Block.circle('#users-list-page');
-		if (this.status != undefined) {
-			this.formData.status = this.status;
-		}
-		if (this.flag != undefined) {
-			this.formData.flag = true;
-		}
 		this.formData.search.value = this.searchData.value;
 		this.formData.start = pageInfo.offset * this.formData.length;
-		this._common.post(urls.getAllPayment+"1/1/", this.formData).subscribe(_pagedData => {
+		this._common.post(urls.getAllPayment+this.status, this.formData).subscribe(_pagedData => {
       console.log(_pagedData);
 			this.page = {
 				totalElements: _pagedData.recordsTotal,
