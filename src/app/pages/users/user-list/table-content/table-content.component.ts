@@ -136,31 +136,69 @@ export class TableContentComponent implements OnInit {
 	}
 
 	documentModal(id) {
+		const callAPI = () => {
+			this._common.put(`${urls.acceptDoc}${id}/`,{}).subscribe((res) => {
+				this.toastr.success(res.message, "Success", { timeOut: 1050 });
+			});
+		}
+		const rCallAPI = (params:any) => {
+			this._common.post(`${urls.rejectFvDocByUserId}`,params).subscribe((res) => {
+				this.toastr.success(res.message, "Success", { timeOut: 1050 });
+			});
+		}
 		this._common.dconfirm("Documents",id).subscribe(x => {
+			if(x)
+			{
+				callAPI();
+
+			}
+			else if(x==false)
+			{
+				this._common.reasonConfirm("Reject Reason", "").subscribe((des: any) => {
+					console.log(des);
+					if (des) {
+		               rCallAPI({
+						"user":id,
+						"rejection_type":"1",
+						"description":des
+					});				
+					}
+				});
+			}
 		})
 	}
 
 	fvModal(id) {
 		const callAPI = () => {
-			this._common.get(`${urls.acceptFv}${id}/`).subscribe((res) => {
+			this._common.put(`${urls.acceptFv}${id}/`,{}).subscribe((res) => {
+				this.toastr.success(res.message, "Success", { timeOut: 1050 });
+			});
+		}
+		const rCallAPI = (params:any) => {
+			this._common.post(`${urls.rejectFvDocByUserId}`,params).subscribe((res) => {
 				this.toastr.success(res.message, "Success", { timeOut: 1050 });
 			});
 		}
 		this._common.fvConfirm("Facial Verification",id).subscribe(x => {
 			if(x)
 			{
-				this._common.reasonConfirm("Reject Reason", "").subscribe((x: any) => {
-					console.log(x);
-					if (x) {
-						
+				callAPI();
+
+			}
+			else if(x==false)
+			{
+				this._common.reasonConfirm("Reject Reason", "").subscribe((des: any) => {
+					console.log(des);
+					if (des) {
+		               rCallAPI({
+						"user":id,
+						"rejection_type":"2",
+						"description":des
+					});				
 					}
 				});
 			}
-			else
-			{
-				callAPI();
-			}
-		})
+		});
 	}
 
 	reasonModal() {

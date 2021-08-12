@@ -30,7 +30,7 @@ export class FvComponent implements OnInit {
    this.commn_.get(urls.getFvByUserId+this.message+"/").subscribe(
      (res)=>{
      console.log(res);
-     this.image=environment.imgBaseUrl+res.data[0].facial_image.media_file;
+     this.image=environment.imgBaseUrl+res.data[0].document.media_file;
      }
    );
   }
