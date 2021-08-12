@@ -17,6 +17,7 @@ declare var google;
 export class ManageUpdateComponent implements OnInit,AfterViewInit {
   terms:string
   privacy:string
+  htmlstring="Enam"
   aboutUs:string
   address:string
   precedure:string
@@ -41,21 +42,26 @@ export class ManageUpdateComponent implements OnInit,AfterViewInit {
   REF: any;
   constructor(private service: CommonService, private router: Router, private _noti: NotificationsService,private fb:FormBuilder,private _common:CommonService) { 
     this.termsCondition = this.fb.group({
-      terms:['',[Validators.required,Validators.maxLength(250)]]
+      terms:['',[Validators.required]]
     })
     this.About = this.fb.group({
-      about:['',[Validators.required,Validators.maxLength(250)]]
+      about:['',[Validators.required]]
     })
     this.privacyPolicy = this.fb.group({
-      privacy:['',[Validators.required,Validators.maxLength(250)]]
+      privacy:['',[Validators.required]]
     })
     this.Address = this.fb.group({
-      address:['',[Validators.required,Validators.maxLength(250)]]
+      address:['',[Validators.required]]
     })
     this.procedure = this.fb.group({
-      paymentprocedure:['',[Validators.required,Validators.maxLength(250)]]
+      paymentprocedure:['',[Validators.required]]
     })
   }
+
+  public model = {
+    name: 'Hardik',
+    description: '<p>This is a sample form using CKEditor 4.</p>'
+  };
  ngOnInit(): void {
 this.contactUs = this.fb.group({
   email:['',[Validators.required,validEmail,Validators.email]],

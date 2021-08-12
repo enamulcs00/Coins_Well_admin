@@ -23,11 +23,10 @@ imgUrl=environment.homeURL
   SplashUpdateForm:FormGroup
   ImageUrl: any;
   fileData: any;
-  files: any;
   isLoading: boolean;
   IsAdd:boolean = false
   Id: any;
-  IsFileSend:boolean = false
+  ImageId: any;
   constructor(private service: CommonService, private _noti: NotificationsService,private fb:FormBuilder) { }
 ngOnInit(): void {
   this.GetWalthroughData()
@@ -37,7 +36,7 @@ ngOnInit(): void {
  })
 }
 Openmodal(){
-  this.files = undefined
+
   this.IsAdd = true
   this.ImageUrl = undefined
   this.isLoading = false
@@ -51,13 +50,19 @@ GetWalthroughData(){
 			 this.splash = res.data
   	})
 }
+GetWalkByID(id){
+  this.service.get(`get-splash-screen-by-id/${id}/`).subscribe((res: any) => {
+    console.log('Get',res);
+     this.ImageId = res?.data?.image?.id;
+  })
+}
 UpdateSplash(data){
   this.IsAdd = false
   this.isLoading = false
   this.Id = data?.id 
+  this.GetWalkByID(this.Id)
 $('#editsplashscreen').modal('show')
 this.ImageUrl = this.imgUrl+data?.image
-this.files = data?.image
 this.SplashUpdateForm.patchValue({
   title: data?.title,
   description:data?.description,
@@ -68,12 +73,13 @@ sendFile(fileData) {
   formdata.append('media', fileData);
   this.service.uploadMedia(formdata).subscribe((res: any) => {
     if (res.code == 200) {
-      this.IsFileSend = true
-      this.files = res.data[0].id
+      
+      this.ImageId = res.data[0].id
     }
   });
 }
 uploadFile(event) {
+  
   if (event.target.files && event.target.files[0]) {
     var type = event.target.files[0].type;
     var reader = new FileReader();
@@ -92,63 +98,64 @@ Update(){
   console.log('Upadte called');
  if(this.SplashUpdateForm.valid){
   this.isLoading = true
-  this.updateFn()
+  let obj = {
+    "title":this.SplashUpdateForm.controls.title.value,
+    "description":this.SplashUpdateForm.controls.description.value,
+    "image":this.ImageId
+  }
+  this.updateFn(obj)
   }else{
     this.SplashUpdateForm.markAllAsTouched()
   }
 }
-updateFn() {
-  let obj = {
-    "title":this.SplashUpdateForm.controls.title.value,
-    "description":this.SplashUpdateForm.controls.description.value,
-    "image":(this.IsFileSend)?this.files:this.Id
-  }
+updateFn(obj) {
+  console.log("OBJ",obj);
   this.service.put(`splash-screen/${this.Id}/`, obj).subscribe((res:any) => {
     if(res.code==200){
       this._noti.show("success", "Spalsh updated successfully.", "Success!");
       $('#editsplashscreen').modal('hide')
       this.GetWalthroughData()
        this.isLoading = false;
-      this.IsFileSend = false
+     
     }
   }, _ => {
     this.isLoading = false
   })
 }
-AddSplash(){
-  if(this.files){
-    console.log("Files",this.files);
-   if(this.SplashUpdateForm.valid){
-      console.log('Not undefined && Valid');
-      this.isLoading = true
-      this.AddFn()
-      }else{
-        this.SplashUpdateForm.markAllAsTouched()
-      }
-  }else{
-    this._noti.show("error", "Please upload image.", "Failed");
-console.log('Not file');
+// AddSplash(){
+//   if(this.files){
+//    
+//    if(this.SplashUpdateForm.valid){
+//       console.log('Not undefined && Valid');
+//       this.isLoading = true
+//       // this.AddFn()
+//       }else{
+//         this.SplashUpdateForm.markAllAsTouched()
+//       }
+//   }else{
+//     this._noti.show("error", "Please upload image.", "Failed");
+// console.log('Not file');
 
-  }
+//   }
    
-}
-AddFn() {
-  let obj = {
-    "title":this.SplashUpdateForm.controls.title.value.trim(),
-    "description":this.SplashUpdateForm.controls.description.value.trim(),
-    "image":this.files
-  }
-  this.service.post(`splash-screen/create/`, obj).subscribe((res:any) => {
-    if(res.code==200){
-      this._noti.show("success", "Spalsh screen added successfully.", "Success!");
-      $('#editsplashscreen').modal('hide')
-      this.GetWalthroughData()
-       this.isLoading = false;
+// }
+// AddFn() {
+//   let obj = {
+//     "title":this.SplashUpdateForm.controls.title.value.trim(),
+//     "description":this.SplashUpdateForm.controls.description.value.trim(),
+//     
+//   }
+//   this.service.post(`splash-screen/create/`, obj).subscribe((res:any) => {
+//     if(res.code==200){
+//       this._noti.show("success", "Spalsh screen added successfully.", "Success!");
+//       $('#editsplashscreen').modal('hide')
+//       this.GetWalthroughData()
+//        this.isLoading = false;
       
-    }
-  }, _ => {
-    this.isLoading = false
-  })
-}
+//     }
+//   }, _ => {
+//     this.isLoading = false
+//   })
+// }
 
 }

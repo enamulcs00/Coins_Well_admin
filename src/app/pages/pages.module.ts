@@ -29,6 +29,9 @@ import { FaqTemplateComponent } from '../components/faq-template/faq-template.co
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MaterialExtensionsExperimentalModule, MaterialExtensionsModule } from '@ng-matero/extensions';
+
+import { CKEditorModule } from 'ckeditor4-angular';
+
 @NgModule({
 	declarations: [
 		PagesComponent, 
@@ -64,7 +67,8 @@ import { MaterialExtensionsExperimentalModule, MaterialExtensionsModule } from '
 		MaterialExtensionsExperimentalModule,
 		MatPaginatorModule,
 		MatTooltipModule,
-		MatPaginatorModule
+		MatPaginatorModule,
+		CKEditorModule
 	],
 	exports:[
 		MaterialExtensionsExperimentalModule,
