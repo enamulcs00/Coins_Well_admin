@@ -65,7 +65,7 @@ export class ManageUpdateComponent implements OnInit,AfterViewInit {
  ngOnInit(): void {
 this.contactUs = this.fb.group({
   email:['',[Validators.required,validEmail,Validators.email]],
-  phone:['',[Validators.required]]
+  phone:['',[Validators.required,Validators.minLength(7),Validators.maxLength(15)]]
 })
 this.bankDetailForm = this.fb.group({
   bank_name:['',[Validators.required]],
@@ -129,9 +129,9 @@ ngAfterViewInit(){
 }
 GetAdminBank(){
   this.service.get('admin/get-bank-details/').subscribe((res: any) => {
-   
      let temVar = res?.data;
      this.BankId = res?.data?.bank_name?.id
+     this.bankList =  [temVar?.bank_name]
      this.bankDetailForm.patchValue({
       bank_name: temVar?.bank_name?.id,
       accountHolder: temVar?.account_holder_name,

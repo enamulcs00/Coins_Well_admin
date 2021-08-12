@@ -1,4 +1,7 @@
 ::ng-deep .bank-dropdown {
+    .mat-form-field-infix {
+        padding: 0px 0px !important;
+    }
     .ng-placeholder {
         opacity: 1 !important;   
     }
@@ -10,8 +13,14 @@
             display: block !important;
         }
     }
+    .ng-arrow {
+        border-color: #999999 transparent transparent;
+    }
+    .ng-select-opened > .ng-select-container .ng-arrow {
+        border-color: transparent transparent #999999;
+    }
     .mat-form-field-flex > .mat-form-field-infix {
-        padding: 0.8em 0px !important;
+        // padding: 0.8em 0px !important;
     }
     ng-dropdown-panel {
         width: 100% !important;
@@ -40,9 +49,9 @@
         width: 100%;
         justify-content: start;
         .img {
-            height: 35px;
-            min-width: 35px;
-            width: 35px;
+            height: 55px;
+            min-width: 55px;
+            width: 55px;
             object-fit: cover;
             border-radius: 5px;
         }
