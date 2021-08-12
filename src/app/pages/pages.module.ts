@@ -30,6 +30,9 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MaterialExtensionsExperimentalModule, MaterialExtensionsModule } from '@ng-matero/extensions';
 import { RequestTableComponent } from './request/request-table/request-table.component';
+
+import { CKEditorModule } from 'ckeditor4-angular';
+
 @NgModule({
 	declarations: [
 		PagesComponent, 
@@ -66,7 +69,8 @@ import { RequestTableComponent } from './request/request-table/request-table.com
 		MaterialExtensionsExperimentalModule,
 		MatPaginatorModule,
 		MatTooltipModule,
-		MatPaginatorModule
+		MatPaginatorModule,
+		CKEditorModule
 	],
 	exports:[
 		MaterialExtensionsExperimentalModule,
