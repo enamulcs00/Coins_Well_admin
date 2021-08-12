@@ -1,10 +1,11 @@
 export const environment = {
 	production: true,
-	baseUrl: 'http://3.108.67.252:2222/api/',
+	baseUrl: 'https://python.appgrowthcompany.com/api/',
+	imgBaseUrl: 'https://python.appgrowthcompany.com',
 	storageKey: 'coinsWellAdminLogin',
 	dateFormatWithTime: 'MM-DD-YYYY hh:mm A',
 	dateFormat: 'MM-DD-YYYY',
-	resetPasswordLink: 'http://appgrowthcompany.com/tourism_admin/resetpassword',
-	homeURL: 'http://appgrowthcompany.com/tourism_admin/',
+	resetPasswordLink: 'http://localhost:4200/resetpassword',
+	homeURL: 'https://python.appgrowthcompany.com',
 	googleMapKey: 'AIzaSyC7Ju90BCi9a01akYUWBvrEOFzwl8yxWZ8'
 };

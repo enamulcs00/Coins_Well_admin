@@ -45,7 +45,6 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 	providers: [
 		{ provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 		{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-		{provide: LocationStrategy, useClass: HashLocationStrategy} ,
 		CommonService,
 		AuthService,
 		NotificationsService,

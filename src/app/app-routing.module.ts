@@ -5,12 +5,6 @@ import { MaterialModule } from './material/material.module';
 import { LoggedGuard } from '../app/_gurads/logged.guard';
 
 const routes: Routes = [
-
-	{
-		path: '',
-		loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule),
-		canActivate : [AuthGuard]
-	},
 	{
 		path: 'core',
 		loadChildren: () => import('./core/core.module').then(m => m.CoreModule)
@@ -22,9 +16,13 @@ const routes: Routes = [
 	},
 	{
 		path: '',
+		loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule),
+		canActivate : [AuthGuard]
+	},
+	{
+		path: '',
 		pathMatch: 'full',
 		redirectTo: '/auth/login'
-
 	},
 ];
 
