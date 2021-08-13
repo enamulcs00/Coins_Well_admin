@@ -30,5 +30,10 @@ export const urls = {
     getNotification:'admin/get-user-first-name/',
     getDocumentByUserId:'admin/get-user-documents-by-userid/',
     getFvByUserId:'admin/get-user-facial-images-by-userid/',
-    acceptFv:'/api/admin/accept-facials-by-userid/'
+    acceptFv:'admin/accept-facials-by-userid/',
+    rejectFvDocByUserId:'admin/reject-user-by-userid/',
+    acceptDoc:'admin/accept-documents-by-userid/',
+    createNotification:'admin/create-notifications/',
+    getAllNotifiation:'admin/get-all-notifications/',
+    getAllPayment:'admin/get-transaction-requests/'
 };

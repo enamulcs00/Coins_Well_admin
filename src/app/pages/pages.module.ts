@@ -29,6 +29,7 @@ import { FaqTemplateComponent } from '../components/faq-template/faq-template.co
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MaterialExtensionsExperimentalModule, MaterialExtensionsModule } from '@ng-matero/extensions';
+import { RequestTableComponent } from './request/request-table/request-table.component';
 
 import { CKEditorModule } from 'ckeditor4-angular';
 
@@ -53,7 +54,8 @@ import { CKEditorModule } from 'ckeditor4-angular';
 		AddNotificationComponent, 
 		ChatComponent,
 		FaqTemplateComponent,
-		NotificationTableComponent
+		NotificationTableComponent,
+		RequestTableComponent
 	],
 	imports: [
 		CommonModule,

@@ -7,11 +7,11 @@
 <div class="modal-body">
     <div class="images justify-content-center">
         <figure class="d-flex justify-content-center">
-             <img [src]=" image || 'assets/img/doc.jpg' " alt="">
+             <img [src]=" image || 'assets/img/doc.jpg' " style="height: 350px;" alt="">
              </figure>
             </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" (click)="status=true;bsModalRef.hide()">Reject</button>
-                <button type="button" class="btn btn-primary" (click)="status=false;bsModalRef.hide()">Approve</button>
+                <button type="button" class="btn btn-danger" (click)="status=false;bsModalRef.hide()">Reject</button>
+                <button type="button" class="btn btn-primary" (click)="status=true;bsModalRef.hide()">Approve</button>
             </div>

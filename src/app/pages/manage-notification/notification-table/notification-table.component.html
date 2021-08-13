@@ -5,7 +5,7 @@
           <div class="card-header seachbar">
             <h5></h5>
             <div class="form-group col-md-4 pl-0 pr-0 mb-0">
-              <input  class="form-control" id="inputEmail4" placeholder="Email" />
+              <input  class="form-control" id="inputEmail4" [(ngModel)]="searchText" (keyup)="changeText()" />
               <div class="search-ic">
                 <i class="mdi mdi-magnify"></i>
               </div>
@@ -25,17 +25,20 @@
 					</tr>
 				  </thead>
 				  <tbody>
-					<tr>
-					  <td>1</td>
-					  <td>Payments</td>
-					  <td>All</td>
-					  <td>Email</td>
-					  <td>Lorem ipsum</td>
-					  <td>In publishing and graphic design...</td>
+					<tr *ngFor="let item of items;let i=index">
+					  <td>{{page==0?page+ i+1:page+i}}</td>
+					  <td>{{item?.notification_type}}</td>
+					  <td>{{item?.user}}</td>
+					  <td>{{item?.notification_mode}}</td>
+					  <td>{{item?.title}}</td>
+					  <td>{{item?.message}}</td>
 					</tr>
 				  </tbody>
 				</table>
 			  </div>
+			  <mat-paginator #paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]"
+                  (page)="pageEvent = pageSizeChanged($event)">
+                </mat-paginator>
           </div>
         </div>
       </div>

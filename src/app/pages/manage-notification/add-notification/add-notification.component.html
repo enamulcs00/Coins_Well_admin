@@ -1,63 +1,101 @@
 <section class="admin-content">
-    <div class="bg-dark">
-        <div class="container-fluid  m-b-30">
-            <div class="col-12 text-white p-t-40 p-b-90">
-                <div class="ex-main">
-                    <h4 class=""> <span class="btn btn-white-translucent">
-                            <i class="mdi mdi-bell"></i></span> Add Notification
-                    </h4>
-                    <a routerLink="/pages/manage-notification" class="btn btn-white-translucent">Back</a>
-                </div>
-            </div>
+  <div class="bg-dark">
+    <div class="container-fluid  m-b-30">
+      <div class="col-12 text-white p-t-40 p-b-90">
+        <div class="ex-main">
+          <h4 class=""> <span class="btn btn-white-translucent">
+              <i class="mdi mdi-bell"></i></span> Add Notification
+          </h4>
+          <a routerLink="/manage-notification" class="btn btn-white-translucent">Back</a>
         </div>
+      </div>
     </div>
+  </div>
 
-    <div class="container-fluid  pull-up">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card m-b-30">
-                    <div class="card-body">
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="inputEmail4">Select Type</label>
-                                <select name="" id="" class="form-control">
-                                    <option value="User"></option>
-                                    <option value="User">Payment</option>
-                                    <option value="Merchant">Transactions</option>
-                                    <option value="Content">Content</option>
-                                    <option value="Activity">Activity</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="inputPassword4">Notification Mode</label>
-                                <select name="" id="" class="form-control">
-                                    <option value="Email"></option>
-                                    <option value="Email">Email</option>
-                                    <option value="Notification">Notification</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="inputAddress">Title</label>
-                                <input type="text" class="form-control" id="inputAddress" placeholder="">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="">Select User</label>
-                                <mat-select name="" id="" class="form-control" (selectionChange)="selectUser($event)" multiple>
-                                    <mat-option >All User</mat-option>
-                                    <mat-option [value]="item.id" *ngFor="let item of notiItems">{{item.first_name}} {{item.last_name}}</mat-option>
-                                </mat-select>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="inputAddress2">Message</label>
-                                <textarea id="" name="" class="form-control"></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <button class="btn btn-primary">Add</button>
-                        </div>
-                    </div>
+  <div class="container-fluid  pull-up">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card m-b-30">
+          <form [formGroup]="notificationForm">
+            <div class="card-body">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <mat-form-field class="row col-12" appearance="outline">
+                    <mat-label for="inputEmail4">Select Type</mat-label>
+                    <mat-select name="" id="" formControlName="notification_type">
+                      <mat-option value="">Select</mat-option>
+                      <mat-option value="1">Payment</mat-option>
+                      <mat-option value="2">Transactions</mat-option>
+                      <mat-option value="3">Content</mat-option>
+                      <mat-option value="4">Activity</mat-option>
+                    </mat-select>
+                    <mat-error
+                      *ngIf="notificationForm.controls.notification_type.touched && notificationForm.controls.notification_type.hasError('required')">
+                      Type is Required!</mat-error>
+                  </mat-form-field>
                 </div>
+                <div class="form-group col-md-6">
+                  <mat-form-field class="row col-12" appearance="outline">
+                    <mat-label for="inputPassword4">Notification Mode</mat-label>
+                    <mat-select name="" id="" formControlName="notification_mode">
+                      <mat-option value="">Select</mat-option>
+                      <mat-option value="1">Email</mat-option>
+                      <mat-option value="2">Notification</mat-option>
+                    </mat-select>
+                    <mat-error
+                      *ngIf="notificationForm.controls.notification_mode.touched && notificationForm.controls.notification_mode.hasError('required')">
+                      Mode is Required!</mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="form-group col-md-6">
+                  <mat-form-field class="row col-12" appearance="outline">
+                    <mat-label for="inputAddress">Title</mat-label>
+                    <input type="text" #sp (keydown.space)="!sp.value?$event.preventDefault():null" matInput formControlName="title" id="inputAddress" placeholder="">
+                    <mat-error
+                      *ngIf="notificationForm.controls.title.touched && notificationForm.controls.title.hasError('required')">
+                      Title is Required!</mat-error>
+                    <mat-error
+                      *ngIf="notificationForm.controls.title.touched && notificationForm.controls.title.hasError('minlength')">
+                      Min Character Length 3!</mat-error>
+                    <mat-error
+                      *ngIf="notificationForm.controls.title.touched && notificationForm.controls.title.hasError('maxlength')">
+                      Max Character Length 15!</mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="form-group col-md-6">
+                  <mat-form-field class="row col-12" appearance="outline">
+                    <mat-label for="users">Select User</mat-label>
+                    <mat-select #mySel multiple placeholder="" name="food" (selectionChange)="onSelection($event)" formControlName="users">
+                      <mat-option [value]="0" (click)="toggleAllSelection()">Select All</mat-option>
+                      <mat-option *ngFor="let item of notiItems" [value]="item?.id" (click)="singleSelection()">
+                        {{item.first_name}} {{item.last_name}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error
+                      *ngIf="notificationForm.controls.users.touched && notificationForm.controls.users.hasError('required')">
+                      Users is Required!</mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="form-group col-md-6">
+                  <mat-form-field class="row col-12" appearance="outline">
+                    <mat-label for="inputAddress2">Message</mat-label>
+                    <textarea matInput id="" #spa (keydown.space)="!spa.value?$event.preventDefault():null" formControlName="message" name="" class="form-control"></textarea>
+                    <mat-error
+                      *ngIf="notificationForm.controls.message.touched && notificationForm.controls.message.hasError('required')">
+                      Message is Required!</mat-error>
+                    <mat-error
+                      *ngIf="notificationForm.controls.message.touched && notificationForm.controls.message.hasError('minlength')">
+                      Min Character length 4!</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="form-group">
+                <button class="btn btn-primary" (click)="createNotification()">Add</button>
+              </div>
             </div>
+          </form>
         </div>
+      </div>
     </div>
+  </div>
 </section>

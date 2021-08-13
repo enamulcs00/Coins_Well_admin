@@ -31,25 +31,40 @@
                 <div class="form-group col-md-6">
                   <mat-form-field class="row col-12" appearance="outline">
                     <mat-label for="first_name">First Name</mat-label>
-                    <input matInput type="text" #space (keydown.space)="!space.value?$event.preventDefault():null" class="form-control" formControlName="first_name" id="first_name">
+                    <input matInput type="text" #space (keydown.space)="!space.value?$event.preventDefault():null"
+                      class="form-control" formControlName="first_name" id="first_name">
                     <mat-error
                       *ngIf="editUserForm.controls.first_name.touched && editUserForm.controls.first_name.hasError('required')">
                       First Name Required! </mat-error>
-                      <mat-error
+                    <mat-error
                       *ngIf="editUserForm.controls.first_name.touched && editUserForm.controls.first_name.hasError('pattern')">
                       First Name invalid! </mat-error>
+                      <mat-error
+                      *ngIf="editUserForm.controls.first_name.touched && editUserForm.controls.first_name.hasError('maxlength')">
+                      Max Character 15! </mat-error>
+                      <mat-error
+                      *ngIf="editUserForm.controls.first_name.touched && editUserForm.controls.first_name.hasError('minlength')">
+                      Min Character 3! </mat-error>
                   </mat-form-field>
                 </div>
                 <div class="form-group col-md-6">
                   <mat-form-field class="row col-12" appearance="outline">
                     <mat-label for="last_name">Last Name</mat-label>
-                    <input matInput type="text" class="form-control" #spac (keydown.space)="!spac.value?$event.preventDefault():null" formControlName="last_name" id="last_name">
+                    <input matInput type="text" class="form-control" #spac
+                      (keydown.space)="!spac.value?$event.preventDefault():null" formControlName="last_name"
+                      id="last_name">
                     <mat-error
                       *ngIf="editUserForm.controls.last_name.touched && editUserForm.controls.last_name.hasError('required')">
                       last Name Required! </mat-error>
-                      <mat-error
+                    <mat-error
                       *ngIf="editUserForm.controls.last_name.touched && editUserForm.controls.last_name.hasError('pattern')">
                       Last Name invalid! </mat-error>
+                      <mat-error
+                      *ngIf="editUserForm.controls.last_name.touched && editUserForm.controls.last_name.hasError('minlength')">
+                      Min Character length 3! </mat-error>
+                      <mat-error
+                      *ngIf="editUserForm.controls.last_name.touched && editUserForm.controls.last_name.hasError('maxlength')">
+                      Max Character length 15! </mat-error>
                   </mat-form-field>
                 </div>
                 <div class="form-group col-md-6">
@@ -74,7 +89,7 @@
                     <mat-error
                       *ngIf="editUserForm.controls.phone_number.touched && editUserForm.controls.phone_number.hasError('pattern')">
                       Phone Number invalid! </mat-error>
-                      <mat-error
+                    <mat-error
                       *ngIf="editUserForm.controls.phone_number.touched && editUserForm.controls.phone_number.hasError('maxlength')">
                       Phone Number Max Length 15! </mat-error>
                     <mat-error
@@ -95,7 +110,8 @@
                   <mat-form-field class="row col-12" appearance="outline">
 
                     <mat-label for="street">Street</mat-label>
-                    <input type="text" #spa (keydown.space)="!spa.value?$event.preventDefault():null" matInput class="form-control" formControlName="street" id="street">
+                    <input type="text" #spa (keydown.space)="!spa.value?$event.preventDefault():null" matInput
+                      class="form-control" formControlName="street" id="street">
                     <mat-error
                       *ngIf="editUserForm.controls.street.touched && editUserForm.controls.street.hasError('required')">
                       Street Required! </mat-error>
@@ -105,7 +121,8 @@
                   <mat-form-field class="row col-12" appearance="outline">
 
                     <mat-label for="zone">Zone</mat-label>
-                    <input type="text" #sp (keydown.space)="!sp.value?$event.preventDefault():null" matInput class="form-control" formControlName="zone" id="zone">
+                    <input type="text" #sp (keydown.space)="!sp.value?$event.preventDefault():null" matInput
+                      class="form-control" formControlName="zone" id="zone">
                     <mat-error
                       *ngIf="editUserForm.controls.zone.touched && editUserForm.controls.zone.hasError('required')">
                       Zone Required! </mat-error>
@@ -114,6 +131,7 @@
                 <div class="form-group col-md-6">
                   <label for="inputZip">Attachment</label>
                   <input type="file" (change)="onDocumentSelect($event)" class="form-control" style="height: auto;">
+                  <mat-error *ngIf="editUserForm.controls.document.touched && editUserForm.controls.document.hasError('required')">Document Required!</mat-error>
                 </div>
                 <div class="form-group col-md-6">
                   <mat-form-field class="row col-12" appearance="outline">

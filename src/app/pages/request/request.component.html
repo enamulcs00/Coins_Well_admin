@@ -1,557 +1,448 @@
 <section class="admin-content">
-    <div class="bg-dark">
-        <div class="container-fluid  m-b-30">
-            <div class="row">
-                <div class="col-12 text-white p-t-40 p-b-90">
-                    <div class="ex-main">
-                        <h4 class=""> <span class="btn btn-white-translucent">
-                            <i class="mdi mdi-wallet"></i></span> Request
-                        </h4>
-                    </div>
-                </div>
-            </div>
+  <div class="bg-dark">
+    <div class="container-fluid  m-b-30">
+      <div class="row">
+        <div class="col-12 text-white p-t-40 p-b-90">
+          <div class="ex-main">
+            <h4 class=""> <span class="btn btn-white-translucent">
+                <i class="mdi mdi-wallet"></i></span> Request
+            </h4>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 
-    <div class="container-fluid pull-up">
-        <div class="row">
+  <div class="container-fluid pull-up">
+    <div class="row">
 
+      <div class="col-md-12">
+        <div class="card m-b-30">
+          <div class="row">
             <div class="col-md-12">
-                <div class="card m-b-30">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card-body top_nav_link">
-                                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" id="home-tab-z" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Withdrawl Request</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="profile-tab-z" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Selling Request</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="perfectmoney-tab-z" data-toggle="tab" href="#perfectmoney" role="tab" aria-controls="perfectmoney" aria-selected="false">Buying Request</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="ngnwallet-tab-z" data-toggle="tab" href="#ngnwallet" role="tab" aria-controls="ngnwallet" aria-selected="false">Deposit Request</a>
-                                    </li>
-                                </ul>
-                                <div class="tab-content" id="myTabContent1">
-                                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                        <div class="card-body under_tab_link">
-                                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                                <li class="nav-item">
-                                                    <a class="nav-link active" id="homefirst-tab-z" data-toggle="tab" href="#homefirst" role="tab" aria-controls="homefirst" aria-selected="true">Crypto Withdraw</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" id="profilefirst-tab-z" data-toggle="tab" href="#profilefirst" role="tab" aria-controls="profilefirst" aria-selected="false">Naira Withdraw</a>
-                                                </li>
-                                            </ul>
-                                            <div class="tab-content" id="myTabContent1">
-                                                <div class="tab-pane fade show active" id="homefirst" role="tabpanel" aria-labelledby="homefirst-tab">
-                                                    <div class="card-body">
-                                                        <div class="card-header seachbar fromday">
-                                                            <h5></h5>
-                                                            <div class="reveue-date">
-                                                                <div class="form-group  d-flex mr-2">
-                                                                    <label>From</label>
-                                                                    <input type="date" id="" name="" class="form-control dateinput ">
-                                                                </div>
-                                                                <div class="form-group  d-flex">
-                                                                    <label>To</label>
-                                                                    <input type="date" id="" name="" class="form-control dateinput ">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="table-responsive mt-5">
-                                                            <table class="table table-hover ">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>#</th>
-                                                                        <th>Order ID</th>
-                                                                        <!-- <th>Image</th> -->
-                                                                        <th>Name</th>
-                                                                        <th>Asset</th>
-                                                                        <th>Date & Time</th>
-                                                                        <th>Sending Wallet</th>
-                                                                        <th>Receiving Wallet</th>
-                                                                        <th>Balance</th>
-                                                                        <th>BTC Value</th>
-                                                                        <th>Amount ($)</th>
-                                                                        <th>Transaction ID</th>
-                                                                        <th>Confirmation</th>
-                                                                        <th>Status</th>
-                                                                        <th>Action</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td>1</td>
-                                                                        <!-- <td>
-                                                                            <div class="avatar avatar-sm " data-toggle="modal" data-target="#userclick">
-                                                                                <img src="assets/img/ngn.png" class="avatar-img avatar-sm rounded-circle" alt="">
-                                                                            </div>
-                                                                        </td> -->
-                                                                        <td>12453BTC/WT</td>
-                                                                        <td>Rafi</td>
-                                                                        <td>NGN</td>
-                                                                        <td>10 July 2021, 9:00 AM</td>
-                                                                        <td>$ 56,866</td>
-                                                                        <td>$7,876</td>
-                                                                        <td>$3,45,678</td>
-                                                                        <td>$56</td>
-                                                                        <td>$65</td>
-                                                                        <td>2354544H67</td>
-                                                                        <td></td>
-                                                                        <td>Active</td>
-                                                                        <td>
-                                                                            <ul class="action">
-                                                                                <li>
-                                                                                    <a href="#" class="btn btn-primary">
-                                                                                        Approve
-                                                                                    </a>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <button class="btn btn-danger" data-target="#rejectrequest" data-toggle="modal">Reject</button>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="tab-pane fade show" id="profilefirst" role="tabpanel" aria-labelledby="profilefirst-tab">
-                                                    <div class="card-body">
-                                                        <div class="card-header seachbar fromday">
-                                                            <h5></h5>
-                                                            <div class="reveue-date">
-                                                                <div class="form-group  d-flex mr-2">
-                                                                    <label>From</label>
-                                                                    <input type="date" id="" name="" class="form-control dateinput ">
-                                                                </div>
-                                                                <div class="form-group  d-flex">
-                                                                    <label>To</label>
-                                                                    <input type="date" id="" name="" class="form-control dateinput ">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="table-responsive mt-5">
-                                                            <table class="table table-hover ">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>#</th>
-                                                                        <th>Order ID</th>
-                                                                        <!-- <th>Image</th> -->
-                                                                        <th>Name</th>
-                                                                        <th>Asset</th>
-                                                                        <th>Balance</th>
-                                                                        <th>Amount ($)</th>
-                                                                        <th>Account No.</th>
-                                                                        <th>Bank Name</th>
-                                                                        <th>Date & Time</th>
-                                                                        <th>Status</th>
-                                                                        <th>Action</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td>1</td>
-                                                                        <td>12453NGN/WT</td>
-                                                                        <!-- <td>
-                                                                            <div class="avatar avatar-sm " data-toggle="modal" data-target="#userclick">
-                                                                                <img src="assets/img/ngn.png" class="avatar-img avatar-sm rounded-circle" alt="">
-                                                                            </div>
-                                                                        </td> -->
-                                                                        <td>Rafi</td>
-                                                                        <td>NGN</td>
-                                                                        <td>$56,867</td>
-                                                                        <td>$5,765</td>
-                                                                        <td>876-098-567-876</td>
-                                                                        <td>ICICI</td>
-                                                                        <td>10 July 2021, 9:00 AM</td>
-                                                                        <td>Active</td>
-                                                                        <td>
-                                                                            <ul class="action">
-                                                                                <li>
-                                                                                    <a href="#" class="btn btn-primary">
-                                                                                        Approve
-                                                                                    </a>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <button class="btn btn-danger" data-target="#rejectrequest" data-toggle="modal">Reject</button>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                        <div class="card-body under_tab_link">
-                                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                                <li class="nav-item">
-                                                    <a class="nav-link active" id="homesecond-tab-z" data-toggle="tab" href="#homesecond" role="tab" aria-controls="homesecond" aria-selected="true">Perfect Money</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" id="profilesecond-tab-z" data-toggle="tab" href="#profilesecond" role="tab" aria-controls="profilesecond" aria-selected="false">USDT TRC20</a>
-                                                </li>
-                                            </ul>
-                                            <div class="tab-content" id="myTabContent1">
-                                                <div class="tab-pane fade show active" id="homesecond" role="tabpanel" aria-labelledby="homesecond-tab">
-                                                    <div class="card-body">
-                                                        <div class="card-header seachbar fromday">
-                                                            <h5></h5>
-                                                            <div class="reveue-date">
-                                                                <div class="form-group  d-flex mr-2">
-                                                                    <label>From</label>
-                                                                    <input type="date" id="" name="" class="form-control dateinput ">
-                                                                </div>
-                                                                <div class="form-group  d-flex">
-                                                                    <label>To</label>
-                                                                    <input type="date" id="" name="" class="form-control dateinput ">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="table-responsive mt-5">
-                                                            <table class="table table-hover ">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>#</th>
-                                                                        <th>Order ID</th>
-                                                                        <th>Name</th>
-                                                                        <th>Asset</th>
-                                                                        <th>Payment proof</th>
-                                                                        <th>Amount ($)</th>
-                                                                        <th>Amount (Naira)</th>
-                                                                        <th>Date & Time</th>
-                                                                        <th>Status</th>
-                                                                        <th>Action</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td>1</td>
-                                                                        <td>12453trc20/SL</td>
-                                                                        <td>Rafi</td>
-                                                                        <td>PM/TRC20</td>
-                                                                        <td>
-                                                                            <ul class="action">
-                                                                                <li>
-                                                                                    <a class="btn btn-primary" data-toggle="modal" data-target="#viewdocument">
-                                                                                        <i class="mdi mdi-eye-settings" title="View" style="color: #fff;"></i>
-                                                                                    </a>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </td>
-                                                                        <td>$56,867</td>
-                                                                        <td>500</td>
-                                                                        <td>10 July 2021, 9:00 AM</td>
-                                                                        <td>Active</td>
-                                                                        <td>
-                                                                            <ul class="action">
-                                                                                <li>
-                                                                                    <a href="#" class="btn btn-primary">
-                                                                                        Approve
-                                                                                    </a>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <button class="btn btn-danger" data-target="#rejectrequest" data-toggle="modal">Reject</button>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="tab-pane fade show" id="profilesecond" role="tabpanel" aria-labelledby="profilesecond-tab">
-                                                    <div class="card-body">
-                                                        <div class="card-header seachbar fromday">
-                                                            <h5></h5>
-                                                            <div class="reveue-date">
-                                                                <div class="form-group  d-flex mr-2">
-                                                                    <label>From</label>
-                                                                    <input type="date" id="" name="" class="form-control dateinput ">
-                                                                </div>
-                                                                <div class="form-group  d-flex">
-                                                                    <label>To</label>
-                                                                    <input type="date" id="" name="" class="form-control dateinput ">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="table-responsive mt-5">
-                                                            <table class="table table-hover ">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>#</th>
-                                                                        <th>Order ID</th>
-                                                                        <th>Name</th>
-                                                                        <th>Asset</th>
-                                                                        <th>Payment proof</th>
-                                                                        <th>Amount ($)</th>
-                                                                        <th>Amount (Naira)</th>
-                                                                        <th>Date & Time</th>
-                                                                        <th>Status</th>
-                                                                        <th>Action</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td>1</td>
-                                                                        <td>12453trc20/SL</td>
-                                                                        <td>Rafi</td>
-                                                                        <td>PM/TRC20</td>
-                                                                        <td>
-                                                                            <ul class="action">
-                                                                                <li>
-                                                                                    <a class="btn btn-primary" data-toggle="modal" data-target="#viewdocument">
-                                                                                        <i class="mdi mdi-eye-settings" title="View" style="color: #fff;"></i>
-                                                                                    </a>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </td>
-                                                                        <td>$56,867</td>
-                                                                        <td>500</td>
-                                                                        <td>10 July 2021, 9:00 AM</td>
-                                                                        <td>Active</td>
-                                                                        <td>
-                                                                            <ul class="action">
-                                                                                <li>
-                                                                                    <a href="#" class="btn btn-primary">
-                                                                                        Approve
-                                                                                    </a>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <button class="btn btn-danger" data-target="#rejectrequest" data-toggle="modal">Reject</button>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade show" id="perfectmoney" role="tabpanel" aria-labelledby="perfectmoney-tab">
-                                        <div class="card-body under_tab_link">
-                                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                                <li class="nav-item">
-                                                    <a class="nav-link active" id="homethird-tab-z" data-toggle="tab" href="#homethird" role="tab" aria-controls="homethird" aria-selected="true">Perfect Money</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" id="profilethird-tab-z" data-toggle="tab" href="#profilethird" role="tab" aria-controls="profilethird" aria-selected="false">USDT TRC20</a>
-                                                </li>
-                                            </ul>
-                                            <div class="tab-content" id="myTabContent1">
-                                                <div class="tab-pane fade show active" id="homethird" role="tabpanel" aria-labelledby="homethird-tab">
-                                                    <div class="card-body">
-                                                        <div class="card-header seachbar fromday">
-                                                            <h5></h5>
-                                                            <div class="reveue-date">
-                                                                <div class="form-group  d-flex mr-2">
-                                                                    <label>From</label>
-                                                                    <input type="date" id="" name="" class="form-control dateinput ">
-                                                                </div>
-                                                                <div class="form-group  d-flex">
-                                                                    <label>To</label>
-                                                                    <input type="date" id="" name="" class="form-control dateinput ">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="table-responsive mt-5">
-                                                            <table class="table table-hover ">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>#</th>
-                                                                        <th>Order ID</th>
-                                                                        <th>Name</th>
-                                                                        <th>Asset</th>
-                                                                        <th>Amount ($)</th>
-                                                                        <th>Exchange Rate</th>
-                                                                        <th>Wallet Address</th>
-                                                                        <th>Date & Time</th>
-                                                                        <th>Status</th>
-                                                                        <th>Action</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td>1</td>
-                                                                        <td>12453trc20/FD</td>
-                                                                        <td>Rafi</td>
-                                                                        <td>TRC20/ PM</td>
-                                                                        <td>$56,867</td>
-                                                                        <td>50 USD = 500 NGN</td>
-                                                                        <td></td>
-                                                                        <td>10 July 2021, 9:00 AM</td>
-                                                                        <td>Active</td>
-                                                                        <td>
-                                                                            <ul class="action">
-                                                                                <li>
-                                                                                    <a href="#" class="btn btn-primary">
-                                                                                        Approve
-                                                                                    </a>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <button class="btn btn-danger" data-target="#rejectrequest" data-toggle="modal">Reject</button>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="tab-pane fade show" id="profilethird" role="tabpanel" aria-labelledby="profilethird-tab">
-                                                    <div class="card-body">
-                                                        <div class="card-header seachbar fromday">
-                                                            <h5></h5>
-                                                            <div class="reveue-date">
-                                                                <div class="form-group  d-flex mr-2">
-                                                                    <label>From</label>
-                                                                    <input type="date" id="" name="" class="form-control dateinput ">
-                                                                </div>
-                                                                <div class="form-group  d-flex">
-                                                                    <label>To</label>
-                                                                    <input type="date" id="" name="" class="form-control dateinput ">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="table-responsive mt-5">
-                                                            <table class="table table-hover ">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>#</th>
-                                                                        <th>Order ID</th>
-                                                                        <th>Name</th>
-                                                                        <th>Asset</th>
-                                                                        <th>Amount ($)</th>
-                                                                        <th>Exchange Rate</th>
-                                                                        <th>Wallet Address</th>
-                                                                        <th>Date & Time</th>
-                                                                        <th>Status</th>
-                                                                        <th>Action</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td>1</td>
-                                                                        <td>12453trc20/FD</td>
-                                                                        <td>Rafi</td>
-                                                                        <td>TRC20/ PM</td>
-                                                                        <td>$56,867</td>
-                                                                        <td>50 USD = 500 NGN</td>
-                                                                        <td></td>
-                                                                        <td>10 July 2021, 9:00 AM</td>
-                                                                        <td>Active</td>
-                                                                        <td>
-                                                                            <ul class="action">
-                                                                                <li>
-                                                                                    <a href="#" class="btn btn-primary">
-                                                                                        Approve
-                                                                                    </a>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <button class="btn btn-danger" data-target="#rejectrequest" data-toggle="modal">Reject</button>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade show" id="ngnwallet" role="tabpanel" aria-labelledby="ngnwallet-tab">
-                                        <div class="card-body under_tab_link">
-                                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                                <li class="nav-item">
-                                                    <a class="nav-link active" id="homeforth-tab-z" data-toggle="tab" href="#homeforth" role="tab" aria-controls="homeforth" aria-selected="true">Naira</a>
-                                                </li>
-                                                <!-- <li class="nav-item">
+              <div class="card-body top_nav_link">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" id="home-tab-z" data-toggle="tab" href="#home" role="tab"
+                      aria-controls="home" aria-selected="true">Withdrawl Request</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="profile-tab-z" data-toggle="tab" href="#profile" role="tab"
+                      aria-controls="profile" aria-selected="false">Selling Request</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="perfectmoney-tab-z" data-toggle="tab" href="#perfectmoney" role="tab"
+                      aria-controls="perfectmoney" aria-selected="false">Buying Request</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="ngnwallet-tab-z" data-toggle="tab" href="#ngnwallet" role="tab"
+                      aria-controls="ngnwallet" aria-selected="false">Deposit Request</a>
+                  </li>
+                </ul>
+                <div class="tab-content" id="myTabContent1">
+                  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="card-body under_tab_link">
+                      <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                          <a class="nav-link active" id="homefirst-tab-z" data-toggle="tab" href="#homefirst" role="tab"
+                            aria-controls="homefirst" aria-selected="true">Crypto Withdraw</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" id="profilefirst-tab-z" data-toggle="tab" href="#profilefirst" role="tab"
+                            aria-controls="profilefirst" aria-selected="false">Naira Withdraw</a>
+                        </li>
+                      </ul>
+                      <div class="tab-content" id="myTabContent1">
+                        <div class="tab-pane fade show active" id="homefirst" role="tabpanel"
+                          aria-labelledby="homefirst-tab">
+                          <div class="card-body">
+                            <app-request-table [status]="'1/1/'"></app-request-table>
+                          </div>
+                        </div>
+                        <div class="tab-pane fade show" id="profilefirst" role="tabpanel"
+                          aria-labelledby="profilefirst-tab">
+                          <div class="card-body">
+                            <app-request-table [status]="'1/2/'"></app-request-table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="card-body under_tab_link">
+                      <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                          <a class="nav-link active" id="homesecond-tab-z" data-toggle="tab" href="#homesecond"
+                            role="tab" aria-controls="homesecond" aria-selected="true">Perfect Money</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" id="profilesecond-tab-z" data-toggle="tab" href="#profilesecond"
+                            role="tab" aria-controls="profilesecond" aria-selected="false">USDT TRC20</a>
+                        </li>
+                      </ul>
+                      <div class="tab-content" id="myTabContent1">
+                        <div class="tab-pane fade show active" id="homesecond" role="tabpanel"
+                          aria-labelledby="homesecond-tab">
+                          <div class="card-body">
+                            <div class="card-header seachbar fromday">
+                              <h5></h5>
+                              <div class="reveue-date">
+                                <div class="form-group  d-flex mr-2">
+                                  <label>From</label>
+                                  <input type="date" id="" name="" class="form-control dateinput ">
+                                </div>
+                                <div class="form-group  d-flex">
+                                  <label>To</label>
+                                  <input type="date" id="" name="" class="form-control dateinput ">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="table-responsive mt-5">
+                              <table class="table table-hover ">
+                                <thead>
+                                  <tr>
+                                    <th>#</th>
+                                    <th>Order ID</th>
+                                    <th>Name</th>
+                                    <th>Asset</th>
+                                    <th>Payment proof</th>
+                                    <th>Amount ($)</th>
+                                    <th>Amount (Naira)</th>
+                                    <th>Date & Time</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>1</td>
+                                    <td>12453trc20/SL</td>
+                                    <td>Rafi</td>
+                                    <td>PM/TRC20</td>
+                                    <td>
+                                      <ul class="action">
+                                        <li>
+                                          <a class="btn btn-primary" data-toggle="modal" data-target="#viewdocument">
+                                            <i class="mdi mdi-eye-settings" title="View" style="color: #fff;"></i>
+                                          </a>
+                                        </li>
+                                      </ul>
+                                    </td>
+                                    <td>$56,867</td>
+                                    <td>500</td>
+                                    <td>10 July 2021, 9:00 AM</td>
+                                    <td>Active</td>
+                                    <td>
+                                      <ul class="action">
+                                        <li>
+                                          <a href="#" class="btn btn-primary">
+                                            Approve
+                                          </a>
+                                        </li>
+                                        <li>
+                                          <button class="btn btn-danger" data-target="#rejectrequest"
+                                            data-toggle="modal">Reject</button>
+                                        </li>
+                                      </ul>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="tab-pane fade show" id="profilesecond" role="tabpanel"
+                          aria-labelledby="profilesecond-tab">
+                          <div class="card-body">
+                            <div class="card-header seachbar fromday">
+                              <h5></h5>
+                              <div class="reveue-date">
+                                <div class="form-group  d-flex mr-2">
+                                  <label>From</label>
+                                  <input type="date" id="" name="" class="form-control dateinput ">
+                                </div>
+                                <div class="form-group  d-flex">
+                                  <label>To</label>
+                                  <input type="date" id="" name="" class="form-control dateinput ">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="table-responsive mt-5">
+                              <table class="table table-hover ">
+                                <thead>
+                                  <tr>
+                                    <th>#</th>
+                                    <th>Order ID</th>
+                                    <th>Name</th>
+                                    <th>Asset</th>
+                                    <th>Payment proof</th>
+                                    <th>Amount ($)</th>
+                                    <th>Amount (Naira)</th>
+                                    <th>Date & Time</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>1</td>
+                                    <td>12453trc20/SL</td>
+                                    <td>Rafi</td>
+                                    <td>PM/TRC20</td>
+                                    <td>
+                                      <ul class="action">
+                                        <li>
+                                          <a class="btn btn-primary" data-toggle="modal" data-target="#viewdocument">
+                                            <i class="mdi mdi-eye-settings" title="View" style="color: #fff;"></i>
+                                          </a>
+                                        </li>
+                                      </ul>
+                                    </td>
+                                    <td>$56,867</td>
+                                    <td>500</td>
+                                    <td>10 July 2021, 9:00 AM</td>
+                                    <td>Active</td>
+                                    <td>
+                                      <ul class="action">
+                                        <li>
+                                          <a href="#" class="btn btn-primary">
+                                            Approve
+                                          </a>
+                                        </li>
+                                        <li>
+                                          <button class="btn btn-danger" data-target="#rejectrequest"
+                                            data-toggle="modal">Reject</button>
+                                        </li>
+                                      </ul>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade show" id="perfectmoney" role="tabpanel" aria-labelledby="perfectmoney-tab">
+                    <div class="card-body under_tab_link">
+                      <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                          <a class="nav-link active" id="homethird-tab-z" data-toggle="tab" href="#homethird" role="tab"
+                            aria-controls="homethird" aria-selected="true">Perfect Money</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" id="profilethird-tab-z" data-toggle="tab" href="#profilethird" role="tab"
+                            aria-controls="profilethird" aria-selected="false">USDT TRC20</a>
+                        </li>
+                      </ul>
+                      <div class="tab-content" id="myTabContent1">
+                        <div class="tab-pane fade show active" id="homethird" role="tabpanel"
+                          aria-labelledby="homethird-tab">
+                          <div class="card-body">
+                            <div class="card-header seachbar fromday">
+                              <h5></h5>
+                              <div class="reveue-date">
+                                <div class="form-group  d-flex mr-2">
+                                  <label>From</label>
+                                  <input type="date" id="" name="" class="form-control dateinput ">
+                                </div>
+                                <div class="form-group  d-flex">
+                                  <label>To</label>
+                                  <input type="date" id="" name="" class="form-control dateinput ">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="table-responsive mt-5">
+                              <table class="table table-hover ">
+                                <thead>
+                                  <tr>
+                                    <th>#</th>
+                                    <th>Order ID</th>
+                                    <th>Name</th>
+                                    <th>Asset</th>
+                                    <th>Amount ($)</th>
+                                    <th>Exchange Rate</th>
+                                    <th>Wallet Address</th>
+                                    <th>Date & Time</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>1</td>
+                                    <td>12453trc20/FD</td>
+                                    <td>Rafi</td>
+                                    <td>TRC20/ PM</td>
+                                    <td>$56,867</td>
+                                    <td>50 USD = 500 NGN</td>
+                                    <td></td>
+                                    <td>10 July 2021, 9:00 AM</td>
+                                    <td>Active</td>
+                                    <td>
+                                      <ul class="action">
+                                        <li>
+                                          <a href="#" class="btn btn-primary">
+                                            Approve
+                                          </a>
+                                        </li>
+                                        <li>
+                                          <button class="btn btn-danger" data-target="#rejectrequest"
+                                            data-toggle="modal">Reject</button>
+                                        </li>
+                                      </ul>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="tab-pane fade show" id="profilethird" role="tabpanel"
+                          aria-labelledby="profilethird-tab">
+                          <div class="card-body">
+                            <div class="card-header seachbar fromday">
+                              <h5></h5>
+                              <div class="reveue-date">
+                                <div class="form-group  d-flex mr-2">
+                                  <label>From</label>
+                                  <input type="date" id="" name="" class="form-control dateinput ">
+                                </div>
+                                <div class="form-group  d-flex">
+                                  <label>To</label>
+                                  <input type="date" id="" name="" class="form-control dateinput ">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="table-responsive mt-5">
+                              <table class="table table-hover ">
+                                <thead>
+                                  <tr>
+                                    <th>#</th>
+                                    <th>Order ID</th>
+                                    <th>Name</th>
+                                    <th>Asset</th>
+                                    <th>Amount ($)</th>
+                                    <th>Exchange Rate</th>
+                                    <th>Wallet Address</th>
+                                    <th>Date & Time</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>1</td>
+                                    <td>12453trc20/FD</td>
+                                    <td>Rafi</td>
+                                    <td>TRC20/ PM</td>
+                                    <td>$56,867</td>
+                                    <td>50 USD = 500 NGN</td>
+                                    <td></td>
+                                    <td>10 July 2021, 9:00 AM</td>
+                                    <td>Active</td>
+                                    <td>
+                                      <ul class="action">
+                                        <li>
+                                          <a href="#" class="btn btn-primary">
+                                            Approve
+                                          </a>
+                                        </li>
+                                        <li>
+                                          <button class="btn btn-danger" data-target="#rejectrequest"
+                                            data-toggle="modal">Reject</button>
+                                        </li>
+                                      </ul>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade show" id="ngnwallet" role="tabpanel" aria-labelledby="ngnwallet-tab">
+                    <div class="card-body under_tab_link">
+                      <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                          <a class="nav-link active" id="homeforth-tab-z" data-toggle="tab" href="#homeforth" role="tab"
+                            aria-controls="homeforth" aria-selected="true">Naira</a>
+                        </li>
+                        <!-- <li class="nav-item">
                                                     <a class="nav-link" id="profileforth-tab-z" data-toggle="tab" href="#profileforth" role="tab" aria-controls="profileforth" aria-selected="false">NGN Deposit Request</a>
                                                 </li> -->
-                                            </ul>
-                                            <div class="tab-content" id="myTabContent1">
-                                                <div class="tab-pane fade show active" id="homeforth" role="tabpanel" aria-labelledby="homeforth-tab">
-                                                    <div class="card-body">
-                                                        <div class="card-header seachbar fromday">
-                                                            <h5></h5>
-                                                            <div class="reveue-date">
-                                                                <div class="form-group  d-flex mr-2">
-                                                                    <label>From</label>
-                                                                    <input type="date" id="" name="" class="form-control dateinput ">
-                                                                </div>
-                                                                <div class="form-group  d-flex">
-                                                                    <label>To</label>
-                                                                    <input type="date" id="" name="" class="form-control dateinput ">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="table-responsive mt-5">
-                                                            <table class="table table-hover ">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>#</th>
-                                                                        <th>Order ID</th>
-                                                                        <th>Name</th>
-                                                                        <th>Asset</th>
-                                                                        <th>Payment proof</th>
-                                                                        <th>Amount</th>
-                                                                        <th>Date & Time</th>
-                                                                        <th>Status</th>
-                                                                        <th>Action</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td>1</td>
-                                                                        <td>12453NGN/DP </td>
-                                                                        <td>Rafi</td>
-                                                                        <td>NGN</td>
-                                                                        <td>
-                                                                            <ul class="action">
-                                                                                <li>
-                                                                                    <a class="btn btn-primary" data-toggle="modal" data-target="#viewdocument">
-                                                                                        <i class="mdi mdi-eye-settings" title="View" style="color: #fff;"></i>
-                                                                                    </a>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </td>
-                                                                        <td>$56,867</td>
-                                                                        <td>10 July 2021, 9:00 AM</td>
-                                                                        <td>Active</td>
-                                                                        <td>
-                                                                            <ul class="action">
-                                                                                <li>
-                                                                                    <button class="btn btn-primary">Approve</button>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <button class="btn btn-danger" data-target="#rejectrequest" data-toggle="modal">Reject</button>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- <div class="tab-pane fade show" id="profileforth" role="tabpanel" aria-labelledby="profileforth-tab">
+                      </ul>
+                      <div class="tab-content" id="myTabContent1">
+                        <div class="tab-pane fade show active" id="homeforth" role="tabpanel"
+                          aria-labelledby="homeforth-tab">
+                          <div class="card-body">
+                            <div class="card-header seachbar fromday">
+                              <h5></h5>
+                              <div class="reveue-date">
+                                <div class="form-group  d-flex mr-2">
+                                  <label>From</label>
+                                  <input type="date" id="" name="" class="form-control dateinput ">
+                                </div>
+                                <div class="form-group  d-flex">
+                                  <label>To</label>
+                                  <input type="date" id="" name="" class="form-control dateinput ">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="table-responsive mt-5">
+                              <table class="table table-hover ">
+                                <thead>
+                                  <tr>
+                                    <th>#</th>
+                                    <th>Order ID</th>
+                                    <th>Name</th>
+                                    <th>Asset</th>
+                                    <th>Payment proof</th>
+                                    <th>Amount</th>
+                                    <th>Date & Time</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>1</td>
+                                    <td>12453NGN/DP </td>
+                                    <td>Rafi</td>
+                                    <td>NGN</td>
+                                    <td>
+                                      <ul class="action">
+                                        <li>
+                                          <a class="btn btn-primary" data-toggle="modal" data-target="#viewdocument">
+                                            <i class="mdi mdi-eye-settings" title="View" style="color: #fff;"></i>
+                                          </a>
+                                        </li>
+                                      </ul>
+                                    </td>
+                                    <td>$56,867</td>
+                                    <td>10 July 2021, 9:00 AM</td>
+                                    <td>Active</td>
+                                    <td>
+                                      <ul class="action">
+                                        <li>
+                                          <button class="btn btn-primary">Approve</button>
+                                        </li>
+                                        <li>
+                                          <button class="btn btn-danger" data-target="#rejectrequest"
+                                            data-toggle="modal">Reject</button>
+                                        </li>
+                                      </ul>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- <div class="tab-pane fade show" id="profileforth" role="tabpanel" aria-labelledby="profileforth-tab">
                                                     <div class="card-body">
                                                         <div class="card-header seachbar fromday">
                                                             <h5></h5>
@@ -610,15 +501,15 @@
                                                         </div>
                                                     </div>
                                                 </div> -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                      </div>
                     </div>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </section>

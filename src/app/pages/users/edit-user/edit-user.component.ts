@@ -19,13 +19,13 @@ export class EditUserComponent implements OnInit {
   constructor(private fb:FormBuilder,private toaster:ToastrService,private commn_:CommonService,private route:ActivatedRoute,private router:Router) { 
     this.editUserForm=this.fb.group({
       phone_number:['',[Validators.required,Validators.pattern(/^([0-9])*$/),Validators.maxLength(15),Validators.minLength(7)]],
-      first_name:['',[Validators.required,Validators.pattern(new RegExp("\\S"))]],
-      last_name:['',[Validators.required,Validators.pattern(new RegExp("\\S"))]],
+      first_name:['',[Validators.required,Validators.minLength(3),Validators.maxLength(15),Validators.pattern(new RegExp("\\S"))]],
+      last_name:['',[Validators.required,Validators.minLength(3),Validators.maxLength(15),Validators.pattern(new RegExp("\\S"))]],
       building_no:['',[Validators.required]],
       image:[''],
       zone:['',[Validators.required]],
       street:['',[Validators.required]],
-      document:[''],
+      document:['',[Validators.required]],
       email:['',[Validators.required,Validators.email]],
       password:['']
     });    
@@ -51,7 +51,7 @@ export class EditUserComponent implements OnInit {
       this.editUserForm.controls.building_no.setValue(res?.data?.building_no);
       this.editUserForm.controls.zone.setValue(res?.data?.zone);
       this.editUserForm.controls.street.setValue(res?.data?.street);
-      this.editUserForm.controls.document.setValue(res?.data?.user_documents[0]?.document);
+      this.editUserForm.controls.document.setValue(res?.data?.user_documents[0]?.document.id);
       this.imageUrl=environment.imgBaseUrl+res.data.image.media_file;
      }
      else
@@ -142,7 +142,7 @@ export class EditUserComponent implements OnInit {
         body['image']=this.editUserForm.value.image;
       }
 
-
+      console.log(body);
       this.commn_.put(urls.updateUserById+this.localId+"/",body).subscribe(res=>{
         if(res.code==200)
         {
