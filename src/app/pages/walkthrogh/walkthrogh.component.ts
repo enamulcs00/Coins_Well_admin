@@ -27,6 +27,7 @@ imgUrl=environment.homeURL
   IsAdd:boolean = false
   Id: any;
   ImageId: any;
+  ShowImage: any;
   constructor(private service: CommonService, private _noti: NotificationsService,private fb:FormBuilder) { }
 ngOnInit(): void {
   this.GetWalthroughData()
@@ -67,6 +68,10 @@ this.SplashUpdateForm.patchValue({
   title: data?.title,
   description:data?.description,
 })
+}
+OpenImage(img){
+  this.ShowImage = img
+  $('#openImage').modal('show')
 }
 sendFile(fileData) {
   let formdata = new FormData()
