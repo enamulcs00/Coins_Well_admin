@@ -40,7 +40,7 @@
                                         
                                     </mat-form-field>
                                 </div>
-                                <div class="form-group col-md-6">
+                                <!-- <div class="form-group col-md-6">
                                     <mat-form-field class="row col-12" appearance="outline">
                                     <mat-label for="inputPassword4">Bank Branch</mat-label>
                                         <input type="text" name="first_name" matInput placeholder="Enter branch" formControlName="branch" #spac (keydown.space)="!spac.value?$event.preventDefault():null">
@@ -56,7 +56,7 @@
                                         <mat-error *ngIf="AddBankForm.get('ifsc_code').hasError('required')">Please enter ifsc code.
                                         </mat-error>
                                     </mat-form-field>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-primary" (click)="AddBank()">{{ (isLoading)?'Processing...':'Update' }}</button>

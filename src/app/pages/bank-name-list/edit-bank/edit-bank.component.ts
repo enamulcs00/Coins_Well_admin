@@ -29,8 +29,8 @@ export class EditBankComponent implements OnInit {
   this.getBankById()
 this.AddBankForm = this.fb.group({
   name:['',[Validators.required,]],
-  branch:['',Validators.required],
-  ifsc_code:['',Validators.required],
+//   branch:['',Validators.required],
+//   ifsc_code:['',Validators.required],
 })
   }
   sendFile(fileData) {
@@ -70,8 +70,8 @@ this.AddBankForm = this.fb.group({
 		let obj = {
       "name":this.AddBankForm.controls.name.value,
       "bank_image":this.files,
-      "ifsc_code":this.AddBankForm.controls.ifsc_code.value,
-      "branch":this.AddBankForm.controls.branch.value
+    //   "ifsc_code":this.AddBankForm.controls.ifsc_code.value,
+    //   "branch":this.AddBankForm.controls.branch.value
 		}
 		this.service.put(`admin/update-bank-by-pk/${this.id}/`, obj).subscribe((res:any) => {
 			if(res.code==200){

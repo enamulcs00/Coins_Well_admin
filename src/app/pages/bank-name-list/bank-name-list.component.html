@@ -68,7 +68,7 @@
                   </ng-template>
                 </ngx-datatable-column>
 
-                <ngx-datatable-column name="Branch name" prop="branch">
+                <!-- <ngx-datatable-column name="Branch name" prop="branch">
                   <ng-template let-row="row" ngx-datatable-cell-template>
                     {{row?.branch}}
                   </ng-template>
@@ -77,14 +77,14 @@
                   <ng-template let-row="row" ngx-datatable-cell-template>
                     {{row?.ifsc_code}}
                   </ng-template>
-                </ngx-datatable-column>
+                </ngx-datatable-column> -->
                 <ngx-datatable-column name="ACTION" prop="status">
                   <ng-template let-row="row" ngx-datatable-cell-template>
                     <ul class="action">
                       <li><a routerLink="/banknamelist/editbank" [queryParams]="{ id: row.id}"
                           class="btn btn-primary"><i class="mdi mdi-pen" title="Edit"></i></a></li>
                       <li>
-                        <a class="btn btn-danger" (click)=" Delete(row?.id)">
+                        <a class="btn btn-danger" href="javascript:void(0)" (click)=" Delete(row?.id)">
                           <i class="mdi mdi-delete" title="Delete"></i>
                         </a>
                       </li>
