@@ -537,3 +537,20 @@ ul.action {
     background: #fff !important;
     z-index: 8;
 }
+
+button:focus{
+    outline: none !important;
+    box-shadow: none !important;
+}
+.faq_section .table-bordered td, .faq_section .table-bordered th {
+    border: none !important;
+}
+.faq_section .table-bordered  {
+    border: none !important;
+}
+.faq_section mat-label {
+    background: #fff !important;
+}
+.bank-dropdown .mat-form-field-infix {
+    min-height: 55.35px;
+}

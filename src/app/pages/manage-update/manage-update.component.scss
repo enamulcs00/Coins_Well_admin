@@ -1,4 +1,11 @@
 ::ng-deep .bank-dropdown {
+    .ng-option {
+        box-sizing: border-box;
+        cursor: pointer;
+        display: block;
+        padding: 8px 10px;
+        border-bottom: 1px solid #E0E0E0;
+    }
     .mat-form-field-infix {
         padding: 0px 0px !important;
     }
@@ -31,9 +38,11 @@
         width: 100%;
         margin-left: 10px;
         justify-content: start;
+        align-items: center;
         .bank-heading {
             font-size: 15px;
             font-weight: 500;
+            margin-bottom: 0px;
             color: #0a1958;
             line-height: inherit;
         }
@@ -48,15 +57,17 @@
         display: flex;
         width: 100%;
         justify-content: start;
+        align-items: center;
         .img {
-            height: 55px;
-            min-width: 55px;
-            width: 55px;
+            height: 25px;
+            min-width: 25px;
+            width: 25px;
             object-fit: cover;
             border-radius: 5px;
         }
         .bank-heading {
             font-size: 15px;
+            margin-bottom: 0px;
             font-weight: 500;
             color: #0a1958;
             line-height: inherit;

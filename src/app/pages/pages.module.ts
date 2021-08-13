@@ -32,6 +32,8 @@ import { MaterialExtensionsExperimentalModule, MaterialExtensionsModule } from '
 import { RequestTableComponent } from './request/request-table/request-table.component';
 
 import { CKEditorModule } from 'ckeditor4-angular';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
 	declarations: [
@@ -70,7 +72,9 @@ import { CKEditorModule } from 'ckeditor4-angular';
 		MatPaginatorModule,
 		MatTooltipModule,
 		MatPaginatorModule,
-		CKEditorModule
+		CKEditorModule,
+		MatDatepickerModule, 
+		MatNativeDateModule
 	],
 	exports:[
 		MaterialExtensionsExperimentalModule,

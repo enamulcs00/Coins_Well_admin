@@ -5,6 +5,7 @@ import { CommonService } from 'src/app/_services/common.service';
 import { urls } from 'src/app/_services/urls';
 import { Page } from '../../modal/page';
 import { Block } from 'notiflix';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-request-table',
   templateUrl: './request-table.component.html',
@@ -20,14 +21,24 @@ export class RequestTableComponent implements OnInit {
 	page = new Page();
 	rows = new Array<any>();
 	ColumnMode = ColumnMode;
+  start_date: any="";
+  end_date: any="";
+  todayDate=new Date();
   constructor(private _common:CommonService) { }
 
   ngOnInit(): void {
     this.setPage({ offset: 0 });
   }
-  
+   
+  changeDateRange()
+  {
+    this.setPage({offset:0});
+  }
+
   formData:any={
     "draw": 2,
+    "start_date":this.start_date,
+    "end_date":this.end_date,
     "columns": [
         {
             "data": "id",
@@ -58,6 +69,8 @@ export class RequestTableComponent implements OnInit {
 		Block.circle('#users-list-page');
 		this.formData.search.value = this.searchData.value;
 		this.formData.start = pageInfo.offset * this.formData.length;
+    this.formData.start_date=this.start_date;
+    this.formData.end_date=this.end_date;
 		this._common.post(urls.getAllPayment+this.status, this.formData).subscribe(_pagedData => {
       console.log(_pagedData);
 			this.page = {
@@ -71,6 +84,12 @@ export class RequestTableComponent implements OnInit {
 				Block.remove('#users-list-page');
 			}), 700);
 		});
+	}
+  
+  userModal(ig) {
+		this._common.userConfirm("PAYMENT PROOF", environment.imgBaseUrl+ig).subscribe(x => {
+
+		})
 	}
 
 }
