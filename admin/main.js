@@ -771,7 +771,7 @@ class AppComponent {
             this._auth.firebaseToken = token;
         }))
             .catch((_) => {
-            alert("Unable to get permission to notify.");
+            //alert("Unable to get permission to notify.");
         });
     }
 }

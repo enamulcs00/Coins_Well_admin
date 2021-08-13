@@ -2,104 +2,86 @@ import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { CommonService } from 'src/app/_services/common.service';
 import { urls } from 'src/app/_services/urls';
+import { ColumnMode } from '@swimlane/ngx-datatable';
+import { Page } from '../../modal/page';
+import { Block } from 'notiflix';
+
 @Component({
   selector: 'app-notification-table',
   templateUrl: './notification-table.component.html',
   styleUrls: ['./notification-table.component.scss']
 })
 export class NotificationTableComponent implements OnInit {
-  items: any;
-  pageEvent: PageEvent;
-  page: any=0;
-  pageSize: any=10;
-  length: any;
   searchText:any = '';
   delayTimer: number;
   constructor(private commn_:CommonService) { }
 
   ngOnInit(): void {
-    this.getNotificationList();
-  }
-  
-  getNotificationList()
-  {
-    let body={
-    
-      "status":null,
-      "draw": 2,
-      "columns": [
-          {
-              "data": "id",
-              "name": "",
-              "searchable": true,
-              "orderable": true,
-              "search": {
-                  "value": "",
-                  "regex": false
-              }
-          },
-          {
-              "data": "message",
-              "name": "",
-              "searchable": true,
-              "orderable": true,
-              "search": {
-                  "value": "",
-                  "regex": false
-              }
-          },
-          {
-              "data": "title",
-              "name": "",
-              "searchable": true,
-              "orderable": true,
-              "search": {
-                  "value":"",
-                  "regex": false
-              }
-          }
-      ],
-      "order": [
-          {
-              "column": 2,
-              "dir": "undefined"
-          }
-      ],
-      "start": this.page,
-      "length": this.pageSize,
-      "search": {
-          "value": this.searchText,
-          "regex": false
-      }
-  }
-    this.commn_.post(urls.getAllNotifiation,body).subscribe(res=>{
-      console.log(res)
-      this.items=res.data;
-      this.length=res.recordsTotal;
-    })
+    this.setPage({offset:0});
   }
   
   changeText()
   {
     clearTimeout(this.delayTimer);
     this.delayTimer=setTimeout(()=>{
-      this.getNotificationList();
+      this.setPage({offset:0});
     },2000);
   }
-  
-  pageSizeChanged(e): PageEvent {
-    if (e.pageIndex == 0) {
-      this.page = e.pageIndex;
-    } else {
-      if (e.previousPageIndex < e.pageIndex) {
-        this.page = e.pageSize + 1;
-      } else {
-        this.page = e.pageSize;
-      }
+
+  page = new Page();
+	rows = new Array<any>();
+	ColumnMode = ColumnMode;
+	definedColumns = [
+		{
+			"data": "id"
+		},
+		{
+			"data": "first_name"
+		},
+		{
+			"data": "last_name"
+		},
+		{
+			"data": "email"
+		}
+	]
+
+formData: any = {
+  "status": status,
+  "draw": 0,
+  "columns": this.commn_.getColumns(this.definedColumns),
+  "order": [
+    {
+      "column": 0,
+      "dir": "desc"
     }
-    this.pageSize = e.pageSize
-    this.getNotificationList();
-    return e;
+  ],
+  "start": 0,
+  "length": 10,
+  "search": {
+    "value": "",
+    "regex": false
+  }
+};
+
+setPage(pageInfo) {
+  Block.circle('#users-list-page');
+  this.formData.search.value = this.searchText;
+  this.formData.start = pageInfo.offset * this.formData.length;
+  this.commn_.post(urls.getAllNotifiation, this.formData).subscribe(_pagedData => {
+    console.log(_pagedData);
+    this.page = {
+      totalElements: _pagedData.recordsTotal,
+      pageNumber: pageInfo.offset,
+      totalPages: Math.ceil(_pagedData.recordsTotal / this.formData.length),
+      size: this.formData.length
+    }
+    this.rows = _pagedData.data;
+    setTimeout((x => {
+      Block.remove('#users-list-page');
+    }), 700);
+  });
 }
+
 
 }

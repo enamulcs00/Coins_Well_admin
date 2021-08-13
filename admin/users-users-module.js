@@ -1501,7 +1501,8 @@ class UserListComponent {
         this.value = data.heading;
     }
     searchHere() {
-        setTimeout(() => { this.searchData.event.next(); }, 1050);
+        clearTimeout(this.timeOut);
+        this.timeOut = setTimeout(() => { this.searchData.event.next(); }, 1050);
     }
 }
 UserListComponent.ɵfac = function UserListComponent_Factory(t) { return new (t || UserListComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_common_service__WEBPACK_IMPORTED_MODULE_3__["CommonService"])); };

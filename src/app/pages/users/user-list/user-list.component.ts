@@ -17,6 +17,7 @@ export class UserListComponent implements OnInit {
 		value: ''
 	}
 	value = 'Pending';
+	timeOut: number;
 	constructor(private _common: CommonService) {
 	}
 
@@ -29,7 +30,8 @@ export class UserListComponent implements OnInit {
 	}
 
 	searchHere() {
-		setTimeout(()=>{this.searchData.event.next()},1050);
+		clearTimeout(this.timeOut);
+		this.timeOut=setTimeout(()=>{this.searchData.event.next()},1050);
 	}
 
 }

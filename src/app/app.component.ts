@@ -61,7 +61,7 @@ export class AppComponent {
 				})
 			)
 			.catch((_: any) => {
-				alert("Unable to get permission to notify.");
+				//alert("Unable to get permission to notify.");
 			});
 	} 
 }
