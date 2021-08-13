@@ -239,6 +239,7 @@ class AuthService {
         this._http = _http;
         this.otpEmail = false;
         this.onLogin = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+        this.firebaseToken = "";
         this.onProfileUpdate = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
     }
     login(formData) {
@@ -707,23 +708,77 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var notiflix__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! notiflix */ "./node_modules/notiflix/dist/notiflix-aio-3.0.1.min.js");
 /* harmony import */ var notiflix__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(notiflix__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! firebase/app */ "./node_modules/firebase/app/dist/index.esm.js");
+/* harmony import */ var firebase_messaging__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! firebase/messaging */ "./node_modules/firebase/messaging/dist/index.esm.js");
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var _angular_service_worker__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/service-worker */ "./node_modules/@angular/service-worker/__ivy_ngcc__/fesm2015/service-worker.js");
+/* harmony import */ var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/_services/auth.service */ "./src/app/_services/auth.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+
+
+
+
+
 
 
 
 
 class AppComponent {
-    constructor() {
+    constructor(updates, push, _auth) {
+        this.updates = updates;
+        this._auth = _auth;
         this.title = 'angularlearn';
+        this.serviceWorkerAttempt = 0;
         notiflix__WEBPACK_IMPORTED_MODULE_1__["Block"].init({
             backgroundColor: "rgba(255,255,255,0.547)",
         });
+        //Check if user is logged in or not.
+        navigator.serviceWorker.register("ngsw-worker.js");
+        firebase_app__WEBPACK_IMPORTED_MODULE_2__["default"].initializeApp(src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].firebaseConfig);
+        const setInt = () => {
+            navigator.serviceWorker.getRegistration().then((swr) => {
+                this.serviceWorkerAttempt++;
+                if (swr != undefined) {
+                    firebase_app__WEBPACK_IMPORTED_MODULE_2__["default"].messaging().useServiceWorker(swr);
+                    this.permitToNotify();
+                }
+                else {
+                    if (this.serviceWorkerAttempt > 0 && this.serviceWorkerAttempt < 3) {
+                        setInt();
+                    }
+                }
+            });
+        };
+        setInt();
+        updates.available.subscribe((_) => updates.activateUpdate().then(() => {
+            // console.log("reload for update");
+            document.location.reload();
+        }));
+        push.messages.subscribe((msg) => console.log("push message", msg));
+        push.notificationClicks.subscribe((click) => {
+            console.log("notification click", click);
+        });
+        self.addEventListener("notificationclick", function (event) {
+            event.notification.close();
+        });
+    }
+    permitToNotify() {
+        const messaging = firebase_app__WEBPACK_IMPORTED_MODULE_2__["default"].messaging();
+        messaging
+            .requestPermission()
+            .then(() => messaging.getToken().then((token) => {
+            console.log("Token", token);
+            this._auth.firebaseToken = token;
+        }))
+            .catch((_) => {
+            alert("Unable to get permission to notify.");
+        });
     }
 }
-AppComponent.ɵfac = function AppComponent_Factory(t) { return new (t || AppComponent)(); };
+AppComponent.ɵfac = function AppComponent_Factory(t) { return new (t || AppComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_service_worker__WEBPACK_IMPORTED_MODULE_5__["SwUpdate"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_service_worker__WEBPACK_IMPORTED_MODULE_5__["SwPush"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_6__["AuthService"])); };
 AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], decls: 1, vars: 0, template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "router-outlet");
-    } }, directives: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterOutlet"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyJ9 */"] });
+    } }, directives: [_angular_router__WEBPACK_IMPORTED_MODULE_7__["RouterOutlet"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyJ9 */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](AppComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
@@ -731,7 +786,7 @@ AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCompo
                 templateUrl: './app.component.html',
                 styleUrls: ['./app.component.scss']
             }]
-    }], function () { return []; }, null); })();
+    }], function () { return [{ type: _angular_service_worker__WEBPACK_IMPORTED_MODULE_5__["SwUpdate"] }, { type: _angular_service_worker__WEBPACK_IMPORTED_MODULE_5__["SwPush"] }, { type: src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_6__["AuthService"] }]; }, null); })();
 
 
 /***/ }),
@@ -769,6 +824,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ngx_google_places_autocomplete__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ngx-google-places-autocomplete */ "./node_modules/ngx-google-places-autocomplete/__ivy_ngcc__/bundles/ngx-google-places-autocomplete.umd.js");
 /* harmony import */ var ngx_google_places_autocomplete__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(ngx_google_places_autocomplete__WEBPACK_IMPORTED_MODULE_20__);
 /* harmony import */ var _components_confirm_dialog_user_user_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/confirm-dialog/user/user.component */ "./src/app/components/confirm-dialog/user/user.component.ts");
+/* harmony import */ var _angular_service_worker__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @angular/service-worker */ "./node_modules/@angular/service-worker/__ivy_ngcc__/fesm2015/service-worker.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
+
+
+
 
 
 
@@ -814,6 +874,7 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjector
             ngx_google_places_autocomplete__WEBPACK_IMPORTED_MODULE_20__["GooglePlaceModule"],
             ngx_toastr__WEBPACK_IMPORTED_MODULE_13__["ToastrModule"].forRoot(),
             ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_15__["ModalModule"].forRoot(),
+            _angular_service_worker__WEBPACK_IMPORTED_MODULE_22__["ServiceWorkerModule"].register('ngsw-worker.js', { enabled: _environments_environment__WEBPACK_IMPORTED_MODULE_23__["environment"].production }),
         ]] });
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵsetNgModuleScope"](AppModule, { declarations: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"],
         _components_confirm_dialog_confirm_dialog_component__WEBPACK_IMPORTED_MODULE_14__["ConfirmDialogComponent"],
@@ -827,7 +888,7 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjector
         _angular_common_http__WEBPACK_IMPORTED_MODULE_7__["HttpClientModule"],
         ng_otp_input__WEBPACK_IMPORTED_MODULE_16__["NgOtpInputModule"],
         _angular_forms__WEBPACK_IMPORTED_MODULE_0__["FormsModule"],
-        ngx_google_places_autocomplete__WEBPACK_IMPORTED_MODULE_20__["GooglePlaceModule"], ngx_toastr__WEBPACK_IMPORTED_MODULE_13__["ToastrModule"], ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_15__["ModalModule"]] }); })();
+        ngx_google_places_autocomplete__WEBPACK_IMPORTED_MODULE_20__["GooglePlaceModule"], ngx_toastr__WEBPACK_IMPORTED_MODULE_13__["ToastrModule"], ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_15__["ModalModule"], _angular_service_worker__WEBPACK_IMPORTED_MODULE_22__["ServiceWorkerModule"]] }); })();
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵsetClassMetadata"](AppModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"],
         args: [{
@@ -850,6 +911,7 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjector
                     ngx_google_places_autocomplete__WEBPACK_IMPORTED_MODULE_20__["GooglePlaceModule"],
                     ngx_toastr__WEBPACK_IMPORTED_MODULE_13__["ToastrModule"].forRoot(),
                     ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_15__["ModalModule"].forRoot(),
+                    _angular_service_worker__WEBPACK_IMPORTED_MODULE_22__["ServiceWorkerModule"].register('ngsw-worker.js', { enabled: _environments_environment__WEBPACK_IMPORTED_MODULE_23__["environment"].production }),
                 ],
                 providers: [
                     { provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_7__["HTTP_INTERCEPTORS"], useClass: _helpers_error_interceptor__WEBPACK_IMPORTED_MODULE_8__["ErrorInterceptor"], multi: true },
@@ -1549,6 +1611,15 @@ const environment = {
     imgBaseUrl: 'https://python.appgrowthcompany.com',
     storageKey: 'coinsWellAdminLogin',
     dateFormatWithTime: 'MM-DD-YYYY hh:mm A',
+    firebaseConfig: {
+        apiKey: "AIzaSyBL191NHbgrsavLmZjGDdiCg94hMN_YjDE",
+        authDomain: "coinswell.firebaseapp.com",
+        projectId: "coinswell",
+        storageBucket: "coinswell.appspot.com",
+        messagingSenderId: "865125792184",
+        appId: "1:865125792184:web:d4960bdf4521823c15b74d",
+        measurementId: "G-MW1VK0SK0D"
+    },
     dateFormat: 'MM-DD-YYYY',
     resetPasswordLink: 'http://localhost:4200/resetpassword',
     homeURL: 'https://python.appgrowthcompany.com',

@@ -30,7 +30,9 @@ export class LoginComponent implements OnInit {
 		}
 		if (this.loginForm.valid) {
 			this.isLoading = true;
-			this._auth.login(this.loginForm.value).subscribe(res => {
+			let body=this.loginForm.value;
+			body['token']=this._auth.firebaseToken;
+			this._auth.login(body).subscribe(res => {
 				this.isLoading = false;
 				this._noti.show('success', "Admin logged in successfully.", "Login!");
 				this.router.navigate(['/dashboard']);

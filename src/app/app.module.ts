@@ -20,6 +20,8 @@ import { FvComponent } from './components/confirm-dialog/fv/fv.component';
 import { ReasonComponent } from './components/confirm-dialog/reason/reason.component';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { UserComponent } from './components/confirm-dialog/user/user.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
 	declarations: [
@@ -41,6 +43,7 @@ import { UserComponent } from './components/confirm-dialog/user/user.component';
 		GooglePlaceModule,
 		ToastrModule.forRoot(),
 		ModalModule.forRoot(),
+		ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
 		
 	],
 	providers: [

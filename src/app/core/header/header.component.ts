@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { NotificationsService } from 'src/app/_services/notifications.service';
 import { environment } from 'src/environments/environment';
 
+
 @Component({
 	selector: 'app-header',
 	templateUrl: './header.component.html',
@@ -10,11 +11,13 @@ import { environment } from 'src/environments/environment';
 })
 export class HeaderComponent implements OnInit {
 
-	constructor(private _noti: NotificationsService, private _router: Router) { }
+	constructor(private _noti: NotificationsService, private _router: Router) {
+	
+	 }
 
 	ngOnInit(): void {
 	}
-
+  
 	logoutMe() {
 		this._noti.confirm("Logout!", "Do you want to logout ?").subscribe(x => {
 			if (x) {
@@ -23,5 +26,6 @@ export class HeaderComponent implements OnInit {
 			}
 		})
 	}
+	
 
 }

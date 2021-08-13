@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
 	otpEmail:any = false
 	onLogin: Subject<any> = new Subject();
+	firebaseToken:string="";
 	onProfileUpdate : Subject<any> = new Subject();
 	constructor(private _http : HttpClient) { }
 	
