@@ -1,0 +1,30 @@
+<div class="modal-header">
+	<!-- <h4 class="modal-title pull-left">{{title}}</h4> -->
+	<button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+<div class="modal-body">
+	<form [formGroup]="emailForm">
+		<div class="form-group col-md-12">
+			<mat-form-field class="row col-12" appearance="outline">
+			<mat-label   >Title</mat-label>
+			<input matInput type="text" formControlName="email_title"  class="form-control">
+			<mat-error *ngIf="emailForm.controls.email_title.hasError('required') &&  emailForm.controls.email_title.touched"> Title Required!</mat-error>
+			<mat-error *ngIf="emailForm.controls.email_title.hasError('minlength') &&  emailForm.controls.email_title.touched"> Min Character Length 3!</mat-error>
+			<mat-error *ngIf="emailForm.controls.email_title.hasError('maxlength') &&  emailForm.controls.email_title.touched"> Max Character Length 15!</mat-error>
+		</mat-form-field>
+		</div>
+		<div class="form-group col-md-12">
+			<mat-form-field class="row col-12" appearance="outline">
+			<mat-label>Message</mat-label>
+			<input matInput type="text" formControlName="email_body" >
+			<mat-error *ngIf="emailForm.controls.email_body.hasError('required') &&  emailForm.controls.email_body.touched"> Message Required!</mat-error>
+			<mat-error *ngIf="emailForm.controls.email_body.hasError('minlength') &&  emailForm.controls.email_body.touched"> Min Character Length 3!</mat-error>
+		</mat-form-field>
+	</div>
+</form>
+</div>
+<div class="modal-footer">
+	<button type="button" class="btn btn-primary" (click)="submit()" >Send</button>
+</div>

@@ -8,6 +8,8 @@ import { NotificationsService } from 'src/app/_services/notifications.service';
 import { urls } from 'src/app/_services/urls';
 import { environment } from 'src/environments/environment';
 import { Page } from '../modal/page';
+import { ExportToCsv } from 'export-to-csv';
+
 declare var $:any
 @Component({
   selector: 'app-bank-name-list',
@@ -123,4 +125,26 @@ export class BankNameListComponent implements OnInit {
       }
     });
   }
+  
+  exportToCsv()
+  {
+    const options = { 
+      fieldSeparator: ',',
+      quoteStrings: '"',
+      decimalSeparator: '.',
+      showLabels: true, 
+      showTitle: true,
+      title: '',
+      useTextFile: false,
+      useBom: true,
+      useKeysAsHeaders: true,
+      // headers: ['Column 1', 'Column 2', etc...] <-- Won't work with useKeysAsHeaders present!
+    };
+   
+  const csvExporter = new ExportToCsv(options);
+   this._common.get(urls.bankExportCsv).subscribe(res=>{
+   csvExporter.generateCsv(res.data);
+   });
+  }
+
 }

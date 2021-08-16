@@ -237,4 +237,23 @@ export class TableContentComponent implements OnInit {
 		});
 	}
 
+	emailModal(row)
+	{
+		this._common.emailConfirm("","").subscribe(x=>{
+			if(x){
+			x['email']=row.email;
+            this._common.post(urls.sendEmail,x).subscribe(res=>{
+				if(res.code==200)
+				{
+					this.toastr.success(res.message,"Success",{timeOut:2000});
+				}
+				else
+				{
+					this.toastr.error(res.message,"Error",{timeOut:2000});
+				}
+			});
+		}
+		});
+	}
+
 }

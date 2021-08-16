@@ -35,5 +35,10 @@ export const urls = {
     acceptDoc:'admin/accept-documents-by-userid/',
     createNotification:'admin/create-notifications/',
     getAllNotifiation:'admin/get-all-notifications/',
-    getAllPayment:'admin/get-transaction-requests/'
+    getAllPayment:'admin/get-transaction-requests/',
+    userExportCsv:'admin/get-all-users-without-pagination/',
+    bankExportCsv:'admin/get-all-banks/',
+    sendEmail:'admin/send-mail/',
+    requestAccept:'payment/change-payment-status/',
+    requestReject:'payment/change-payment-status/'
 };

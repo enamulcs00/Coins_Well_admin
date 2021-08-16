@@ -30,6 +30,7 @@
     "bootstrap": "4.1.1",
     "canvasjs": "^1.8.3",
     "ckeditor4-angular": "^2.2.1",
+    "export-to-csv": "^0.2.1",
     "firebase": "^8.9.1",
     "libphonenumber-js": "^1.9.23",
     "ng-otp-input": "^1.7.0",

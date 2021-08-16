@@ -1,4 +1,4 @@
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +22,7 @@ import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { UserComponent } from './components/confirm-dialog/user/user.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { EmailModalComponent } from './components/confirm-dialog/email-modal/email-modal.component';
 
 @NgModule({
 	declarations: [
@@ -31,6 +32,7 @@ import { environment } from '../environments/environment';
 		FvComponent,
 		ReasonComponent,
 		UserComponent,
+		EmailModalComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -44,7 +46,7 @@ import { environment } from '../environments/environment';
 		ToastrModule.forRoot(),
 		ModalModule.forRoot(),
 		ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-		
+		ReactiveFormsModule
 	],
 	providers: [
 		{ provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

@@ -10,6 +10,7 @@ import { DocumentsComponent } from '../components/confirm-dialog/documents/docum
 import { FvComponent } from '../components/confirm-dialog/fv/fv.component';
 import { ReasonComponent } from '../components/confirm-dialog/reason/reason.component';
 import { UserComponent } from '../components/confirm-dialog/user/user.component';
+import { EmailModalComponent } from '../components/confirm-dialog/email-modal/email-modal.component';
 
 @Injectable({
 	providedIn: 'root'
@@ -165,6 +166,20 @@ export class CommonService {
     userConfirm(title, text): Observable<boolean> {
 		return new Observable((resolve) => {
 			this.bsModalRef = this.modalService.show(UserComponent, {
+				initialState: {
+					title: title,
+					message: text
+				}
+			});
+			this.bsModalRef.onHidden.subscribe(x => {
+				resolve.next(this.bsModalRef.content.descripition);
+			});
+		});
+	}
+   
+    emailConfirm(title, text): Observable<boolean> {
+		return new Observable((resolve) => {
+			this.bsModalRef = this.modalService.show(EmailModalComponent, {
 				initialState: {
 					title: title,
 					message: text

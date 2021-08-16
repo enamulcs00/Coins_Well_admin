@@ -6,6 +6,7 @@ import { urls } from 'src/app/_services/urls';
 import { Page } from '../../modal/page';
 import { Block } from 'notiflix';
 import { environment } from 'src/environments/environment';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-request-table',
   templateUrl: './request-table.component.html',
@@ -24,7 +25,7 @@ export class RequestTableComponent implements OnInit {
   start_date: any="";
   end_date: any="";
   todayDate=new Date();
-  constructor(private _common:CommonService) { }
+  constructor(private _common:CommonService,private toastr:ToastrService) { }
 
   ngOnInit(): void {
     this.setPage({ offset: 0 });
@@ -91,5 +92,41 @@ export class RequestTableComponent implements OnInit {
 
 		})
 	}
+
+  accept(id)
+  {
+    let body={"status":2}
+    this._common.put(urls.requestAccept+id+'/',body).subscribe(res=>{
+      console.log(res);
+      if(res.code==200)
+      {
+        this.toastr.success(res.message,"Success",{timeOut:2000});
+        this.setPage({offset:0});
+      }
+      else
+      {
+        this.toastr.error(res.message,"Error",{timeOut:2000});
+      }
+    })
+  }
+  
+  reject(id)
+  {
+    this._common.reasonConfirm("Reject Reason","").subscribe(x=>{
+    let body={"status":3,"reject_reason":x}
+    this._common.put(urls.requestReject+id+'/',body).subscribe(res=>{
+      console.log(res);
+      if(res.code==200)
+      {
+        this.toastr.success(res.message,"Success",{timeOut:2000});
+        this.setPage({offset:0});
+      }
+      else
+      {
+        this.toastr.error(res.message,"Error",{timeOut:2000});
+      }
+    });
+  });
+  }
 
 }
