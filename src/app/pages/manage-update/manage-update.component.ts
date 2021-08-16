@@ -40,6 +40,7 @@ export class ManageUpdateComponent implements OnInit,AfterViewInit {
   Address:FormGroup
   procedure:FormGroup
   REF: any;
+  features:FormGroup
   constructor(private service: CommonService, private router: Router, private _noti: NotificationsService,private fb:FormBuilder,private _common:CommonService) { 
     this.termsCondition = this.fb.group({
       terms:['',[Validators.required]]
@@ -55,6 +56,9 @@ export class ManageUpdateComponent implements OnInit,AfterViewInit {
     })
     this.procedure = this.fb.group({
       paymentprocedure:['',[Validators.required]]
+    })
+    this.features = this.fb.group({
+      features:['',[Validators.required]]
     })
   }
 
@@ -125,6 +129,7 @@ ngAfterViewInit(){
        this.About.controls['about'].setValue(res?.data?.about_us)
        this.contactUs.controls['email'].setValue(res.data.email)
        this.contactUs.controls['phone'].setValue(res.data.phone_no)
+       this.features.controls['features'].setValue(res.data.features)
 		})
 }
 GetAdminBank(){
@@ -243,7 +248,15 @@ public AddressChange(address: any) {
 			this.isLoading = false
 		})
 	}
-  
+  Features(){
+    if(this.features.valid){
+      let obj ={
+        "features":this.features.controls['features'].value}
+      this.updateFn(obj)
+    }else{ 
+      this.features.markAllAsTouched() 
+    }
+  }
 }
 
 
