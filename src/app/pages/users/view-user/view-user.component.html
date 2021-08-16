@@ -87,17 +87,14 @@
                 <div class="card m-b-30" style="box-shadow: none;">
                   <div class="card-body">
                     <div class="select_option d-flex justify-content-start">
-                      <figure class="mr-3">
-                        <img src="assets/img/ngn.png" alt="">
-                      </figure>
-                      <figure class="mr-3">
-                        <img src="assets/img/ngn.png" alt="">
+                      <figure class="mr-3" *ngFor="let doc of items?.user_documents">
+                        <img [src]="imageUrl+doc?.document?.media_file||'assets/img/users/defaultuser.jpg'" alt="">
                       </figure>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-md-6">
+              <!-- <div class="col-md-6">
                 <div class="card m-b-30" style="box-shadow: none;">
                   <div class="card-body">
                     <div class="select_option d-flex justify-content-end">
@@ -110,14 +107,14 @@
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-md-12 mb-3">
+              </div> -->
+              <!-- <div class="col-md-12 mb-3">
                 <div class="buttons d-flex justify-content-end">
                   <button type="button" class="btn btn-primary mr-3">Approved</button>
                   <button type="button" class="btn btn-danger" data-toggle="modal"
                     data-target="#reasonmodal">Reject</button>
                 </div>
-              </div>
+              </div> -->
             </div>
             <div class="row">
               <div class="col-md-3 m-b-30">
