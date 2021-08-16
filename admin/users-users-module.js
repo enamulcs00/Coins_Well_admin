@@ -1272,6 +1272,7 @@ class TableContentComponent {
             });
         };
         this._common.dconfirm("Documents", id).subscribe(x => {
+            console.log(x);
             if (x) {
                 callAPI();
             }
