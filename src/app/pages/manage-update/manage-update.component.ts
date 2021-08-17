@@ -40,7 +40,8 @@ export class ManageUpdateComponent implements OnInit,AfterViewInit {
   Address:FormGroup
   procedure:FormGroup
   REF: any;
-  features:FormGroup
+  features:FormGroup;
+  rateInstruction:FormGroup;
   constructor(private service: CommonService, private router: Router, private _noti: NotificationsService,private fb:FormBuilder,private _common:CommonService) { 
     this.termsCondition = this.fb.group({
       terms:['',[Validators.required]]
@@ -60,6 +61,9 @@ export class ManageUpdateComponent implements OnInit,AfterViewInit {
     this.features = this.fb.group({
       features:['',[Validators.required]]
     })
+    this.rateInstruction=this.fb.group({
+      rateInstruction:['',[Validators.required]]
+    });
   }
 
   public model = {
@@ -130,6 +134,7 @@ ngAfterViewInit(){
        this.contactUs.controls['email'].setValue(res.data.email)
        this.contactUs.controls['phone'].setValue(res.data.phone_no)
        this.features.controls['features'].setValue(res.data.features)
+       this.rateInstruction.controls['rateInstruction'].setValue(res.data.rate_instructions)
 		})
 }
 GetAdminBank(){
@@ -248,10 +253,21 @@ public AddressChange(address: any) {
 			this.isLoading = false
 		})
 	}
+
   Features(){
     if(this.features.valid){
       let obj ={
         "features":this.features.controls['features'].value}
+      this.updateFn(obj)
+    }else{ 
+      this.features.markAllAsTouched() 
+    }
+  }
+
+  RateInstruction(){
+    if(this.rateInstruction.valid){
+      let obj ={
+        "rate_instructions":this.rateInstruction.controls['rateInstruction'].value}
       this.updateFn(obj)
     }else{ 
       this.features.markAllAsTouched() 

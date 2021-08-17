@@ -288,78 +288,7 @@
             </div>
             <div class="row">
               <div class="col-md-12">
-                <div class="card m-b-30">
-                  <div class="card-header seachbar">
-                    <h5>Transactions</h5>
-                    <div class="form-group col-md-4 pl-0 pr-0 mb-0">
-                      <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-                      <div class="search-ic">
-                        <i class="mdi mdi-magnify"></i>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-body">
-                    <div class="table-responsive">
-                      <table class="table table-hover ">
-                        <thead>
-                          <tr>
-                            <th>#</th>
-                            <th>Image</th>
-                            <th>ID</th>
-                            <th>Currency</th>
-                            <th>Bank</th>
-                            <th>Date</th>
-                            <th>Quantity</th>
-                            <th>Transaction</th>
-                            <th>Status</th>
-                            <th>Buy</th>
-                            <th>Sell</th>
-                            <th>Trend</th>
-                            <!-- <th class="text-center">Action</th> -->
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>1</td>
-                            <td>
-                              <div class="avatar avatar-sm ">
-                                <img src="assets/img/ngn.png" class="avatar-img avatar-sm rounded-circle" alt="">
-                              </div>
-                            </td>
-                            <td>258963</td>
-                            <td>BTC/Bitcoin</td>
-                            <td>Citi Bank</td>
-                            <td>June 23, 2021 8:00 AM</td>
-                            <td>10</td>
-                            <td>
-                              <p class="bg-success m-0 text-center">Sell</p>
-                            </td>
-                            <td>
-                              <p class="text-success">Success</p>
-                            </td>
-                            <td>$76,98</td>
-                            <td>$76,98</td>
-                            <td>
-                              <i class="text-success mdi mdi-menu-down"></i>
-                              <span class="text-success">0.20%</span>
-                            </td>
-                            <!-- <td>
-                                                            <ul class="action">
-                                                                <li><a href="wallet.html"><i class="mdi mdi-wallet"
-                                                                            title="Wallet"></i></a></li>
-                                                                <li><a href="viewuser.html"><i class="mdi mdi-eye-settings" title="View"></i></a></li>
-                                                                <li><a href="edituser.html"><i class="mdi mdi-pen"
-                                                                            title="Edit"></i></a></li>
-                                                                <li><i class="mdi mdi-delete" title="Delete"></i></li>
-                                                            </ul>
-                                                        </td> -->
-                          </tr>
-
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
+                <app-transaction-table [id]="localId"></app-transaction-table>
               </div>
             </div>
           </div>

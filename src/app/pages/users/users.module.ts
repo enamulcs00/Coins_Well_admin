@@ -5,10 +5,12 @@ import { UsersRoutingModule } from './users-routing.module';
 import { components } from '.';
 import { CoreModule } from 'src/app/core/core.module';
 import { TableContentComponent } from './user-list/table-content/table-content.component';
+import { TransactionTableComponent } from './view-user/transaction-table/transaction-table.component';
 @NgModule({
 	declarations: [
 		...components,
-		TableContentComponent
+		TableContentComponent,
+		TransactionTableComponent
 	],
 	imports: [
 		CommonModule,

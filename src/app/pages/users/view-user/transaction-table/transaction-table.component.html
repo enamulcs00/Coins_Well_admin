@@ -1,0 +1,124 @@
+<div class="table-responsive" id="users-list-page">
+	<div class="card-header seachbar">
+		<h5>Transactions</h5>
+		<div class="form-group col-md-4 pl-0 pr-0 mb-0">
+		  <input type="text" class="form-control" id="inputEmail4" [(ngModel)]="searchText" (keyup)="changeSearch()" placeholder="Search">
+		  <div class="search-ic">
+			<i class="mdi mdi-magnify"></i>
+		  </div>
+		</div>
+	  </div>
+	<ngx-datatable class="bootstrap" [scrollbarH]="true" [rows]="rows" [columnMode]="ColumnMode.force" [limit]="10"
+	  [headerHeight]="50" [footerHeight]="50" rowHeight="auto" [externalPaging]="true" [count]="page.totalElements"
+	  [offset]="page.pageNumber" [limit]="page.size" (page)="setPage($event)">
+	  <ngx-datatable-column [width]="40" name="#" prop="#">
+		<ng-template let-rowIndex="rowIndex" data-index="#i" ngx-datatable-cell-template>
+		  {{(((page.pageNumber * page.size)) + rowIndex)+1}}
+		</ng-template>
+	  </ngx-datatable-column>
+	  <ngx-datatable-column [width]="100" name="Image" prop="Image">
+		<ng-template let-row="row"  ngx-datatable-cell-template>
+			<div class="avatar avatar-sm ">
+				<img [src]="imageUrl+row?.currency?.logo?.media_file||'assets/img/users/defaultuser.jpg'" class="avatar-img avatar-sm rounded-circle" alt="">
+			  </div>
+		</ng-template>
+	  </ngx-datatable-column>
+	  <ngx-datatable-column [width]="80" name="ID" prop="ID">
+		<ng-template let-row="row"  ngx-datatable-cell-template>
+			{{row?.id}}
+		</ng-template>
+	  </ngx-datatable-column>
+	  <ngx-datatable-column [width]="100" name="Currency" prop="Currency">
+		<ng-template let-row="row"  ngx-datatable-cell-template>
+			{{row?.currency?.name}}
+		</ng-template>
+	  </ngx-datatable-column>
+	  <ngx-datatable-column [width]="100" name="Bank" prop="Bank">
+		<ng-template let-row="row"  ngx-datatable-cell-template>
+			{{row?.bank}}
+		</ng-template>
+	  </ngx-datatable-column>
+	  <ngx-datatable-column [width]="100" name="Date" prop="Date">
+		<ng-template let-row="row"  ngx-datatable-cell-template>
+			{{row?.created_at | date:'short'}}
+		</ng-template>
+	  </ngx-datatable-column>
+	  <ngx-datatable-column [width]="100" name="Quantity" prop="Quantity">
+		<ng-template let-row="row"  ngx-datatable-cell-template>
+			{{row?.amount}}
+		</ng-template>
+	  </ngx-datatable-column>
+	  <ngx-datatable-column [width]="100" name="Transaction" prop="Transaction">
+		<ng-template let-row="row"  ngx-datatable-cell-template>
+			<p [class]="row?.transaction_status=='Pending'?'bg-primary m-0 text-center':(row?.transaction_status=='Success'?'bg-success m-0 text-center':'bg-danger m-0 text-center')">{{row?.transaction_status}}</p>
+		</ng-template>
+	  </ngx-datatable-column>
+	  <ngx-datatable-column [width]="100" name="Status" prop="Status">
+		<ng-template let-row="row"  ngx-datatable-cell-template>
+			<p class="text-success">Success</p>
+		</ng-template>
+	  </ngx-datatable-column>
+	  <ngx-datatable-column [width]="100" name="Buy" prop="Buy">
+		<ng-template let-row="row"  ngx-datatable-cell-template>
+		{{row?.currency.buy_rate}}	
+		</ng-template>
+	  </ngx-datatable-column>
+	  <ngx-datatable-column [width]="100" name="Sell" prop="Sell">
+		<ng-template let-row="row"  ngx-datatable-cell-template>
+		{{row?.currency.sell_rate}}	
+		</ng-template>
+	  </ngx-datatable-column>
+	  <ngx-datatable-column [width]="100" name="Trend" prop="Trend">
+		<ng-template let-row="row"  ngx-datatable-cell-template>
+		{{row?.currency.trend}}	
+		</ng-template>
+	  </ngx-datatable-column>
+	  </ngx-datatable>
+	  </div>
+	  <!-- <div class="card m-b-30">
+		<div class="card-body">
+		  <div class="table-responsive">
+			<table class="table table-hover ">
+			  <thead>
+				<tr>
+				  <th>#</th>
+				  <th>Image</th>
+				  <th>ID</th>
+				  <th>Currency</th>
+				  <th>Bank</th>
+				  <th>Date</th>
+				  <th>Quantity</th>
+				  <th>Transaction</th>
+				  <th>Status</th>
+				  <th>Buy</th>
+				  <th>Sell</th>
+				  <th>Trend</th>
+				</tr>
+			  </thead>
+			  <tbody>
+				<tr>
+				  <td>1</td>
+				  <td>
+					
+				  </td>
+				  <td>258963</td>
+				  <td>BTC/Bitcoin</td>
+				  <td>Citi Bank</td>
+				  <td>June 23, 2021 8:00 AM</td>
+				  <td>10</td>
+				  <td>
+				  </td>
+				  <td>
+				  </td>
+				  <td>$76,98</td>
+				  <td>$76,98</td>
+				  <td>
+					<i class="text-success mdi mdi-menu-down"></i>
+					<span class="text-success">0.20%</span>
+				  </td>
+				</tr>
+			  </tbody>
+			</table>
+		  </div>
+		</div>
+	  </div> -->

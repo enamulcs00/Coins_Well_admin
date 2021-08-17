@@ -650,7 +650,8 @@ const urls = {
     bankExportCsv: 'admin/get-all-banks/',
     sendEmail: 'admin/send-mail/',
     requestAccept: 'payment/change-payment-status/',
-    requestReject: 'payment/change-payment-status/'
+    requestReject: 'payment/change-payment-status/',
+    getTransection: 'admin/get-payment-requests-by-userid/'
 };
 
 

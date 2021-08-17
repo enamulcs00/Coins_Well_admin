@@ -30,10 +30,10 @@
                                 <tr [formGroupName]="i">
                                     <td>{{name[i]}}</td>
                                     <td>
-                                        <input type="text" (keypress)= "NumOnly($event)" formControlName="buy_rate" class="form-control">
+                                        <input type="text" currencyMask [options]="{ prefix: '₦ ', thousands: ',', decimal: '.' }" formControlName="buy_rate" class="form-control">
                                     </td>
                                     <td>
-                                        <input type="text" (keypress)="NumOnly($event)" formControlName="sell_rate" class="form-control">
+                                        <input type="text" currencyMask [options]="{ prefix: '₦ ', thousands: ',', decimal: '.' }"  formControlName="sell_rate" class="form-control">
                                     </td>
                                     <td>
                                         <ul class="action">

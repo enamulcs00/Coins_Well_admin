@@ -31,12 +31,6 @@ export class RateChangeComponent implements OnInit {
     });
   }
    
-  NumOnly(event) {
-    let Numpattern = /^([0-9])*$/;
-    let resultNum =    Numpattern.test(event.key);
-    return  resultNum;
-   }
-
   add(){ 
     this.currency = this.rateForm.get('currency') as FormArray;
   this.currency.push(this.createItem());

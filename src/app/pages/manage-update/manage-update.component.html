@@ -52,12 +52,17 @@
               <li class="nav-item">
                 <a class="nav-link" id="paymentprocedure-tab-z" data-toggle="tab" href="#paymentprocedure" role="tab"
                   aria-controls="paymentprocedure" aria-selected="false" (click)="TabRef('precedure')">Payment
-                  Procedure</a>
+                  Instructions</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" id="features-tab-z" data-toggle="tab" href="#features" role="tab"
                   aria-controls="features" aria-selected="false" (click)="TabRef('features')">
                   Features</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="rateInstruction-tab-z" data-toggle="tab" href="#rateInstruction" role="tab"
+                  aria-controls="rateInstruction" aria-selected="false" (click)="TabRef('rateInstruction')">
+                  Rate Instructions</a>
               </li>
             </ul>
             <div class="tab-content" id="myTabContent1">
@@ -66,13 +71,11 @@
                 <form [formGroup]="termsCondition">
                   <div class="form-row mt-3">
                     <div class="form-group col-md-12">
-                      <ckeditor
-                      #editor formControlName="terms"
-                      type="divarea">
-                    </ckeditor>
-                    <mat-error *ngIf="termsCondition.controls['terms'].hasError('required')">
-                      Please enter terms and condition
-                    </mat-error>
+                      <ckeditor #editor formControlName="terms" type="divarea">
+                      </ckeditor>
+                      <mat-error *ngIf="termsCondition.controls['terms'].hasError('required')">
+                        Please enter terms and condition
+                      </mat-error>
                     </div>
                   </div>
                 </form>
@@ -84,39 +87,21 @@
                 <form [formGroup]="privacyPolicy">
                   <div class="form-row mt-3">
                     <div class="form-group col-md-12">
-                      <ckeditor
-                      #editor formControlName="privacy"
-                      type="divarea">
-                    </ckeditor>
-                    <mat-error *ngIf="privacyPolicy.controls['privacy'].hasError('required')">
-                      Please enter privacy policy
-                    </mat-error>
+                      <ckeditor #editor formControlName="privacy" type="divarea">
+                      </ckeditor>
+                      <mat-error *ngIf="privacyPolicy.controls['privacy'].hasError('required')">
+                        Please enter privacy policy
+                      </mat-error>
                     </div>
                   </div>
                 </form>
-                
+
                 <button class="btn btn-primary" (click)=" Privacy()">{{isLoading?'Processing':'Save'}}</button>
 
                 <!-- <h4 class="pt-4 pl-4">Not Data Found</h4> -->
               </div>
               <div class="tab-pane fade faq_section show" id="faq" role="tabpanel" aria-labelledby="faq-tab">
-                <!-- <div id="summernote"></div>
-                <div class="form-row mt-3">
-                  <div class="col-md-12 text-right">
-                    <button class="btn btn-primary">Add</button>
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label for="inputEmail4">Question</label>
-                    <input type="email" class="form-control" id="" placeholder="">
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label for="inputPassword4">Answer</label>
-                    <input type="password" class="form-control" id="">
-                  </div>
-                </div> -->
                 <app-faq-template></app-faq-template>
-               
-                <!-- <h4 class="pt-4 pl-4">Not Data Found</h4> -->
               </div>
 
               <div class="tab-pane fade show" id="csupport" role="tabpanel" aria-labelledby="csupport-tab">
@@ -139,15 +124,18 @@
                     <div class="form-group number_add_coinwell col-md-6">
                       <mat-form-field class="row col-12" appearance="outline">
                         <mat-label>Phone number</mat-label>
-                        <ngx-mat-intl-tel-input [onlyCountries]="['ng']" [enablePlaceholder]="true" [enableSearch]="true" name="full_phone"
-                          formControlName="full_phone" (countryChanged)="countryChanged($event)"
-                          inputPlaceholder="Phone number" formControlName="phone">
+                        <ngx-mat-intl-tel-input [onlyCountries]="['ng']" [enablePlaceholder]="true"
+                          [enableSearch]="true" name="full_phone" formControlName="full_phone"
+                          (countryChanged)="countryChanged($event)" inputPlaceholder="Phone number"
+                          formControlName="phone">
                         </ngx-mat-intl-tel-input>
                         <mat-error *ngIf="contactUs.get('phone').hasError('required')">Please Enter phone number.
                         </mat-error>
-                        <mat-error *ngIf="contactUs.get('phone')?.hasError('maxlength') || contactUs.get('phone')?.hasError('minlength')">Phone number has to be between 7 and 15 characters long.
+                        <mat-error
+                          *ngIf="contactUs.get('phone')?.hasError('maxlength') || contactUs.get('phone')?.hasError('minlength')">
+                          Phone number has to be between 7 and 15 characters long.
                         </mat-error>
-                
+
                       </mat-form-field>
                     </div>
                   </div>
@@ -159,13 +147,11 @@
                 <form [formGroup]="About">
                   <div class="form-row mt-3">
                     <div class="form-group col-md-12">
-                      <ckeditor
-                      #editor formControlName="about"
-                      type="divarea">
-                    </ckeditor>
-                    <mat-error *ngIf="About.controls['about'].hasError('required')">
-                      Please enter about us
-                    </mat-error>
+                      <ckeditor #editor formControlName="about" type="divarea">
+                      </ckeditor>
+                      <mat-error *ngIf="About.controls['about'].hasError('required')">
+                        Please enter about us
+                      </mat-error>
                     </div>
                   </div>
                 </form>
@@ -174,22 +160,22 @@
                 <!-- <h4 class="pt-4 pl-4">Not Data Found</h4> -->
               </div>
               <div class="tab-pane fade show" id="companyaddress" role="tabpanel" aria-labelledby="companyaddress-tab">
-               <form [formGroup]="Address">
-                <div class="form-row mt-3">
-                  <div class="form-group col-md-12">
-                    <mat-form-field appearance="outline" class="col-md-12">
-                      <mat-label>Location</mat-label>
-                      <input type="text" ngx-google-places-autocomplete (onAddressChange)="AddressChange($event)"
-                        matInput  id="" placeholder="" formControlName="address" >
+                <form [formGroup]="Address">
+                  <div class="form-row mt-3">
+                    <div class="form-group col-md-12">
+                      <mat-form-field appearance="outline" class="col-md-12">
+                        <mat-label>Location</mat-label>
+                        <input type="text" ngx-google-places-autocomplete (onAddressChange)="AddressChange($event)"
+                          matInput id="" placeholder="" formControlName="address">
                         <mat-error *ngIf="Address.controls['address'].hasError('required')">
                           Please enter company address
                         </mat-error>
-                        
-                    </mat-form-field>
+
+                      </mat-form-field>
+                    </div>
                   </div>
-                </div>
-               </form>
-               <button class="btn btn-primary" (click)="CompanyAddress()">{{isLoading?'Processing':'Save'}}</button>
+                </form>
+                <button class="btn btn-primary" (click)="CompanyAddress()">{{isLoading?'Processing':'Save'}}</button>
               </div>
               <div class="tab-pane fade show faq_section" id="adminbankdetail" role="tabpanel"
                 aria-labelledby="adminbankdetail-tab">
@@ -198,38 +184,38 @@
                     <div class="form-group col-md-6">
                       <mat-form-field class="row col-12 bank-dropdown" appearance="outline">
                         <mtx-select typeToSearchText="Search bank name." [typeahead]="bankListEvent"
-						[loading]="bankListLoading" loadingText="Fetching banks..." [(ngModel)]="BankId"
-						notFoundText="No bank found. Try another name" [virtualScroll]="true"
-						bindLabel="Select bank name" [items]="bankList" bindLabel="name" bindValue="id"
-						formControlName="bank_name" placeholder="Select bank name">
-						<ng-template ng-label-tmp let-item="item">
-							<div class="bank-dropdown-label">
-                <div class="bank-dropdown-option">
-                  <div class="pr-2">
-                    <img class="img" src="{{ baseUrl+item?.bank_image?.media_file }}" alt="">
-                  </div>
-                  <div>
-                    <p class="bank-heading p-0">{{ item.name }} </p>
-                    <!-- <p class="branch">{{ item.branch }}</p>
+                          [loading]="bankListLoading" loadingText="Fetching banks..." [(ngModel)]="BankId"
+                          notFoundText="No bank found. Try another name" [virtualScroll]="true"
+                          bindLabel="Select bank name" [items]="bankList" bindLabel="name" bindValue="id"
+                          formControlName="bank_name" placeholder="Select bank name">
+                          <ng-template ng-label-tmp let-item="item">
+                            <div class="bank-dropdown-label">
+                              <div class="bank-dropdown-option">
+                                <div class="pr-2">
+                                  <img class="img" src="{{ baseUrl+item?.bank_image?.media_file }}" alt="">
+                                </div>
+                                <div>
+                                  <p class="bank-heading p-0">{{ item.name }} </p>
+                                  <!-- <p class="branch">{{ item.branch }}</p>
                     <p class="ifsc"><span>IFSC: </span><span>{{ item.ifsc_code }}</span></p> -->
-                  </div>
-                </div>
-							</div>
-						</ng-template>
-						<ng-template ng-option-tmp let-item="item">
-							<div class="bank-dropdown-option">
-								<div class="pr-2">
-									<img class="img" src="{{ baseUrl+item?.bank_image?.media_file }}" alt="">
-								</div>
-								<div>
-									<p class="bank-heading p-0">{{ item.name }} </p>
-									<!-- <p class="branch">{{ item.branch }}</p>
+                                </div>
+                              </div>
+                            </div>
+                          </ng-template>
+                          <ng-template ng-option-tmp let-item="item">
+                            <div class="bank-dropdown-option">
+                              <div class="pr-2">
+                                <img class="img" src="{{ baseUrl+item?.bank_image?.media_file }}" alt="">
+                              </div>
+                              <div>
+                                <p class="bank-heading p-0">{{ item.name }} </p>
+                                <!-- <p class="branch">{{ item.branch }}</p>
 									<p class="ifsc"><span>IFSC: </span><span>{{ item.ifsc_code }}</span></p> -->
-								</div>
-							</div>
-							<!-- </div> -->
-						</ng-template>
-					</mtx-select>
+                              </div>
+                            </div>
+                            <!-- </div> -->
+                          </ng-template>
+                        </mtx-select>
                       </mat-form-field>
                     </div>
                     <div class="form-group col-md-6">
@@ -237,7 +223,7 @@
                         <mat-label>Account Holder Name</mat-label>
                         <input type="text" matInput placeholder="Account holder name" formControlName="accountHolder">
                         <mat-error *ngIf="bankDetailForm.get('accountHolder').hasError('required')">
-                                             Please enter account holder name. </mat-error>
+                          Please enter account holder name. </mat-error>
                       </mat-form-field>
                     </div>
                     <div class="form-group col-md-6">
@@ -245,7 +231,7 @@
                         <mat-label>Account Number</mat-label>
                         <input type="text" matInput placeholder="Account number" formControlName="accNumber">
                         <mat-error *ngIf="bankDetailForm.get('accNumber').hasError('required')">
-                            Please enter account number. </mat-error>
+                          Please enter account number. </mat-error>
                       </mat-form-field>
                     </div>
                   </div>
@@ -257,38 +243,46 @@
                 <form [formGroup]="procedure">
                   <div class="form-row mt-3">
                     <div class="form-group col-md-12">
-                      <mat-form-field appearance="outline" class="col-md-12">
-                        <mat-label for="inputPassword4">Payment Instructions</mat-label>
-                        <input type="text" matInput  id="" formControlName="paymentprocedure">
+                        <ckeditor #editor formControlName="paymentprocedure" type="divarea">
+                        </ckeditor>
                         <mat-error *ngIf="procedure.controls['paymentprocedure'].hasError('required')">
-                          Please enter payment procedure
+                          Please enter payment procedure!
                         </mat-error>
-                      
-                      </mat-form-field>
                     </div>
                   </div>
                 </form>
                 <button class="btn btn-primary" (click)="Payment()">{{isLoading?'Processing':'Save'}}</button>
               </div>
-              <div class="tab-pane fade show" id="features" role="tabpanel"
-                aria-labelledby="features-tab">
-                <form [formGroup]="features">
+              <div class="tab-pane fade show" id="rateInstruction" role="tabpanel" aria-labelledby="rateInstruction-tab">
+                <form [formGroup]="rateInstruction">
                   <div class="form-row mt-3">
                     <div class="form-group col-md-12">
-                      <ckeditor
-                      #editor formControlName="features"
-                      type="divarea">
-                    </ckeditor>
-                    <mat-error *ngIf="features.controls['features'].hasError('required')">
-                      Please enter features
-                    </mat-error>
+                      <ckeditor #editor formControlName="rateInstruction" type="divarea">
+                      </ckeditor>
+                      <mat-error *ngIf="rateInstruction.controls['rateInstruction'].hasError('required')">
+                        Please enter Rate Instruction!
+                      </mat-error>
                     </div>
                   </div>
                 </form>
-                
+                <button class="btn btn-primary" (click)="RateInstruction()">{{isLoading?'Processing':'Save'}}</button>
+              </div>
+              <div class="tab-pane fade show" id="features" role="tabpanel" aria-labelledby="features-tab">
+                <form [formGroup]="features">
+                  <div class="form-row mt-3">
+                    <div class="form-group col-md-12">
+                      <ckeditor #editor formControlName="features" type="divarea">
+                      </ckeditor>
+                      <mat-error *ngIf="features.controls['features'].hasError('required')">
+                        Please enter features
+                      </mat-error>
+                    </div>
+                  </div>
+                </form>
+
                 <button class="btn btn-primary" (click)="Features()">{{isLoading?'Processing':'Save'}}</button>
               </div>
-              
+
             </div>
           </div>
         </div>

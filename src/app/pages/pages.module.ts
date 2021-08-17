@@ -30,11 +30,12 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MaterialExtensionsExperimentalModule, MaterialExtensionsModule } from '@ng-matero/extensions';
 import { RequestTableComponent } from './request/request-table/request-table.component';
-
+import { NgxCurrencyModule } from "ngx-currency";
 import { CKEditorModule } from 'ckeditor4-angular';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from "@angular/material/form-field";
 @NgModule({
 	declarations: [
 		PagesComponent, 
@@ -60,6 +61,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 		RequestTableComponent
 	],
 	imports: [
+		MatFormFieldModule,
 		CommonModule,
 		PagesRoutingModule,
 		CoreModule,
@@ -74,7 +76,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 		MatPaginatorModule,
 		CKEditorModule,
 		MatDatepickerModule, 
-		MatNativeDateModule
+		MatNativeDateModule,
+		MatInputModule,
+		NgxCurrencyModule
 	],
 	exports:[
 		MaterialExtensionsExperimentalModule,
