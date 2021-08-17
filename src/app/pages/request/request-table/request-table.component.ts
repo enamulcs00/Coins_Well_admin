@@ -114,6 +114,7 @@ export class RequestTableComponent implements OnInit {
   {
     this._common.reasonConfirm("Reject Reason","").subscribe(x=>{
     let body={"status":3,"reject_reason":x}
+    if(x){
     this._common.put(urls.requestReject+id+'/',body).subscribe(res=>{
       console.log(res);
       if(res.code==200)
@@ -125,7 +126,7 @@ export class RequestTableComponent implements OnInit {
       {
         this.toastr.error(res.message,"Error",{timeOut:2000});
       }
-    });
+    });}
   });
   }
 
