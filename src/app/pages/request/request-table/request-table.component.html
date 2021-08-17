@@ -30,37 +30,38 @@
         {{(((page.pageNumber * page.size)) + rowIndex)+1}}
       </ng-template>
     </ngx-datatable-column>
-    <ngx-datatable-column [width]="40" name="ORDER ID" prop="ORDER ID">
+    <ngx-datatable-column [width]="100" name="ORDER ID" prop="ORDER ID">
       <ng-template let-row="row" ngx-datatable-cell-template>
         {{row?.order_id}}
       </ng-template>
     </ngx-datatable-column>
-    <ngx-datatable-column [width]="80" name="NAME" prop="NAME">
+    <ngx-datatable-column [width]="250" name="NAME" prop="NAME">
       <ng-template let-row="row" ngx-datatable-cell-template>
         {{row?.name}}
       </ng-template>
     </ngx-datatable-column>
-    <ngx-datatable-column [width]="60" name="ASSET" prop="ASSET">
+    <ngx-datatable-column [width]="250" name="ASSET" prop="ASSET">
       <ng-template let-row="row" ngx-datatable-cell-template>
         {{row?.asset}}
       </ng-template>
     </ngx-datatable-column>
-    <ngx-datatable-column [width]="90" name="PAYMENT PROOF" prop="ORDER ID">
+    <ngx-datatable-column [width]="180" name="PAYMENT PROOF" prop="ORDER ID">
       <ng-template let-row="row" ngx-datatable-cell-template>
         <a href="javascript:void(0)" *ngIf="row?.proof?.media_file" (click)="userModal(row?.proof?.media_file)"
           class="btn btn-primary"><i class="mdi mdi-eye-settings" title="View"></i></a>
       </ng-template>
     </ngx-datatable-column>
-    <ngx-datatable-column [width]="80" name="AMOUNT ($)" prop="ASSET">
+    <ngx-datatable-column [width]="100" name="AMOUNT ($)" prop="ASSET">
       <ng-template let-row="row" ngx-datatable-cell-template>
         {{row?.amount}}
       </ng-template>
     </ngx-datatable-column>
-    <ngx-datatable-column [width]="100" name="AMOUNT (NAIRA)" prop="AMOUNT (NAIRA)">
+    <ngx-datatable-column [width]="180" name="AMOUNT (NAIRA)" prop="AMOUNT (NAIRA)">
       <ng-template let-row="row" ngx-datatable-cell-template>
+        {{row?.naira_amount}}
       </ng-template>
     </ngx-datatable-column>
-    <ngx-datatable-column [width]="90" name="DATE & TIME" prop="DATE & TIME">
+    <ngx-datatable-column [width]="180" name="DATE & TIME" prop="DATE & TIME">
       <ng-template let-row="row" ngx-datatable-cell-template>
         {{row?.created_at | date:'medium'}}
       </ng-template>
@@ -70,7 +71,7 @@
         {{row?.payment_status}}
       </ng-template>
     </ngx-datatable-column> -->
-    <ngx-datatable-column [width]="200" name="ACTION" prop="ACTION">
+    <ngx-datatable-column [width]="220" name="ACTION" prop="ACTION">
       <ng-template let-row="row" ngx-datatable-cell-template>
         <button class="btn btn-primary" (click)="accept(row?.id)">Approve</button>
         &nbsp;

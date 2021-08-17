@@ -65,7 +65,7 @@ export class WalletAddressComponent implements OnInit {
   {
     let body={
       asset:this.name[id],
-      address:this.getWallet().controls[id]['value'].address,
+      address:this.getWallet().controls[id]['value'].address.trim(),
   }
   console.log(body,this.id[id]);
   this.comn_.put(urls.updateWalletAddress+this.id[id]+"/",body).subscribe(res=>{

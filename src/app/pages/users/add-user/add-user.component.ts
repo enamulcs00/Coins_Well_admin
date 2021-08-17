@@ -16,6 +16,7 @@ export class AddUserComponent implements OnInit {
   text: any;
   userDoc: any;
   imageUrl: any;
+  imageFlag:boolean=false;
   constructor(private fb:FormBuilder,private commn_:CommonService,private toaster:ToastrService,private router:Router) { 
     this.userForm=this.fb.group({
       phone_number:['',[Validators.required,Validators.pattern(/^([0-9])*$/),Validators.maxLength(15),Validators.minLength(7)]],
@@ -41,6 +42,7 @@ export class AddUserComponent implements OnInit {
   onImageSelect(e) {
     var files = e.target.files;
     if (files[0].size <= 10000000) {
+      this.imageFlag=false;
       this.userPic = files[0];
       this.uploadMedia();
     } else {
@@ -132,6 +134,10 @@ export class AddUserComponent implements OnInit {
     }
     } else {
       this.userForm.markAllAsTouched();
+      if(!this.userPic)
+      {
+      this.imageFlag=true;
+      }
     }
   }
 

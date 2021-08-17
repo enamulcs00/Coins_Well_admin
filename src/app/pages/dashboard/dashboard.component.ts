@@ -105,7 +105,7 @@ export class DashboardComponent implements OnInit {
     let chart = new CanvasJS.Chart("chartNewOrder",{
 			theme: "light1", // "light2", "dark1", "dark2"
       title: {
-        text: "New Order Chart"
+        text: "Withdraw Request Chart"
       },
       data: [
         {

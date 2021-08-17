@@ -38,7 +38,7 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" id="aboutus-tab-z" data-toggle="tab" href="#aboutus" role="tab"
-                  aria-controls="aboutus" aria-selected="false" (click)="TabRef('aboutUs')">About Us</a>
+                  aria-controls="aboutus" aria-selected="false" (click)="TabRef('aboutUs')">About US</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" id="companyaddress-tab-z" data-toggle="tab" href="#companyaddress" role="tab"
@@ -112,11 +112,11 @@
                         <mat-label>Email</mat-label>
                         <input type="text" name="email" matInput placeholder="Email" formControlName="email">
                         <mat-error
-                          *ngIf="!contactUs.get('email').hasError('validEmail') && contactUs.get('email').hasError('required')">
+                          *ngIf="contactUs.get('email').hasError('required')">
                           Please enter email.
                         </mat-error>
                         <mat-error
-                          *ngIf="contactUs.get('email').hasError('email') || contactUs.get('email').hasError('validEmail')">
+                          *ngIf="!contactUs.get('email').hasError('required') && contactUs.get('email').hasError('validEmail')">
                           Please enter valid email.
                         </mat-error>
                       </mat-form-field>
@@ -132,10 +132,14 @@
                         <mat-error *ngIf="contactUs.get('phone').hasError('required')">Please Enter phone number.
                         </mat-error>
                         <mat-error
-                          *ngIf="contactUs.get('phone')?.hasError('maxlength') || contactUs.get('phone')?.hasError('minlength')">
-                          Phone number has to be between 7 and 15 characters long.
+                          *ngIf="contactUs.get('phone').hasError('maxlength')">
+                          Maxlength should 15.
                         </mat-error>
-
+                        <mat-error
+                          *ngIf="contactUs.get('phone').hasError('minlength')">
+                          Minlength should 7.
+                        </mat-error>
+                       
                       </mat-form-field>
                     </div>
                   </div>
@@ -221,7 +225,7 @@
                     <div class="form-group col-md-6">
                       <mat-form-field class="row col-12" appearance="outline">
                         <mat-label>Account Holder Name</mat-label>
-                        <input type="text" matInput placeholder="Account holder name" formControlName="accountHolder">
+                        <input type="text" (keypress)="service.AlphabetOnly($event)" matInput placeholder="Account holder name" formControlName="accountHolder">
                         <mat-error *ngIf="bankDetailForm.get('accountHolder').hasError('required')">
                           Please enter account holder name. </mat-error>
                       </mat-form-field>
@@ -229,7 +233,7 @@
                     <div class="form-group col-md-6">
                       <mat-form-field class="row col-12" appearance="outline">
                         <mat-label>Account Number</mat-label>
-                        <input type="text" matInput placeholder="Account number" formControlName="accNumber">
+                        <input type="text"  matInput placeholder="Account number" formControlName="accNumber">
                         <mat-error *ngIf="bankDetailForm.get('accNumber').hasError('required')">
                           Please enter account number. </mat-error>
                       </mat-form-field>

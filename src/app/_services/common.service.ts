@@ -190,5 +190,14 @@ export class CommonService {
 			});
 		});
 	}
-
+	NumOnly(event) {
+		let Numpattern = /^([0-9])*$/;
+		let resultNum =    Numpattern.test(event.key);
+		return  resultNum;
+	   }
+	   AlphabetOnly(event){
+		let pattAlpha = /^([a-zA-Z ])*$/;
+		let resultAlpha = pattAlpha.test(event.key);
+		return resultAlpha;
+		 }
 }

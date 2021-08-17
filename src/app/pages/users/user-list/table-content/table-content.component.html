@@ -4,7 +4,7 @@
   <ngx-datatable class="bootstrap" [scrollbarH]="true" [rows]="rows" [columnMode]="ColumnMode.force" [limit]="10"
     [headerHeight]="50" [footerHeight]="50" rowHeight="auto" [externalPaging]="true" [count]="page.totalElements"
     [offset]="page.pageNumber" [limit]="page.size" (page)="setPage($event)">
-    <ngx-datatable-column [width]="40" name="#" prop="#">
+    <ngx-datatable-column [width]="80" name="#" prop="#">
       <ng-template let-rowIndex="rowIndex" data-index="#i" ngx-datatable-cell-template>
         {{(((page.pageNumber * page.size)) + rowIndex)+1}}
       </ng-template>

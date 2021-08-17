@@ -42,7 +42,7 @@ export class ManageUpdateComponent implements OnInit,AfterViewInit {
   REF: any;
   features:FormGroup;
   rateInstruction:FormGroup;
-  constructor(private service: CommonService, private router: Router, private _noti: NotificationsService,private fb:FormBuilder,private _common:CommonService) { 
+  constructor(public service: CommonService, private router: Router, private _noti: NotificationsService,private fb:FormBuilder,private _common:CommonService) { 
     this.termsCondition = this.fb.group({
       terms:['',[Validators.required]]
     })

@@ -16,6 +16,7 @@ export class EditUserComponent implements OnInit {
   userPic: any;
   imageUrl: any;
   localId: any;
+  imageFlag:boolean=false;
   constructor(private fb:FormBuilder,private toaster:ToastrService,private commn_:CommonService,private route:ActivatedRoute,private router:Router) { 
     this.editUserForm=this.fb.group({
       phone_number:['',[Validators.required,Validators.pattern(/^([0-9])*$/),Validators.maxLength(15),Validators.minLength(7)]],
@@ -159,6 +160,10 @@ export class EditUserComponent implements OnInit {
     else
     {
       this.editUserForm.markAllAsTouched();
+      if(!this.userPic)
+      {
+      this.imageFlag=true;
+      }
     }
   }
 

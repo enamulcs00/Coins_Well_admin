@@ -520,6 +520,16 @@ class CommonService {
             });
         });
     }
+    NumOnly(event) {
+        let Numpattern = /^([0-9])*$/;
+        let resultNum = Numpattern.test(event.key);
+        return resultNum;
+    }
+    AlphabetOnly(event) {
+        let pattAlpha = /^([a-zA-Z ])*$/;
+        let resultAlpha = pattAlpha.test(event.key);
+        return resultAlpha;
+    }
 }
 CommonService.ɵfac = function CommonService_Factory(t) { return new (t || CommonService)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_11__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_12__["BsModalService"])); };
 CommonService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({ token: CommonService, factory: CommonService.ɵfac, providedIn: 'root' });

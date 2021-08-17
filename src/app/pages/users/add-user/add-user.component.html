@@ -26,6 +26,7 @@
                   <input type="file" id="myfile" name="myfile" accept="image/*" (change)="onImageSelect($event)">
                   <span class="overlay">+</span>
                 </div>
+                <mat-error *ngIf="imageFlag">Image Required!</mat-error>
               </div>
               <div class="form-row">
                 <!-- <div class="form-group col-md-6">
