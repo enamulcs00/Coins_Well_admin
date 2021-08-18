@@ -241,13 +241,14 @@ public AddressChange(address: any) {
   AddFn() {
 		let obj = {
       "bank_name":this.bankDetailForm.controls.bank_name.value,
-      "account_number":this.bankDetailForm.controls.accNumber.value,
-      "account_holder_name":this.bankDetailForm.controls.accountHolder.value
+      "account_number":this.bankDetailForm.controls.accNumber.value.trim(),
+      "account_holder_name":this.bankDetailForm.controls.accountHolder.value.trim()
 		}
 		this.service.post(urls.adminbakDetails, obj).subscribe((res:any) => {
 			if(res.code==200){
 				this._noti.show("success", "Bank details added successfully.", "Success!");
         this.isLoading = false;
+        this.GetAdminBank();
       }
 		}, _ => {
 			this.isLoading = false
