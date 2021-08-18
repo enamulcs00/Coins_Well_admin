@@ -23,6 +23,7 @@ export class UserListComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		
 	}
 
 	onSelect(data: TabDirective): void {
