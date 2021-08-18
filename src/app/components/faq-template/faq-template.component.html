@@ -31,7 +31,11 @@
                 min="0"
                 formControlName="question"
               />
+              <mat-error *ngIf="quantity.get('question').hasError('required')">
+                Please enter question
+              </mat-error>
             </mat-form-field>
+
           </td>
           <td style="width: 40%">
             <mat-form-field class="row col-12" appearance="outline">
@@ -42,6 +46,9 @@
                 min="0"
                 formControlName="answer"
               />
+              <mat-error *ngIf="quantity.get('answer').hasError('required')">
+                Please enter answer
+              </mat-error>
             </mat-form-field>
           </td>
 

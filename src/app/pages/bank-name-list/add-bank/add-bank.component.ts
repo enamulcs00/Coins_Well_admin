@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { CommonService } from 'src/app/_services/common.service';
 import { NotificationsService } from 'src/app/_services/notifications.service';
 import { urls } from 'src/app/_services/urls';
@@ -15,10 +16,10 @@ export class AddBankComponent implements OnInit {
 	fileData;
   submitted:boolean = false
 	isLoading: boolean = false;
-
+	imageFlag:boolean=false;
   AddBankForm:FormGroup
   files: any;
-  constructor(private fb:FormBuilder,private service: CommonService, private router: Router, private _noti: NotificationsService) { }
+  constructor(private fb:FormBuilder,private service: CommonService, private router: Router, private _noti: NotificationsService,private toastr:ToastrService) { }
  ngOnInit(): void {
 this.AddBankForm = this.fb.group({
   name:['',Validators.required],
@@ -43,6 +44,7 @@ this.AddBankForm = this.fb.group({
 			if (type === 'image/png' || type === 'image/jpg' || type === 'image/jpeg') {
 				let fileData = event.target.files[0];
 				this.fileData = fileData;
+				this.imageFlag=false;
         this.sendFile(fileData)
 				reader.onload = (event) => { // called once readAsDataURL is completed
 					this.imgurl = event.target.result;
@@ -53,10 +55,24 @@ this.AddBankForm = this.fb.group({
   AddBank(){
 	  this.submitted = true
     if(this.AddBankForm.valid){
+		if(this.fileData){
     this.isLoading = true
     this.AddFn()
+}
+else
+{
+	this.toastr.error("Select Image","Error",{timeOut:2000});
+}
     }else{
-      this.AddBankForm.markAllAsTouched()
+      this.AddBankForm.markAllAsTouched();
+	  if(this.fileData)
+	  {
+		  this.imageFlag=false;
+	  }
+	  else
+	  {
+		  this.imageFlag=true;
+	  }
     }
   }
   AddFn() {

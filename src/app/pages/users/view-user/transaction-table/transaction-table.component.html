@@ -11,7 +11,7 @@
 	<ngx-datatable class="bootstrap" [scrollbarH]="true" [rows]="rows" [columnMode]="ColumnMode.force" [limit]="10"
 	  [headerHeight]="50" [footerHeight]="50" rowHeight="auto" [externalPaging]="true" [count]="page.totalElements"
 	  [offset]="page.pageNumber" [limit]="page.size" (page)="setPage($event)">
-	  <ngx-datatable-column [width]="40" name="#" prop="#">
+	  <ngx-datatable-column [width]="80" name="#" prop="#">
 		<ng-template let-rowIndex="rowIndex" data-index="#i" ngx-datatable-cell-template>
 		  {{(((page.pageNumber * page.size)) + rowIndex)+1}}
 		</ng-template>
@@ -28,12 +28,12 @@
 			{{row?.id}}
 		</ng-template>
 	  </ngx-datatable-column>
-	  <ngx-datatable-column [width]="100" name="Currency" prop="Currency">
+	  <ngx-datatable-column [width]="180" name="Currency" prop="Currency">
 		<ng-template let-row="row"  ngx-datatable-cell-template>
 			{{row?.currency?.name}}
 		</ng-template>
 	  </ngx-datatable-column>
-	  <ngx-datatable-column [width]="100" name="Bank" prop="Bank">
+	  <ngx-datatable-column [width]="180" name="Bank" prop="Bank">
 		<ng-template let-row="row"  ngx-datatable-cell-template>
 			{{row?.bank}}
 		</ng-template>
@@ -48,7 +48,7 @@
 			{{row?.amount}}
 		</ng-template>
 	  </ngx-datatable-column>
-	  <ngx-datatable-column [width]="100" name="Transaction" prop="Transaction">
+	  <ngx-datatable-column [width]="160" name="Transaction" prop="Transaction">
 		<ng-template let-row="row"  ngx-datatable-cell-template>
 			<p [class]="row?.transaction_status=='Pending'?'bg-primary m-0 text-center':(row?.transaction_status=='Success'?'bg-success m-0 text-center':'bg-danger m-0 text-center')">{{row?.transaction_status}}</p>
 		</ng-template>
@@ -58,17 +58,17 @@
 			<p class="text-success">Success</p>
 		</ng-template>
 	  </ngx-datatable-column>
-	  <ngx-datatable-column [width]="100" name="Buy" prop="Buy">
+	  <ngx-datatable-column [width]="180" name="Buy" prop="Buy">
 		<ng-template let-row="row"  ngx-datatable-cell-template>
 		{{row?.currency.buy_rate}}	
 		</ng-template>
 	  </ngx-datatable-column>
-	  <ngx-datatable-column [width]="100" name="Sell" prop="Sell">
+	  <ngx-datatable-column [width]="180" name="Sell" prop="Sell">
 		<ng-template let-row="row"  ngx-datatable-cell-template>
 		{{row?.currency.sell_rate}}	
 		</ng-template>
 	  </ngx-datatable-column>
-	  <ngx-datatable-column [width]="100" name="Trend" prop="Trend">
+	  <ngx-datatable-column [width]="180" name="Trend" prop="Trend">
 		<ng-template let-row="row"  ngx-datatable-cell-template>
 		{{row?.currency.trend}}	
 		</ng-template>

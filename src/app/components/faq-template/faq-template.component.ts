@@ -17,7 +17,7 @@ export class FaqTemplateComponent implements OnInit {
   {
 
   this.Faqcheck = this.formBuilder.group({
-    specification: this.formBuilder.array([], Validators.required),
+    specification: this.formBuilder.array([], [Validators.required]),
   })
 
   }
@@ -43,8 +43,8 @@ export class FaqTemplateComponent implements OnInit {
   }
 newSpecifiaction(): FormGroup {
     return this.formBuilder.group({
-      question: new FormControl('', Validators.required),
-      answer: new FormControl('', Validators.required),
+      question: new FormControl('', [Validators.required]),
+      answer: new FormControl('', [Validators.required]),
       id: new FormControl('')
     })
   }
@@ -60,7 +60,7 @@ newSpecifiaction(): FormGroup {
   {
     this.Faqcheck.controls['specification'].value.forEach(v => (v.id=="")?delete v.id:'')
     this.submitted = true;
-    if(!this.Faqcheck.invalid)
+    if(this.Faqcheck.valid)
     {
       this.Srvc.post(`cms/add-update-delete-faq/`,this.Faqcheck.get('specification').value).subscribe((res:any)=>
       {
@@ -70,6 +70,8 @@ newSpecifiaction(): FormGroup {
          this.submitted = false
         }
       })
+    }else{
+      this.Faqcheck.markAllAsTouched()
     }
  
   }
@@ -79,8 +81,8 @@ newSpecifiaction(): FormGroup {
     for (let x of item) {
       console.log(x)
       formArray.push(this.formBuilder.group({
-        question: x.question,
-        answer: x.answer,
+        question: [x.question,[Validators.required]],
+        answer: [x.answer,[Validators.required]],
         id:x.id
       }));
     }
