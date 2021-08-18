@@ -27,6 +27,7 @@
                             <div class="hover_change" (click)="myFIle.click()">
                                 <h5>+</h5>
                             </div>
+                            <mat-error *ngIf="imageFlag">Image Required!</mat-error>
                         </div>
                         <form [formGroup]="AddBankForm">
                             <div class="form-row">

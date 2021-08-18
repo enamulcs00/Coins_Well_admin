@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { CommonService } from 'src/app/_services/common.service';
 import { NotificationsService } from 'src/app/_services/notifications.service';
 import { urls } from 'src/app/_services/urls';
@@ -16,11 +17,11 @@ export class EditBankComponent implements OnInit {
 	fileData;
   submitted:boolean = false
 	isLoading: boolean = false;
-
+	imageFlag:boolean=false;
   AddBankForm:FormGroup
   files: any;
   id: any;
-  constructor(private fb:FormBuilder,private service: CommonService, private router: Router, private _noti: NotificationsService, private route: ActivatedRoute) { 
+  constructor(private fb:FormBuilder,private service: CommonService, private router: Router, private _noti: NotificationsService, private route: ActivatedRoute,private toastr:ToastrService) { 
     this.route.queryParams.subscribe((params)=>{
       this.id = params.id;
     })
@@ -60,10 +61,23 @@ this.AddBankForm = this.fb.group({
   AddBank(){
 	  this.submitted = true
     if(this.AddBankForm.valid){
+		if(this.fileData){
     this.isLoading = true
-    this.AddFn()
+    this.AddFn()}
+	else
+	{
+		this.toastr.error("Select Image","Error",{timeOut:2000});
+	}
     }else{
       this.AddBankForm.markAllAsTouched()
+	  if(this.fileData)
+	  {
+		  this.imageFlag=false
+	  }
+	  else
+	  {
+		  this.imageFlag=true
+	  }
     }
   }
   AddFn() {
