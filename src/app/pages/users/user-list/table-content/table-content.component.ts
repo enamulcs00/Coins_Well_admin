@@ -103,7 +103,8 @@ export class TableContentComponent implements OnInit {
 	changeFlag(row) {
 		const callAPI = (param: any) => {
 			this._common.put(`${urls.changeFlag}${row.id}/`, param).subscribe((res) => {
-				this.toastr.success(res.message, "Success", { timeOut: 1050 })
+				this.toastr.success(res.message, "Success", { timeOut: 1050 });
+				this.setPage({ offset: 0 });
 			});
 		}
 		this._common.confirm("Confirm", "Do you want to " + ((row.flag) ? 'flag' : 'unflag') + " selected user ?").subscribe(res => {

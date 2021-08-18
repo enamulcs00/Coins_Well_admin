@@ -1255,6 +1255,7 @@ class TableContentComponent {
         const callAPI = (param) => {
             this._common.put(`${src_app_services_urls__WEBPACK_IMPORTED_MODULE_4__["urls"].changeFlag}${row.id}/`, param).subscribe((res) => {
                 this.toastr.success(res.message, "Success", { timeOut: 1050 });
+                this.setPage({ offset: 0 });
             });
         };
         this._common.confirm("Confirm", "Do you want to " + ((row.flag) ? 'flag' : 'unflag') + " selected user ?").subscribe(res => {
