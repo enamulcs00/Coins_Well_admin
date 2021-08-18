@@ -45,7 +45,7 @@
                                     [searchData]="searchData"></user-list-table-content>
                             </tab>
                             <tab (selectTab)="onSelect($event)" heading="Flagged">
-                                <user-list-table-content *ngIf="value == 'Flagged'" [searchData]="searchData">
+                                <user-list-table-content *ngIf="value == 'Flagged'" [flag]="true" [searchData]="searchData">
                                 </user-list-table-content>
                             </tab>
                         </tabset>
