@@ -1360,6 +1360,9 @@ class TableContentComponent {
         if (this.status != undefined) {
             this.formData.status = this.status;
         }
+        if (this.status == null) {
+            this.formData.status = this.status;
+        }
         if (this.flag != undefined) {
             this.formData.flag = true;
         }
