@@ -181,13 +181,13 @@ export class TableContentComponent implements OnInit {
 				this.toastr.success(res.message, "Success", { timeOut: 1050 });
 			});
 		}
-		this._common.fvConfirm("Facial Verification",id).subscribe(x => {
-			if(x)
+		this._common.fvConfirm("Facial Verification",id).subscribe(x1 => {
+			if(x1)
 			{
 				callAPI();
 
 			}
-			else if(x==false)
+			else if(x1==false)
 			{
 				this._common.reasonConfirm("Reject Reason", "").subscribe((des: any) => {
 					console.log(des);

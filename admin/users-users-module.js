@@ -1330,11 +1330,11 @@ class TableContentComponent {
                 this.toastr.success(res.message, "Success", { timeOut: 1050 });
             });
         };
-        this._common.fvConfirm("Facial Verification", id).subscribe(x => {
-            if (x) {
+        this._common.fvConfirm("Facial Verification", id).subscribe(x1 => {
+            if (x1) {
                 callAPI();
             }
-            else if (x == false) {
+            else if (x1 == false) {
                 this._common.reasonConfirm("Reject Reason", "").subscribe((des) => {
                     console.log(des);
                     if (des) {
