@@ -762,6 +762,9 @@ class EditUserComponent {
             if (!this.userPic) {
                 this.imageFlag = true;
             }
+            else {
+                this.imageFlag = false;
+            }
         }
     }
 }

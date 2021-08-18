@@ -164,6 +164,10 @@ export class EditUserComponent implements OnInit {
       {
       this.imageFlag=true;
       }
+      else
+      {
+      this.imageFlag=false;
+      }
     }
   }
 
