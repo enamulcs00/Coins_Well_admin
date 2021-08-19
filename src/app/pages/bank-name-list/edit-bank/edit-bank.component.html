@@ -17,9 +17,9 @@
             <div class="col-lg-12">
                 <div class="card m-b-30">
                     <div class="card-body ">
-                        <div class="user-profile">
+                        <div class="user-profile" style="cursor: pointer;">
                             <figure>
-                                <img [src]="imgurl?imgurl:'assets/img/users/defaultuser.jpg'">
+                                <img  [src]="imgurl?imgurl:'assets/img/users/defaultuser.jpg'">
                             </figure>
                             <div class="upload-avatar">
                                 <input type="file" #myFIle id="myfile" name="myfile" (change)="uploadFile($event)" accept="image/x-png,image/gif,image/jpeg">
