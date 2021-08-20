@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CommonService } from 'src/app/_services/common.service';
 import { NotificationsService } from 'src/app/_services/notifications.service';
+import { urls } from 'src/app/_services/urls';
 import { environment } from 'src/environments/environment';
 
 
@@ -10,12 +12,14 @@ import { environment } from 'src/environments/environment';
 	styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+	imgurl: string;
 
-	constructor(private _noti: NotificationsService, private _router: Router) {
+	constructor(private _noti: NotificationsService, private _router: Router,private commn_:CommonService) {
 	
 	 }
 
 	ngOnInit(): void {
+		this.Image();
 	}
   
 	logoutMe() {
@@ -27,5 +31,16 @@ export class HeaderComponent implements OnInit {
 		})
 	}
 	
-
+	Image()
+	{
+    this.commn_.get('admin/get-profile/').subscribe(res=>{
+		this.imgurl = environment.homeURL + res.data?.image?.media_file;
+	});
+	this.commn_.imageFlag.subscribe(res=>{
+		this.commn_.get('admin/get-profile/').subscribe(res=>{
+			this.imgurl = environment.homeURL + res.data?.image?.media_file;
+		});
+	})
+	}
+   
 }

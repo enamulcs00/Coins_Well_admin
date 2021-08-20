@@ -11,6 +11,7 @@ import { FvComponent } from '../components/confirm-dialog/fv/fv.component';
 import { ReasonComponent } from '../components/confirm-dialog/reason/reason.component';
 import { UserComponent } from '../components/confirm-dialog/user/user.component';
 import { EmailModalComponent } from '../components/confirm-dialog/email-modal/email-modal.component';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
 	providedIn: 'root'
@@ -18,6 +19,7 @@ import { EmailModalComponent } from '../components/confirm-dialog/email-modal/em
 export class CommonService {
 	constructor(private _http: HttpClient,private modalService: BsModalService) { }
     bsModalRef: BsModalRef;
+	imageFlag=new BehaviorSubject('');
 	post(url: string, postData: any = {}) {
 		return this._http.post<any>(`${environment.baseUrl}${url}`, postData)
 			.pipe(map((data: any) => {

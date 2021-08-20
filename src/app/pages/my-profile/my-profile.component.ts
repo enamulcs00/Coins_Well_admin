@@ -21,7 +21,7 @@ export class MyProfileComponent implements OnInit {
 	files: any;
 	imgurl: string | ArrayBuffer;
 	fileData;
-	constructor(private _fb: FormBuilder, private service: CommonService, private router: Router, private _noti: NotificationsService, private _auth: AuthService) { }
+	constructor(private _fb: FormBuilder, private service: CommonService, private router: Router, private _noti: NotificationsService, private _auth: AuthService,private commn_:CommonService) { }
 
 	ngOnInit(): void {
 		this.getProfile()
@@ -84,6 +84,7 @@ export class MyProfileComponent implements OnInit {
 				localStorage.setItem(environment.storageKey, JSON.stringify(tempData));
 				this._noti.show("success", "Profile updated successfully.", "Success!");
 				this._auth.onProfileUpdate.next();
+				this.commn_.imageFlag.next("Flag");
 				this.router.navigate(['/dashboard']);
 				this.isLoading = false;
 			})

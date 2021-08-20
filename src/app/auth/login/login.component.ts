@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/_services/auth.service';
 import { NotificationsService } from 'src/app/_services/notifications.service';
 import { validEmail } from 'src/app/_validators/validEmail';
-
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
 	selector: 'app-login',
@@ -14,7 +14,7 @@ import { validEmail } from 'src/app/_validators/validEmail';
 export class LoginComponent implements OnInit {
 	loginForm: FormGroup;
 	isLoading: boolean = false;
-	constructor(public router: Router, private _auth: AuthService, private _fb: FormBuilder, private _noti: NotificationsService) { }
+	constructor(public router: Router, private _auth: AuthService, private _fb: FormBuilder,private spinner: NgxSpinnerService, private _noti: NotificationsService) { }
 
 	ngOnInit() {
 		this.loginForm = this._fb.group({
@@ -30,10 +30,13 @@ export class LoginComponent implements OnInit {
 		}
 		if (this.loginForm.valid) {
 			this.isLoading = true;
+			this.spinner.show();
 			let body=this.loginForm.value;
 			body['token']=this._auth.firebaseToken;
 			this._auth.login(body).subscribe(res => {
 				this.isLoading = false;
+				setTimeout(() => {
+				this.spinner.hide();},2000);
 				this._noti.show('success', "Admin logged in successfully.", "Login!");
 				this.router.navigate(['/dashboard']);
 			}, error => {

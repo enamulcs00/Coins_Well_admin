@@ -23,6 +23,7 @@ import { UserComponent } from './components/confirm-dialog/user/user.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { EmailModalComponent } from './components/confirm-dialog/email-modal/email-modal.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
 	declarations: [
@@ -46,7 +47,8 @@ import { EmailModalComponent } from './components/confirm-dialog/email-modal/ema
 		ToastrModule.forRoot(),
 		ModalModule.forRoot(),
 		ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-		ReactiveFormsModule
+		ReactiveFormsModule,
+		NgxSpinnerModule
 	],
 	providers: [
 		{ provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

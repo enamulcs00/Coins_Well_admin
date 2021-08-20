@@ -6,6 +6,7 @@ import { MatOption } from '@angular/material/core';
 import { MatSelect } from '@angular/material/select';
 import { ToastrService } from 'ngx-toastr';
 import { Route, Router } from '@angular/router';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-add-notification',
@@ -19,7 +20,7 @@ export class AddNotificationComponent implements OnInit {
   @ViewChild('mySel') skillSel: MatSelect;
   @Output() selectionChange: EventEmitter<any> = new EventEmitter();
 
-  constructor(private commn_: CommonService, private fb: FormBuilder , private toastr:ToastrService,private route:Router) {
+  constructor(private commn_: CommonService, private fb: FormBuilder,private spinner: NgxSpinnerService , private toastr:ToastrService,private route:Router) {
     this.notificationForm = this.fb.group({
       notification_type: ['', [Validators.required]],
       notification_mode: ['', [Validators.required]],
@@ -43,6 +44,7 @@ export class AddNotificationComponent implements OnInit {
   createNotification() {
     if (this.notificationForm.valid) {
       let items=[];
+      this.spinner.show();
       items=this.notificationForm.get('users').value.map((x) => {
         return { user: x }
       });
@@ -58,6 +60,8 @@ export class AddNotificationComponent implements OnInit {
       this.commn_.post(urls.createNotification, body).subscribe(res => {
         if(res.code==200)
         {
+          setTimeout(() => {this.spinner.hide();
+          },2000);
           this.toastr.success(res.message,"Success",{timeOut:2000});
           this.route.navigate(["/manage-notification"]);
         }
