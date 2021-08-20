@@ -64,6 +64,16 @@ export class ManageUpdateComponent implements OnInit,AfterViewInit {
     this.rateInstruction=this.fb.group({
       rateInstruction:['',[Validators.required]]
     });
+    this.contactUs = this.fb.group({
+      email:['',[Validators.required,validEmail,Validators.email]],
+      phone:['',[Validators.required,Validators.minLength(7),Validators.maxLength(15)]],
+      telegram_phone_number:['',[Validators.required,Validators.minLength(7),Validators.maxLength(15)]]
+    });
+    this.bankDetailForm = this.fb.group({
+      bank_name:['',[Validators.required]],
+      accountHolder:['',[Validators.required]],
+      accNumber:['',[Validators.required]]
+    });
   }
 
   public model = {
@@ -71,15 +81,6 @@ export class ManageUpdateComponent implements OnInit,AfterViewInit {
     description: '<p>This is a sample form using CKEditor 4.</p>'
   };
  ngOnInit(): void {
-this.contactUs = this.fb.group({
-  email:['',[Validators.required,validEmail,Validators.email]],
-  phone:['',[Validators.required,Validators.minLength(7),Validators.maxLength(15)]]
-})
-this.bankDetailForm = this.fb.group({
-  bank_name:['',[Validators.required]],
-  accountHolder:['',[Validators.required]],
-  accNumber:['',[Validators.required]]
-})
    this.GetCms()
    this.searchBanks();
    this.bankListEvent.next('');
@@ -133,6 +134,7 @@ ngAfterViewInit(){
        this.About.controls['about'].setValue(res?.data?.about_us)
        this.contactUs.controls['email'].setValue(res.data.email)
        this.contactUs.controls['phone'].setValue(res.data.phone_no)
+       this.contactUs.controls['telegram_phone_number'].setValue(res.data.telegram_phone_number)
        this.features.controls['features'].setValue(res.data.features)
        this.rateInstruction.controls['rateInstruction'].setValue(res.data.rate_instructions)
 		})
@@ -162,7 +164,8 @@ SubmitContactUs(){
   if(this.contactUs.valid){
     let obj ={
       "phone_no":this.contactUs.controls['phone'].value,
-      "email":this.contactUs.controls['email'].value
+      "email":this.contactUs.controls['email'].value,
+      "telegram_phone_number":this.contactUs.controls['telegram_phone_number'].value,
     }
   this.updateFn(obj)
   }else {

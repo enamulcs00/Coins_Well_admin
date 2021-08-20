@@ -111,8 +111,7 @@
                       <mat-form-field class="row col-12" appearance="outline">
                         <mat-label>Email</mat-label>
                         <input type="text" name="email" matInput placeholder="Email" formControlName="email">
-                        <mat-error
-                          *ngIf="contactUs.get('email').hasError('required')">
+                        <mat-error *ngIf="contactUs.get('email').hasError('required')">
                           Please enter email.
                         </mat-error>
                         <mat-error
@@ -125,21 +124,37 @@
                       <label class="matText">Phone number</label>
                       <mat-form-field class="row col-12" appearance="outline">
                         <ngx-mat-intl-tel-input [onlyCountries]="['ng']" [enablePlaceholder]="true"
-                          [enableSearch]="true" name="full_phone" formControlName="full_phone"
-                          (countryChanged)="countryChanged($event)" inputPlaceholder="Phone number"
-                          formControlName="phone">
+                          [enableSearch]="true" name="full_phone" (countryChanged)="countryChanged($event)"
+                          inputPlaceholder="Phone number" formControlName="phone">
                         </ngx-mat-intl-tel-input>
                         <mat-error *ngIf="contactUs.get('phone').hasError('required')">Please Enter phone number.
                         </mat-error>
-                        <mat-error
-                          *ngIf="contactUs.get('phone').hasError('maxlength')">
+                        <mat-error *ngIf="contactUs.get('phone').hasError('maxlength')">
                           Maxlength should 15.
                         </mat-error>
-                        <mat-error
-                          *ngIf="contactUs.get('phone').hasError('minlength')">
+                        <mat-error *ngIf="contactUs.get('phone').hasError('minlength')">
                           Minlength should 7.
                         </mat-error>
-                       
+
+                      </mat-form-field>
+                    </div>
+                    <div class="form-group number_add_coinwell col-md-6">
+                      <label class="matText">Telegram Phone number</label>
+                      <mat-form-field class="row col-12" appearance="outline">
+                        <ngx-mat-intl-tel-input [onlyCountries]="['ng']" [enablePlaceholder]="true"
+                          [enableSearch]="true" name="full_phone" formControlName="telegram_phone_number"
+                          (countryChanged)="countryChanged($event)" inputPlaceholder="Phone number">
+                        </ngx-mat-intl-tel-input>
+                        <mat-error *ngIf="contactUs.get('telegram_phone_number').hasError('required')">Please Enter
+                          telegram phone number!
+                        </mat-error>
+                        <mat-error *ngIf="contactUs.get('telegram_phone_number').hasError('maxlength')">
+                          Maxlength should 15!
+                        </mat-error>
+                        <mat-error *ngIf="contactUs.get('telegram_phone_number').hasError('minlength')">
+                          Minlength should 7!
+                        </mat-error>
+
                       </mat-form-field>
                     </div>
                   </div>
@@ -225,7 +240,8 @@
                     <div class="form-group col-md-6">
                       <mat-form-field class="row col-12" appearance="outline">
                         <mat-label>Account Holder Name</mat-label>
-                        <input type="text" (keypress)="service.AlphabetOnly($event)" matInput placeholder="Account holder name" formControlName="accountHolder">
+                        <input type="text" (keypress)="service.AlphabetOnly($event)" matInput
+                          placeholder="Account holder name" formControlName="accountHolder">
                         <mat-error *ngIf="bankDetailForm.get('accountHolder').hasError('required')">
                           Please enter account holder name. </mat-error>
                       </mat-form-field>
@@ -233,7 +249,7 @@
                     <div class="form-group col-md-6">
                       <mat-form-field class="row col-12" appearance="outline">
                         <mat-label>Account Number</mat-label>
-                        <input type="text"  matInput placeholder="Account number" formControlName="accNumber">
+                        <input type="text" matInput placeholder="Account number" formControlName="accNumber">
                         <mat-error *ngIf="bankDetailForm.get('accNumber').hasError('required')">
                           Please enter account number. </mat-error>
                       </mat-form-field>
@@ -247,17 +263,18 @@
                 <form [formGroup]="procedure">
                   <div class="form-row mt-3">
                     <div class="form-group col-md-12">
-                        <ckeditor #editor formControlName="paymentprocedure" type="divarea">
-                        </ckeditor>
-                        <mat-error *ngIf="procedure.controls['paymentprocedure'].hasError('required')">
-                          Please enter payment procedure!
-                        </mat-error>
+                      <ckeditor #editor formControlName="paymentprocedure" type="divarea">
+                      </ckeditor>
+                      <mat-error *ngIf="procedure.controls['paymentprocedure'].hasError('required')">
+                        Please enter payment procedure!
+                      </mat-error>
                     </div>
                   </div>
                 </form>
                 <button class="btn btn-primary" (click)="Payment()">{{isLoading?'Processing':'Save'}}</button>
               </div>
-              <div class="tab-pane fade show" id="rateInstruction" role="tabpanel" aria-labelledby="rateInstruction-tab">
+              <div class="tab-pane fade show" id="rateInstruction" role="tabpanel"
+                aria-labelledby="rateInstruction-tab">
                 <form [formGroup]="rateInstruction">
                   <div class="form-row mt-3">
                     <div class="form-group col-md-12">
