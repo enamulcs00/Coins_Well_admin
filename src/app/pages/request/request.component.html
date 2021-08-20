@@ -44,7 +44,7 @@
                     <div class="card-body under_tab_link">
                       <tabset>
                         <tab *ngFor="let item of items" [heading]="item.name">
-                            <app-request-table  [status]="'1/'+item.id+'/'"></app-request-table>
+                            <app-request-table  [status]="'2/'+item.id+'/'"></app-request-table>
                         </tab>
                     </tabset>
                     </div>
@@ -53,7 +53,7 @@
                     <div class="card-body under_tab_link">
                       <tabset>
                         <tab *ngFor="let item of items" [heading]="item.name">
-                            <app-request-table  [status]="'2/'+item.id+'/'"></app-request-table>
+                            <app-request-table  [status]="'4/'+item.id+'/'"></app-request-table>
                         </tab>
                     </tabset>
                     </div>
@@ -71,7 +71,7 @@
                     <div class="card-body under_tab_link">
                       <tabset>
                         <tab *ngFor="let item of items" [heading]="item?.name">
-                            <app-request-table  [status]="'4/'+item?.id+'/'"></app-request-table>
+                            <app-request-table  [status]="'1/'+item?.id+'/'"></app-request-table>
                         </tab>
                     </tabset>
                     </div>
