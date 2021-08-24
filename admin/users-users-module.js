@@ -240,7 +240,7 @@ class AddUserComponent {
                         ]
                     };
                     this.commn_.post(src_app_services_urls__WEBPACK_IMPORTED_MODULE_0__["urls"].addUser, body).subscribe(res => {
-                        if (res.message == "Admin Details Updated") {
+                        if (res.message == "User Added Successfully.") {
                             this.toaster.success(res.message, "Success", { timeOut: 1050 });
                             this.router.navigate(['/users']);
                         }

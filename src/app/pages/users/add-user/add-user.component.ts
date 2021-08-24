@@ -112,7 +112,7 @@ export class AddUserComponent implements OnInit {
       ]
       };
       this.commn_.post(urls.addUser,body).subscribe(res=>{
-        if(res.message=="Admin Details Updated")
+        if(res.message=="User Added Successfully.")
         {
           this.toaster.success(res.message,"Success",{timeOut:1050});
           this.router.navigate(['/users']);
