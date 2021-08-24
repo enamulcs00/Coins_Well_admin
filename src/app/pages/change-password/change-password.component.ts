@@ -20,13 +20,14 @@ export class ChangePasswordComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.setPasswordForm = this._fb.group({
-			current_password: [null, Validators.required,removeSpaces],
+			current_password: [null, [Validators.required,removeSpaces]],
 			new_password: [null, [Validators.required, Validators.minLength(8), Validators.maxLength(16), removeSpaces]],
-			confirm_password: [null, Validators.required,removeSpaces]
+			confirm_password: [null, [Validators.required,removeSpaces]]
 		}, { validators: MustMatch('new_password', 'confirm_password') });
 	}
 
 	setupPassword() {
+		console.log(this.setPasswordForm)
 		if (this.setPasswordForm.valid) {
 			this.isLoading = true;
 			const formData = Object.assign(this.setPasswordForm.value);

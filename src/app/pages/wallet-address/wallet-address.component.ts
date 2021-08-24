@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { CommonService } from 'src/app/_services/common.service';
 import {urls} from '../../_services/urls';
@@ -14,7 +15,7 @@ export class WalletAddressComponent implements OnInit {
   asset:FormArray;
   name=[];
   id:any=[];
-  constructor(private fb: FormBuilder,private comn_:CommonService,private toastr:ToastrService) { 
+  constructor(private fb: FormBuilder,private comn_:CommonService,private toastr:ToastrService,private spinner: NgxSpinnerService) { 
     this.walletForm=this.fb.group({
       asset: this.fb.array([]) ,
     });
@@ -63,6 +64,7 @@ export class WalletAddressComponent implements OnInit {
 
   updateForm(id)
   {
+    this.spinner.show();
     let body={
       asset:this.name[id],
       address:this.getWallet().controls[id]['value'].address.trim(),
@@ -76,6 +78,7 @@ export class WalletAddressComponent implements OnInit {
         asset: this.fb.array([]) ,
       });
       this.getWalletAddress();
+      setTimeout(()=>{this.spinner.hide()},1000);
     }
     else
     {

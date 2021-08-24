@@ -11,7 +11,7 @@ import {urls} from '../../_services/urls';
 export class ReferAmountComponent implements OnInit {
   amount: any;
   itemAmount: any;
-  page=0;
+  page=1;
   page1=0;
   pageSize=10;
   pageSize1=10;
@@ -101,12 +101,14 @@ export class ReferAmountComponent implements OnInit {
         this.page = e.pageIndex;
       } else {
         if (e.previousPageIndex < e.pageIndex) {
-          this.page = e.pageSize + 1;
+          this.page =this.page+ e.pageSize;
         } else {
-          this.page = e.pageSize;
+          this.page =this.page-e.pageSize;
         }
       }
       this.pageSize = e.pageSize
+      console.log(this.page , this.pageSize,"asdfasdf");
+      
       this.getReferalHistory();
       return e;
   }
@@ -116,9 +118,9 @@ export class ReferAmountComponent implements OnInit {
       this.page1 = e.pageIndex;
     } else {
       if (e.previousPageIndex < e.pageIndex) {
-        this.page1 = e.pageSize + 1;
+        this.page1 =this.page1+ e.pageSize;
       } else {
-        this.page1 = e.pageSize;
+        this.page1 =this.page1- e.pageSize;
       }
     }
     this.pageSize1 = e.pageSize
