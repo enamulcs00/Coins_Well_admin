@@ -41,6 +41,8 @@ export class LoginComponent implements OnInit {
 				this.router.navigate(['/dashboard']);
 			}, error => {
 				this.isLoading = false;
+				setTimeout(() => {
+					this.spinner.hide();},2000);
 			})
 		} else {
 			this.loginForm.markAllAsTouched();
