@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { urls } from 'src/app/_services/urls';
 import { CommonService } from 'src/app/_services/common.service';
 import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-rate-change',
@@ -14,7 +15,7 @@ export class RateChangeComponent implements OnInit {
   currency:FormArray;
   name=[];
   id:any=[];
-  constructor(private fb: FormBuilder,private comn_:CommonService,private toastr:ToastrService) { 
+  constructor(private fb: FormBuilder,private comn_:CommonService,private toastr:ToastrService,private spinner: NgxSpinnerService) { 
     this.rateForm=this.fb.group({
       currency: this.fb.array([]) ,
     });
@@ -65,6 +66,7 @@ export class RateChangeComponent implements OnInit {
 
   updateForm(id)
   {
+    this.spinner.show();
     let body={
       id:this.id[id],
     buy_rate:this.getCurrency().controls[id]["controls"].buy_rate.value,
@@ -79,6 +81,7 @@ export class RateChangeComponent implements OnInit {
         currency: this.fb.array([]) ,
       });
       this.getAllRateChange();
+      this.spinner.hide();
     }
     else
     {
