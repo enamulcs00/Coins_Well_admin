@@ -1796,6 +1796,7 @@ __webpack_require__.r(__webpack_exports__);
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
+// ng build --base-href "/Coinswell/admin/"
 const environment = {
     production: false,
     baseUrl: 'https://python.appgrowthcompany.com/api/',

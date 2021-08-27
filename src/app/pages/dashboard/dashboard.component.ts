@@ -12,6 +12,7 @@ export class DashboardComponent implements OnInit {
   revenueItems: any=[];
   orderItems: any=[];
   newOrderItems: any=[];
+  cards: any;
 
   constructor(private comn_:CommonService) { }
 
@@ -24,7 +25,10 @@ export class DashboardComponent implements OnInit {
    this.comn_.get(urls.getDashboard).subscribe(res=>{
      this.items=res.data;
    });
-   
+   this.comn_.get(urls.getAllCurrency).subscribe(res=>{
+     this.cards=res.data;
+     console.log(res)
+   })
   this.getNewOrderGraph(2);
   this.getRevenueGraph(2);
   this.getOrderGraph(2);
@@ -46,7 +50,7 @@ export class DashboardComponent implements OnInit {
   {
     let body={"filter_type":key}
     this.comn_.post(urls.getOrderGraph,body).subscribe(res=>{
-      console.log(res);
+      // console.log(res);
       this.orderItems=res.data.map((row)=>{
         return { label : row.date ,y : row.count }
       });
@@ -58,7 +62,7 @@ export class DashboardComponent implements OnInit {
   {
     let body={"filter_type":key}
     this.comn_.post(urls.getNewOrderGraph,body).subscribe(res=>{
-      console.log(res);
+      // console.log(res);
       this.newOrderItems=res.data.map((row)=>{
         return { label : row.date ,y : row.count }
       });
