@@ -17,7 +17,7 @@ export class UserListComponent implements OnInit {
 		event: new Subject(),
 		value: ''
 	}
-	value = 'Pending';
+	value = 'ALL';
 	timeOut: number;
 	constructor(private _common: CommonService) {
 	}
