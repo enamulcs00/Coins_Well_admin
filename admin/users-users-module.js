@@ -1520,7 +1520,7 @@ function UserListComponent_user_list_table_content_26_Template(rf, ctx) { if (rf
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "user-list-table-content", 50);
 } if (rf & 2) {
     const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("status", "ALL")("searchData", ctx_r0.searchData);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("status", "all")("searchData", ctx_r0.searchData);
 } }
 function UserListComponent_user_list_table_content_28_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "user-list-table-content", 50);

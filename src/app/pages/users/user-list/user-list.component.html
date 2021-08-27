@@ -33,7 +33,7 @@
                     <div class="card-body">
                         <tabset>
                             <tab (selectTab)="onSelect($event)" heading="ALL" id="tab1">
-                                <user-list-table-content *ngIf="value == 'ALL'" [status]="'ALL'"
+                                <user-list-table-content *ngIf="value == 'ALL'" [status]="'all'"
                                     [searchData]="searchData"></user-list-table-content>
                             </tab>
                             <tab (selectTab)="onSelect($event)" heading="Pending" id="tab1">
