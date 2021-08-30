@@ -69,8 +69,8 @@ this.AddBankForm = this.fb.group({
 		this.toastr.error("Select Image","Error",{timeOut:2000});
 	}
     }else{
-      this.AddBankForm.markAllAsTouched()
-	  if(this.fileData)
+      this.AddBankForm.markAllAsTouched();
+	  if(this.imgurl)
 	  {
 		  this.imageFlag=false
 	  }
