@@ -27,14 +27,14 @@
 
     <ngx-datatable-column [width]="100" name="Name" prop="name">
       <ng-template let-row="row" ngx-datatable-cell-template>
-        {{row.full_name}}
+        {{row?.first_name}} {{row?.last_name}}
       </ng-template>
     </ngx-datatable-column>
 
     <ngx-datatable-column [width]="220" name="Email" prop="email">
       <ng-template let-row="row" ngx-datatable-cell-template>
-       <span style="display: inline-flex;">
-         {{row.email}} <a href="javascript:void(0)" (click)="emailModal(row)"> <i class="mdi mdi-information ml-2"></i></a>
+       <span>
+         {{row?.email}} <a href="javascript:void(0)" (click)="emailModal(row)"> <i class="mdi mdi-information ml-2"></i></a>
        </span> 
       </ng-template>
     </ngx-datatable-column>

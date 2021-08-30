@@ -61,7 +61,7 @@ this.AddBankForm = this.fb.group({
   AddBank(){
 	  this.submitted = true
     if(this.AddBankForm.valid){
-		if(this.fileData){
+		if(this.imgurl){
     this.isLoading = true
     this.AddFn()}
 	else
@@ -83,9 +83,12 @@ this.AddBankForm = this.fb.group({
   AddFn() {
 		let obj = {
       "name":this.AddBankForm.controls.name.value,
-      "bank_image":this.files,
     //   "ifsc_code":this.AddBankForm.controls.ifsc_code.value,
     //   "branch":this.AddBankForm.controls.branch.value
+		}
+		if(this.files)
+		{
+			obj["bank_image"]=this.files;
 		}
 		this.service.put(`admin/update-bank-by-pk/${this.id}/`, obj).subscribe((res:any) => {
 			if(res.code==200){
