@@ -41,5 +41,6 @@ export const urls = {
     sendEmail:'admin/send-mail/',
     requestAccept:'payment/change-payment-status/',
     requestReject:'payment/change-payment-status/',
-    getTransection:'admin/get-payment-requests-by-userid/'
+    getTransection:'admin/get-payment-requests-by-userid/',
+    getBalance:'admin/get-all-balances-by-userid/'
 };

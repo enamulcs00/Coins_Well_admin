@@ -13,7 +13,7 @@ export class ViewUserComponent implements OnInit {
   localId: any;
   items: any;
   imageUrl: string;
-  
+  bItems:any;
   constructor(private route: ActivatedRoute,private commn_:CommonService) { }
 
   ngOnInit(): void {
@@ -30,5 +30,9 @@ export class ViewUserComponent implements OnInit {
     console.log(res);
     this.items=res.data;
     });
+    this.commn_.get(urls.getBalance+this.localId+"/").subscribe(res=>{
+      console.log(res);
+      this.bItems=res.data;
+      });
   }
 }
