@@ -36,6 +36,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
+import { TabsModule } from 'ngx-bootstrap/tabs';
 @NgModule({
 	declarations: [
 		PagesComponent, 
@@ -78,7 +79,8 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 		MatDatepickerModule, 
 		MatNativeDateModule,
 		MatInputModule,
-		NgxCurrencyModule
+		NgxCurrencyModule,
+		CoreModule
 	],
 	exports:[
 		MaterialExtensionsExperimentalModule,

@@ -7,6 +7,7 @@ import { Page } from '../../modal/page';
 import { Block } from 'notiflix';
 import { environment } from 'src/environments/environment';
 import { ToastrService } from 'ngx-toastr';
+import { TabDirective } from 'ngx-bootstrap/tabs';
 @Component({
   selector: 'app-request-table',
   templateUrl: './request-table.component.html',
@@ -25,7 +26,11 @@ export class RequestTableComponent implements OnInit {
   start_date: any="";
   end_date: any="";
   todayDate=new Date();
+
+
   constructor(private _common:CommonService,private toastr:ToastrService) { }
+
+
 
   ngOnInit(): void {
     this.setPage({ offset: 0 });
