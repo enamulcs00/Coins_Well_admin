@@ -59,7 +59,7 @@ export class RequestTableComponent implements OnInit {
 	}
 
 	checkWallet() {
-		return (['3/3/','3/4/'].indexOf(this.status) !=  -1);
+		return (['2/1/', '2/2/', '2/3/', '2/4/', '2/6/', '2/7/', '2/8/', '2/9/', '3/3/','3/4/'].indexOf(this.status) !=  -1);
 	}
 
 	getBitGoName(){
