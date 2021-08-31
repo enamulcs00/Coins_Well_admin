@@ -1,0 +1,14 @@
+.btn-blue-translucent {
+    background: linear-gradient( 
+        180deg
+         , #476efe 20%, #18bfec 100%) !important;
+            color: white;
+            padding: 0.6rem 2rem;
+    margin-left: 15px;
+    font-size: 18px;
+}
+
+::ng-deep .reveue-date .mat-form-field-wrapper{
+    margin-bottom: -1.25em;
+    padding-bottom: 0px;
+ }

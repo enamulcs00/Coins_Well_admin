@@ -22,40 +22,40 @@
 						<div class="col-md-12">
 							<div class="card-body top_nav_link">
 								<tabset>
-									<tab heading="Withdrawl Request" id="tab1" (selectTab)="onSelect('2/5/')">
+									<tab heading="Withdraw Request" id="tab1" (selectTab)="onSelect('2/5/')">
 										<tabset>
 											<tab (selectTab)="onSelect('2/5/')" heading="NGN">
-												<app-request-table *ngIf="value == '2/5/'" [status]="'2/5/'"></app-request-table>
+												<app-request-table *ngIf="value == '2/5/'" [items]="items" [status]="'2/5/'"></app-request-table>
 											</tab>
 											<tab (selectTab)="onSelect('2/'+item.id+'/')" *ngFor="let item of items" [heading]="item.name">
-												<app-request-table *ngIf="value == '2/'+item.id+'/'" [status]="'2/'+item.id+'/'"></app-request-table>
+												<app-request-table *ngIf="value == '2/'+item.id+'/'" [items]="items" [status]="'2/'+item.id+'/'"></app-request-table>
 											</tab>
 										</tabset>
 									</tab>
 									<tab heading="Deposit Request" (selectTab)="onSelect('1/5/')">
 										<tabset>
 											<tab (selectTab)="onSelect('1/5/')" heading="NGN">
-												<app-request-table *ngIf="value == '1/5/'" [status]="'1/5/'"></app-request-table>
+												<app-request-table *ngIf="value == '1/5/'" [items]="items" [status]="'1/5/'"></app-request-table>
 											</tab>
 										</tabset>
 									</tab>
 									<tab heading="Selling Request" (selectTab)="onSelect('4/3/')">
 										<tabset>
 											<tab (selectTab)="onSelect('4/3/')" heading="TRC20 USDT">
-												<app-request-table *ngIf="value == '4/3/'" [status]="'4/3/'"></app-request-table>
+												<app-request-table *ngIf="value == '4/3/'" [items]="items" [status]="'4/3/'"></app-request-table>
 											</tab>
 											<tab (selectTab)="onSelect('4/4/')" heading="Perfect Money">
-												<app-request-table *ngIf="value == '4/4/'" [status]="'4/4/'"></app-request-table>
+												<app-request-table *ngIf="value == '4/4/'" [items]="items" [status]="'4/4/'"></app-request-table>
 											</tab>
 										</tabset>
 									</tab>
 									<tab heading="Buying Request" (selectTab)="onSelect('3/3/')">
 										<tabset>
 											<tab (selectTab)="onSelect('3/3/')" heading="TRC20 USDT">
-												<app-request-table *ngIf="value  == '3/3/' " [status]="'3/3/'"></app-request-table>
+												<app-request-table *ngIf="value  == '3/3/' " [items]="items" [status]="'3/3/'"></app-request-table>
 											</tab>
 											<tab (selectTab)="onSelect('3/4/')" heading="Perfect Money">
-												<app-request-table *ngIf="value  == '3/4/' " [status]="'3/4/'"></app-request-table>
+												<app-request-table *ngIf="value  == '3/4/' " [items]="items" [status]="'3/4/'"></app-request-table>
 											</tab>
 										</tabset>
 									</tab>
