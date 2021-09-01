@@ -7,7 +7,7 @@
 				<mat-select [(ngModel)]="filterStatus" (selectionChange)="changeDateRange()">
 					<mat-option value="All">All</mat-option>
 					<mat-option value="Pending">Pending</mat-option>
-					<mat-option value="Approved">Approved</mat-option>
+					<mat-option value="Accepted">Accepted</mat-option>
 					<mat-option value="Rejected">Rejected</mat-option>
 				</mat-select>
 			</mat-form-field>
@@ -70,26 +70,27 @@
 		<!-- Dynamic Columns -->
 
 		<!-- Bank Columns -->
-			<ng-container *ngIf="checkBankColumns()">
-				<ngx-datatable-column [width]="180" name="BANK" prop="BANK NAME">
-					<ng-template let-row="row" ngx-datatable-cell-template>
-						<div *ngIf="row?.bank?.bank_name" >
-							<img src="{{ baseUrl + row?.bank?.bank_name?.bank_image?.media_file }}" alt="" style="width: 20px;height: 20px;">
-							{{ row?.bank?.bank_name?.name }}
-						</div>
-					</ng-template>
-				</ngx-datatable-column>
-				<ngx-datatable-column [width]="180" name="ACCOUNT NUMBER" prop="ACCOUNT NUMBER">
-					<ng-template let-row="row" ngx-datatable-cell-template>
-						{{ row?.bank?.account_number }}
-					</ng-template>
-				</ngx-datatable-column>
-				<!-- <ngx-datatable-column [width]="180" name="AC. HOLDER NAME" prop="HOLDER NAME">
+		<ng-container *ngIf="checkBankColumns()">
+			<ngx-datatable-column [width]="180" name="BANK" prop="BANK NAME">
+				<ng-template let-row="row" ngx-datatable-cell-template>
+					<div *ngIf="row?.bank?.bank_name">
+						<img src="{{ baseUrl + row?.bank?.bank_name?.bank_image?.media_file }}" alt=""
+							style="width: 20px;height: 20px;">
+						{{ row?.bank?.bank_name?.name }}
+					</div>
+				</ng-template>
+			</ngx-datatable-column>
+			<ngx-datatable-column [width]="180" name="ACCOUNT NUMBER" prop="ACCOUNT NUMBER">
+				<ng-template let-row="row" ngx-datatable-cell-template>
+					{{ row?.bank?.account_number }}
+				</ng-template>
+			</ngx-datatable-column>
+			<!-- <ngx-datatable-column [width]="180" name="AC. HOLDER NAME" prop="HOLDER NAME">
 					<ng-template let-row="row" ngx-datatable-cell-template>
 						{{ row?.bank?.account_holder_name }}
 					</ng-template>
 				</ngx-datatable-column> -->
-			</ng-container>
+		</ng-container>
 		<!-- End Bank Columns -->
 
 		<!-- Proof Columns check here  -->
@@ -101,6 +102,13 @@
 		</ngx-datatable-column>
 		<!-- End Proof Columns check here  -->
 
+		<!-- show usd value here -->
+		<ngx-datatable-column *ngIf="checkRate()" [width]="100" name="Exc. Rate" prop="Exchange Rate">
+			<ng-template let-row="row" ngx-datatable-cell-template>
+				0.00
+			</ng-template>
+		</ngx-datatable-column>
+		<!-- end usd value here	 -->
 
 		<ngx-datatable-column *ngIf="checkBalanceColumn()" [width]="180" name="Balance" prop="Balance">
 			<ng-template let-row="row" ngx-datatable-cell-template>
@@ -110,17 +118,17 @@
 
 
 		<!-- show usd value here -->
-		<ngx-datatable-column *ngIf="checkUSD()" [width]="100" name="AMOUNT ($)" prop="ASSET">
+		<ngx-datatable-column *ngIf="checkUSD()" [width]="100" name="AMOUNT ($)" prop="AMOUNT ($)">
 			<ng-template let-row="row" ngx-datatable-cell-template>
 				{{ ((row?.amount)?row?.amount:0) | number : '0.2' }}
 			</ng-template>
 		</ngx-datatable-column>
 		<!-- end usd value here	 -->
-		
+
 		<!-- show bit value here -->
-		<ngx-datatable-column *ngIf="checkBit()"  name="Amount {{ getBitGoName() }}" prop="ASSET">
+		<ngx-datatable-column *ngIf="checkBit()" name="Amount {{ getBitGoName() }}" prop="Amount (BitGo)">
 			<ng-template let-row="row" ngx-datatable-cell-template>
-				{{ ((row?.bitamount)?row?.bitamount:0) | number : '0.2' }}
+				{{ ((row?.bitamount)?row?.bitamount:0) | number : '0.2-10' }}
 			</ng-template>
 		</ngx-datatable-column>
 		<!-- end bit value here	 -->
@@ -130,7 +138,7 @@
 			<ng-template let-row="row" ngx-datatable-cell-template>
 				{{ ((row?.ngnamount)?row?.ngnamount:0) | number : '0.2' }}
 			</ng-template>
-		</ngx-datatable-column>			
+		</ngx-datatable-column>
 		<!-- End Dynamic Columns -->
 
 		<!-- Show Wallet address column -->
@@ -146,7 +154,7 @@
 			</ng-template>
 		</ngx-datatable-column>
 
-		<ngx-datatable-column *ngIf="checkReceivingWallet()" [width]="180" name="Fee" prop="Fee">
+		<ngx-datatable-column *ngIf="checkReceivingWallet()" [width]="100" name="Fee" prop="Fee">
 			<ng-template let-row="row" ngx-datatable-cell-template>
 				{{ 0 | number : '0.2' }}
 			</ng-template>
@@ -158,13 +166,13 @@
 				<span class="badge badge-success">5 Confirmations</span>
 			</ng-template>
 		</ngx-datatable-column>
-		
+
 		<ngx-datatable-column *ngIf="checkReceivingWallet()" [width]="180" name="Transaction ID" prop="Transaction ID">
 			<ng-template let-row="row" ngx-datatable-cell-template>
 				BTC56456456456GJH
 			</ng-template>
 		</ngx-datatable-column>
-		
+
 		<!-- End Wallet address column -->
 
 		<ngx-datatable-column [width]="180" name="DATE & TIME" prop="DATE & TIME">
@@ -172,18 +180,23 @@
 				{{row?.created_at | date:'medium'}}
 			</ng-template>
 		</ngx-datatable-column>
-		
+
 		<ngx-datatable-column [width]="220" name="ACTION" prop="ACTION">
 			<ng-template let-row="row" ngx-datatable-cell-template>
-				<button class="btn btn-primary" (click)="accept(row?.id)">Approve</button>
-				&nbsp;
-				<button class="btn btn-danger" (click)="reject(row?.id)">Reject</button>
+				<ng-container *ngIf="row?.status == 'Pending'">
+					<button class="btn btn-primary" (click)="accept(row?.id)">Accept</button>
+					&nbsp;
+					<button class="btn btn-danger" (click)="reject(row?.id)">Reject</button>
+				</ng-container>
 			</ng-template>
 		</ngx-datatable-column>
 
 		<ngx-datatable-column [width]="100" name="Status" prop="Status">
 			<ng-template let-row="row" ngx-datatable-cell-template>
-				Pending
+				<span class="badge" [class.badge-success]="row?.status == 'Accepted'"
+					[class.badge-danger]="row?.status == 'Rejected'" [class.badge-warning]="row?.status == 'Pending'">
+					{{ row?.status }}
+				</span>
 			</ng-template>
 		</ngx-datatable-column>
 	</ngx-datatable>

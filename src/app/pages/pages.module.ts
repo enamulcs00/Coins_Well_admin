@@ -1,6 +1,6 @@
 import { NotificationTableComponent } from '././manage-notification/notification-table/notification-table.component';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DecimalPipe } from '@angular/common';
 
 import { PagesComponent } from './pages.component';
 import { PagesRoutingModule } from './pages-routing.module';
@@ -85,6 +85,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 	exports:[
 		MaterialExtensionsExperimentalModule,
 		MaterialExtensionsModule,
-	]
+	],
+	providers : [DecimalPipe]
 })
 export class PagesModule { }

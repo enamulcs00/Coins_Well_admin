@@ -36,6 +36,7 @@ export const urls = {
     createNotification:'admin/create-notifications/',
     getAllNotifiation:'admin/get-all-notifications/',
     getAllPayment:'admin/get-transaction-requests/',
+    exportAllPayment : 'admin/get-transaction-requests-without-pagination/',
     userExportCsv:'admin/get-all-users-without-pagination/',
     bankExportCsv:'admin/get-all-banks/',
     sendEmail:'admin/send-mail/',
