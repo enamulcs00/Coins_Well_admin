@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 import { ToastrService } from 'ngx-toastr';
 import { TabDirective } from 'ngx-bootstrap/tabs';
 import { ExportToCsv } from 'export-to-csv';
-import { NumberFormatStyle } from '@angular/common';
+import { DecimalPipe, NumberFormatStyle } from '@angular/common';
 import * as moment from 'moment';
 @Component({
 	selector: 'app-request-table',
@@ -32,10 +32,13 @@ export class RequestTableComponent implements OnInit {
 	todayDate = new Date();
 	baseUrl = environment.homeURL;
 	filterStatus = 'All';
-	constructor(private _common: CommonService, private toastr: ToastrService) { }
+	constructor(private _common: CommonService, private toastr: ToastrService, private decimalPipe : DecimalPipe) { }
 
 	ngOnInit(): void {
 		this.setPage({ offset: 0 });
+		// Create our number formatter.
+		var formatter =this.decimalPipe.transform(0, '1.2-10');
+		console.log(formatter)
 	}
 
 	changeDateRange() {
@@ -195,11 +198,12 @@ export class RequestTableComponent implements OnInit {
 			useKeysAsHeaders: true,
 		};
 		const csvExporter = new ExportToCsv(options);
-		this._common.post(urls.getAllPayment + this.status, this.formData).subscribe(res => {
+		this._common.post(urls.exportAllPayment + this.status, this.formData).subscribe(res => {
 			let exportableData: any = [];
 			res.data.forEach((item, index) => {
 				exportableData.push(this.getColumns(item, index + 1));
 			})
+			console.log(exportableData,"export ")
 			csvExporter.generateCsv(exportableData);
 		});
 	}
@@ -216,57 +220,58 @@ export class RequestTableComponent implements OnInit {
 				...exportRow,
 				'BANK' : row?.bank?.bank_name?.name,
 				'ACCOUNT NUMBER' : row?.bank?.account_number,
-				'BALANCE' : '0.00',
-				'AMOUNT(NGN)' : ((row?.ngnamount)?row?.ngnamount:0),
+				'BALANCE' : this.formatCurrency(0),
+				'AMOUNT(NGN)' : this.formatCurrency(((row?.ngnamount)?row?.ngnamount:0)),
 				'DATE & TIME' : moment(row?.created_at).format('LLL'),
 				'STATUS' : 'Pending'
 			}
 		} else if(this.checkReceivingWallet()) {
 			exportRow = {
 				...exportRow,
-				'BALANCE' : '0.00',
-				'AMOUNT ($)':  ((row?.amount)?row?.amount:0)
+				'BALANCE' : this.formatCurrency(0),
+				'AMOUNT ($)':  this.formatCurrency(((row?.amount)?row?.amount:0))
 			};
-			exportRow['Amount '+this.getBitGoName()] = ((row?.bitamount)?row?.bitamount:0);
+			exportRow['Amount '+this.getBitGoName()] = this.formatCurrency(((row?.bitamount)?row?.bitamount:0));
 			exportRow = {
 				...exportRow,
 				'Sending Wallet' : row?.to_wallet,
 				'Receiving Wallet' : row?.from_wallet,
-				'Fee' : 0,
+				'Fee' : this.formatCurrency(0),
 				'Confirmation' : '5 Confirmations',
-				'Transaction ID' : 'BTC56456456456GJH',
-				'DATE & TIME' : moment(row?.created_at).format('LLL'),
-				'STATUS' : 'Pending'
+				'Transaction ID' : 'BTC56456456456GJH'
 			}
 		}
 		if(this.status == '1/5') {
 			exportRow = {
 				...exportRow,
-				'AMOUNT(NGN)' : ((row?.ngnamount)?row?.ngnamount:0),
-				'DATE & TIME' : moment(row?.created_at).format('LLL'),
-				'STATUS' : 'Pending'
+				'AMOUNT(NGN)' : this.formatCurrency(((row?.ngnamount)?row?.ngnamount:0))
 			}
 		}
 
 		if(this.status == '4/3' || this.status == '4/4') {
 			exportRow = {
 				...exportRow,
-				'AMOUNT ($)':  ((row?.amount)?row?.amount:0),
-				'AMOUNT(NGN)' : ((row?.ngnamount)?row?.ngnamount:0),
-				'DATE & TIME' : moment(row?.created_at).format('LLL'),
-				'STATUS' : 'Pending'
+				'AMOUNT ($)':  this.formatCurrency(((row?.amount)?row?.amount:0)),
+				'AMOUNT(NGN)' : this.formatCurrency(((row?.ngnamount)?row?.ngnamount:0))
 			}
 		}
 		if(this.status == '3/3' || this.status == '3/4') {
 			exportRow = {
 				...exportRow,
-				'AMOUNT ($)':  ((row?.amount)?row?.amount:0),
-				'AMOUNT(NGN)' : ((row?.ngnamount)?row?.ngnamount:0),
-				'Wallet' : row?.to_wallet,
-				'DATE & TIME' : moment(row?.created_at).format('LLL'),
-				'STATUS' : 'Pending'
+				'AMOUNT ($)':  this.formatCurrency(((row?.amount)?row?.amount:0)),
+				'AMOUNT(NGN)' : this.formatCurrency(((row?.ngnamount)?row?.ngnamount:0)),
+				'Wallet' : row?.to_wallet
 			}
 		}
+		exportRow = {
+			...exportRow,
+			'DATE & TIME' : moment(row?.created_at).format('LLL'),
+			'STATUS' : 'Pending'
+		}
 		return exportRow;
+	}
+
+	formatCurrency(amount) {
+		return this.decimalPipe.transform(amount, '1.2-10');
 	}
 }
