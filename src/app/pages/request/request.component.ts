@@ -22,7 +22,6 @@ constructor(private commn_: CommonService) { }
 
 	getAllCurrency() {
 		this.commn_.get(urls.getAllCurrency).subscribe(res => {
-			// console.log(res);
 			this.items = res.data.filter(x => {
 				if([3, 4, 5].indexOf(x.id) == -1) {
 					return true
