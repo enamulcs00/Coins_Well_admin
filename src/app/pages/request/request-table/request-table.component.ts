@@ -53,6 +53,10 @@ export class RequestTableComponent implements OnInit {
 		return (['2/5/', '1/5/', '3/1/', '3/2/', '3/3/', '3/4/', '4/1/', '4/2/', '4/3/', '4/4/'].indexOf(this.status) != -1);
 	}
 
+	checkRate() {
+		return (['3/3/', '3/4/'].indexOf(this.status) != -1);
+	}
+
 	checkProof() {
 		return (['1/5/', '4/3/', '4/4/'].indexOf(this.status) != -1);
 	}

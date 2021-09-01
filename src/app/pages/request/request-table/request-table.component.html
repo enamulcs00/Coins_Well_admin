@@ -102,6 +102,13 @@
 		</ngx-datatable-column>
 		<!-- End Proof Columns check here  -->
 
+		<!-- show usd value here -->
+		<ngx-datatable-column *ngIf="checkRate()" [width]="100" name="Exc. Rate" prop="Exchange Rate">
+			<ng-template let-row="row" ngx-datatable-cell-template>
+				0.00
+			</ng-template>
+		</ngx-datatable-column>
+		<!-- end usd value here	 -->
 
 		<ngx-datatable-column *ngIf="checkBalanceColumn()" [width]="180" name="Balance" prop="Balance">
 			<ng-template let-row="row" ngx-datatable-cell-template>
@@ -111,7 +118,7 @@
 
 
 		<!-- show usd value here -->
-		<ngx-datatable-column *ngIf="checkUSD()" [width]="100" name="AMOUNT ($)" prop="ASSET">
+		<ngx-datatable-column *ngIf="checkUSD()" [width]="100" name="AMOUNT ($)" prop="AMOUNT ($)">
 			<ng-template let-row="row" ngx-datatable-cell-template>
 				{{ ((row?.amount)?row?.amount:0) | number : '0.2' }}
 			</ng-template>
@@ -119,7 +126,7 @@
 		<!-- end usd value here	 -->
 
 		<!-- show bit value here -->
-		<ngx-datatable-column *ngIf="checkBit()" name="Amount {{ getBitGoName() }}" prop="ASSET">
+		<ngx-datatable-column *ngIf="checkBit()" name="Amount {{ getBitGoName() }}" prop="Amount (BitGo)">
 			<ng-template let-row="row" ngx-datatable-cell-template>
 				{{ ((row?.bitamount)?row?.bitamount:0) | number : '0.2-10' }}
 			</ng-template>
