@@ -4,8 +4,7 @@ import { Subject } from 'rxjs';
 import { ExportToCsv } from 'export-to-csv';
 import { CommonService } from 'src/app/_services/common.service';
 import { urls } from 'src/app/_services/urls';
-
-
+import { csvItem } from './csvItem';
 @Component({
 	selector: 'app-user-list',
 	templateUrl: './user-list.component.html',
@@ -50,10 +49,19 @@ export class UserListComponent implements OnInit {
 			useKeysAsHeaders: true,
 			// headers: ['Column 1', 'Column 2', etc...] <-- Won't work with useKeysAsHeaders present!
 		  };
+		  let item=[];
 		  const csvExporter = new ExportToCsv(options);
 		   this._common.get(urls.userExportCsv).subscribe(res=>{
-			   console.log(res.data);
-			   csvExporter.generateCsv(res.data);
+			   res?.data.forEach((elements:csvItem)=>{
+			   item.push({
+				   Name:elements.first_name+" "+elements.last_name,
+				   Email:elements.email,
+				   id:elements.id,
+				  Address: elements.building_no+" "+elements.street+" "+elements.zone,
+				  PhoneNumber:elements.phone_number
+				});
+			});
+			csvExporter.generateCsv(item);
 		   });
 	}
 
