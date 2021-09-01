@@ -134,16 +134,20 @@ export class BankNameListComponent implements OnInit {
       decimalSeparator: '.',
       showLabels: true, 
       showTitle: true,
-      title: '',
+      title: 'BankList',
       useTextFile: false,
       useBom: true,
       useKeysAsHeaders: true,
       // headers: ['Column 1', 'Column 2', etc...] <-- Won't work with useKeysAsHeaders present!
     };
-   
+    let item=[];
   const csvExporter = new ExportToCsv(options);
    this._common.get(urls.bankExportCsv).subscribe(res=>{
-   csvExporter.generateCsv(res.data);
+    res?.data.forEach((elements:any)=>{
+      delete elements.bank_image
+      item.push(elements);
+   });
+   csvExporter.generateCsv(item);
    });
   }
 
