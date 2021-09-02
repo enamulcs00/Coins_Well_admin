@@ -22,7 +22,7 @@ export class UserListComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		
+
 	}
 
 	onSelect(data: TabDirective): void {
@@ -32,37 +32,36 @@ export class UserListComponent implements OnInit {
 
 	searchHere() {
 		clearTimeout(this.timeOut);
-		this.timeOut=setTimeout(()=>{this.searchData.event.next()},1050);
+		this.timeOut = setTimeout(() => { this.searchData.event.next() }, 1050);
 	}
 
-	exportCsv()
-	{
-		const options = { 
+	exportCsv() {
+		const options = {
 			fieldSeparator: ',',
 			quoteStrings: '"',
 			decimalSeparator: '.',
-			showLabels: true, 
+			showLabels: true,
 			showTitle: true,
 			title: 'User List',
 			useTextFile: false,
 			useBom: true,
 			useKeysAsHeaders: true,
 			// headers: ['Column 1', 'Column 2', etc...] <-- Won't work with useKeysAsHeaders present!
-		  };
-		  let item=[];
-		  const csvExporter = new ExportToCsv(options);
-		   this._common.get(urls.userExportCsv).subscribe(res=>{
-			   res?.data.forEach((elements:csvItem)=>{
-			   item.push({
-				   Name:elements.first_name+" "+elements.last_name,
-				   Email:elements.email,
-				   id:elements.id,
-				  Address: elements.building_no+" "+elements.street+" "+elements.zone,
-				  PhoneNumber:elements.phone_number
+		};
+		let item = [];
+		const csvExporter = new ExportToCsv(options);
+		this._common.get(urls.userExportCsv).subscribe(res => {
+			res?.data.forEach((elements: csvItem) => {
+				item.push({
+					Name: elements.first_name + " " + elements.last_name,
+					Email: elements.email,
+					id: elements.id,
+					Address: elements.building_no + " " + elements.street + " " + elements.zone,
+					PhoneNumber: elements.phone_number
 				});
 			});
 			csvExporter.generateCsv(item);
-		   });
+		});
 	}
 
 }
