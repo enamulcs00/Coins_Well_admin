@@ -7,4 +7,4 @@ export interface csvItem{
 	street:string,
 	zone:string,
 	phone_number:number
-	}
+}
