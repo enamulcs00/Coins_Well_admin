@@ -1580,7 +1580,8 @@ class UserListComponent {
         let item = [];
         const csvExporter = new export_to_csv__WEBPACK_IMPORTED_MODULE_3__["ExportToCsv"](options);
         this._common.get(src_app_services_urls__WEBPACK_IMPORTED_MODULE_4__["urls"].userExportCsv).subscribe(res => {
-            var _a;
+            var _a, _b, _c;
+            console.log(res);
             for (const elements in res === null || res === void 0 ? void 0 : res.data) {
                 item.push({
                     "#": (parseInt(elements) + 1),
@@ -1589,8 +1590,8 @@ class UserListComponent {
                     id: res === null || res === void 0 ? void 0 : res.data[elements].id,
                     Address: (res === null || res === void 0 ? void 0 : res.data[elements].building_no) + " " + (res === null || res === void 0 ? void 0 : res.data[elements].street) + " " + (res === null || res === void 0 ? void 0 : res.data[elements].zone),
                     PhoneNumber: res === null || res === void 0 ? void 0 : res.data[elements].phone_number,
-                    account_number: res === null || res === void 0 ? void 0 : res.data[elements].account_number,
-                    Bank_Name: (_a = res === null || res === void 0 ? void 0 : res.data[elements].bank_name) === null || _a === void 0 ? void 0 : _a.name,
+                    account_number: (_a = res === null || res === void 0 ? void 0 : res.data[elements].bank_details[0]) === null || _a === void 0 ? void 0 : _a.account_number,
+                    Bank_Name: (_c = (_b = res === null || res === void 0 ? void 0 : res.data[elements].bank_details[0]) === null || _b === void 0 ? void 0 : _b.bank_name) === null || _c === void 0 ? void 0 : _c.name,
                     Flag: res === null || res === void 0 ? void 0 : res.data[elements].flag
                 });
             }

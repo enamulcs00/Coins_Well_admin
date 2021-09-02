@@ -51,6 +51,7 @@ export class UserListComponent implements OnInit {
 		let item = [];
 		const csvExporter = new ExportToCsv(options);
 		this._common.get(urls.userExportCsv).subscribe(res => {
+			console.log(res);
 			for (const elements in res?.data) { 
 				item.push({
 					"#":(parseInt(elements)+1),
@@ -59,8 +60,8 @@ export class UserListComponent implements OnInit {
 					id: res?.data[elements].id,
 					Address: res?.data[elements].building_no + " " + res?.data[elements].street + " " + res?.data[elements].zone,
 					PhoneNumber: res?.data[elements].phone_number,
-					account_number:res?.data[elements].account_number,
-					Bank_Name:res?.data[elements].bank_name?.name,
+					account_number:res?.data[elements].bank_details[0]?.account_number,
+					Bank_Name:res?.data[elements].bank_details[0]?.bank_name?.name,
 					Flag:res?.data[elements].flag
 				});
 			};
