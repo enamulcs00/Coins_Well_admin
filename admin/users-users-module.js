@@ -1580,15 +1580,21 @@ class UserListComponent {
         let item = [];
         const csvExporter = new export_to_csv__WEBPACK_IMPORTED_MODULE_3__["ExportToCsv"](options);
         this._common.get(src_app_services_urls__WEBPACK_IMPORTED_MODULE_4__["urls"].userExportCsv).subscribe(res => {
-            res === null || res === void 0 ? void 0 : res.data.forEach((elements) => {
+            var _a;
+            for (const elements in res === null || res === void 0 ? void 0 : res.data) {
                 item.push({
-                    Name: elements.first_name + " " + elements.last_name,
-                    Email: elements.email,
-                    id: elements.id,
-                    Address: elements.building_no + " " + elements.street + " " + elements.zone,
-                    PhoneNumber: elements.phone_number
+                    "#": (parseInt(elements) + 1),
+                    Name: (res === null || res === void 0 ? void 0 : res.data[elements].first_name) + " " + (res === null || res === void 0 ? void 0 : res.data[elements].last_name),
+                    Email: res === null || res === void 0 ? void 0 : res.data[elements].email,
+                    id: res === null || res === void 0 ? void 0 : res.data[elements].id,
+                    Address: (res === null || res === void 0 ? void 0 : res.data[elements].building_no) + " " + (res === null || res === void 0 ? void 0 : res.data[elements].street) + " " + (res === null || res === void 0 ? void 0 : res.data[elements].zone),
+                    PhoneNumber: res === null || res === void 0 ? void 0 : res.data[elements].phone_number,
+                    account_number: res === null || res === void 0 ? void 0 : res.data[elements].account_number,
+                    Bank_Name: (_a = res === null || res === void 0 ? void 0 : res.data[elements].bank_name) === null || _a === void 0 ? void 0 : _a.name,
+                    Flag: res === null || res === void 0 ? void 0 : res.data[elements].flag
                 });
-            });
+            }
+            ;
             csvExporter.generateCsv(item);
         });
     }

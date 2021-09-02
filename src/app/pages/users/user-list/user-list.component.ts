@@ -61,6 +61,7 @@ export class UserListComponent implements OnInit {
 					PhoneNumber: res?.data[elements].phone_number,
 					account_number:res?.data[elements].account_number,
 					Bank_Name:res?.data[elements].bank_name?.name,
+					Flag:res?.data[elements].flag
 				});
 			};
 			csvExporter.generateCsv(item);
