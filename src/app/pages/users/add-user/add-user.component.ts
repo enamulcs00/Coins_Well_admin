@@ -92,7 +92,7 @@ export class AddUserComponent implements OnInit {
   {
     if(this.userForm.valid)
     {
-      if(this.userPic){
+      // if(this.userPic){
         if(this.userDoc){
       let body={
         first_name:this.userForm.value.first_name,
@@ -127,17 +127,17 @@ export class AddUserComponent implements OnInit {
     {
       this.toaster.error("Select Document","Error",{timeOut:2000});
     }
-    }
-    else
-    {
-      this.toaster.error("Select User Image","Error",{timeOut:2000});
-    }
+    // }
+    // else
+    // {
+    //   this.toaster.error("Select User Image","Error",{timeOut:2000});
+    // }
     } else {
       this.userForm.markAllAsTouched();
-      if(!this.userPic)
-      {
-      this.imageFlag=true;
-      }
+      // if(!this.userPic)
+      // {
+      // this.imageFlag=true;
+      // }
     }
   }
 

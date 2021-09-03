@@ -13,7 +13,7 @@
     <ngx-datatable-column [width]="80" name="Image" prop="image">
       <ng-template let-row="row" ngx-datatable-cell-template>
         <div class="avatar avatar-sm " (click)="userModal(this.baseUrl+row.image.media_file)">
-          <img [src]="row.image?this.baseUrl+row.image.media_file:'assets/img/users/user-1.jpg'"
+          <img [src]="row.image?this.baseUrl+row.image.media_file:'assets/img/users/defaultuser.jpg'"
             class="avatar-img avatar-sm rounded-circle" alt="">
         </div>
       </ng-template>
@@ -25,9 +25,9 @@
       </ng-template>
     </ngx-datatable-column>
 
-    <ngx-datatable-column [width]="100" name="Name" prop="name">
+    <ngx-datatable-column [width]="200" name="Name" prop="name">
       <ng-template let-row="row" ngx-datatable-cell-template>
-        {{row?.first_name}} {{row?.last_name}}
+        <span matTooltipClass="example-tooltip-red" matTooltipPosition="above"  [matTooltip]="row.flag"><img *ngIf="row.flag" src="assets/icons/success.png"    alt=""></span>{{row?.first_name}} {{row?.last_name}}
       </ng-template>
     </ngx-datatable-column>
 

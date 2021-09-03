@@ -1,5 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TooltipPosition } from '@ng-matero/extensions';
 import { ColumnMode } from '@swimlane/ngx-datatable';
 import { ToastrService } from 'ngx-toastr';
 import { Block } from 'notiflix';
@@ -12,9 +14,12 @@ import { Page } from '../../../modal/page';
 @Component({
 	selector: 'user-list-table-content',
 	templateUrl: './table-content.component.html',
-	styleUrls: ['./table-content.component.scss']
+	styleUrls: ['./table-content.component.scss'],
+	encapsulation: ViewEncapsulation.None,
 })
 export class TableContentComponent implements OnInit {
+	positionOptions: TooltipPosition[] = ['below', 'above', 'left', 'right'];
+  position = new FormControl(this.positionOptions[1]);
 	@Input('status') status: boolean | null;
 	@Input('flag') flag: boolean | null;
 	@Input('searchData') searchData = {
