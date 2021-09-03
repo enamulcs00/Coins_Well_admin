@@ -24,7 +24,7 @@
                             </div> -->
               <div class="col-md-2">
                 <div class="card-body">
-                  <div class="user-profile">
+                  <div class="user-profile" (click)="userModal(this.baseUrl+items?.image?.media_file)">
                     <figure>
                       <img [src]="imageUrl+items?.image.media_file">
                     </figure>
@@ -46,7 +46,6 @@
                   <div class="user_details">
                     <p class="m-0"><strong>Bank Name :</strong>{{items?.bank_details[0]?.bank_name?.name || '-'}}</p>
                     <p class="m-0"><strong>Account Number :</strong>{{items?.bank_details[0]?.account_number || '-'}}</p>
-                    <p class="m-0"><strong>IFSC Code :</strong>{{items?.bank_details[0]?.ifsc_code || '-'}}</p>
                     <p class="m-0"><strong>Benificiary Name :</strong>{{items?.bank_details[0]?.account_holder_name || '-'}}</p>
                     <!-- <p class="m-0"><strong>Address :</strong>Mohali, punjab, 107021</p> -->
                   </div>
@@ -54,13 +53,8 @@
               </div>
               <div class="col-md-3">
                 <div class="card-body">
-                  <div class="user_details d-flex justify-content-end">
+                  <div class="user_details d-flex justify-content-end" >
                     <h5 [class]="(items?.status)==null?'text-primary':(items?.status)?'text-success':'text-danger'">{{(items?.status)==null?'Pending':((items?.status)?'Approved':'Rejected')}}</h5>
-                  </div>
-                  <div class="user_details d-flex justify-content-start">
-                    <!-- <h4 class="m-0">Wallet Details</h4> -->
-                    <p class="m-0 mr-4"><strong>Total Balance</strong></p>
-                    <h5 class="m-0">${{bItems?.amount+bItems?.crypto_balance}}</h5>
                   </div>
                   <div class="user_details d-flex justify-content-start">
                     <!-- <h4 class="m-0">Wallet Details</h4> -->

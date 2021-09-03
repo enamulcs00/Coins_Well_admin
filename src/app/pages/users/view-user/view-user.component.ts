@@ -14,6 +14,7 @@ export class ViewUserComponent implements OnInit {
   items: any;
   imageUrl: string;
   bItems:any;
+  baseUrl: string = environment.homeURL;
   constructor(private route: ActivatedRoute,private commn_:CommonService) { }
 
   ngOnInit(): void {
@@ -24,6 +25,12 @@ export class ViewUserComponent implements OnInit {
     this.imageUrl=environment.imgBaseUrl;
   }
   
+  userModal(ig) {
+		this.commn_.userConfirm("User Picture", ig).subscribe(x => {
+
+		})
+	}
+
   getUserById()
   {
     this.commn_.get(urls.getUserById+this.localId+"/").subscribe(res=>{
