@@ -77,12 +77,13 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-6" *ngIf="items?.user_documents[0]?.document?.media_file" >
                 <div class="card m-b-30" style="box-shadow: none;">
                   <div class="card-body">
                     <div class="select_option d-flex justify-content-start">
-                      <figure class="mr-3" *ngFor="let doc of items?.user_documents">
+                      <figure class="mr-3" *ngFor="let doc of items?.user_documents" (click)="doc?.document_type==1?fvModal(items.id):documentModal(items?.id)">
                         <img [src]="imageUrl+doc?.document?.media_file||'assets/img/users/defaultuser.jpg'" alt="">
+                      <p class="text-center">{{doc?.document_type==1?"FV":"Documents"}}</p>
                       </figure>
                     </div>
                   </div>

@@ -22,10 +22,10 @@ export class EditUserComponent implements OnInit {
       phone_number:['',[Validators.required,Validators.pattern(/^([0-9])*$/),Validators.maxLength(15),Validators.minLength(7)]],
       first_name:['',[Validators.required,Validators.minLength(3),Validators.maxLength(15),Validators.pattern(new RegExp("\\S"))]],
       last_name:['',[Validators.required,Validators.minLength(3),Validators.maxLength(15),Validators.pattern(new RegExp("\\S"))]],
-      building_no:['',[Validators.required]],
+      // building_no:['',[Validators.required]],
       image:[''],
-      zone:['',[Validators.required]],
-      street:['',[Validators.required]],
+      // zone:['',[Validators.required]],
+      // street:['',[Validators.required]],
       document:['',[Validators.required]],
       email:['',[Validators.required,Validators.email]],
       password:['']
@@ -49,9 +49,9 @@ export class EditUserComponent implements OnInit {
       this.editUserForm.controls.last_name.setValue(res?.data?.last_name);
       this.editUserForm.controls.phone_number.setValue(res?.data?.phone_number);
       this.editUserForm.controls.email.setValue(res?.data?.email);
-      this.editUserForm.controls.building_no.setValue(res?.data?.building_no);
-      this.editUserForm.controls.zone.setValue(res?.data?.zone);
-      this.editUserForm.controls.street.setValue(res?.data?.street);
+      // this.editUserForm.controls.building_no.setValue(res?.data?.building_no);
+      // this.editUserForm.controls.zone.setValue(res?.data?.zone);
+      // this.editUserForm.controls.street.setValue(res?.data?.street);
       this.editUserForm.controls.document.setValue(res?.data?.user_documents[0]?.document.id);
       this.imageUrl=environment.imgBaseUrl+res.data.image.media_file;
      }
@@ -121,10 +121,10 @@ export class EditUserComponent implements OnInit {
         first_name:this.editUserForm.value.first_name,
         last_name:this.editUserForm.value.last_name,
         phone_number:this.editUserForm.value.phone_number,
-        building_no:this.editUserForm.value.building_no,
-        zone:this.editUserForm.value.zone,
+        // building_no:this.editUserForm.value.building_no,
+        // zone:this.editUserForm.value.zone,
         email:this.editUserForm.value.email,
-        street:this.editUserForm.value.street,
+        // street:this.editUserForm.value.street,
       };
       if(this.editUserForm.value.document!=""){
         body['user_documents'] =  [
