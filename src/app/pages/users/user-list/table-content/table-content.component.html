@@ -27,7 +27,7 @@
 
     <ngx-datatable-column [width]="200" name="Name" prop="name">
       <ng-template let-row="row" ngx-datatable-cell-template>
-        <span matTooltipClass="example-tooltip-red" matTooltipPosition="above"  [matTooltip]="row.flag"><img *ngIf="row.flag" src="assets/icons/success.png"    alt=""></span>{{row?.first_name}} {{row?.last_name}}
+        <span matTooltipClass="example-tooltip-red" matTooltipPosition="above"  [matTooltip]="row.flag"><img *ngIf="row.flag" src="../../../../../assets/icons/red-flag.png"    alt=""></span>{{row?.first_name}} {{row?.last_name}}
       </ng-template>
     </ngx-datatable-column>
 

@@ -26,7 +26,7 @@
                 <div class="card-body">
                   <div class="user-profile" (click)="userModal(this.baseUrl+items?.image?.media_file)">
                     <figure>
-                      <img [src]="imageUrl+items?.image.media_file">
+                      <img [src]="items?.image?.media_file?imageUrl+items?.image?.media_file:'assets/img/users/defaultuser.jpg'">
                     </figure>
                   </div>
                 </div>
