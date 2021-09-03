@@ -248,7 +248,7 @@ export class TableContentComponent implements OnInit {
 
 	emailModal(row)
 	{
-		this._common.emailConfirm("","").subscribe(x=>{
+		this._common.emailConfirm("Send Email","").subscribe(x=>{
 			if(x){
 			x['email']=row.email;
             this._common.post(urls.sendEmail,x).subscribe(res=>{
