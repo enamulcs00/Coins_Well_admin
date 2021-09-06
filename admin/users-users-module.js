@@ -1488,6 +1488,7 @@ class UserListComponent {
         clearTimeout(this.timeOut);
         this.timeOut = setTimeout(() => { this.searchData.event.next(); }, 1050);
     }
+    //1=not sent, 2=Pending, 3=Rejected, 4=Accepted
     exportCsv() {
         const options = {
             fieldSeparator: ',',
@@ -1515,7 +1516,8 @@ class UserListComponent {
                     PhoneNumber: res === null || res === void 0 ? void 0 : res.data[elements].phone_number,
                     account_number: (_a = res === null || res === void 0 ? void 0 : res.data[elements].bank_details[0]) === null || _a === void 0 ? void 0 : _a.account_number,
                     Bank_Name: (_c = (_b = res === null || res === void 0 ? void 0 : res.data[elements].bank_details[0]) === null || _b === void 0 ? void 0 : _b.bank_name) === null || _c === void 0 ? void 0 : _c.name,
-                    Flag: res === null || res === void 0 ? void 0 : res.data[elements].flag
+                    Flag: res === null || res === void 0 ? void 0 : res.data[elements].flag,
+                    Verification_Status: ((res === null || res === void 0 ? void 0 : res.data[elements].document_verification) == 1) ? "not sent" : ((res === null || res === void 0 ? void 0 : res.data[elements].document_verification) == 2) ? "Pending" : ((res === null || res === void 0 ? void 0 : res.data[elements].document_verification) == 3) ? "Rejected" : "Accepted"
                 });
             }
             ;
