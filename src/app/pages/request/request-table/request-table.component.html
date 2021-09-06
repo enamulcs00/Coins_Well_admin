@@ -1,6 +1,11 @@
 <div class="card-header seachbar fromday">
-	<h5></h5>
 	<div class="reveue-date">
+		<div class="form-group mb-0 d-flex mr-2">
+			<mat-form-field appearance="outline">
+				<mat-label>Search</mat-label>
+				<input matInput  [(ngModel)]="search" (keyup)="changeText()">
+			</mat-form-field>
+		</div>
 		<div class="form-group mb-0 d-flex mr-2">
 			<mat-form-field appearance="outline">
 				<mat-label>Status</mat-label>

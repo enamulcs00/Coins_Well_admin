@@ -20,11 +20,8 @@ export class RequestTableComponent implements OnInit {
 	@Input('status') status: string | null;
 	@Input('items') currencies: any = [];
 	@Input('flag') flag: boolean | null;
-	@Input('searchData') searchData = {
-		event: new Subject(),
-		value: ''
-	}
 	page = new Page();
+	search:any="";
 	rows = new Array<any>();
 	ColumnMode = ColumnMode;
 	start_date: any = "";
@@ -39,6 +36,11 @@ export class RequestTableComponent implements OnInit {
 		// Create our number formatter.
 		var formatter =this.decimalPipe.transform(0, '1.2-10');
 		console.log(formatter)
+	}
+    
+	changeText()
+	{
+		this.setPage({ offset: 0 });
 	}
 
 	changeDateRange() {
@@ -123,7 +125,7 @@ export class RequestTableComponent implements OnInit {
 
 	setPage(pageInfo) {
 		Block.circle('#users-list-page');
-		this.formData.search.value = this.searchData.value;
+		this.formData.search.value = this.search;
 		this.formData.start = pageInfo.offset * this.formData.length;
 		this.formData.start_date = this.start_date;
 		this.formData.end_date = this.end_date;
@@ -196,7 +198,7 @@ export class RequestTableComponent implements OnInit {
 			decimalSeparator: '.',
 			showLabels: true,
 			showTitle: true,
-			title: 'User List',
+			title: '',
 			useTextFile: false,
 			useBom: true,
 			useKeysAsHeaders: true,
@@ -245,21 +247,21 @@ export class RequestTableComponent implements OnInit {
 				'Transaction ID' : 'BTC56456456456GJH'
 			}
 		}
-		if(this.status == '1/5') {
+		if(this.status == '1/5/') {
 			exportRow = {
 				...exportRow,
 				'AMOUNT(NGN)' : this.formatCurrency(((row?.ngnamount)?row?.ngnamount:0))
 			}
 		}
 
-		if(this.status == '4/3' || this.status == '4/4') {
+		if(this.status == '4/3/' || this.status == '4/4/') {
 			exportRow = {
 				...exportRow,
 				'AMOUNT ($)':  this.formatCurrency(((row?.amount)?row?.amount:0)),
 				'AMOUNT(NGN)' : this.formatCurrency(((row?.ngnamount)?row?.ngnamount:0))
 			}
 		}
-		if(this.status == '3/3' || this.status == '3/4') {
+		if(this.status == '3/3/' || this.status == '3/4/') {
 			exportRow = {
 				...exportRow,
 				'AMOUNT ($)':  this.formatCurrency(((row?.amount)?row?.amount:0)),
