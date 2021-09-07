@@ -20,6 +20,7 @@ export class CommonService {
 	constructor(private _http: HttpClient,private modalService: BsModalService) { }
     bsModalRef: BsModalRef;
 	imageFlag=new BehaviorSubject('');
+	onReadNotification : BehaviorSubject<any> =  new BehaviorSubject('');
 	post(url: string, postData: any = {}) {
 		return this._http.post<any>(`${environment.baseUrl}${url}`, postData)
 			.pipe(map((data: any) => {

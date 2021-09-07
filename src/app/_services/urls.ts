@@ -43,5 +43,7 @@ export const urls = {
     requestAccept:'payment/change-payment-status/',
     requestReject:'payment/change-payment-status/',
     getTransection:'admin/get-payment-requests-by-userid/',
-    getBalance:'admin/get-all-balances-by-userid/'
+    getBalance:'admin/get-all-balances-by-userid/',
+    getunReadRequest : 'payment/get-dashboard-payment-request-counts/',
+    readunReadRequest : 'payment/change-payment-request-to-read/'
 };

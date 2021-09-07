@@ -22,7 +22,11 @@
 						<div class="col-md-12">
 							<div class="card-body top_nav_link">
 								<tabset>
-									<tab heading="Withdraw Request" id="tab1" (selectTab)="onSelect('2/5/')">
+									<tab id="tab1" (selectTab)="onSelect('2/5/')">
+										<ng-template tabHeading>
+											Withdraw Request <span class="badge badge-danger" *ngIf="getUnreadCounts?.Withdraw">{{ getUnreadCounts?.Withdraw }}</span>
+										</ng-template>
+										<!-- tab-heading -->
 										<tabset>
 											<tab [active]="value == '2/5/'" (selectTab)="onSelect('2/5/')" heading="NGN">
 												<app-request-table *ngIf="value == '2/5/'" [items]="items" [status]="'2/5/'"></app-request-table>
@@ -32,14 +36,20 @@
 											</tab>
 										</tabset>
 									</tab>
-									<tab heading="Deposit Request" (selectTab)="onSelect('1/5/')">
+									<tab (selectTab)="onSelect('1/5/')">
+										<ng-template tabHeading>
+											Deposit Request <span class="badge badge-danger" *ngIf="getUnreadCounts?.Deposit">{{ getUnreadCounts?.Deposit }}</span>
+										</ng-template>
 										<tabset>
 											<tab [active]="value == '1/5/'" (selectTab)="onSelect('1/5/')" heading="NGN">
 												<app-request-table *ngIf="value == '1/5/'" [items]="items" [status]="'1/5/'"></app-request-table>
 											</tab>
 										</tabset>
 									</tab>
-									<tab heading="Selling Request" (selectTab)="onSelect('4/3/')">
+									<tab (selectTab)="onSelect('4/3/')">
+										<ng-template tabHeading>
+											Selling Request <span *ngIf="getUnreadCounts?.Selling" class="badge badge-danger">{{ getUnreadCounts?.Selling }}</span>
+										</ng-template>
 										<tabset>
 											<tab [active]="value == '4/3/'" (selectTab)="onSelect('4/3/')" heading="TRC20 USDT">
 												<app-request-table *ngIf="value == '4/3/'" [items]="items" [status]="'4/3/'"></app-request-table>
@@ -50,6 +60,9 @@
 										</tabset>
 									</tab>
 									<tab heading="Buying Request" (selectTab)="onSelect('3/3/')">
+										<ng-template tabHeading>
+											Buying Request <span *ngIf="getUnreadCounts?.Buying"  class="badge badge-danger">{{ getUnreadCounts?.Buying }}</span>
+										</ng-template>
 										<tabset>
 											<tab [active]="value == '3/3/'" (selectTab)="onSelect('3/3/')" heading="TRC20 USDT">
 												<app-request-table *ngIf="value  == '3/3/'" [items]="items" [status]="'3/3/'"></app-request-table>

@@ -34,13 +34,15 @@ export class RequestTableComponent implements OnInit {
 	todayDate = new Date();
 	baseUrl = environment.homeURL;
 	filterStatus = 'All';
+	// getUnreadCounts : any;
 	constructor(private _common: CommonService, private toastr: ToastrService, private decimalPipe : DecimalPipe) { }
 
 	ngOnInit(): void {
 		this.setPage({ offset: 0 });
 		// Create our number formatter.
 		var formatter =this.decimalPipe.transform(0, '1.2-10');
-		console.log(formatter)
+		// console.log(formatter)
+		
 	}
     
 	changeText()
