@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { ColumnMode } from '@swimlane/ngx-datatable';
 import { Subject } from 'rxjs';
 import { CommonService } from 'src/app/_services/common.service';
@@ -11,12 +11,17 @@ import { TabDirective } from 'ngx-bootstrap/tabs';
 import { ExportToCsv } from 'export-to-csv';
 import { DecimalPipe, NumberFormatStyle } from '@angular/common';
 import * as moment from 'moment';
+import { TooltipPosition } from '@angular/material/tooltip';
+import { FormControl } from '@angular/forms';
 @Component({
 	selector: 'app-request-table',
 	templateUrl: './request-table.component.html',
-	styleUrls: ['./request-table.component.scss']
+	styleUrls: ['./request-table.component.scss'],
+	encapsulation: ViewEncapsulation.None,
 })
 export class RequestTableComponent implements OnInit {
+	positionOptions: TooltipPosition[] = ['below', 'above', 'left', 'right'];
+  position = new FormControl(this.positionOptions[1]);
 	@Input('status') status: string | null;
 	@Input('items') currencies: any = [];
 	@Input('flag') flag: boolean | null;
