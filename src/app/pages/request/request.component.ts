@@ -19,26 +19,6 @@ export class RequestComponent implements OnInit {
 		this.commn_.put(urls.readunReadRequest + data).subscribe(data => {
 			this.commn_.onReadNotification.next('');
 		});
-		// if (data == '2/5/') {
-		// 	this.commn_.put(urls.readunReadRequest + '2/').subscribe(data => {
-		// 		this.commn_.onReadNotification.next('');
-		// 	});
-		// }
-		// if (data == '1/5/') {
-		// 	this.commn_.put(urls.readunReadRequest + '1/').subscribe(data => {
-		// 		this.commn_.onReadNotification.next('');
-		// 	});
-		// }
-		// if (data == '4/3/') {
-		// 	this.commn_.put(urls.readunReadRequest + '3/').subscribe(data => {
-		// 		this.commn_.onReadNotification.next('');
-		// 	});
-		// }
-		// if (data == '3/3/') {
-		// 	this.commn_.put(urls.readunReadRequest + '4/').subscribe(data => {
-		// 		this.commn_.onReadNotification.next('');
-		// 	});
-		// }
 	}
 	ngOnInit(): void {
 		this.getAllCurrency();
@@ -47,9 +27,8 @@ export class RequestComponent implements OnInit {
 				this.getUnreadCounts = data.data;
 			});
 		});
-		this.commn_.put(urls.readunReadRequest + '2/5/').subscribe(data => {
+		this.commn_.put(urls.readunReadRequest + '2/5/').subscribe(() => {
 			this.commn_.onReadNotification.next('');
-			// this.getUnreadCounts = data.data;
 		});
 	}
 

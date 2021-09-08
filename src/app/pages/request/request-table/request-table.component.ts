@@ -138,7 +138,6 @@ export class RequestTableComponent implements OnInit {
 		this.formData.end_date = this.end_date;
 		this.formData.status = this.filterStatus;
 		this._common.post(urls.getAllPayment + this.status, this.formData).subscribe(_pagedData => {
-			console.log(_pagedData);
 			this.page = {
 				totalElements: _pagedData.recordsTotal,
 				pageNumber: pageInfo.offset,
@@ -159,9 +158,10 @@ export class RequestTableComponent implements OnInit {
 	}
 
 	accept(id) {
+		Block.circle('#users-list-page');
 		let body = { "status": 2 }
 		this._common.put(urls.requestAccept + id + '/', body).subscribe(res => {
-			console.log(res);
+			Block.remove('#users-list-page');
 			if (res.code == 200) {
 				this.toastr.success(res.message, "Success", { timeOut: 2000 });
 				this.setPage({ offset: 0 });
@@ -169,15 +169,18 @@ export class RequestTableComponent implements OnInit {
 			else {
 				this.toastr.error(res.message, "Error", { timeOut: 2000 });
 			}
+		},()=>{
+			Block.remove('#users-list-page');
 		})
 	}
 
 	reject(id) {
+		Block.circle('#users-list-page');
 		this._common.reasonConfirm("Reject Reason", "").subscribe(x => {
+			Block.remove('#users-list-page');
 			let body = { "status": 3, "reject_reason": x }
 			if (x) {
 				this._common.put(urls.requestReject + id + '/', body).subscribe(res => {
-					console.log(res);
 					if (res.code == 200) {
 						this.toastr.success(res.message, "Success", { timeOut: 2000 });
 						this.setPage({ offset: this.page.pageNumber });
@@ -187,6 +190,8 @@ export class RequestTableComponent implements OnInit {
 					}
 				});
 			}
+		}, () => {
+			Block.remove('#users-list-page');
 		});
 	}
 
@@ -216,7 +221,6 @@ export class RequestTableComponent implements OnInit {
 			res.data.forEach((item, index) => {
 				exportableData.push(this.getColumns(item, index + 1));
 			})
-			console.log(exportableData,"export ")
 			csvExporter.generateCsv(exportableData);
 		});
 	}
