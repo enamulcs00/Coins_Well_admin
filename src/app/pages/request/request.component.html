@@ -59,7 +59,7 @@
 											</tab>
 										</tabset>
 									</tab>
-									<tab heading="Buying Request" (selectTab)="onSelect('3/3/')">
+									<tab (selectTab)="onSelect('3/3/')">
 										<ng-template tabHeading>
 											Buying Request <span *ngIf="getUnreadCounts?.Buying"  class="badge badge-danger">{{ getUnreadCounts?.Buying }}</span>
 										</ng-template>
