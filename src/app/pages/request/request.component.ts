@@ -47,7 +47,7 @@ export class RequestComponent implements OnInit {
 				this.getUnreadCounts = data.data;
 			});
 		});
-		this.commn_.put(urls.readunReadRequest + '2/5').subscribe(data => {
+		this.commn_.put(urls.readunReadRequest + '2/5/').subscribe(data => {
 			this.commn_.onReadNotification.next('');
 			// this.getUnreadCounts = data.data;
 		});
