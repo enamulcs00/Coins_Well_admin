@@ -59,10 +59,13 @@
 							<div class="col-md-3">
 								<div class="card-body">
 									<div class="user_details d-flex justify-content-end">
-										<h5
-											[class]="(items?.status)==null?'text-primary':(items?.status)?'text-success':'text-danger'">
-											{{(items?.status)==null?'Pending':((items?.status)?'Approved':'Rejected')}}
+										<h5>
+											<span *ngIf="items?.facial_verification  == 4 && items?.document_verification == 4" class="text-success">Verified</span>
+											<span *ngIf="items?.facial_verification  == 3 && items?.document_verification == 3" class="text-danger">Rejected</span>
+											<span *ngIf="items?.facial_verification  == 2 || items?.document_verification == 2" class="text-warning">Pending</span>
+											<span *ngIf="(items?.facial_verification  == 1 || items?.facial_verification == null) && (items?.document_verification == 1  || items?.document_verification ==  null)" class="text-info">Un-Verified</span>
 										</h5>
+										
 									</div>
 									<div class="user_details d-flex justify-content-start">
 										<!-- <h4 class="m-0">Wallet Details</h4> -->
