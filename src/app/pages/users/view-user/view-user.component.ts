@@ -41,7 +41,7 @@ export class ViewUserComponent implements OnInit {
 		});
 
 		this.commn_.onReadNotification.subscribe(data => {
-			this.commn_.get(urls.getunReadRequest).subscribe(data => {
+			this.commn_.put(urls.getunReadRequest, { user_id : this.localId }).subscribe(data => {
 				this.getUnreadCounts = data.data;
 			});
 		});
@@ -59,7 +59,8 @@ export class ViewUserComponent implements OnInit {
 
 	onSelect(data: string): void {
 		this.value = data;
-		this.commn_.put(urls.readunReadRequest + data).subscribe(data => {
+		console.log("{ user_id : this.localId }",{ user_id : this.localId });
+		this.commn_.put(urls.readunReadRequest + data, { user_id : this.localId }).subscribe(data => {
 			this.commn_.onReadNotification.next('');
 		});
 	}

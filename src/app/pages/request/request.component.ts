@@ -16,14 +16,14 @@ export class RequestComponent implements OnInit {
 
 	onSelect(data: string): void {
 		this.value = data;
-		this.commn_.put(urls.readunReadRequest + data).subscribe(data => {
+		this.commn_.put(urls.readunReadRequest + data).subscribe(() => {
 			this.commn_.onReadNotification.next('');
 		});
 	}
 	ngOnInit(): void {
 		this.getAllCurrency();
-		this.commn_.onReadNotification.subscribe(data => {
-			this.commn_.get(urls.getunReadRequest).subscribe(data => {
+		this.commn_.onReadNotification.subscribe(() => {
+			this.commn_.put(urls.getunReadRequest).subscribe(data => {
 				this.getUnreadCounts = data.data;
 			});
 		});

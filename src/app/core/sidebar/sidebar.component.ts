@@ -13,7 +13,7 @@ export class SidebarComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.commn_.onReadNotification.subscribe(data => {
-			this.commn_.get(urls.getunReadRequest).subscribe(data => {
+			this.commn_.put(urls.getunReadRequest).subscribe(data => {
 				let sum = 0;
 				Object.keys(data.data).forEach(value => {
 					Object.values(data.data[value]).forEach(amount=>{
