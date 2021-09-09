@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1631194619429,
+  "timestamp": 1631198730683,
   "index": "/Coinswell/admin/index.html",
   "assetGroups": [
     {
@@ -392,7 +392,7 @@
     "/Coinswell/admin/data-table.93be7e0fc94594d266a2.ttf": "5c23a1ceb1b1d37844a864c02cd97b145e6243dd",
     "/Coinswell/admin/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
     "/Coinswell/admin/flags_sprite_2x.803fc634f571ed3c7cdb.png": "e803647907841782b9a813cd9d456316ecc1ea8d",
-    "/Coinswell/admin/index.html": "489a7188aaca5af5625e8fb897d868291239a7b9",
+    "/Coinswell/admin/index.html": "62e87a8bf39f81ab0817c31240c18bbc84b89f1a",
     "/Coinswell/admin/main.fb6aa66732a1e7f5e79d.js": "fd99b6472d3b273c53f03813400703fe0fc2f607",
     "/Coinswell/admin/manifest.webmanifest": "16096139945c800e5063d6c3542595c79d389fe1",
     "/Coinswell/admin/polyfills.dbd6677c651a2d78e857.js": "8067cc422567347ce6eec5c44ba94128683b96db",
