@@ -6,42 +6,41 @@ import { urls } from 'src/app/_services/urls';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-fv',
-  templateUrl: './fv.component.html',
-  styleUrls: ['./fv.component.scss']
+	selector: 'app-fv',
+	templateUrl: './fv.component.html',
+	styleUrls: ['./fv.component.scss']
 })
 export class FvComponent implements OnInit {
-  title: string;
+	title: string;
 	message: string;
-	status : boolean = false;
+	status: boolean = false;
 	public onClose: Subject<boolean>;
-  image: any;
-	constructor(public bsModalRef: BsModalRef,private commn_:CommonService) { 
+	image: any;
+	constructor(public bsModalRef: BsModalRef, private commn_: CommonService) {
 		this.onClose = new Subject();
 	}
 	ngOnInit() {
 		this.bsModalRef.content
-    console.log(this.message);
-    this.getFvById();
+		console.log(this.message);
+		this.getFvById();
 	}
-  
-  getFvById()
-  {
-   this.commn_.get(urls.getFvByUserId+this.message+"/").subscribe(
-     (res)=>{
-     console.log(res);
-     this.image=environment.imgBaseUrl+res.data[0].document.media_file;
-     }
-   );
-  }
+
+	getFvById() {
+		this.commn_.get(urls.getFvByUserId + this.message + "/").subscribe(
+			(res) => {
+				console.log(res);
+				this.image = environment.imgBaseUrl + res.data[0].document.media_file;
+			}
+		);
+	}
 
 	public onConfirm(): void {
-        this.onClose.next(true);
-        this.bsModalRef.hide();
-    }
+		this.onClose.next(true);
+		this.bsModalRef.hide();
+	}
 
-    public onCancel(): void {
-        this.onClose.next(false);
-        this.bsModalRef.hide();
-    }
+	public onCancel(): void {
+		this.onClose.next(false);
+		this.bsModalRef.hide();
+	}
 }

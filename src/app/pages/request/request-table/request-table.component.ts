@@ -21,10 +21,11 @@ import { FormControl } from '@angular/forms';
 })
 export class RequestTableComponent implements OnInit {
 	positionOptions: TooltipPosition[] = ['below', 'above', 'left', 'right'];
-  position = new FormControl(this.positionOptions[1]);
+  	position = new FormControl(this.positionOptions[1]);
 	@Input('status') status: string | null;
 	@Input('items') currencies: any = [];
 	@Input('flag') flag: boolean | null;
+	@Input('user_id') user_id: any = null;
 	page = new Page();
 	search:any="";
 	rows = new Array<any>();
@@ -137,6 +138,9 @@ export class RequestTableComponent implements OnInit {
 		this.formData.start_date = this.start_date;
 		this.formData.end_date = this.end_date;
 		this.formData.status = this.filterStatus;
+		if(this.user_id) {
+			this.formData['user_id'] = this.user_id;
+		}
 		this._common.post(urls.getAllPayment + this.status, this.formData).subscribe(_pagedData => {
 			this.page = {
 				totalElements: _pagedData.recordsTotal,

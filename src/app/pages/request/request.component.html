@@ -85,7 +85,7 @@
 											Buying Request <span *ngIf="getSum('Buying')"  class="badge badge-danger">{{ getSum('Buying') }}</span>
 										</ng-template>
 										<tabset>
-											<tab [active]="value == '3/3/'" (selectTab)="onSelect('3/3/')" heading="TRC20 USDT">
+											<tab [active]="value == '3/3/'" (selectTab)="onSelect('3/3/')">
 
 												<ng-template tabHeading>
 													TRC20 USDT <span class="badge badge-danger" *ngIf="getUnreadCounts?.Buying['3']">{{ getUnreadCounts?.Buying['3'] }}</span>

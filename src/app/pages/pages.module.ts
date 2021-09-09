@@ -29,7 +29,6 @@ import { FaqTemplateComponent } from '../components/faq-template/faq-template.co
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MaterialExtensionsExperimentalModule, MaterialExtensionsModule } from '@ng-matero/extensions';
-import { RequestTableComponent } from './request/request-table/request-table.component';
 import { NgxCurrencyModule } from "ngx-currency";
 import { CKEditorModule } from 'ckeditor4-angular';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -37,6 +36,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { RequestTableModule} from './request/request-table/request-table.module';
+
 @NgModule({
 	declarations: [
 		PagesComponent, 
@@ -58,8 +59,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 		AddNotificationComponent, 
 		ChatComponent,
 		FaqTemplateComponent,
-		NotificationTableComponent,
-		RequestTableComponent
+		NotificationTableComponent
 	],
 	imports: [
 		MatFormFieldModule,
@@ -69,6 +69,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 		NgxMatIntlTelInputModule,
 		FormsModule,
 		ReactiveFormsModule,
+		RequestTableModule,
 		GooglePlaceModule,
 		MaterialExtensionsModule,
 		MaterialExtensionsExperimentalModule,

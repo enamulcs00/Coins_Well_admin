@@ -7,11 +7,14 @@ import { CoreModule } from 'src/app/core/core.module';
 import { TableContentComponent } from './user-list/table-content/table-content.component';
 import { TransactionTableComponent } from './view-user/transaction-table/transaction-table.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+import { RequestTableModule } from '../request/request-table/request-table.module';
 @NgModule({
 	declarations: [
 		...components,
 		TableContentComponent,
-		TransactionTableComponent
+		TransactionTableComponent,
+		
 	],
 	imports: [
 		CommonModule,
@@ -19,6 +22,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 		CoreModule,
 		MaterialModule,
 		MatTooltipModule,
+		TabsModule,
+		RequestTableModule
 	]
 })
 export class UsersModule { }

@@ -60,12 +60,20 @@
 								<div class="card-body">
 									<div class="user_details d-flex justify-content-end">
 										<h5>
-											<span *ngIf="items?.facial_verification  == 4 && items?.document_verification == 4" class="text-success">Verified</span>
-											<span *ngIf="items?.facial_verification  == 3 && items?.document_verification == 3" class="text-danger">Rejected</span>
-											<span *ngIf="items?.facial_verification  == 2 || items?.document_verification == 2" class="text-warning">Pending</span>
-											<span *ngIf="(items?.facial_verification  == 1 || items?.facial_verification == null) && (items?.document_verification == 1  || items?.document_verification ==  null)" class="text-info">Un-Verified</span>
+											<span
+												*ngIf="items?.facial_verification  == 4 && items?.document_verification == 4"
+												class="text-success">Verified</span>
+											<span
+												*ngIf="items?.facial_verification  == 3 && items?.document_verification == 3"
+												class="text-danger">Rejected</span>
+											<span
+												*ngIf="items?.facial_verification  == 2 || items?.document_verification == 2"
+												class="text-warning">Pending</span>
+											<span
+												*ngIf="(items?.facial_verification  == 1 || items?.facial_verification == null) && (items?.document_verification == 1  || items?.document_verification ==  null)"
+												class="text-info">Un-Verified</span>
 										</h5>
-										
+
 									</div>
 									<div class="user_details d-flex justify-content-start">
 										<!-- <h4 class="m-0">Wallet Details</h4> -->
@@ -296,9 +304,136 @@
 							</div>
 						</div>
 						<div class="row">
-							<!-- <div class="col-md-12">
-								<app-transaction-table [id]="localId"></app-transaction-table>
-							</div> -->
+							<div class="col-md-12">
+								<div class="table-responsive" id="users-list-page">
+									<div class="card-header seachbar">
+										<h5>Transactions</h5>
+									</div>
+									<div class="card-body top_nav_link">
+										<tabset>
+											<tab id="tab1" (selectTab)="onSelect('2/5/')">
+												<ng-template tabHeading>
+													Withdraw Request
+													<span class="badge badge-danger" *ngIf="getSum('Withdraw') > 0">{{
+														getSum('Withdraw') }}</span>
+												</ng-template>
+												<!-- tab-heading -->
+												<tabset>
+													<tab [active]="value == '2/5/'" (selectTab)="onSelect('2/5/')">
+														<ng-template tabHeading>
+															NGN
+															<span class="badge badge-danger"
+																*ngIf="getUnreadCounts?.Withdraw['5']">{{
+																getUnreadCounts?.Withdraw['5'] }}</span>
+														</ng-template>
+														<app-request-table [user_id]="localId" *ngIf="value == '2/5/'"
+															[items]="items" [status]="'2/5/'"></app-request-table>
+													</tab>
+													<tab [active]="value == '2/'+item.id+'/'"
+														(selectTab)="onSelect('2/'+item.id+'/')"
+														*ngFor="let item of trasanctionitems">
+
+														<ng-template tabHeading>
+															{{ item.name }}
+															<span class="badge badge-danger"
+																*ngIf="getUnreadCounts?.Withdraw[item.id]">{{
+																getUnreadCounts?.Withdraw[item.id] }}</span>
+														</ng-template>
+
+														<app-request-table [user_id]="localId"
+															*ngIf="value == '2/'+item.id+'/'" [items]="items"
+															[status]="'2/'+item.id+'/'"></app-request-table>
+													</tab>
+												</tabset>
+											</tab>
+											<tab (selectTab)="onSelect('1/5/')">
+												<ng-template tabHeading>
+													Deposit Request
+													<span class="badge badge-danger" *ngIf="getSum('Deposit')">{{
+														getSum('Deposit') }}</span>
+												</ng-template>
+												<tabset>
+													<tab [active]="value == '1/5/'" (selectTab)="onSelect('1/5/')"
+														heading="NGN">
+														<ng-template tabHeading>
+															NGN
+															<span class="badge badge-danger"
+																*ngIf="getUnreadCounts?.Deposit['5']">{{
+																getUnreadCounts?.Deposit['5'] }}</span>
+														</ng-template>
+
+														<app-request-table [user_id]="localId" *ngIf="value == '1/5/'"
+															[items]="items" [status]="'1/5/'"></app-request-table>
+													</tab>
+												</tabset>
+											</tab>
+											<tab (selectTab)="onSelect('4/3/')">
+												<ng-template tabHeading>
+													Selling Request
+													<span *ngIf="getSum('Selling')" class="badge badge-danger">{{
+														getSum('Selling') }}</span>
+												</ng-template>
+												<tabset>
+													<tab [active]="value == '4/3/'" (selectTab)="onSelect('4/3/')">
+
+														<ng-template tabHeading>
+															TRC20 USDT
+															<span class="badge badge-danger"
+																*ngIf="getUnreadCounts?.Selling['3']">{{
+																getUnreadCounts?.Selling['3'] }}</span>
+														</ng-template>
+
+														<app-request-table [user_id]="localId" *ngIf="value == '4/3/'"
+															[items]="items" [status]="'4/3/'"></app-request-table>
+													</tab>
+													<tab [active]="value == '4/4/'" (selectTab)="onSelect('4/4/')">
+														<ng-template tabHeading>
+															Perfect Money
+															<span class="badge badge-danger"
+																*ngIf="getUnreadCounts?.Selling['4']">{{
+																getUnreadCounts?.Selling['4'] }}</span>
+														</ng-template>
+
+														<app-request-table [user_id]="localId" *ngIf="value == '4/4/'"
+															[items]="items" [status]="'4/4/'"></app-request-table>
+													</tab>
+												</tabset>
+											</tab>
+											<tab (selectTab)="onSelect('3/3/')">
+												<ng-template tabHeading>
+													Buying Request
+													<span *ngIf="getSum('Buying')" class="badge badge-danger">{{
+														getSum('Buying') }}</span>
+												</ng-template>
+												<tabset>
+													<tab [active]="value == '3/3/'" (selectTab)="onSelect('3/3/')">
+
+														<ng-template tabHeading>
+															TRC20 USDT
+															<span class="badge badge-danger"
+																*ngIf="getUnreadCounts?.Buying['3']">{{
+																getUnreadCounts?.Buying['3'] }}</span>
+														</ng-template>
+
+														<app-request-table [user_id]="localId" *ngIf="value  == '3/3/'"
+															[items]="items" [status]="'3/3/'"></app-request-table>
+													</tab>
+													<tab [active]="value == '3/4/'" (selectTab)="onSelect('3/4/')">
+														<ng-template tabHeading>
+															Perfect Money
+															<span class="badge badge-danger"
+																*ngIf="getUnreadCounts?.Buying['3']">{{
+																getUnreadCounts?.Buying['3'] }}</span>
+														</ng-template>
+														<app-request-table [user_id]="localId" *ngIf="value  == '3/4/'"
+															[items]="items" [status]="'3/4/'"></app-request-table>
+													</tab>
+												</tabset>
+											</tab>
+										</tabset>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

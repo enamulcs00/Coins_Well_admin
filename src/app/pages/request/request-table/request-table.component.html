@@ -48,7 +48,7 @@
 					Clear
 				</button>
 			</div>
-			<div class="col-auto m-0 p-1">
+			<div class="col-auto m-0 p-1"  *ngIf="!user_id">
 				<button (click)="exportCsv()" class="mt-1 btn btn-blue-translucent">
 					Export CSV
 				</button>

@@ -16,6 +16,11 @@ export class ViewUserComponent implements OnInit {
 	imageUrl: string;
 	bItems: any;
 	baseUrl: string = environment.homeURL;
+
+	trasanctionitems: any;
+	value: string = '2/5/';
+	getUnreadCounts: any;
+
 	constructor(private route: ActivatedRoute, private commn_: CommonService, private toastr: ToastrService) { }
 
 	ngOnInit(): void {
@@ -24,6 +29,39 @@ export class ViewUserComponent implements OnInit {
 		});
 		this.getUserById();
 		this.imageUrl = environment.imgBaseUrl;
+
+		this.commn_.get(urls.getAllCurrency).subscribe(res => {
+			this.trasanctionitems = res.data.filter(x => {
+				if ([3, 4, 5].indexOf(x.id) == -1) {
+					return true
+				} else {
+					return false;
+				}
+			});
+		});
+
+		this.commn_.onReadNotification.subscribe(data => {
+			this.commn_.get(urls.getunReadRequest).subscribe(data => {
+				this.getUnreadCounts = data.data;
+			});
+		});
+	}
+
+	getSum(type: string = '') {
+		let sum = 0;
+		if (this.getUnreadCounts && typeof this.getUnreadCounts[type] != "undefined") {
+			Object.values(this.getUnreadCounts[type]).forEach(value => {
+				sum += Number(value);
+			});
+		}
+		return sum;
+	}
+
+	onSelect(data: string): void {
+		this.value = data;
+		this.commn_.put(urls.readunReadRequest + data).subscribe(data => {
+			this.commn_.onReadNotification.next('');
+		});
 	}
 
 	userModal(ig) {
