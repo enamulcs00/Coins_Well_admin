@@ -166,7 +166,7 @@ export class TableContentComponent implements OnInit {
 					if (des) {
 		               rCallAPI({
 						"user":id,
-						"rejection_type":"1",
+						"rejection_type":"2",
 						"description":des
 					});				
 					}
@@ -199,7 +199,7 @@ export class TableContentComponent implements OnInit {
 					if (des) {
 		               rCallAPI({
 						"user":id,
-						"rejection_type":"2",
+						"rejection_type":"1",
 						"description":des
 					});				
 					}
