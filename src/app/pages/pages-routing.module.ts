@@ -52,6 +52,10 @@ const routes: Routes = [
 				loadChildren: () => import('./users/users.module').then(m => m.UsersModule)
 			},
 			{
+				path: 'manage-admins',
+				loadChildren: () => import('./manage-admins/manage-admins.module').then(m => m.ManageAdminsModule)
+			},
+			{
 				path: 'walkthrough',
 				component: WalkthroghComponent
 			},
