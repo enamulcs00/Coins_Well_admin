@@ -24,15 +24,9 @@
                 <div class="card m-b-30">
                     <div class="card-header seachbar">
                         <h5></h5>
-                        <div class="form-group col-md-4 pl-0 pr-0 mb-0">
-                            <!-- <input type="text" name="searchField" (keyup)="searchHere()" [(ngModel)]="searchData.value"
-                                class="form-control" id="searchField" placeholder="Search"> -->
-                        </div>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive" id="users-list-page">
-                            <!-- [externalPaging]="true" [count]="page.totalElements" [offset]="page.pageNumber"
-                                [limit]="page.size" (page)="setPage($event)" -->
                             <ngx-datatable class="bootstrap" [scrollbarH]="true" [rows]="rows"
                                 [columnMode]="ColumnMode.force" [limit]="10" [headerHeight]="50" [footerHeight]="50"
                                 rowHeight="auto" [externalPaging]="true" [count]="page.totalElements"
@@ -84,14 +78,6 @@
                                     </ng-template>
                                 </ngx-datatable-column>
 
-                                <!-- <ngx-datatable-column name="ADDRESS" prop="address">
-                              <ng-template let-row="row" ngx-datatable-cell-template>
-                                Building No:{{row?.building_no || '-'}}
-                                street:{{row?.street || '-'}}
-                                Zone:{{row?.zone || '-' }}
-                              </ng-template>
-                            </ngx-datatable-column> -->
-
                                 <ngx-datatable-column name="DOCUMENTS" prop="documents">
                                     <ng-template let-row="row" ngx-datatable-cell-template>
                                         <ul class="action">
@@ -137,22 +123,6 @@
                                         </label>
                                     </ng-template>
                                 </ngx-datatable-column>
-
-                                <!-- <ngx-datatable-column [width]="100" name="STATUS" prop="status">
-                                    <ng-template let-row="row" ngx-datatable-cell-template>
-                                        <button class="btn btn-success" (click)="ChangeStatus(row)" *ngIf="row.status==true || row.status==null">Approve</button>
-                                        <button class="btn btn-danger" (click)="ChangeStatus(row)" *ngIf="row.status==false || row.status==null">Reject</button>
-                                    </ng-template>
-                                </ngx-datatable-column> -->
-
-                                <!-- <ngx-datatable-column name="ACCOUNT STATUS" prop="account_status">
-                                    <ng-template let-row="row" ngx-datatable-cell-template>
-                                        <select name="" id="" [(ngModel)]="row.account_status" class="form-control">
-                                            <option value="Banned">Banned</option>
-                                            <option value="Suspend">Suspend</option>
-                                        </select>
-                                    </ng-template>
-                                </ngx-datatable-column> -->
 
                                 <ngx-datatable-column name="ACTION" prop="status">
                                     <ng-template let-row="row" ngx-datatable-cell-template>
