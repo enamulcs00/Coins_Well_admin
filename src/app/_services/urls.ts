@@ -45,5 +45,6 @@ export const urls = {
     getTransection:'admin/get-payment-requests-by-userid/',
     getBalance:'admin/get-all-balances-by-userid/',
     getunReadRequest : 'payment/get-dashboard-payment-request-counts/',
-    readunReadRequest : 'payment/change-payment-request-to-read/'
+    readunReadRequest : 'payment/change-payment-request-to-read/',
+    referExportCsv:'admin/get-user-refer-history-without-pagination/'
 };
