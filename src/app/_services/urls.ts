@@ -50,5 +50,6 @@ export const urls = {
     sellOrders : 'admin/get-total-sell-orders-graph/',
     depositOrders : 'admin/get-total-deposit-orders-graph/',
     withdrawOrders : 'admin/get-total-withdraw-orders-graph/',
-    getFees : 'admin/get-total-service-fee-orders-graph/'
+    getFees : 'admin/get-total-service-fee-orders-graph/',
+    referExportCsv:'admin/get-user-refer-history-without-pagination/'
 };

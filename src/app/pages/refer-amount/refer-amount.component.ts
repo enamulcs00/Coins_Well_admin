@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
+import { ExportToCsv } from 'export-to-csv';
+import { TabDirective } from 'ngx-bootstrap/tabs';
 import { ToastrService } from 'ngx-toastr';
 import { CommonService } from 'src/app/_services/common.service';
 import {urls} from '../../_services/urls';
@@ -20,6 +22,7 @@ export class ReferAmountComponent implements OnInit {
   pageEvent: PageEvent;
   urhItems: any;
   length1: any=0;
+  value: string;
 
   constructor(private commn_:CommonService,private toastr:ToastrService) { }
 
@@ -148,7 +151,7 @@ export class ReferAmountComponent implements OnInit {
      }
      });
    }
-   
+   //get list
    getUserReferalHistory()
    {
      let body={
@@ -225,5 +228,43 @@ export class ReferAmountComponent implements OnInit {
      this.length1=res.recordsTotal;
      });
    }
+  //export Csv 
+   exportCsv()
+   {
+    const options = {
+			fieldSeparator: ',',
+			quoteStrings: '"',
+			decimalSeparator: '.',
+			showLabels: true,
+			showTitle: true,
+			title: '',
+			useTextFile: false,
+			useBom: true,
+			useKeysAsHeaders: true,
+			// headers: ['Column 1', 'Column 2', etc...] <-- Won't work with useKeysAsHeaders present!
+		};
+		let item = [];
+		const csvExporter = new ExportToCsv(options);
+		this.commn_.get(urls.referExportCsv).subscribe(res => {
+			console.log(res);
+			for (const elements in res?.data) { 
+				item.push({
+					"#":(parseInt(elements)+1),
+					referred_by_name: res?.data[elements].referred_by_name,
+					used_by_name: res?.data[elements].used_by_name,
+					invite_code: res?.data[elements].invite_code,
+					date: res?.data[elements].date,
+					PhoneNumber: res?.data[elements].phone_number,
+					amount:res?.data[elements].amount,
+				});
+			};
+			 csvExporter.generateCsv(item);
+		});
+   }
+  
+   onSelect(data: TabDirective): void {
+		console.log("data", data);
+		this.value = data.heading;
+	}
 
 }

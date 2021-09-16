@@ -6,6 +6,9 @@
           <h4 class=""> <span class="btn btn-white-translucent">
               <i class="mdi mdi-account"></i></span> Refer Amount
           </h4>
+          <div>
+            <a href="javascript:void(0)" *ngIf="value=='User Refer History'" class="btn btn-white-translucent" (click)="exportCsv()">Export CSV</a>
+        </div>
         </div>
       </div>
     </div>
@@ -15,20 +18,9 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card m-b-30">
-
           <div class="card-body">
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-              <li class="nav-item">
-                <a class="nav-link active" id="profile-tab-z" data-toggle="tab" href="#Dispute" role="tab"
-                  aria-controls="profile" aria-selected="false">Referral Code</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="home-tab-z" data-toggle="tab" href="#Queries" role="tab" aria-controls="home"
-                  aria-selected="true">User Refer History</a>
-              </li>
-            </ul>
-            <div class="tab-content" id="myTabContent1">
-              <div class="tab-pane fade show active" id="Dispute" role="tabpanel" aria-labelledby="home-tab">
+            <tabset>
+              <tab heading="Referral Code" (selectTab)="onSelect($event)">
                 <div class="table-responsive">
                   <table class="table table-hover ">
                     <thead>
@@ -95,8 +87,8 @@
                   (page)="pageEvent = pageSizeChanged($event)">
                 </mat-paginator>
                 </div>
-              </div>
-              <div class="tab-pane fade show" id="Queries" role="tabpanel" aria-labelledby="home-tab">
+              </tab>
+              <tab heading="User Refer History" (selectTab)="onSelect($event)">
                 <div class="table-responsive">
                   <table class="table table-hover ">
                     <thead>
@@ -114,7 +106,7 @@
                       <tr *ngFor="let item of urhItems;let i=index">
                         <td>{{page1==0?page1+ i+1:page1+i}}</td>
                         <td>{{item?.referred_by_name || '-'}}</td>
-                        <td>{{item?.referred_by_name || '-'}}</td>
+                        <td>{{item?.used_by_name || '-'}}</td>
                         <td>{{item?.invite_code || '-'}}</td>
                         <td>{{item?.date | date}}</td>
                         <td>{{item?.amount | currency}}</td>
@@ -125,8 +117,8 @@
                 <mat-paginator #paginator [length]="length1" [pageSize]="pageSize1" [pageSizeOptions]="[5, 10, 25, 100]"
                   (page)="pageEvent = pageSizeChanged1($event)">
                 </mat-paginator>
-              </div>
-            </div>
+              </tab>
+              </tabset>
           </div>
         </div>
       </div>
