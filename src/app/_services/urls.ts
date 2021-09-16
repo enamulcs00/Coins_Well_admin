@@ -45,5 +45,10 @@ export const urls = {
     getTransection:'admin/get-payment-requests-by-userid/',
     getBalance:'admin/get-all-balances-by-userid/',
     getunReadRequest : 'payment/get-dashboard-payment-request-counts/',
-    readunReadRequest : 'payment/change-payment-request-to-read/'
+    readunReadRequest : 'payment/change-payment-request-to-read/',
+    buyOrders : 'admin/get-total-buy-orders-graph/',
+    sellOrders : 'admin/get-total-sell-orders-graph/',
+    depositOrders : 'admin/get-total-deposit-orders-graph/',
+    withdrawOrders : 'admin/get-total-withdraw-orders-graph/',
+    getFees : 'admin/get-total-service-fee-orders-graph/'
 };

@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1631525824120,
+  "timestamp": 1631806686917,
   "index": "/Coinswell/admin/index.html",
   "assetGroups": [
     {
@@ -12,17 +12,17 @@
       },
       "urls": [
         "/Coinswell/admin/2.215c0b0dd37aebf9fc6c.js",
-        "/Coinswell/admin/6.bb0827c79b551d13a727.js",
+        "/Coinswell/admin/6.7962488982bf4558fd54.js",
         "/Coinswell/admin/7.3a57d817236b62065a2c.js",
-        "/Coinswell/admin/8.ddfcbcef99d71eae3cee.js",
+        "/Coinswell/admin/8.8c271b9c52bcc5da9018.js",
         "/Coinswell/admin/9.dfcf4d1ff7551986a1db.js",
         "/Coinswell/admin/common.7d220d2f01dffd1ee9a1.js",
         "/Coinswell/admin/favicon.ico",
         "/Coinswell/admin/index.html",
-        "/Coinswell/admin/main.fb6aa66732a1e7f5e79d.js",
+        "/Coinswell/admin/main.164d602f96164230801d.js",
         "/Coinswell/admin/manifest.webmanifest",
         "/Coinswell/admin/polyfills.dbd6677c651a2d78e857.js",
-        "/Coinswell/admin/runtime.8ab70e52938d2fbebaa6.js",
+        "/Coinswell/admin/runtime.573270eedd6c5f527de4.js",
         "/Coinswell/admin/styles.dcf1ce93beb83c5740ac.css"
       ],
       "patterns": []
@@ -215,9 +215,9 @@
   "dataGroups": [],
   "hashTable": {
     "/Coinswell/admin/2.215c0b0dd37aebf9fc6c.js": "aaaadb02a73bf494e81ec2c53b624e7a5cb15285",
-    "/Coinswell/admin/6.bb0827c79b551d13a727.js": "55396131967eb26d281960a75e6ab3a3348d7517",
+    "/Coinswell/admin/6.7962488982bf4558fd54.js": "6bea7419fb875e35965861217ecb892ee6567f3b",
     "/Coinswell/admin/7.3a57d817236b62065a2c.js": "33c54c2b5465fa26f3344351865e3badeb708bba",
-    "/Coinswell/admin/8.ddfcbcef99d71eae3cee.js": "69634b7eaded0c2210f3ac57489c3b3fc3aa5378",
+    "/Coinswell/admin/8.8c271b9c52bcc5da9018.js": "714604a3c8b56c027d861db594dcb95021820df0",
     "/Coinswell/admin/9.dfcf4d1ff7551986a1db.js": "4b5b174c142fc802bdf1bb630a2b73aee4a23c9f",
     "/Coinswell/admin/arrow_drop_down_grey600_18dp.80e34121684f4d5a9f1e.png": "559165bd55354f32443b30d6750f5394e2c5e7e9",
     "/Coinswell/admin/assets/bundles/00ead7bf437d4d0441c71b23b2b18a8c60d2f878.js": "00ead7bf437d4d0441c71b23b2b18a8c60d2f878",
@@ -394,11 +394,11 @@
     "/Coinswell/admin/data-table.93be7e0fc94594d266a2.ttf": "5c23a1ceb1b1d37844a864c02cd97b145e6243dd",
     "/Coinswell/admin/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
     "/Coinswell/admin/flags_sprite_2x.803fc634f571ed3c7cdb.png": "e803647907841782b9a813cd9d456316ecc1ea8d",
-    "/Coinswell/admin/index.html": "676524b204867440518dffd9c8cb8f1d9085e19c",
-    "/Coinswell/admin/main.fb6aa66732a1e7f5e79d.js": "fd99b6472d3b273c53f03813400703fe0fc2f607",
+    "/Coinswell/admin/index.html": "dd4a1176a5e37d006a0db873f2468182f9b1b4a9",
+    "/Coinswell/admin/main.164d602f96164230801d.js": "8ee981ddd57d6486fa8e336bd05757435179f4c1",
     "/Coinswell/admin/manifest.webmanifest": "16096139945c800e5063d6c3542595c79d389fe1",
     "/Coinswell/admin/polyfills.dbd6677c651a2d78e857.js": "8067cc422567347ce6eec5c44ba94128683b96db",
-    "/Coinswell/admin/runtime.8ab70e52938d2fbebaa6.js": "d7f3b20bf92f168e56f37246109898ea5367a68e",
+    "/Coinswell/admin/runtime.573270eedd6c5f527de4.js": "909ba82968e824f2e4219e33ee9c346e8e978a4c",
     "/Coinswell/admin/styles.dcf1ce93beb83c5740ac.css": "87b70fcaadd0ec7b25d56b7afd5936125a3bcd95"
   },
   "navigationUrls": [

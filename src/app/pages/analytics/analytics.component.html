@@ -1,127 +1,176 @@
 <section class="admin-content">
-  <div class="container-fluid bg-dark m-b-30">
-    <div class="row">
-      <div class="col-12 text-white p-t-40 p-b-90">
-        <h4 class="">Analytics</h4>
-      </div>
-    </div>
-  </div>
-  <div class="container-fluid pull-up">
-    <div class="row">
-      <div class="col-lg-6  m-b-30">
-        <div class="card">
-          <div class="card-header">
-            <div class="card-title">Revenue</div>
-            <div class="date-select">
-              <div class="start-date">
-                <label>Start Date</label>
-                <input type="date" [min]="todayDate" [(ngModel)]="rStartDate" name="birthday">
-              </div>
-              <div class="start-date">
-                <label>End Date</label>
-                <input type="date" [min]="rStartDate" [(ngModel)]="rEndDate" (change)="getChangeDateRevenue()"
-                  id="birthday" name="birthday">
-              </div>
-            </div>
-            <div class="card-controls">
-              <a href="#" class="js-card-refresh icon"> </a>
-              <div class="dropdown">
-                <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="icon mdi  mdi-dots-vertical"></i> </a>
+	<div class="container-fluid bg-dark m-b-30">
+		<div class="row">
+			<div class="col-12 text-white p-t-40 p-b-90">
+				<h4 class="">Analytics</h4>
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid pull-up">
+		<div class="row">
+			<div class="col-lg-6  m-b-30">
+				<div class="card">
+					<div class="card-header">
+						<div class="card-title">Buy Orders</div>						
+						<div class="card-controls">
+							<!-- <a href="#" class="js-card-refresh icon"> </a> -->
+							<div class="dropdown">
+								<a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<i class="icon mdi  mdi-dots-vertical"></i> </a>
 
-                <div class="dropdown-menu dropdown-menu-right">
-                  <button class="dropdown-item" (click)="getRevenueGraph(2)" type="button">Weekly</button>
-                  <button class="dropdown-item" (click)="getRevenueGraph(3)" type="button">Monthly</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card-body">
-            <figure>
-              <div id="chartRevenue" style="height: 250px;width: 100%; margin:auto;"></div>
-            </figure>
-          </div>
-          <div class="">
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6  m-b-30">
-        <div class="card">
-          <div class="card-header">
-            <div class="card-title">Total Orders</div>
-            <div class="date-select">
-              <div class="start-date">
-                <label>Start Date</label>
-                <input type="date" [min]="todayDate" [(ngModel)]="oStartDate" id="" name="">
-              </div>
-              <div class="start-date">
-                <label>End Date</label>
-                <input type="date" [min]="oStartDate" [(ngModel)]="oEndDate" (change)="getChangeDateOrder()" id=""
-                  name="">
-              </div>
-            </div>
-            <div class="card-controls">
-              <a href="#" class="js-card-refresh icon"></a>
-              <div class="dropdown">
-                <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="icon mdi mdi-dots-vertical"></i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right">
-                  <button class="dropdown-item" (click)="getOrderGraph(2)" type="button">Weekly</button>
-                  <button class="dropdown-item" (click)="getOrderGraph(3)" type="button">Monthly</button>
-                </div>
-              </div>
-            </div>
+								<div class="dropdown-menu dropdown-menu-right">
+									<button class="dropdown-item" (click)="buyOrdersGraph.filterType = 1; getAnayticsGraph('buy')"
+										type="button">Daily</button>
+									<button class="dropdown-item" (click)="buyOrdersGraph.filterType = 2; getAnayticsGraph('buy')"
+										type="button">Weekly</button>
+									<button class="dropdown-item" (click)="buyOrdersGraph.filterType = 3; getAnayticsGraph('buy')"
+										type="button">Monthly</button>
+									<button class="dropdown-item" (click)="buyOrdersGraph.filterType = 4; getAnayticsGraph('buy')"
+										type="button">Yearly</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card-body" id="buyOrders">
+						<figure>
+							<div id="chartRevenue" style="height: 250px;width: 100%; margin:auto;"></div>
+						</figure>
+					</div>
+					<div class="">
+					</div>
+				</div>
+			</div>
 
-          </div>
-          <div class="card-body">
-            <figure>
-              <div id="chartOrder" style="height: 250px;width: 100%; margin:auto;"></div>
-            </figure>
-          </div>
-          <div class="">
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6  m-b-30">
-        <div class="card">
-          <div class="card-header">
-            <div class="card-title">New Orders</div>
-            <div class="date-select">
-              <div class="start-date">
-                <label>Start Date</label>
-                <input type="date" [min]="todayDate" [(ngModel)]="neStartDate" id="birthday" name="birthday">
-              </div>
-              <div class="start-date">
-                <label>End Date</label>
-                <input type="date" id="birthday" [min]="neStartDate" (change)="getChangeDateNewOrder()"
-                  [(ngModel)]="neEndDate" name="birthday">
-              </div>
-            </div>
-            <div class="card-controls d-flex">
-              <a href="#" class="js-card-refresh icon"> </a>
-              <div class="dropdown">
-                <a href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="icon mdi  mdi-dots-vertical"></i> </a>
 
-                <div class="dropdown-menu dropdown-menu-right">
-                  <button class="dropdown-item" (click)="getNewOrderGraph(2)" type="button">Weekly</button>
-                  <button class="dropdown-item" (click)="getNewOrderGraph(3)" type="button">Monthly</button>
-                </div>
-              </div>
-            </div>
+			<div class="col-lg-6  m-b-30">
+				<div class="card">
+					<div class="card-header">
+						<div class="card-title">Sell Orders</div>						
+						<div class="card-controls">
+							<div class="dropdown">
+								<a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<i class="icon mdi  mdi-dots-vertical"></i>
+								</a>
+								<div class="dropdown-menu dropdown-menu-right">
+									<button class="dropdown-item" (click)="sellOrdersGraph.filterType = 1; getAnayticsGraph('sell')"
+										type="button">Daily</button>
+									<button class="dropdown-item" (click)="sellOrdersGraph.filterType = 2; getAnayticsGraph('sell')"
+										type="button">Weekly</button>
+									<button class="dropdown-item" (click)="sellOrdersGraph.filterType = 3; getAnayticsGraph('sell')"
+										type="button">Monthly</button>
+									<button class="dropdown-item" (click)="sellOrdersGraph.filterType = 4; getAnayticsGraph('sell')"
+										type="button">Yearly</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card-body" id="sellOrders">
+						<figure>
+							<div id="chartOrders" style="height: 250px;width: 100%; margin:auto;"></div>
+						</figure>
+					</div>
+					<div class="">
+					</div>
+				</div>
+			</div>
 
-          </div>
-          <div class="card-body">
-            <figure>
-              <div id="chartNewOrder" style="height: 250px;width: 100%; margin:auto;"></div>
-            </figure>
-          </div>
-          <div class="">
-          </div>
-        </div>
-      </div>
 
-    </div>
-  </div>
+			<div class="col-lg-6  m-b-30">
+				<div class="card">
+					<div class="card-header">
+						<div class="card-title">Deposit Orders</div>						
+						<div class="card-controls">
+							<div class="dropdown">
+								<a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<i class="icon mdi  mdi-dots-vertical"></i>
+								</a>
+								<div class="dropdown-menu dropdown-menu-right">
+									<button class="dropdown-item" (click)="depositOrdersGraph.filterType = 1; getAnayticsGraph('deposit')"
+										type="button">Daily</button>
+									<button class="dropdown-item" (click)="depositOrdersGraph.filterType = 2; getAnayticsGraph('deposit')"
+										type="button">Weekly</button>
+									<button class="dropdown-item" (click)="depositOrdersGraph.filterType = 3; getAnayticsGraph('deposit')"
+										type="button">Monthly</button>
+									<button class="dropdown-item" (click)="depositOrdersGraph.filterType = 4; getAnayticsGraph('deposit')"
+										type="button">Yearly</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card-body" id="depositOrders">
+						<figure>
+							<div id="DepositOrders" style="height: 250px;width: 100%; margin:auto;"></div>
+						</figure>
+					</div>
+					<div class="">
+					</div>
+				</div>
+			</div>
+
+
+			<div class="col-lg-6  m-b-30">
+				<div class="card">
+					<div class="card-header">
+						<div class="card-title">Withdraw Orders</div>						
+						<div class="card-controls">
+							<div class="dropdown">
+								<a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<i class="icon mdi  mdi-dots-vertical"></i>
+								</a>
+								<div class="dropdown-menu dropdown-menu-right">
+									<button class="dropdown-item" (click)="withdrawOrdersGraph.filterType = 1; getAnayticsGraph('withdraw')"
+										type="button">Daily</button>
+									<button class="dropdown-item" (click)="withdrawOrdersGraph.filterType = 2; getAnayticsGraph('withdraw')"
+										type="button">Weekly</button>
+									<button class="dropdown-item" (click)="withdrawOrdersGraph.filterType = 3; getAnayticsGraph('withdraw')"
+										type="button">Monthly</button>
+									<button class="dropdown-item" (click)="withdrawOrdersGraph.filterType = 4; getAnayticsGraph('withdraw')"
+										type="button">Yearly</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card-body" id="withdrawLoader">
+						<figure>
+							<div id="WithdrawOrders" style="height: 250px;width: 100%; margin:auto;"></div>
+						</figure>
+					</div>
+					<div class="">
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-6  m-b-30">
+				<div class="card">
+					<div class="card-header">
+						<div class="card-title">Total Fee</div>						
+						<div class="card-controls">
+							<div class="dropdown">
+								<a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<i class="icon mdi  mdi-dots-vertical"></i>
+								</a>
+								<div class="dropdown-menu dropdown-menu-right">
+									<button class="dropdown-item" (click)="feesOrders.filterType = 1; getAnayticsGraph('fee')"
+										type="button">Daily</button>
+									<button class="dropdown-item" (click)="feesOrders.filterType = 2; getAnayticsGraph('fee')"
+										type="button">Weekly</button>
+									<button class="dropdown-item" (click)="feesOrders.filterType = 3; getAnayticsGraph('fee')"
+										type="button">Monthly</button>
+									<button class="dropdown-item" (click)="feesOrders.filterType = 4; getAnayticsGraph('fee')"
+										type="button">Yearly</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card-body" id="feeLoader">
+						<figure>
+							<div id="feeOrdersChart" style="height: 250px;width: 100%; margin:auto;"></div>
+						</figure>
+					</div>
+					<div class="">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </section>

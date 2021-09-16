@@ -1,190 +1,188 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { CommonService } from 'src/app/_services/common.service';
 import { urls } from 'src/app/_services/urls';
 import * as CanvasJS from 'canvasjs/dist/canvasjs.js';
 import { ToastrService } from 'ngx-toastr';
+import { Block } from 'notiflix';
 @Component({
-  selector: 'app-analytics',
-  templateUrl: './analytics.component.html',
-  styleUrls: ['./analytics.component.scss']
+	selector: 'app-analytics',
+	templateUrl: './analytics.component.html',
+	styleUrls: ['./analytics.component.scss']
 })
-export class AnalyticsComponent implements OnInit {
-  
-  revenueItems: any=[];
-  orderItems: any=[];
-  newOrderItems: any=[];
-  rStartDate:any;
-  oStartDate:any;
-  neStartDate:any;
-  rEndDate:any;
-  oEndDate:any;
-  neEndDate:any;
-  todayDate=new Date();
-  constructor(private comn_:CommonService,private toaster:ToastrService) { }
-  
-  ngOnInit(): void {
-    this.getAnayticsGraph();
-  }
+export class AnalyticsComponent implements AfterViewInit {
 
-  getAnayticsGraph()
-  {
-    this.getNewOrderGraph(2);
-    this.getRevenueGraph(2);
-    this.getOrderGraph(2);
-  }
-  
-  getChangeDateRevenue()
-  {
-    let body={
-      "start_date":this.rStartDate,
-      "end_date":this.rEndDate,
-  }
-  console.log(body);
-  if(this.rStartDate)
-  {
-    this.comn_.post(urls.getRevenueGraph,body).subscribe(res=>{
-      this.revenueItems=res.data.map((row)=>{
-        return { label : row.date ,y : row.count }
-      });
-      this.getRevenueChart();
-    });
-  }
-  else{
-  this.toaster.error("Invalid Date Range","Error",{timeOut:2000});
-  }
-  }
+	buyOrdersGraph = {
+		filterType: 1,
+		data: []
+	}
 
-  getChangeDateOrder()
-  {
-    let body={
-      "start_date":this.oStartDate,
-      "end_date":this.oEndDate,
-  }
-  console.log(body);
-  if(this.oStartDate)
-  {
-    this.comn_.post(urls.getOrderGraph,body).subscribe(res=>{
-      console.log(res);
-      this.orderItems=res.data.map((row)=>{
-        return { label : row.date ,y : row.count }
-      });
-      this.getOrderChart();
-    });
-  }
-  else
-   {
-   this.toaster.error("Invalid Date Range","Error",{timeOut:2000});
-   }
-  }
+	sellOrdersGraph = {
+		filterType: 1,
+		data: []
+	}
+
+	depositOrdersGraph = {
+		filterType: 1,
+		data: []
+	}
+
+	withdrawOrdersGraph = {
+		filterType: 1,
+		data: []
+	}
+
+	feesOrders = {
+		filterType: 1,
+		data: []
+	}
 
 
-  getChangeDateNewOrder()
-  {
-    let body={
-      "start_date":this.neStartDate,
-      "end_date":this.neEndDate,
-  }
-  console.log(body);
-  if(this.neStartDate)
-  {
-    this.comn_.post(urls.getNewOrderGraph,body).subscribe(res=>{
-      console.log(res);
-      this.newOrderItems=res.data.map((row)=>{
-        return { label : row.date ,y : row.count }
-      });
-      this.getNewOrderChart();
-    });
-  }
-  else
-  {
-    this.toaster.error("Invalid Date Range","Error",{timeOut:2000});
-  }
-  }
+	constructor(private comn_: CommonService, private toaster: ToastrService) { }
 
-  getNewOrderGraph(key)
-  {
-    let body={"filter_type":key}
-    this.comn_.post(urls.getNewOrderGraph,body).subscribe(res=>{
-      console.log(res);
-      this.newOrderItems=res.data.map((row)=>{
-        return { label : row.date ,y : row.count }
-      });
-      this.getNewOrderChart();
-    });
-  }
+	ngAfterViewInit(): void {
+		this.getAnayticsGraph();
+		this.getAnayticsGraph('sell');
+		this.getAnayticsGraph('deposit');
+		this.getAnayticsGraph('withdraw');
+		this.getAnayticsGraph('fee');
+	}
 
-  getOrderGraph(key)
-  {
-    let body={"filter_type":key}
-    this.comn_.post(urls.getOrderGraph,body).subscribe(res=>{
-      console.log(res);
-      this.orderItems=res.data.map((row)=>{
-        return { label : row.date ,y : row.count }
-      });
-      this.getOrderChart();
-    });
-  }
+	getAnayticsGraph(type = 'buy') {
+		
+		if (type == 'buy') {
+			Block.circle('#buyOrders');
+			this.comn_.post(urls.buyOrders, {
+				filter_type: this.buyOrdersGraph.filterType
+			}).subscribe(data => {
+				this.buyOrdersGraph.data = data;
+				let chart = new CanvasJS.Chart("chartRevenue", {
+					theme: "light1", // "light2", "dark1", "dark2"
+					title: {
+						text: "Buy Orders"
+					},
+					data: [
+						{
+							type: "line", 
+							dataPoints: data.data.map((row) => {
+								return { label: row.date, y: row.count }
+							})
+						}
+					]
+				});
+				chart.render();
+				Block.remove('#buyOrders');
+			}, () => {
+				Block.remove('#buyOrders');
+			})
+		}
 
-  getRevenueGraph(key)
-  {
-    let body={"filter_type":key}
-    this.comn_.post(urls.getRevenueGraph,body).subscribe(res=>{
-      this.revenueItems=res.data.map((row)=>{
-        return { label : row.date ,y : row.count }
-      });
-      this.getRevenueChart();
-    });
-  }
+		if (type == 'sell') {
+			Block.circle('#sellOrders');
+			this.comn_.post(urls.sellOrders, {
+				filter_type: this.sellOrdersGraph.filterType
+			}).subscribe(data => {
+				this.sellOrdersGraph.data = data;
+				let chart = new CanvasJS.Chart("chartOrders", {
+					theme: "light1", // "light2", "dark1", "dark2"
+					title: {
+						text: "Sell Orders"
+					},
+					data: [
+						{
+							type: "line", 
+							dataPoints: data.data.map((row) => {
+								return { label: row.date, y: row.count }
+							})
+						}
+					]
+				});
+				chart.render();
+				Block.remove('#sellOrders');
+			},() => {
+				Block.remove('#sellOrders');
+			})
+		}
 
-  getRevenueChart()
-  {
-    let chart = new CanvasJS.Chart("chartRevenue",{
-			theme: "light1", // "light2", "dark1", "dark2"
-      title: {
-        text: "Revenue Chart"
-      },
-      data: [
-        {
-          type: "line", // Change type to "bar", "area", "spline", "pie",etc.
-          dataPoints:this.revenueItems
-        }
-      ]
-		});
-    chart.render();
-  }
-  
-  getOrderChart()
-  {
-    let chart = new CanvasJS.Chart("chartOrder",{
-			theme: "light1", // "light2", "dark1", "dark2"
-      title: {
-        text: "Order Chart"
-      },
-      data: [
-        {
-          type: "line", // Change type to "bar", "area", "spline", "pie",etc.
-          dataPoints:this.orderItems
-        }
-      ]
-		});
-    chart.render();
-  }
-  
-  getNewOrderChart()
-  {
-    let chart = new CanvasJS.Chart("chartNewOrder",{
-			theme: "light1", // "light2", "dark1", "dark2"
-      title: {
-        text: "New Order Chart"
-      },
-      data: [
-        {
-          type: "line", // Change type to "bar", "area", "spline", "pie",etc.
-          dataPoints:this.newOrderItems
-        }
-      ]
-		});
-    chart.render();
-  }
 
+		if (type == 'deposit') {
+			Block.circle('#depositOrders');
+			this.comn_.post(urls.depositOrders, {
+				filter_type: this.depositOrdersGraph.filterType
+			}).subscribe(data => {
+				this.depositOrdersGraph.data = data;
+				let chart = new CanvasJS.Chart("DepositOrders", {
+					theme: "light1", // "light2", "dark1", "dark2"
+					title: {
+						text: "Deposit Orders"
+					},
+					data: [
+						{
+							type: "line", 
+							dataPoints: data.data.map((row) => {
+								return { label: row.date, y: row.count }
+							})
+						}
+					]
+				});
+				chart.render();
+				Block.remove('#depositOrders');
+			},() => {
+				Block.remove('#depositOrders');
+			})
+		}
+
+		if (type == 'withdraw') {
+			Block.circle('#withdrawLoader');
+			this.comn_.post(urls.withdrawOrders, {
+				filter_type: this.withdrawOrdersGraph.filterType
+			}).subscribe(data => {
+				this.withdrawOrdersGraph.data = data;
+				let chart = new CanvasJS.Chart("WithdrawOrders", {
+					theme: "light1", // "light2", "dark1", "dark2"
+					title: {
+						text: "Withdraw Orders"
+					},
+					data: [
+						{
+							type: "line", 
+							dataPoints: data.data.map((row) => {
+								return { label: row.date, y: row.count }
+							})
+						}
+					]
+				});
+				chart.render();
+				Block.remove('#withdrawLoader');
+			},() => {
+				Block.remove('#withdrawLoader');
+			})
+		}
+
+		if (type == 'fee') {
+			Block.circle('#feeLoader');
+			this.comn_.post(urls.getFees, {
+				filter_type: this.feesOrders.filterType
+			}).subscribe(data => {
+				this.feesOrders.data = data;
+				let chart = new CanvasJS.Chart("feeOrdersChart", {
+					theme: "light1", // "light2", "dark1", "dark2"
+					title: {
+						text: "Total fees"
+					},
+					data: [
+						{
+							type: "line", 
+							dataPoints: data.data.map((row) => {
+								return { label: row.date, y: row.count }
+							})
+						}
+					]
+				});
+				chart.render();
+				Block.remove('#feeLoader');
+			},() => {
+				Block.remove('#feeLoader');
+			})
+		}
+	}
 }
