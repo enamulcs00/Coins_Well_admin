@@ -8,6 +8,9 @@
             <h4 class=""> <span class="btn btn-white-translucent">
                 <i class="mdi mdi-monitor"></i></span> Manage Update
             </h4>
+            <div>
+              <mat-slide-toggle [(ngModel)]="maintainance" (change)="maintenanceStatus()" >Maintenance</mat-slide-toggle>
+          </div>
           </div>
         </div>
       </div>

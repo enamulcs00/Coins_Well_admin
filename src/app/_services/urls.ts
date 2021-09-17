@@ -51,5 +51,7 @@ export const urls = {
     depositOrders : 'admin/get-total-deposit-orders-graph/',
     withdrawOrders : 'admin/get-total-withdraw-orders-graph/',
     getFees : 'admin/get-total-service-fee-orders-graph/',
-    referExportCsv:'admin/get-user-refer-history-without-pagination/'
+    referExportCsv:'admin/get-user-refer-history-without-pagination/',
+    getMaintenance:'admin/get-website-maintenance-status/',
+    postMaintenance:'admin/update-website-maintenance-status/'
 };

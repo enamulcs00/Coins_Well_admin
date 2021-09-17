@@ -37,6 +37,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { RequestTableModule} from './request/request-table/request-table.module';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
 	declarations: [
@@ -81,7 +82,7 @@ import { RequestTableModule} from './request/request-table/request-table.module'
 		MatNativeDateModule,
 		MatInputModule,
 		NgxCurrencyModule,
-		CoreModule
+		MatSlideToggleModule
 	],
 	exports:[
 		MaterialExtensionsExperimentalModule,

@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators ,AbstractControl} from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Observable, Subject } from 'rxjs';
 import { distinctUntilChanged, debounceTime, switchMap } from 'rxjs/operators';
 import { CommonService } from 'src/app/_services/common.service';
@@ -42,7 +43,8 @@ export class ManageUpdateComponent implements OnInit,AfterViewInit {
   REF: any;
   features:FormGroup;
   rateInstruction:FormGroup;
-  constructor(public service: CommonService, private router: Router, private _noti: NotificationsService,private fb:FormBuilder,private _common:CommonService) { 
+  maintainance:boolean=false;
+  constructor(public service: CommonService, private router: Router, private _noti: NotificationsService,private fb:FormBuilder,private _common:CommonService,private toastr:ToastrService) { 
     this.termsCondition = this.fb.group({
       terms:['',[Validators.required]]
     })
@@ -84,6 +86,7 @@ export class ManageUpdateComponent implements OnInit,AfterViewInit {
    this.GetCms()
    this.searchBanks();
    this.bankListEvent.next('');
+   this.getMaintenance();
   }
   Payment(){
     if(this.procedure.valid){
@@ -94,6 +97,27 @@ export class ManageUpdateComponent implements OnInit,AfterViewInit {
       this.procedure.markAllAsTouched() 
     }
   }
+
+  maintenanceStatus()
+  {
+    let body={maintenance_status:this.maintainance};
+    console.log(body);
+    this._common.post(urls.postMaintenance,body).subscribe(res=>{
+    if(res.code==200)
+    {
+      this.toastr.success(res.message,"Success");
+    }
+    });
+  }
+  
+  getMaintenance()
+  {
+    this._common.get(urls.getMaintenance).subscribe(res=>{
+      
+      this.maintainance=res?.data?.maintainance;
+    });
+  }
+
   CompanyAddress(){
     if(this.Address.valid){
       let obj ={
