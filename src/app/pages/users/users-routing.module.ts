@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { PermissionGuard } from 'src/app/_gurads/permission.guard';
 import { AddUserComponent } from './add-user/add-user.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { UserListComponent } from './user-list/user-list.component';
@@ -16,15 +17,30 @@ const routes: Routes = [
 			},
 			{
 				path: 'add',
-				component: AddUserComponent
+				component: AddUserComponent,
+				canActivate : [PermissionGuard],
+				data: {
+					permission : 'users',
+					type : "add"
+				}
 			},
 			{
 				path: 'edit',
-				component: EditUserComponent
+				component: EditUserComponent,
+				canActivate : [PermissionGuard],
+				data: {
+					permission : 'users',
+					type : "add"
+				}
 			},
 			{
 				path: 'view',
-				component: ViewUserComponent
+				component: ViewUserComponent,
+				canActivate : [PermissionGuard],
+				data: {
+					permission : 'users',
+					type : "view"
+				}
 			}
 		]
 	}

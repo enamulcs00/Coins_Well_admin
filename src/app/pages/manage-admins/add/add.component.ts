@@ -37,7 +37,9 @@ export class AddComponent implements OnInit {
 		// For edit sub admin
 		this.route.queryParams.subscribe(params => {
 			this.adminId = params.id;
-			this.getAdminInfo();
+			if(this.adminId) {
+				this.getAdminInfo();
+			}
 		})
 	}
 
@@ -64,9 +66,6 @@ export class AddComponent implements OnInit {
 
 
 	ngOnInit(): void {
-		this.route.queryParams.subscribe(params => {
-			this.userId = params.id;
-		});
 		this.getSubAdmin();
 	}
 
@@ -82,7 +81,7 @@ export class AddComponent implements OnInit {
 	}
 	createForms(item: any) : FormGroup {
 		return this.fb.group({
-			"module": [null, [Validators.required]],
+			"module": item.id,
 			"is_add_edit": false,
 			"is_view": false
 		});

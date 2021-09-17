@@ -12,17 +12,17 @@ import { AuthService } from './_services/auth.service';
 import { CommonService } from './_services/common.service';
 import { NotificationsService } from './_services/notifications.service';
 import { ToastrModule } from 'ngx-toastr';
-import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from './auth/components/confirm-dialog/confirm-dialog.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { NgOtpInputModule } from 'ng-otp-input';
-import { DocumentsComponent } from './components/confirm-dialog/documents/documents.component';
-import { FvComponent } from './components/confirm-dialog/fv/fv.component';
-import { ReasonComponent } from './components/confirm-dialog/reason/reason.component';
+import { DocumentsComponent } from './auth/components/confirm-dialog/documents/documents.component';
+import { FvComponent } from './auth/components/confirm-dialog/fv/fv.component';
+import { ReasonComponent } from './auth/components/confirm-dialog/reason/reason.component';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
-import { UserComponent } from './components/confirm-dialog/user/user.component';
+import { UserComponent } from './auth/components/confirm-dialog/user/user.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { EmailModalComponent } from './components/confirm-dialog/email-modal/email-modal.component';
+import { EmailModalComponent } from './auth/components/confirm-dialog/email-modal/email-modal.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
@@ -33,7 +33,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 		FvComponent,
 		ReasonComponent,
 		UserComponent,
-		EmailModalComponent,
+		EmailModalComponent
 	],
 	imports: [
 		BrowserModule,

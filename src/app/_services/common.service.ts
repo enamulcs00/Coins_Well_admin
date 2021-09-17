@@ -1,4 +1,4 @@
-import { ConfirmDialogComponent } from './../components/confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from '../auth/components/confirm-dialog/confirm-dialog.component';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
@@ -6,11 +6,11 @@ import { map } from 'rxjs/operators';
 import { urls } from './urls';
 import { Observable } from 'rxjs';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { DocumentsComponent } from '../components/confirm-dialog/documents/documents.component';
-import { FvComponent } from '../components/confirm-dialog/fv/fv.component';
-import { ReasonComponent } from '../components/confirm-dialog/reason/reason.component';
-import { UserComponent } from '../components/confirm-dialog/user/user.component';
-import { EmailModalComponent } from '../components/confirm-dialog/email-modal/email-modal.component';
+import { DocumentsComponent } from '../auth/components/confirm-dialog/documents/documents.component';
+import { FvComponent } from '../auth/components/confirm-dialog/fv/fv.component';
+import { ReasonComponent } from '../auth/components/confirm-dialog/reason/reason.component';
+import { UserComponent } from '../auth/components/confirm-dialog/user/user.component';
+import { EmailModalComponent } from '../auth/components/confirm-dialog/email-modal/email-modal.component';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -20,9 +20,35 @@ export class CommonService {
 	constructor(private _http: HttpClient,private modalService: BsModalService) { }
     bsModalRef: BsModalRef;
 	imageFlag=new BehaviorSubject('');
+	permissions = {
+		dashboard : 1,
+		users : 2,
+		walkthrough : 3,
+		banks: 4,
+		manage_update : 5,
+		notification : 6,
+		customer_support : 7,
+		wallet_address : 8,
+		request : 9,
+		analytics : 10,
+		rate_change : 11,
+		refer_and_earn : 12,
+		manage_sub_admin : 13
+	}
+	latestUserInfo;
 	onReadNotification : BehaviorSubject<any> =  new BehaviorSubject('');
+	
 	post(url: string, postData: any = {}) {
 		return this._http.post<any>(`${environment.baseUrl}${url}`, postData)
+			.pipe(map((data: any) => {
+				return data;
+			}));
+	}
+
+	postWithHeaders(url: string, postData: any = {}, headers = {}) {
+		return this._http.post<any>(`${environment.baseUrl}${url}`, postData, {
+			headers :  headers
+		})
 			.pipe(map((data: any) => {
 				return data;
 			}));
@@ -202,5 +228,34 @@ export class CommonService {
 		let pattAlpha = /^([a-zA-Z ])*$/;
 		let resultAlpha = pattAlpha.test(event.key);
 		return resultAlpha;
-		 }
+	}
+
+	checkPermission(name : string, type) {
+		let userInfo = JSON.parse(localStorage.getItem(environment.storageKey));
+		let permissions = userInfo.permissions;
+		if(permissions.length > 0) {
+			let check = permissions.find(x=> x.module.id == this.permissions[name]);
+			if(check != undefined && check[(type == 'view')?'is_view':'is_add_edit']){
+				return true;
+			} else {
+				return false;
+			}
+		}
+		return true;
+ 	}
+
+	checkPermissionRealData(name : string, type) {
+		let userInfo = this.latestUserInfo;
+		let permissions = userInfo.permissions;
+		let check = permissions.find(x=> x.module == this.permissions[name]);
+		if(permissions.length > 0) {
+			if(check != undefined && check[(type == 'view')?'is_view':'is_add_edit']){
+				return true;
+			} else {
+				return false;
+			}
+		}
+		return true;
+ 	}
+	
 }

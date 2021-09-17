@@ -20,7 +20,6 @@ export class AuthService {
 				// login successful if there's a jwt token in the response
 				if (data) {
 					this.onLogin.next(data.data);
-					localStorage.setItem(environment.storageKey, JSON.stringify(data.data));
 				}
 				return data;
 			}));

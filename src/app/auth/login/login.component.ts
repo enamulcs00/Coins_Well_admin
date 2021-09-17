@@ -5,6 +5,10 @@ import { AuthService } from 'src/app/_services/auth.service';
 import { NotificationsService } from 'src/app/_services/notifications.service';
 import { validEmail } from 'src/app/_validators/validEmail';
 import { NgxSpinnerService } from "ngx-spinner";
+import { Observable } from 'rxjs';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { TwoFactorComponent } from '../components/two-factor/two-factor.component';
+import { environment } from 'src/environments/environment';
 
 @Component({
 	selector: 'app-login',
@@ -14,7 +18,7 @@ import { NgxSpinnerService } from "ngx-spinner";
 export class LoginComponent implements OnInit {
 	loginForm: FormGroup;
 	isLoading: boolean = false;
-	constructor(public router: Router, private _auth: AuthService, private _fb: FormBuilder,private spinner: NgxSpinnerService, private _noti: NotificationsService) { }
+	constructor(public router: Router, private _auth: AuthService, private _fb: FormBuilder,private spinner: NgxSpinnerService, private _noti: NotificationsService, private modalService : BsModalService) { }
 
 	ngOnInit() {
 		this.loginForm = this._fb.group({
@@ -34,11 +38,22 @@ export class LoginComponent implements OnInit {
 			let body=this.loginForm.value;
 			body['token']=this._auth.firebaseToken;
 			this._auth.login(body).subscribe(res => {
+				this.spinner.hide();
 				this.isLoading = false;
-				setTimeout(() => {
-				this.spinner.hide();},2000);
-				this._noti.show('success', "Admin logged in successfully.", "Login!");
-				this.router.navigate(['/dashboard']);
+				if(res.data.permissions.length > 0 && res.data.authy_user_id) {
+					this.askForTwoFactor(res.data.token).subscribe(()=>{
+						localStorage.setItem(environment.storageKey, JSON.stringify(res.data));
+						this._noti.show('success', "Admin logged in successfully.", "Login!");
+						this.router.navigate(['/dashboard']);
+					})
+				} else {
+					this.isLoading = false;
+					localStorage.setItem(environment.storageKey, JSON.stringify(res.data));
+					setTimeout(() => {
+					this.spinner.hide();},2000);
+					this._noti.show('success', "Admin logged in successfully.", "Login!");
+					this.router.navigate(['/dashboard']);
+				}
 			}, error => {
 				this.isLoading = false;
 				setTimeout(() => {
@@ -48,4 +63,20 @@ export class LoginComponent implements OnInit {
 			this.loginForm.markAllAsTouched();
 		}
 	}
+
+	askForTwoFactor(token) {
+		return new Observable((resolve) => {
+			let bsModalRef = this.modalService.show(TwoFactorComponent, {
+				initialState: {
+					message: token
+				}
+			});
+			bsModalRef.onHidden.subscribe(x => {
+				resolve.next(bsModalRef.content.status);
+			});
+		});
+	}
 }
+
+
+// TwoFactorComponent

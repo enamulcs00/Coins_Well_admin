@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { PermissionGuard } from 'src/app/_gurads/permission.guard';
 import { AddComponent } from './add/add.component';
 import { ListComponent } from './list/list.component';
 import { ManageAdminsComponent } from './manage-admins.component';
@@ -15,11 +16,21 @@ const routes: Routes = [
 			},
 			{
 				path: 'add',
-				component: AddComponent
+				component: AddComponent,
+				canActivate : [PermissionGuard],
+				data: {
+					permission : 'manage_sub_admin',
+					type : "add"
+				}
 			},
 			{
 				path: 'edit',
-				component: AddComponent
+				component: AddComponent,
+				canActivate : [PermissionGuard],
+				data: {
+					permission : 'manage_sub_admin',
+					type : "add"
+				}
 			}
 		]
 	}

@@ -60,5 +60,7 @@ export const urls = {
     deleteSubAdmin:'sub-admin/delete/',
     subAdminList:'sub-admin/get-all-pagination-list/',
     changeSubAdminStatus:'sub-admin/change-status/',
-    editSubAdminStatus:'sub-admin/update-details/'
+    editSubAdminStatus:'sub-admin/update-details/',
+    verifyOtp : 'user/two-factor-authentication/',
+    getProfile : 'admin/get-profile/'
 };

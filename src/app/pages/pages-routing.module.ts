@@ -23,7 +23,7 @@ import { AnalyticsComponent } from './analytics/analytics.component';
 import { RateChangeComponent } from './rate-change/rate-change.component';
 import { ReferAmountComponent } from './refer-amount/refer-amount.component';
 import { ChatComponent } from './chat/chat.component';
-import { LoggedGuard } from '../_gurads/logged.guard';
+import { PermissionGuard } from '../_gurads/permission.guard';
 
 const routes: Routes = [
 	{
@@ -37,7 +37,12 @@ const routes: Routes = [
 		children: [
 			{
 				path: 'dashboard',
-				component: DashboardComponent
+				component: DashboardComponent,
+				canActivate : [PermissionGuard],
+				data: {
+					permission : 'dashboard',
+					type : "view"
+				}
 			},
 			{
 				path: 'myprofile',
@@ -49,63 +54,138 @@ const routes: Routes = [
 			},
 			{
 				path: 'users',
-				loadChildren: () => import('./users/users.module').then(m => m.UsersModule)
+				loadChildren: () => import('./users/users.module').then(m => m.UsersModule),
+				canActivate : [PermissionGuard],
+				data: {
+					permission : 'users',
+					type : "view"
+				}
 			},
 			{
 				path: 'manage-admins',
-				loadChildren: () => import('./manage-admins/manage-admins.module').then(m => m.ManageAdminsModule)
+				loadChildren: () => import('./manage-admins/manage-admins.module').then(m => m.ManageAdminsModule),
+				canActivate : [PermissionGuard],
+				data: {
+					permission : 'manage_sub_admin',
+					type : "view"
+				}
 			},
 			{
 				path: 'walkthrough',
-				component: WalkthroghComponent
+				component: WalkthroghComponent,
+				canActivate : [PermissionGuard],
+				data: {
+					permission : 'walkthrough',
+					type : "view"
+				}
 			},
 			{
 				path: 'banknamelist',
-				component: BankNameListComponent
+				component: BankNameListComponent,
+				canActivate : [PermissionGuard],
+				data: {
+					permission : 'banks',
+					type : "view"
+				}
 			},
 			{
 				path: 'banknamelist/addbank',
-				component: AddBankComponent
+				component: AddBankComponent,
+				canActivate : [PermissionGuard],
+				data: {
+					permission : 'banks',
+					type : "add"
+				}
 			},
 			{
 				path: 'banknamelist/editbank',
-				component: EditBankComponent
+				component: EditBankComponent,
+				canActivate : [PermissionGuard],
+				data: {
+					permission : 'banks',
+					type : "add"
+				}
 			},
 			{
 				path: 'manage-update',
-				component: ManageUpdateComponent
+				component: ManageUpdateComponent,
+				canActivate : [PermissionGuard],
+				data: {
+					permission : 'manage_update',
+					type : "view"
+				}
 			},
 			{
 				path: 'manage-notification',
-				component: ManageNotificationComponent
+				component: ManageNotificationComponent,
+				canActivate : [PermissionGuard],
+				data: {
+					permission : 'notification',
+					type : "view"
+				}
 			},
 			{
 				path: 'manage-notification/add-notification',
-				component: AddNotificationComponent
+				component: AddNotificationComponent,
+				canActivate : [PermissionGuard],
+				data: {
+					permission : 'notification',
+					type : "add"
+				}
 			},
 			{
 				path: 'manage-customer-support',
-				component: ManageCustomerSupportComponent
+				component: ManageCustomerSupportComponent,
+				canActivate : [PermissionGuard],
+				data: {
+					permission : 'customer_support',
+					type : "view"
+				}
 			},
 			{
 				path: 'wallet-address',
-				component: WalletAddressComponent
+				component: WalletAddressComponent,
+				canActivate : [PermissionGuard],
+				data: {
+					permission : 'wallet_address',
+					type : "view"
+				}
 			},
 			{
 				path: 'request',
-				component: RequestComponent
+				component: RequestComponent,
+				canActivate : [PermissionGuard],
+				data: {
+					permission : 'request',
+					type : "view"
+				}
 			},
 			{
 				path: 'analytics',
-				component: AnalyticsComponent
+				component: AnalyticsComponent,
+				canActivate : [PermissionGuard],
+				data: {
+					permission : 'analytics',
+					type : "view"
+				}
 			},
 			{
 				path: 'rate-change',
-				component: RateChangeComponent
+				component: RateChangeComponent,
+				canActivate : [PermissionGuard],
+				data: {
+					permission : 'rate_change',
+					type : "view"
+				}
 			},
 			{
 				path: 'refer-amount',
-				component: ReferAmountComponent
+				component: ReferAmountComponent,
+				canActivate : [PermissionGuard],
+				data: {
+					permission : 'refer_and_earn',
+					type : "view"
+				}
 			},
 			{
 				path: 'chat',

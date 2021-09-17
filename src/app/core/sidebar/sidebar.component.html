@@ -10,7 +10,7 @@
     </div>
     <div class="admin-sidebar-wrapper js-scrollbar">
         <ul class="menu">
-            <li class="menu-item">
+            <li class="menu-item" *ngIf="commn_.checkPermission('dashboard','view')">
                 <a routerLink="/dashboard" class="menu-link">
                     <span class="menu-label">
                         <span class="menu-name">Dashboard </span>
@@ -20,7 +20,7 @@
                     </span>
                 </a>
             </li>
-            <li class="menu-item">
+            <li class="menu-item" *ngIf="commn_.checkPermission('users','view')">
                 <a routerLink="/users" class="menu-link">
                     <span class="menu-label">
                         <span class="menu-name">Users List </span>
@@ -30,7 +30,7 @@
                     </span>
                 </a>
             </li>
-            <li class="menu-item">
+            <li class="menu-item" *ngIf="commn_.checkPermission('walkthrough','view')">
                 <a routerLink="/walkthrough" class="menu-link">
                     <span class="menu-label">
                         <span class="menu-name">Walkthrough</span>
@@ -50,7 +50,7 @@
           </span>
                 </a>
             </li> -->
-            <li class="menu-item">
+            <li class="menu-item" *ngIf="commn_.checkPermission('banks','view')">
                 <a routerLink="/banknamelist" class="menu-link">
                     <span class="menu-label">
                         <span class="menu-name">Bank Name List </span>
@@ -60,7 +60,7 @@
                     </span>
                 </a>
             </li>
-            <li class="menu-item">
+            <li class="menu-item" *ngIf="commn_.checkPermission('manage_update','view')">
                 <a routerLink="/manage-update" class="menu-link">
                     <span class="menu-label">
                         <span class="menu-name">Manage Update </span>
@@ -70,7 +70,7 @@
                     </span>
                 </a>
             </li>
-            <li class="menu-item">
+            <li class="menu-item" *ngIf="commn_.checkPermission('notification','view')">
                 <a routerLink="/manage-notification" class="menu-link">
                     <span class="menu-label">
                         <span class="menu-name">Notifications </span>
@@ -80,7 +80,7 @@
                     </span>
                 </a>
             </li>
-            <li class="menu-item">
+            <li class="menu-item" *ngIf="commn_.checkPermission('customer_support','view')">
                 <a routerLink="/manage-customer-support" class="menu-link">
                     <span class="menu-label">
                         <span class="menu-name">Customer Support </span>
@@ -90,7 +90,7 @@
                     </span>
                 </a>
             </li>
-            <li class="menu-item">
+            <li class="menu-item" *ngIf="commn_.checkPermission('wallet_address','view')">
                 <a routerLink="/wallet-address" class="menu-link">
                     <span class="menu-label">
                         <span class="menu-name">Wallet Address </span>
@@ -100,7 +100,7 @@
                     </span>
                 </a>
             </li>
-            <li class="menu-item">
+            <li class="menu-item" *ngIf="commn_.checkPermission('request','view')">
                 <a routerLink="/request" class="menu-link">
                     <span class="menu-label">
                         <span class="menu-name">Request
@@ -112,7 +112,7 @@
                     </span>
                 </a>
             </li>
-            <li class="menu-item">
+            <li class="menu-item" *ngIf="commn_.checkPermission('analytics','view')">
                 <a routerLink="/analytics" class="menu-link">
                     <span class="menu-label">
                         <span class="menu-name">Analytics </span>
@@ -122,7 +122,7 @@
                     </span>
                 </a>
             </li>
-            <li class="menu-item">
+            <li class="menu-item" *ngIf="commn_.checkPermission('rate_change','view')">
                 <a routerLink="/rate-change" class="menu-link">
                     <span class="menu-label">
                         <span class="menu-name">Rate Change </span>
@@ -132,7 +132,7 @@
                     </span>
                 </a>
             </li>
-            <li class="menu-item">
+            <li class="menu-item" *ngIf="commn_.checkPermission('refer_and_earn','view')">
                 <a routerLink="/refer-amount" class="menu-link">
                     <span class="menu-label">
                         <span class="menu-name">Refer & Earn </span>
@@ -143,7 +143,7 @@
                 </a>
             </li>
 
-            <li class="menu-item">
+            <li class="menu-item" *ngIf="commn_.checkPermission('manage_sub_admin','view')">
                 <a routerLink="/manage-admins" class="menu-link">
                     <span class="menu-label">
                         <span class="menu-name">Manage Sub Admins</span>

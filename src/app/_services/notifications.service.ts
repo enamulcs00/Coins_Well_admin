@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Subject, Observable } from 'rxjs';
-import { ConfirmDialogComponent } from '../components/confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from '../auth/components/confirm-dialog/confirm-dialog.component';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Injectable({

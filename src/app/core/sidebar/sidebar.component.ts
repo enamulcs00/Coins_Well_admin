@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonService } from 'src/app/_services/common.service';
 import { urls } from 'src/app/_services/urls';
+import { environment } from 'src/environments/environment';
 
 @Component({
 	selector: 'app-sidebar',
@@ -9,7 +10,11 @@ import { urls } from 'src/app/_services/urls';
 })
 export class SidebarComponent implements OnInit {
 	sum: number = 0;
-	constructor(private commn_: CommonService) { }
+	userInfo : any = JSON.parse(localStorage.getItem(environment.storageKey));
+	permissions = this.userInfo.permissions;
+	constructor(public commn_: CommonService) {
+		console.log("permissions",this.permissions);
+	}
 
 	ngOnInit(): void {
 		this.commn_.onReadNotification.subscribe(data => {
