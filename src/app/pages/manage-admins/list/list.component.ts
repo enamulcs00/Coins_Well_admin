@@ -83,7 +83,7 @@ export class ListComponent implements OnInit {
 
 	deleteUser(row) {
 		const callAPI = () => {
-			this._common.delete(`${urls.deleteUser}${row.id}/`).subscribe((res) => {
+			this._common.delete(`${urls.deleteSubAdmin}${row.id}/`).subscribe((res) => {
 				this.toastr.success(res.message, "Success", { timeOut: 1050 });
 				this.setPage({
 					offset : this.page.pageNumber
@@ -99,39 +99,11 @@ export class ListComponent implements OnInit {
 	}
 
 	changeFlag(row) {
-		const callAPI = (param: any) => {
-			this._common.put(`${urls.changeFlag}${row.id}/`, param).subscribe((res) => {
-				this.toastr.success(res.message, "Success", { timeOut: 1050 });
-				this.setPage({ offset: 0 });
-			});
-		}
-		this._common.confirm("Confirm", "Do you want to " + ((row.flag) ? 'flag' : 'unflag') + " selected user ?").subscribe(res => {
-			if (res) {
-				if (row.flag) {
-					//reason popup open here
-					this._common.reasonConfirm("Reject Reason", "").subscribe((x: any) => {
-						console.log(x);
-						if (x) {
-							//Simple API call here with descripition
-							callAPI({
-								flag: row.flag,
-								description: x
-							});
-						} else {
-							row.flag = !row.flag;
-						}
-					})
-				} else {
-					callAPI({
-						flag: row.flag
-					});
-					//simple API call here
-				}
-				//Reject API call here
-			} else {
-				row.flag = !row.flag;
-			}
-		})
+		let param={'is_active':row.is_active}
+		this._common.put(`${urls.changeSubAdminStatus}${row.id}/`, param).subscribe((res) => {
+			this.toastr.success(res.message, "Success", { timeOut: 1050 });
+			this.setPage({ offset: 0 });
+		});
 	}
 
 	documentModal(id) {
@@ -224,7 +196,7 @@ export class ListComponent implements OnInit {
 		}
 		this.formData.search.value = this.searchData.value;
 		this.formData.start = pageInfo.offset * this.formData.length;
-		this._common.post(urls.getUsers, this.formData).subscribe(_pagedData => {
+		this._common.post(urls.subAdminList, this.formData).subscribe(_pagedData => {
 			this.page = {
 				totalElements: _pagedData.recordsTotal,
 				pageNumber: pageInfo.offset,

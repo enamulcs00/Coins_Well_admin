@@ -56,5 +56,8 @@ export const urls = {
     postMaintenance:'admin/update-website-maintenance-status/',
     getSubAdminList:'sub-admin/get-all-subadmin-module',
     addSubAdmin  : 'sub-admin/create/',
-    getSubAdminById : 'sub-admin/get-details-by-id/'
+    getSubAdminById : 'sub-admin/get-details-by-id/',
+    deleteSubAdmin:'api/sub-admin/delete/',
+    subAdminList:'sub-admin/get-all-pagination-list/',
+    changeSubAdminStatus:'sub-admin/change-status/'
 };
