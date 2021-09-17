@@ -54,5 +54,8 @@ export const urls = {
     referExportCsv:'admin/get-user-refer-history-without-pagination/',
     getMaintenance:'admin/get-website-maintenance-status/',
     postMaintenance:'admin/update-website-maintenance-status/',
-    getSubAdminList:'sub-admin/get-all-subadmin-module'
+    getSubAdminList:'sub-admin/get-all-subadmin-module',
+    deleteSubAdmin:'api/sub-admin/delete/',
+    subAdminList:'sub-admin/get-all-pagination-list/',
+    changeSubAdminStatus:'sub-admin/change-status/'
 };
