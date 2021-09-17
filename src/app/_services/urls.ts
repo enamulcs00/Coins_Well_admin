@@ -59,5 +59,6 @@ export const urls = {
     getSubAdminById : 'sub-admin/get-details-by-id/',
     deleteSubAdmin:'api/sub-admin/delete/',
     subAdminList:'sub-admin/get-all-pagination-list/',
-    changeSubAdminStatus:'sub-admin/change-status/'
+    changeSubAdminStatus:'sub-admin/change-status/',
+    editSubAdminStatus:'sub-admin/update-details/'
 };
