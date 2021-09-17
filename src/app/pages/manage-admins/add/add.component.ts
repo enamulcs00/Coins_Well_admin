@@ -59,7 +59,7 @@ export class AddComponent implements OnInit {
 		this.userForm.patchValue(
 			userInfo
 		);
-		// this.userPic = 
+		this.imageUrl = environment.homeURL + userInfo.image.media_file;
 	}
 
 
@@ -82,7 +82,7 @@ export class AddComponent implements OnInit {
 	}
 	createForms(item: any) : FormGroup {
 		return this.fb.group({
-			"module": item?.id,
+			"module": [null, [Validators.required]],
 			"is_add_edit": false,
 			"is_view": false
 		});
