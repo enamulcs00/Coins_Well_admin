@@ -54,10 +54,12 @@
 
                                 <ngx-datatable-column [width]="200" name="Name" prop="name">
                                     <ng-template let-row="row" ngx-datatable-cell-template>
-                                        <span matTooltipClass="example-tooltip-red" matTooltipPosition="above"
+                                        <!-- <span matTooltipClass="example-tooltip-red" matTooltipPosition="above"
                                             [matTooltip]="row?.user_rejection[row?.user_rejection.length - 1]?.description">
                                             <img style="cursor: pointer;" *ngIf="row.flag"
-                                                src="assets/icons/red-flag.png" alt=""></span>{{row?.first_name}}
+                                                src="assets/icons/red-flag.png" alt="">
+                                            </span> -->
+                                            {{row?.first_name}}
                                         {{row?.last_name}}
                                     </ng-template>
                                 </ngx-datatable-column>
@@ -65,8 +67,9 @@
                                 <ngx-datatable-column [width]="220" name="Email" prop="email">
                                     <ng-template let-row="row" ngx-datatable-cell-template>
                                         <span>
-                                            {{row?.email}} <a href="javascript:void(0)" (click)="emailModal(row)"> <i
-                                                    class="mdi mdi-information ml-2"></i></a>
+                                            {{row?.email}} 
+                                            <!-- <a href="javascript:void(0)" (click)="emailModal(row)"> <i
+                                                    class="mdi mdi-information ml-2"></i></a> -->
                                         </span>
                                     </ng-template>
                                 </ngx-datatable-column>
@@ -77,7 +80,7 @@
                                     </ng-template>
                                 </ngx-datatable-column>
 
-                                <ngx-datatable-column name="DOCUMENTS" prop="documents">
+                                <!-- <ngx-datatable-column name="DOCUMENTS" prop="documents">
                                     <ng-template let-row="row" ngx-datatable-cell-template>
                                         <ul class="action">
                                             <li>
@@ -88,7 +91,7 @@
                                             </li>
                                         </ul>
                                     </ng-template>
-                                </ngx-datatable-column>
+                                </ngx-datatable-column> -->
                                 <ngx-datatable-column name="ACCOUNT NO.	" prop="account_number">
                                     <ng-template let-row="row" ngx-datatable-cell-template>
                                         {{row?.bank_details[0]?.account_number || '-'}}
@@ -101,7 +104,7 @@
                                     </ng-template>
                                 </ngx-datatable-column>
 
-                                <ngx-datatable-column [width]="80" name="FV" prop="facial_verification">
+                                <!-- <ngx-datatable-column [width]="80" name="FV" prop="facial_verification">
                                     <ng-template let-row="row" ngx-datatable-cell-template>
                                         <ul class="action">
                                             <li>
@@ -112,25 +115,25 @@
                                             </li>
                                         </ul>
                                     </ng-template>
-                                </ngx-datatable-column>
+                                </ngx-datatable-column> -->
 
-                                <ngx-datatable-column [width]="80" name="FLAG" prop="flag">
+                                <!-- <ngx-datatable-column [width]="80" name="FLAG" prop="flag">
                                     <ng-template let-row="row" ngx-datatable-cell-template>
                                         <label class="switch">
                                             <input type="checkbox" [(ngModel)]="row.flag" (change)="changeFlag(row)">
                                             <span class="slider round"></span>
                                         </label>
                                     </ng-template>
-                                </ngx-datatable-column>
+                                </ngx-datatable-column> -->
 
                                 <ngx-datatable-column name="ACTION" prop="status">
                                     <ng-template let-row="row" ngx-datatable-cell-template>
                                         <ul class="action">
-                                            <li><a href="javascript:void(0)" (click)="navigate(row?.id,2)"
+                                            <!-- <li><a href="javascript:void(0)" (click)="navigate(row?.id,2)"
                                                     class="btn btn-primary"><i class="mdi mdi-eye-settings"
                                                         title="View"></i></a>
-                                            </li>
-                                            <li><a (click)="navigate(row?.id,1)" href="javascript:void(0)"
+                                            </li> -->
+                                            <li><a (click)="navigate(row?.id)" href="javascript:void(0)"
                                                     class="btn btn-primary"><i class="mdi mdi-pen" title="Edit"></i></a>
                                             </li>
                                             <li>

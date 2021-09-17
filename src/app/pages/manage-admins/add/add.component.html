@@ -1,167 +1,151 @@
 <section class="admin-content">
-    <div class="bg-dark">
-        <div class="container-fluid  m-b-30">
-            <div class="col-12 text-white p-t-40 p-b-90">
-                <div class="ex-main">
-                    <h4 class=""> <span class="btn btn-white-translucent">
-                            <i class="mdi mdi-account"></i></span> Add User
-                    </h4>
-                    <a routerLink="/manage-admins" class="btn btn-white-translucent">Back</a>
-                </div>
-            </div>
+  <div class="bg-dark">
+    <div class="container-fluid  m-b-30">
+      <div class="col-12 text-white p-t-40 p-b-90">
+        <div class="ex-main">
+          <h4 class=""> <span class="btn btn-white-translucent">
+              <i class="mdi mdi-account"></i></span> Add User
+          </h4>
+          <a routerLink="/manage-admins" class="btn btn-white-translucent">Back</a>
         </div>
+      </div>
     </div>
+  </div>
 
-    <div class="container-fluid  pull-up">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card m-b-30">
-                    <div class="card-body ">
-                        <form [formGroup]="userForm">
-                            <div class="user-profile">
-                                <figure>
-                                    <img [src]="imageUrl?imageUrl:'assets/img/users/defaultuser.jpg'">
-                                </figure>
-                                <div class="upload-avatar">
-                                    <input type="file" id="myfile" name="myfile" accept="image/*"
-                                        (change)="onImageSelect($event)">
-                                    <span class="overlay">+</span>
-                                </div>
-                                <mat-error *ngIf="imageFlag">Image Required!</mat-error>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <mat-form-field class="row col-12" appearance="outline">
-                                        <mat-label for="first_name">First Name</mat-label>
-                                        <input #space (keydown.space)="!space.value?$event.preventDefault():null"
-                                            matInput type="text" formControlName="first_name" id="first_name">
-                                        <mat-error
-                                            *ngIf="userForm.controls.first_name.touched && userForm.controls.first_name.hasError('required')">
-                                            First Name Required! </mat-error>
-                                        <mat-error
-                                            *ngIf="userForm.controls.first_name.touched && userForm.controls.first_name.hasError('pattern')">
-                                            First Name invalid! </mat-error>
-                                        <mat-error
-                                            *ngIf="userForm.controls.first_name.touched && userForm.controls.first_name.hasError('maxlength')">
-                                            Max Character 15! </mat-error>
-                                        <mat-error
-                                            *ngIf="userForm.controls.first_name.touched && userForm.controls.first_name.hasError('minlength')">
-                                            Min Character 3! </mat-error>
-                                    </mat-form-field>
-
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <mat-form-field class="row col-12" appearance="outline">
-                                        <mat-label for="last_name">Last Name</mat-label>
-                                        <input matInput type="text" #spac
-                                            (keydown.space)="!spac.value?$event.preventDefault():null"
-                                            formControlName="last_name" id="last_name">
-                                        <mat-error
-                                            *ngIf="userForm.controls.last_name.touched && userForm.controls.last_name.hasError('required')">
-                                            Last Name Required! </mat-error>
-                                        <mat-error
-                                            *ngIf="userForm.controls.last_name.touched && userForm.controls.last_name.hasError('pattern')">
-                                            Last Name invalid! </mat-error>
-                                        <mat-error
-                                            *ngIf="userForm.controls.last_name.touched && userForm.controls.last_name.hasError('minlength')">
-                                            Min Character length 3! </mat-error>
-                                        <mat-error
-                                            *ngIf="userForm.controls.last_name.touched && userForm.controls.last_name.hasError('maxlength')">
-                                            Max Character length 15! </mat-error>
-                                    </mat-form-field>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <mat-form-field class="row col-12" appearance="outline">
-                                        <mat-label for="email">Email</mat-label>
-                                        <input type="text" matInput id="email" formControlName="email" placeholder="">
-                                        <mat-error
-                                            *ngIf="userForm.controls.email.touched && userForm.controls.email.hasError('required')">
-                                            Email Required! </mat-error>
-                                        <mat-error
-                                            *ngIf="userForm.controls.email.touched && userForm.controls.email.hasError('email')">
-                                            Email invalid! </mat-error>
-                                    </mat-form-field>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <mat-form-field class="row col-12" appearance="outline">
-                                        <mat-label for="password">Password</mat-label>
-                                        <input matInput type="password" formControlName="password" id="password">
-                                        <mat-error
-                                            *ngIf="userForm.controls.password.touched && userForm.controls.password.hasError('required')">
-                                            Password Required! </mat-error>
-                                        <mat-error
-                                            *ngIf="userForm.controls.password.touched && userForm.controls.password.hasError('pattern')">
-                                            Password invalid! </mat-error>
-                                        <mat-error
-                                            *ngIf="userForm.controls.password.touched && userForm.controls.password.hasError('minlength')">
-                                            Password Min Length 8! </mat-error>
-                                    </mat-form-field>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <mat-form-field class="row col-12" appearance="outline">
-                                        <mat-label for="phone_number">Phone Number</mat-label>
-                                        <input type="text" matInput formControlName="phone_number" id="phone_number">
-                                        <mat-error
-                                            *ngIf="userForm.controls.phone_number.touched && userForm.controls.phone_number.hasError('required')">
-                                            Phone Number Required! </mat-error>
-                                        <mat-error
-                                            *ngIf="userForm.controls.phone_number.touched && userForm.controls.phone_number.hasError('pattern')">
-                                            Phone Number invalid! </mat-error>
-                                        <mat-error
-                                            *ngIf="userForm.controls.phone_number.touched && userForm.controls.phone_number.hasError('maxlength')">
-                                            Phone Number Max Length 15! </mat-error>
-                                        <mat-error
-                                            *ngIf="userForm.controls.phone_number.touched && userForm.controls.phone_number.hasError('minlength')">
-                                            Phone Number Min Length 3! </mat-error>
-                                    </mat-form-field>
-                                </div>
-                            </div>
-                            <div class="form-row" [formGroup]="userForm.get('permissions')">
-                                <div class="col-6">
-                                    <mat-checkbox color="primary" formControlName="manage_users" class="example-margin" >Manage Users</mat-checkbox>
-                                </div>
-                                <div class="col-6">
-                                    <mat-checkbox color="primary" formControlName="walkthrough" class="example-margin" >Walkthrough</mat-checkbox>
-                                </div>
-                                <div class="col-6">
-                                    <mat-checkbox color="primary" formControlName="bank_list"  class="example-margin" >Bank List</mat-checkbox>
-                                </div>
-                                <div class="col-6">
-                                    <mat-checkbox color="primary" formControlName="manage_updates" class="example-margin" >Manage Updates</mat-checkbox>
-                                </div>
-                                <div class="col-6">
-                                    <mat-checkbox color="primary" formControlName="notifications" class="example-margin" >Notifications</mat-checkbox>
-                                </div><div class="col-6">
-                                    <mat-checkbox color="primary" formControlName="customer_support" class="example-margin" >Customer Support</mat-checkbox>
-                                </div>
-                                <div class="col-6">
-                                    <mat-checkbox color="primary" formControlName="wallet_address" class="example-margin" >Wallet Address</mat-checkbox>
-                                </div>
-                                <div class="col-6">
-                                    <mat-checkbox color="primary" formControlName="requests" class="example-margin" >Requests</mat-checkbox>
-                                </div>
-                                <div class="col-6">
-                                    <mat-checkbox color="primary" formControlName="analytics" class="example-margin" >Analytics</mat-checkbox>
-                                </div>
-                                <div class="col-6">
-                                    <mat-checkbox color="primary" formControlName="rate_change" class="example-margin" >Rate Change</mat-checkbox>
-                                </div>
-                                <div class="col-6">
-                                    <mat-checkbox color="primary" formControlName="refer_and_earn" class="example-margin" >Refer and Earn</mat-checkbox>
-                                </div>
-                                
-                            </div>
-                            <div class="form-group">
-                                <button class="btn btn-primary" (click)="addUser()">Add</button>
-                            </div>
-                        </form>
-                    </div>
+  <div class="container-fluid  pull-up">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card m-b-30">
+          <div class="card-body ">
+            <form [formGroup]="userForm">
+              <div class="user-profile">
+                <figure>
+                  <img [src]="imageUrl?imageUrl:'assets/img/users/defaultuser.jpg'">
+                </figure>
+                <div class="upload-avatar">
+                  <input type="file" id="myfile" name="myfile" accept="image/*" (change)="onImageSelect($event)">
+                  <span class="overlay">+</span>
                 </div>
-            </div>
+                <mat-error *ngIf="imageFlag">Image Required!</mat-error>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <mat-form-field class="row col-12" appearance="outline">
+                    <mat-label for="first_name">First Name</mat-label>
+                    <input #space (keydown.space)="!space.value?$event.preventDefault():null" matInput type="text"
+                      formControlName="first_name" id="first_name">
+                    <mat-error
+                      *ngIf="userForm.controls.first_name.touched && userForm.controls.first_name.hasError('required')">
+                      First Name Required! </mat-error>
+                    <mat-error
+                      *ngIf="userForm.controls.first_name.touched && userForm.controls.first_name.hasError('pattern')">
+                      First Name invalid! </mat-error>
+                    <mat-error
+                      *ngIf="userForm.controls.first_name.touched && userForm.controls.first_name.hasError('maxlength')">
+                      Max Character 15! </mat-error>
+                    <mat-error
+                      *ngIf="userForm.controls.first_name.touched && userForm.controls.first_name.hasError('minlength')">
+                      Min Character 3! </mat-error>
+                  </mat-form-field>
+
+                </div>
+                <div class="form-group col-md-6">
+                  <mat-form-field class="row col-12" appearance="outline">
+                    <mat-label for="last_name">Last Name</mat-label>
+                    <input matInput type="text" #spac (keydown.space)="!spac.value?$event.preventDefault():null"
+                      formControlName="last_name" id="last_name">
+                    <mat-error
+                      *ngIf="userForm.controls.last_name.touched && userForm.controls.last_name.hasError('required')">
+                      Last Name Required! </mat-error>
+                    <mat-error
+                      *ngIf="userForm.controls.last_name.touched && userForm.controls.last_name.hasError('pattern')">
+                      Last Name invalid! </mat-error>
+                    <mat-error
+                      *ngIf="userForm.controls.last_name.touched && userForm.controls.last_name.hasError('minlength')">
+                      Min Character length 3! </mat-error>
+                    <mat-error
+                      *ngIf="userForm.controls.last_name.touched && userForm.controls.last_name.hasError('maxlength')">
+                      Max Character length 15! </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <mat-form-field class="row col-12" appearance="outline">
+                    <mat-label for="email">Email</mat-label>
+                    <input type="text" matInput id="email" formControlName="email" placeholder="">
+                    <mat-error *ngIf="userForm.controls.email.touched && userForm.controls.email.hasError('required')">
+                      Email Required! </mat-error>
+                    <mat-error *ngIf="userForm.controls.email.touched && userForm.controls.email.hasError('email')">
+                      Email invalid! </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="form-group col-md-6">
+                  <mat-form-field class="row col-12" appearance="outline">
+                    <mat-label for="password">Password</mat-label>
+                    <input matInput type="password" formControlName="password" id="password">
+                    <mat-error
+                      *ngIf="userForm.controls.password.touched && userForm.controls.password.hasError('required')">
+                      Password Required! </mat-error>
+                    <mat-error
+                      *ngIf="userForm.controls.password.touched && userForm.controls.password.hasError('pattern')">
+                      Password invalid! </mat-error>
+                    <mat-error
+                      *ngIf="userForm.controls.password.touched && userForm.controls.password.hasError('minlength')">
+                      Password Min Length 8! </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <mat-form-field class="row col-12" appearance="outline">
+                    <mat-label for="phone_number">Phone Number</mat-label>
+                    <input type="text" matInput formControlName="phone_number" id="phone_number">
+                    <mat-error
+                      *ngIf="userForm.controls.phone_number.touched && userForm.controls.phone_number.hasError('required')">
+                      Phone Number Required! </mat-error>
+                    <mat-error
+                      *ngIf="userForm.controls.phone_number.touched && userForm.controls.phone_number.hasError('pattern')">
+                      Phone Number invalid! </mat-error>
+                    <mat-error
+                      *ngIf="userForm.controls.phone_number.touched && userForm.controls.phone_number.hasError('maxlength')">
+                      Phone Number Max Length 15! </mat-error>
+                    <mat-error
+                      *ngIf="userForm.controls.phone_number.touched && userForm.controls.phone_number.hasError('minlength')">
+                      Phone Number Min Length 3! </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="form-row" formArrayName="permissions">
+                <table class="table">
+                  <tr>
+                    <td>Name</td>
+                    <td>Add</td>
+                    <td>Edit</td>
+                  </tr>
+                  <ng-container *ngFor="let item of getForms().controls; let i = index;">
+                    <tr [formGroupName]="item">
+                      <td>
+                          {{ permissionItems[i]['name'] }}
+                      </td>
+                      <td>
+                        <mat-checkbox color="primary" formControlName="is_add_edit" class="example-margin"></mat-checkbox>
+                      </td>
+                      <td>
+                        <mat-checkbox color="primary" formControlName="is_view" class="example-margin"></mat-checkbox>
+                      </td>
+                    </tr>
+                  </ng-container>
+
+                </table>
+              </div>
+              <div class="form-group">
+                <button class="btn btn-primary" (click)="addUser()">Add</button>
+              </div>
+            </form>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </section>

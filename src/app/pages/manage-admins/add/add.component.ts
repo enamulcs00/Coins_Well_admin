@@ -1,10 +1,10 @@
 import { ToastrService } from 'ngx-toastr';
 import { urls } from 'src/app/_services/urls';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { CommonService } from 'src/app/_services/common.service';
 import { environment } from 'src/environments/environment';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
 	selector: 'app-add',
@@ -18,7 +18,9 @@ export class AddComponent implements OnInit {
 	userDoc: any;
 	imageUrl: any;
 	imageFlag: boolean = false;
-	constructor(private fb: FormBuilder, private commn_: CommonService, private toaster: ToastrService, private router: Router) {
+	userId: any;
+	permissionItems: any;
+	constructor(private fb: FormBuilder, private commn_: CommonService, private toaster: ToastrService, private router: Router, private route: ActivatedRoute) {
 		this.userForm = this.fb.group({
 			phone_number: [null, [Validators.required, Validators.pattern(/^([0-9])*$/), Validators.maxLength(15), Validators.minLength(7)]],
 			first_name: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(15), Validators.pattern(new RegExp("\\S"))]],
@@ -26,23 +28,42 @@ export class AddComponent implements OnInit {
 			image: [null],
 			email: [null, [Validators.required, Validators.email]],
 			password: [null, [Validators.required, Validators.pattern(new RegExp("\\S")), Validators.minLength(8)]],
-			permissions : this.fb.group({
-				manage_users : [null],
-				walkthrough : [null],
-				bank_list : [null],
-				manage_updates : [null],
-				notifications : [null],
-				customer_support : [null],
-				wallet_address : [null],
-				requests : [null],
-				analytics : [null],
-				rate_change : [null],
-				refer_and_earn : [null]
-			})
+			permissions: this.fb.array([
+
+			])
 		});
 	}
 
+	
+
 	ngOnInit(): void {
+		this.route.queryParams.subscribe(params => {
+			this.userId = params.id;
+			console.log(this.userId);
+		});
+		this.getSubAdmin();
+	}
+
+
+	getSubAdmin() {
+		this.commn_.get(urls.getSubAdminList).subscribe(res => {
+			console.log(res);
+			this.permissionItems = res.data;
+			res?.data.forEach(element => {
+				this.getForms().push(this.fb.group(this.createForms(element)))
+			});;
+		})
+	}   
+	createForms(item:any) {
+		return this.fb.group({
+		  "module":item?.id,
+		  "is_add_edit": false,
+		  "is_view": false
+		});
+  }
+
+	getForms() {
+		return this.userForm.get('permissions') as FormArray;
 	}
 
 	// User Image Select

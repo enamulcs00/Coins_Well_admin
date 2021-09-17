@@ -77,13 +77,8 @@ export class ListComponent implements OnInit {
 
 	
 
-	navigate(id, key) {
-		if (key == 1) {
-			this.route.navigate(['users/edit'], { queryParams: { id: id } });
-		}
-		else {
-			this.route.navigate(['users/view'], { queryParams: { id: id } });
-		}
+	navigate(id) {
+			this.route.navigate(['manage-admins/add'], { queryParams: { id: id } });
 	}
 
 	deleteUser(row) {

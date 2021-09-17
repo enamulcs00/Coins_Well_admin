@@ -53,5 +53,6 @@ export const urls = {
     getFees : 'admin/get-total-service-fee-orders-graph/',
     referExportCsv:'admin/get-user-refer-history-without-pagination/',
     getMaintenance:'admin/get-website-maintenance-status/',
-    postMaintenance:'admin/update-website-maintenance-status/'
+    postMaintenance:'admin/update-website-maintenance-status/',
+    getSubAdminList:'sub-admin/get-all-subadmin-module'
 };
