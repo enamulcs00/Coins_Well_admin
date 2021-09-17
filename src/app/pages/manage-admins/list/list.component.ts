@@ -88,7 +88,7 @@ export class ListComponent implements OnInit {
 					this.toastr.success(res.message, "Success", { timeOut: 1050 });
 				this.setPage({
 					offset : this.page.pageNumber
-				})
+				});
 				}
 				else
 				{
