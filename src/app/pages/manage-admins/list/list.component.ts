@@ -84,10 +84,16 @@ export class ListComponent implements OnInit {
 	deleteUser(row) {
 		const callAPI = () => {
 			this._common.delete(`${urls.deleteSubAdmin}${row.id}/`).subscribe((res) => {
-				this.toastr.success(res.message, "Success", { timeOut: 1050 });
+				if(res.code==200){
+					this.toastr.success(res.message, "Success", { timeOut: 1050 });
 				this.setPage({
 					offset : this.page.pageNumber
 				})
+				}
+				else
+				{
+					this.toastr.error(res.message,"Error");
+				}
 			});
 		}
 		this._common.confirm("Confirm", "Do you want to  Delete user ?").subscribe(res => {

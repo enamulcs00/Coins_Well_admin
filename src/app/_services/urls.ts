@@ -57,7 +57,7 @@ export const urls = {
     getSubAdminList:'sub-admin/get-all-subadmin-module',
     addSubAdmin  : 'sub-admin/create/',
     getSubAdminById : 'sub-admin/get-details-by-id/',
-    deleteSubAdmin:'api/sub-admin/delete/',
+    deleteSubAdmin:'sub-admin/delete/',
     subAdminList:'sub-admin/get-all-pagination-list/',
     changeSubAdminStatus:'sub-admin/change-status/',
     editSubAdminStatus:'sub-admin/update-details/'
