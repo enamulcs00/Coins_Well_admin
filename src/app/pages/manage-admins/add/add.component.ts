@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonService } from 'src/app/_services/common.service';
 import { environment } from 'src/environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Loading } from 'notiflix';
 
 @Component({
 	selector: 'app-add',
@@ -35,24 +36,36 @@ export class AddComponent implements OnInit {
 
 		// For edit sub admin
 		this.route.queryParams.subscribe(params => {
-			console.log("params",params);
 			this.adminId = params.id;
-			console.log("id", this.adminId);
 			this.getAdminInfo();
 		})
 	}
 
 	getAdminInfo() {
+		Loading.circle();
 		this.commn_.get(urls.getSubAdminById+this.adminId).subscribe((data : any)=>{
-			console.log("Data", data);
+			this.fillAdminInfo(data.data);
+			Loading.remove();
+		},() => {
+			Loading.remove();
 		});
+	}
+
+	fillAdminInfo(userInfo : any) {
+		userInfo.permissions = userInfo.permissions.map(x=>{
+			x.module = x.module.id
+			return x;
+		})
+		this.userForm.patchValue(
+			userInfo
+		);
+		this.imageUrl = environment.homeURL + userInfo.image.media_file;
 	}
 
 
 	ngOnInit(): void {
 		this.route.queryParams.subscribe(params => {
 			this.userId = params.id;
-			console.log(this.userId);
 		});
 		this.getSubAdmin();
 	}
@@ -69,7 +82,7 @@ export class AddComponent implements OnInit {
 	}
 	createForms(item: any) : FormGroup {
 		return this.fb.group({
-			"module": item?.id,
+			"module": [null, [Validators.required]],
 			"is_add_edit": false,
 			"is_view": false
 		});
@@ -109,17 +122,36 @@ export class AddComponent implements OnInit {
 
 	addUser() {
 		if (this.userForm.valid) {	
-			this.commn_.post(urls.addSubAdmin, this.userForm.value).subscribe(res => {
-				if (res.code == 200) {
-					this.toaster.success(res.message, "Success", { timeOut: 1050 });
-					this.router.navigate(['/manage-admins']);
-				}
-				else {
-					this.toaster.error(res.message, "Error", { timeOut: 1050 });
-				}
-			});
+			Loading.circle();
+			let url = urls.addSubAdmin;
+			if(this.adminId != null) {
+				url = urls.editSubAdminStatus + this.adminId+'/';
+				this.commn_.put(url, this.userForm.value).subscribe(res => {
+					if (res.code == 200) {
+						this.toaster.success(res.message, "Success", { timeOut: 1050 });
+						this.router.navigate(['/manage-admins']);
+					}
+					else {
+						this.toaster.error(res.message, "Error", { timeOut: 1050 });
+					}
+					Loading.remove();
+				});
+			} else {
+				this.commn_.post(url, this.userForm.value).subscribe(res => {
+					if (res.code == 200) {
+						this.toaster.success(res.message, "Success", { timeOut: 1050 });
+						this.router.navigate(['/manage-admins']);
+					}
+					else {
+						this.toaster.error(res.message, "Error", { timeOut: 1050 });
+					}
+					Loading.remove();
+				});
+			}
+			
 		} else {
 			this.userForm.markAllAsTouched();
+			Loading.remove();
 		}
 	}
 

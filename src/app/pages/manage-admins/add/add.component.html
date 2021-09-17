@@ -4,7 +4,7 @@
 			<div class="col-12 text-white p-t-40 p-b-90">
 				<div class="ex-main">
 					<h4 class=""> <span class="btn btn-white-translucent">
-							<i class="mdi mdi-account"></i></span> Add User
+							<i class="mdi mdi-account"></i></span> {{ (adminId)?'Edit':'Add' }} Sub Admin
 					</h4>
 					<a routerLink="/manage-admins" class="btn btn-white-translucent">Back</a>
 				</div>
@@ -147,7 +147,7 @@
 								</table>
 							</div>
 							<div class="form-group">
-								<button class="btn btn-primary" (click)="addUser()">Add</button>
+								<button class="btn btn-primary" (click)="addUser()">{{ (adminId)?'Edit':'Add' }}</button>
 							</div>
 						</form>
 					</div>
