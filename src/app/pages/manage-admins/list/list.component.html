@@ -23,6 +23,10 @@
                 <div class="card m-b-30">
                     <div class="card-header seachbar">
                         <h5></h5>
+                        <div class="form-group col-md-4 pl-0 pr-0 mb-0">
+                            <input type="text" name="searchField" (keyup)="searchHere()" [(ngModel)]="searchData.value" class="form-control"
+                                id="searchField" placeholder="Search">
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive" id="users-list-page">

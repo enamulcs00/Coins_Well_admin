@@ -61,6 +61,7 @@ export class ListComponent implements OnInit {
 	};
 
 	baseUrl: string = environment.homeURL;
+	timeOut: number;
 	constructor(private _common: CommonService, private toastr: ToastrService, private route: Router) {
 		this.page.pageNumber = 0;
 		this.page.size = 20;
@@ -79,6 +80,11 @@ export class ListComponent implements OnInit {
 
 	navigate(id) {
 			this.route.navigate(['manage-admins/add'], { queryParams: { id: id } });
+	}
+   
+	searchHere() {
+		clearTimeout(this.timeOut);
+		this.timeOut = setTimeout(() => { this.searchData.event.next() }, 1000);
 	}
 
 	deleteUser(row) {
