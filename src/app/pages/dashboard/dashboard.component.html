@@ -43,7 +43,7 @@
 
 
                         <div class=" text-center">
-                            <h3 class="mt-2 mb-2"> {{items?.new_users || '-'}} </h3>
+                            <h3 class="mt-2 mb-2"> {{ items?.new_users || '-'}} </h3>
                         </div>
                         <div class="text-overline ">
                             New Users
@@ -52,7 +52,7 @@
                 </div>
             </div>
             <div class="col m-b-30">
-                <a  class="d-block">
+                <a class="d-block">
                     <div class="card ">
                         <div routerLink="/banknamelist" class="text-center card-body">
                             <div class="text-info">
@@ -126,13 +126,14 @@
         </div> -->
         <div class="row">
             <div class="col-md-3 m-b-30" *ngFor="let card of cards">
-                <a class="card d-block" >
+                <a class="card d-block">
                     <div class="text-center">
                         <div class="both_content">
                             <div class="text-success">
                                 <div class="avatar avatar-sm">
                                     <figure>
-                                        <img [src]="'https://python.appgrowthcompany.com'+card?.logo?.media_file" alt="">
+                                        <img [src]="'https://python.appgrowthcompany.com'+card?.logo?.media_file"
+                                            alt="">
                                     </figure>
                                 </div>
                             </div>
@@ -166,8 +167,10 @@
                                     <i class="icon mdi  mdi-dots-vertical"></i> </a>
 
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <button class="dropdown-item" (click)="getRevenueGraph(2)" type="button">Weekly</button>
-                                    <button class="dropdown-item"  (click)="getRevenueGraph(3)" type="button">Monthly</button>
+                                    <button class="dropdown-item" (click)="getRevenueGraph(2)"
+                                        type="button">Weekly</button>
+                                    <button class="dropdown-item" (click)="getRevenueGraph(3)"
+                                        type="button">Monthly</button>
                                 </div>
                             </div>
                         </div>
@@ -193,8 +196,10 @@
                                     <i class="icon mdi  mdi-dots-vertical"></i> </a>
 
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <button class="dropdown-item" (click)="getOrderGraph(2)" type="button">Weekly</button>
-                                    <button class="dropdown-item"  (click)="getOrderGraph(3)" type="button">Monthly</button>
+                                    <button class="dropdown-item" (click)="getOrderGraph(2)"
+                                        type="button">Weekly</button>
+                                    <button class="dropdown-item" (click)="getOrderGraph(3)"
+                                        type="button">Monthly</button>
                                 </div>
                             </div>
                         </div>
@@ -220,8 +225,10 @@
                                     <i class="icon mdi  mdi-dots-vertical"></i> </a>
 
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <button class="dropdown-item" (click)="getNewOrderGraph(2)" type="button">Weekly</button>
-                                    <button class="dropdown-item"  (click)="getNewOrderGraph(3)" type="button">Monthly</button>
+                                    <button class="dropdown-item" (click)="getNewOrderGraph(2)"
+                                        type="button">Weekly</button>
+                                    <button class="dropdown-item" (click)="getNewOrderGraph(3)"
+                                        type="button">Monthly</button>
                                 </div>
                             </div>
                         </div>
@@ -236,8 +243,6 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
 </section>

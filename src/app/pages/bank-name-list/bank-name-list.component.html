@@ -1,74 +1,74 @@
 <section class="admin-content">
-  <div class="bg-dark">
-    <div class="container-fluid  m-b-30">
-      <div class="row">
-        <div class="col-12 text-white p-t-40 p-b-90">
-          <div class="ex-main">
-            <h4 class=""> <span class="btn btn-white-translucent">
-                <i class="icon-placeholder mdi mdi-account-card-details "></i></span> Bank List
-            </h4>
-            <div>
-              <a routerLink="/banknamelist/addbank" class="btn btn-white-translucent mr-3">Add</a>
-              <a href="javascript:void(0)" (click)="exportToCsv()" class="btn btn-white-translucent">Export CSV</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+	<div class="bg-dark">
+		<div class="container-fluid  m-b-30">
+			<div class="row">
+				<div class="col-12 text-white p-t-40 p-b-90">
+					<div class="ex-main">
+						<h4 class=""> <span class="btn btn-white-translucent">
+								<i class="icon-placeholder mdi mdi-account-card-details "></i></span> Bank List
+						</h4>
+						<div>
+							<a routerLink="/banknamelist/addbank" class="btn btn-white-translucent mr-3">Add</a>
+							<a href="javascript:void(0)" (click)="exportToCsv()"
+								class="btn btn-white-translucent">Export CSV</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-  <div class="container-fluid pull-up">
-    <div class="row">
-
-      <div class="col-md-12">
-        <div class="card m-b-30">
-          <div class="card-header seachbar">
-            <h5></h5>
-            <div class="form-group col-md-4 pl-0 pr-0 mb-0">
-              <input type="email" class="form-control" id="inputEmail4" [(ngModel)]="searchData.value"
-                placeholder="Bank name">
-              <div class="search-ic" (click)="searchHere()">
-                <i class="mdi mdi-magnify"></i>
-              </div>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="table-responsive" id="users-list-page">
-              <!-- [externalPaging]="true" [count]="page.totalElements" [offset]="page.pageNumber"
+	<div class="container-fluid pull-up">
+		<div class="row" id="bank-list-page">
+			<div class="col-md-12">
+				<div class="card m-b-30">
+					<div class="card-header seachbar">
+						<h5></h5>
+						<div class="form-group col-md-4 pl-0 pr-0 mb-0">
+							<input type="email" class="form-control" id="inputEmail4" [(ngModel)]="searchData.value"
+								placeholder="Bank name">
+							<div class="search-ic" (click)="searchHere()">
+								<i class="mdi mdi-magnify"></i>
+							</div>
+						</div>
+					</div>
+					<div class="card-body">
+						<div class="table-responsive" id="users-list-page">
+							<!-- [externalPaging]="true" [count]="page.totalElements" [offset]="page.pageNumber"
                                 [limit]="page.size" (page)="setPage($event)" -->
-              <ngx-datatable class="bootstrap" [scrollbarH]="true" [rows]="rows" [columnMode]="ColumnMode.force"
-                [limit]="10" [headerHeight]="50" [footerHeight]="50" rowHeight="auto" [externalPaging]="true"
-                [count]="page.totalElements" [offset]="page.pageNumber" [limit]="page.size" (page)="setPage($event)">
-                <ngx-datatable-column [width]="40" name="#" prop="#">
-                  <ng-template let-rowIndex="rowIndex" data-index="#i" ngx-datatable-cell-template>
-                    {{(((page.pageNumber * page.size)) + rowIndex)+1}}
-                  </ng-template>
-                </ngx-datatable-column>
+							<ngx-datatable class="bootstrap" [scrollbarH]="true" [rows]="rows"
+								[columnMode]="ColumnMode.force" [limit]="10" [headerHeight]="50" [footerHeight]="50"
+								rowHeight="auto" [externalPaging]="true" [count]="page.totalElements"
+								[offset]="page.pageNumber" [limit]="page.size" (page)="setPage($event)">
+								<ngx-datatable-column [width]="40" name="#" prop="#">
+									<ng-template let-rowIndex="rowIndex" data-index="#i" ngx-datatable-cell-template>
+										{{(((page.pageNumber * page.size)) + rowIndex)+1}}
+									</ng-template>
+								</ngx-datatable-column>
 
-                <ngx-datatable-column [width]="80" name="Image" prop="image">
-                  <ng-template let-row="row" ngx-datatable-cell-template>
-                    <div class="avatar avatar-sm " data-toggle="modal"
-                      (click)="ShowImage(row?.bank_image?.media_file?baseUrl+row?.bank_image?.media_file:'assets/img/users/user-1.jpg')">
-                      <img
-                        [src]="row?.bank_image?.media_file?baseUrl+row?.bank_image?.media_file:'assets/img/users/defaultuser.jpg'"
-                        class="avatar-img avatar-sm rounded-circle" alt="">
-                    </div>
-                  </ng-template>
-                </ngx-datatable-column>
+								<ngx-datatable-column [width]="80" name="Image" prop="image">
+									<ng-template let-row="row" ngx-datatable-cell-template>
+										<div class="avatar avatar-sm " data-toggle="modal"
+											(click)="ShowImage(row?.bank_image?.media_file?baseUrl+row?.bank_image?.media_file:'assets/img/users/user-1.jpg')">
+											<img [src]="row?.bank_image?.media_file?baseUrl+row?.bank_image?.media_file:'assets/img/users/defaultuser.jpg'"
+												class="avatar-img avatar-sm rounded-circle" alt="">
+										</div>
+									</ng-template>
+								</ngx-datatable-column>
 
-                <ngx-datatable-column [width]="100" name="Id" prop="id">
-                  <ng-template let-row="row" ngx-datatable-cell-template>
-                    {{ row?.id }}
-                  </ng-template>
-                </ngx-datatable-column>
+								<ngx-datatable-column [width]="100" name="Id" prop="id">
+									<ng-template let-row="row" ngx-datatable-cell-template>
+										{{ row?.id }}
+									</ng-template>
+								</ngx-datatable-column>
 
-                <ngx-datatable-column [width]="100" name="Bank  name" prop="name">
-                  <ng-template let-row="row" ngx-datatable-cell-template>
-                    {{row?.name}}
-                  </ng-template>
-                </ngx-datatable-column>
+								<ngx-datatable-column [width]="100" name="Bank  name" prop="name">
+									<ng-template let-row="row" ngx-datatable-cell-template>
+										{{row?.name}}
+									</ng-template>
+								</ngx-datatable-column>
 
-                <!-- <ngx-datatable-column name="Branch name" prop="branch">
+								<!-- <ngx-datatable-column name="Branch name" prop="branch">
                   <ng-template let-row="row" ngx-datatable-cell-template>
                     {{row?.branch}}
                   </ng-template>
@@ -78,37 +78,39 @@
                     {{row?.ifsc_code}}
                   </ng-template>
                 </ngx-datatable-column> -->
-                <ngx-datatable-column name="ACTION" prop="status">
-                  <ng-template let-row="row" ngx-datatable-cell-template>
-                    <ul class="action">
-                      <li><a routerLink="/banknamelist/editbank" [queryParams]="{ id: row.id}"
-                          class="btn btn-primary"><i class="mdi mdi-pen" title="Edit"></i></a></li>
-                      <li>
-                        <a class="btn btn-danger" href="javascript:void(0)" (click)=" Delete(row?.id)">
-                          <i class="mdi mdi-delete" title="Delete"></i>
-                        </a>
-                      </li>
-                    </ul>
-                  </ng-template>
-                </ngx-datatable-column>
-              </ngx-datatable>
-            </div>
+								<ngx-datatable-column name="ACTION" prop="status">
+									<ng-template let-row="row" ngx-datatable-cell-template>
+										<ul class="action">
+											<li><a routerLink="/banknamelist/editbank" [queryParams]="{ id: row.id}"
+													class="btn btn-primary"><i class="mdi mdi-pen" title="Edit"></i></a>
+											</li>
+											<li>
+												<a class="btn btn-danger" href="javascript:void(0)"
+													(click)=" Delete(row?.id)">
+													<i class="mdi mdi-delete" title="Delete"></i>
+												</a>
+											</li>
+										</ul>
+									</ng-template>
+								</ngx-datatable-column>
+							</ngx-datatable>
+						</div>
 
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
 
 <!-- Modal -->
 <div class="modal fade userclick" id="userclick" tabindex="-1" role="dialog" aria-labelledby="userclickTitle"
-  aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-body text-center">
-        <img [src]="imgurl" alt="">
-      </div>
-    </div>
-  </div>
+	aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-body text-center">
+				<img [src]="imgurl" alt="">
+			</div>
+		</div>
+	</div>
 </div>

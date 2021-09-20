@@ -1,54 +1,55 @@
 <div class="container-fluid pull-up">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card m-b-30">
-          <div class="card-header seachbar">
-            <h5></h5>
-            <div class="form-group col-md-4 pl-0 pr-0 mb-0">
-              <input  class="form-control" id="inputEmail4" placeholder="Search" [(ngModel)]="searchText" (keyup)="changeText()" />
-              <div class="search-ic">
-                <i class="mdi mdi-magnify"></i>
-              </div>
-            </div>
-          </div>
-          <div class="card-body">
-			<ngx-datatable class="bootstrap" [scrollbarH]="true" [rows]="rows" [columnMode]="ColumnMode.force" [limit]="10"
-			[headerHeight]="50" [footerHeight]="50" rowHeight="auto" [externalPaging]="true" [count]="page.totalElements"
-			[offset]="page.pageNumber" [limit]="page.size" (page)="setPage($event)">
-			<ngx-datatable-column [width]="40" name="#" prop="#">
-			  <ng-template let-rowIndex="rowIndex" data-index="#i" ngx-datatable-cell-template>
-				{{(((page.pageNumber * page.size)) + rowIndex)+1}}
-			  </ng-template>
-			</ngx-datatable-column>
-			<ngx-datatable-column [width]="80" name="SEND TYPE" prop="SEND TYPE">
-				<ng-template let-row="row" data-index="#i" ngx-datatable-cell-template>
-				  {{row?.notification_type}}
-				</ng-template>
-			  </ngx-datatable-column>
-			  <ngx-datatable-column [width]="80" name="USER" prop="USER">
-				<ng-template let-row="row" data-index="#i" ngx-datatable-cell-template>
-				  {{row?.user}}
-				</ng-template>
-			  </ngx-datatable-column>
-			  <ngx-datatable-column [width]="90" name="NOTIFICATION MODE" prop="NOTIFICATION MODE">
-				<ng-template let-row="row" data-index="#i" ngx-datatable-cell-template>
-				  {{row?.notification_mode}}
-				</ng-template>
-			  </ngx-datatable-column>
-			  <ngx-datatable-column [width]="80" name="TITLE" prop="TITLE">
-				<ng-template let-row="row" data-index="#i" ngx-datatable-cell-template>
-				  {{row?.title}}
-				</ng-template>
-			  </ngx-datatable-column>
-			  <ngx-datatable-column [width]="80" name="MESSAGE" prop="MESSAGE">
-				<ng-template let-row="row" data-index="#i" ngx-datatable-cell-template>
-				  {{row?.message}}
-				</ng-template>
-			  </ngx-datatable-column>
-			</ngx-datatable>
-            
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card m-b-30">
+				<div class="card-header seachbar">
+					<h5></h5>
+					<div class="form-group col-md-4 pl-0 pr-0 mb-0">
+						<input class="form-control" id="inputEmail4" placeholder="Search" [(ngModel)]="searchText"
+							(keyup)="changeText()" />
+						<div class="search-ic">
+							<i class="mdi mdi-magnify"></i>
+						</div>
+					</div>
+				</div>
+				<div class="card-body" id="notifiations-list-page">
+					<ngx-datatable class="bootstrap" [scrollbarH]="true" [rows]="rows" [columnMode]="ColumnMode.force"
+						[limit]="10" [headerHeight]="50" [footerHeight]="50" rowHeight="auto" [externalPaging]="true"
+						[count]="page.totalElements" [offset]="page.pageNumber" [limit]="page.size"
+						(page)="setPage($event)">
+						<ngx-datatable-column [width]="40" name="#" prop="#">
+							<ng-template let-rowIndex="rowIndex" data-index="#i" ngx-datatable-cell-template>
+								{{(((page.pageNumber * page.size)) + rowIndex)+1}}
+							</ng-template>
+						</ngx-datatable-column>
+						<ngx-datatable-column [width]="80" name="SEND TYPE" prop="SEND TYPE">
+							<ng-template let-row="row" data-index="#i" ngx-datatable-cell-template>
+								{{row?.notification_type}}
+							</ng-template>
+						</ngx-datatable-column>
+						<ngx-datatable-column [width]="80" name="USER" prop="USER">
+							<ng-template let-row="row" data-index="#i" ngx-datatable-cell-template>
+								{{row?.user}}
+							</ng-template>
+						</ngx-datatable-column>
+						<ngx-datatable-column [width]="90" name="NOTIFICATION MODE" prop="NOTIFICATION MODE">
+							<ng-template let-row="row" data-index="#i" ngx-datatable-cell-template>
+								{{row?.notification_mode}}
+							</ng-template>
+						</ngx-datatable-column>
+						<ngx-datatable-column [width]="80" name="TITLE" prop="TITLE">
+							<ng-template let-row="row" data-index="#i" ngx-datatable-cell-template>
+								{{row?.title}}
+							</ng-template>
+						</ngx-datatable-column>
+						<ngx-datatable-column [width]="80" name="MESSAGE" prop="MESSAGE">
+							<ng-template let-row="row" data-index="#i" ngx-datatable-cell-template>
+								{{row?.message}}
+							</ng-template>
+						</ngx-datatable-column>
+					</ngx-datatable>
+				</div>
 			</div>
-        </div>
-      </div>
-    </div>
-  </div>
+		</div>
+	</div>
+</div>
