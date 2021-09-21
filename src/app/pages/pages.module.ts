@@ -65,12 +65,9 @@ import { VerificationModuleModule } from '../verification-module/verification-mo
 		ChatComponent,
 		FaqTemplateComponent,
 		NotificationTableComponent,
-<<<<<<< HEAD
 		SecurityComponent,
-		FeeComponent
-=======
+		FeeComponent,
 		TwoFactorPageComponent
->>>>>>> bf24a3a8dfbf8f24535cbee59429e7a47be05908
 	],
 	imports: [
 		MatFormFieldModule,
