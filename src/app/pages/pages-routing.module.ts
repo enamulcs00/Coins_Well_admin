@@ -24,6 +24,7 @@ import { RateChangeComponent } from './rate-change/rate-change.component';
 import { ReferAmountComponent } from './refer-amount/refer-amount.component';
 import { ChatComponent } from './chat/chat.component';
 import { PermissionGuard } from '../_gurads/permission.guard';
+import { TwoFactorPageComponent } from './two-factor/two-factor.component';
 
 const routes: Routes = [
 	{
@@ -191,6 +192,10 @@ const routes: Routes = [
 				path: 'chat',
 				component: ChatComponent
 			},
+			{
+				path : 'two-factor',
+				component : TwoFactorPageComponent
+			}
 		]
 
 	}

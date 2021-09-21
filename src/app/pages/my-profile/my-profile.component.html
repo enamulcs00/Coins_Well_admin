@@ -22,81 +22,97 @@
                                 <img [src]="imgurl?imgurl:'assets/img/users/user-1.jpg'" />
                             </figure>
                             <div class="upload-avatar">
-                                <input #myFIle type="file" id="myfile" name="myfile" (change)="uploadFile($event)"  accept="image/x-png,image/gif,image/jpeg" />
+                                <input #myFIle type="file" id="myfile" name="myfile" (change)="uploadFile($event)"
+                                    accept="image/x-png,image/gif,image/jpeg" />
                             </div>
                             <div class="hover_change" (click)="myFIle.click()">
                                 <h5 href="javascript:void(0)">+</h5>
                             </div>
                         </div>
-                    <form [formGroup]="updateProfile">
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="inputPassword4">First name</label>
-                                <mat-form-field class="row col-12" appearance="outline">
-                                    <input type="text" name="first_name" matInput placeholder="Name" formControlName="first_name">
-                                    <mat-error *ngIf="updateProfile.get('first_name').hasError('required')">Please enter first name.
-                                    </mat-error>
-                                    <mat-error *ngIf="updateProfile.get('first_name').hasError('validString')">Please enter alphabetic only.
-                                    </mat-error>
-                                    <mat-error *ngIf="!updateProfile.get('first_name').hasError('validString') && (updateProfile.get('first_name').hasError('minlength') || updateProfile.get('first_name').hasError('maxlength'))">First name has to be between 4 and 15 characters long.
-                                    </mat-error>
-                                </mat-form-field>
+                        <form [formGroup]="updateProfile">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputPassword4">First name</label>
+                                    <mat-form-field class="row col-12" appearance="outline">
+                                        <input type="text" name="first_name" matInput placeholder="Name"
+                                            formControlName="first_name">
+                                        <mat-error *ngIf="updateProfile.get('first_name').hasError('required')">Please
+                                            enter first name.
+                                        </mat-error>
+                                        <mat-error *ngIf="updateProfile.get('first_name').hasError('validString')">
+                                            Please enter alphabetic only.
+                                        </mat-error>
+                                        <mat-error
+                                            *ngIf="!updateProfile.get('first_name').hasError('validString') && (updateProfile.get('first_name').hasError('minlength') || updateProfile.get('first_name').hasError('maxlength'))">
+                                            First name has to be between 4 and 15 characters long.
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputPassword4">Last name</label>
+                                    <mat-form-field class="row col-12" appearance="outline">
+                                        <input type="text" name="last_name" matInput placeholder="Name"
+                                            formControlName="last_name">
+                                        <mat-error *ngIf="updateProfile.get('last_name').hasError('required')">Please
+                                            enter last name.
+                                        </mat-error>
+                                        <mat-error *ngIf="updateProfile.get('last_name').hasError('validString')">Please
+                                            enter alphabetic only.
+                                        </mat-error>
+                                        <mat-error
+                                            *ngIf="!updateProfile.get('last_name').hasError('validString') && (updateProfile.get('last_name').hasError('minlength') || updateProfile.get('last_name').hasError('maxlength'))">
+                                            Last name has to be between 4 and 15 characters long.
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputAddress">Email</label>
+                                    <mat-form-field class="row col-12" appearance="outline">
+                                        <input type="text" name="email" matInput placeholder="Email"
+                                            formControlName="email">
+                                        <mat-error
+                                            *ngIf="!updateProfile.get('email').hasError('validEmail') && updateProfile.get('email').hasError('required')">
+                                            Please enter email.
+                                        </mat-error>
+                                        <mat-error
+                                            *ngIf="updateProfile.get('email').hasError('email') || updateProfile.get('email').hasError('validEmail')">
+                                            Please enter valid email.
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputAddress2">Phone Number</label>
+                                    <mat-form-field class="row col-12" appearance="outline">
+                                        <ngx-mat-intl-tel-input [enablePlaceholder]="true" [enableSearch]="true"
+                                            name="full_phone" formControlName="full_phone"
+                                            (countryChanged)="countryChanged($event)" inputPlaceholder="Phone number"
+                                            formControlName="phone">
+                                        </ngx-mat-intl-tel-input>
+                                        <mat-error *ngIf="updateProfile.get('phone').hasError('required')">Please enter
+                                            phone number.
+                                        </mat-error>
+                                        <mat-error *ngIf=" updateProfile.get('phone').hasError('validatePhoneNumber')">
+                                            *Invalid phone number..
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputCity">Address</label>
+                                    <mat-form-field class="row col-12" appearance="outline">
+                                        <input [type]="'text'" name="address" matInput placeholder="Address"
+                                            formControlName="address">
+                                        <mat-error *ngIf="updateProfile.get('address').hasError('required')">Please
+                                            enter address.
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
                             </div>
-                            <div class="form-group col-md-6">
-                                <label for="inputPassword4">Last name</label>
-                                <mat-form-field class="row col-12" appearance="outline">
-                                    <input type="text" name="last_name" matInput placeholder="Name" formControlName="last_name">
-                                    <mat-error *ngIf="updateProfile.get('last_name').hasError('required')">Please enter last name.
-                                    </mat-error>
-                                    <mat-error *ngIf="updateProfile.get('last_name').hasError('validString')">Please enter alphabetic only.
-                                    </mat-error>
-                                    <mat-error *ngIf="!updateProfile.get('last_name').hasError('validString') && (updateProfile.get('last_name').hasError('minlength') || updateProfile.get('last_name').hasError('maxlength'))">Last name has to be between 4 and 15 characters long.
-                                    </mat-error>
-                                </mat-form-field>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="inputAddress">Email</label>
-                                <mat-form-field class="row col-12" appearance="outline">
-                                    <input type="text" name="email" matInput placeholder="Email" formControlName="email">
-                                    <mat-error
-                        *ngIf="!updateProfile.get('email').hasError('validEmail') && updateProfile.get('email').hasError('required')">
-                        Please enter email.
-                    </mat-error>
-                    <mat-error
-                        *ngIf="updateProfile.get('email').hasError('email') || updateProfile.get('email').hasError('validEmail')">
-                        Please enter valid email.
-                    </mat-error>
-                                </mat-form-field>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="inputAddress2">Phone Number</label>
-                                <mat-form-field class="row col-12" appearance="outline">
-                                    <ngx-mat-intl-tel-input 
-                                        [enablePlaceholder]="true" [enableSearch]="true" name="full_phone"
-                                        formControlName="full_phone" (countryChanged)="countryChanged($event)"
-                                        inputPlaceholder="Phone number" formControlName="phone">
-                                    </ngx-mat-intl-tel-input>
-                                    <mat-error *ngIf="updateProfile.get('phone').hasError('required')">Please enter phone number.
-                                    </mat-error>
-                                    <mat-error *ngIf=" updateProfile.get('phone').hasError('validatePhoneNumber')">
-                                        *Invalid phone number..
-                                    </mat-error>
-                                </mat-form-field>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="inputCity">Address</label>
-                                <mat-form-field class="row col-12" appearance="outline">
-                                    <input [type]="'text'" name="address" matInput placeholder="Address" formControlName="address">
-                                    <mat-error *ngIf="updateProfile.get('address').hasError('required')">Please enter address.
-                                    </mat-error>
-                                </mat-form-field>
-                            </div>
-                        </div>
 
-                        <div class="form-group">
-                            <button class="btn btn-primary" (click)="Update()">{{ (isLoading)?'Processing...':'Update' }}</button>
-                        </div>
-                    </form>
+                            <div class="form-group">
+                                <button class="btn btn-primary" (click)="Update()">{{
+                                    (isLoading)?'Processing...':'Update' }}</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
