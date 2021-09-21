@@ -102,21 +102,25 @@
 							</div>
 							<div class="form-row">
 								<div class="form-group col-md-6">
-									<mat-form-field class="row col-12" appearance="outline">
-										<mat-label for="phone_number">Phone Number</mat-label>
-										<input type="text" matInput formControlName="phone_number" id="phone_number">
-										<mat-error
-											*ngIf="userForm.controls.phone_number.touched && userForm.controls.phone_number.hasError('required')">
-											Phone Number Required! </mat-error>
-										<mat-error
-											*ngIf="userForm.controls.phone_number.touched && userForm.controls.phone_number.hasError('pattern')">
-											Phone Number invalid! </mat-error>
-										<mat-error
-											*ngIf="userForm.controls.phone_number.touched && userForm.controls.phone_number.hasError('maxlength')">
-											Phone Number Max Length 15! </mat-error>
-										<mat-error
-											*ngIf="userForm.controls.phone_number.touched && userForm.controls.phone_number.hasError('minlength')">
-											Phone Number Min Length 3! </mat-error>
+									<mat-form-field class="example-full-width w-100" appearance="outline">
+										<span matPrefix>
+											<figure class="input-icon">
+												<img src="assets/images/auth/mob-icon.png" alt="">
+											</figure>
+										</span>
+										<ngx-mat-intl-tel-input 
+											[enablePlaceholder]="true"
+											[enableSearch]="true" 
+											name="full_phone" 
+											formControlName="full_phone"
+											(countryChanged)="countryChanged($event)" 
+											inputPlaceholder="Phone number">
+										</ngx-mat-intl-tel-input>
+										<mat-error *ngIf="userForm.get('full_phone').hasError('required')">Please enter phone number.
+										</mat-error>
+				
+										<mat-error *ngIf="userForm.get('full_phone')?.hasError('maxlength') || userForm.get('full_phone')?.hasError('minlength')">Phone number has to be between 7 and 15 characters long.
+										</mat-error>
 									</mat-form-field>
 								</div>
 							</div>

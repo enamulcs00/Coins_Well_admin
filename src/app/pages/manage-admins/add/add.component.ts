@@ -14,6 +14,7 @@ import { Loading } from 'notiflix';
 })
 export class AddComponent implements OnInit {
 	userForm: FormGroup;
+	selectedCountry: any;
 	userPic: any;
 	text: any;
 	imageUrl: any;
@@ -23,13 +24,14 @@ export class AddComponent implements OnInit {
 	adminId : any = null;
 	constructor(private fb: FormBuilder, private commn_: CommonService, private toaster: ToastrService, private router: Router, private route: ActivatedRoute) {
 		this.userForm = this.fb.group({
-			phone_number: [null, [Validators.required, Validators.pattern(/^([0-9])*$/), Validators.maxLength(15), Validators.minLength(7)]],
+			full_phone: [null, [Validators.required, Validators.minLength(11), Validators.maxLength(19)]],
+			phone_number: [null, [Validators.required]],
+			country_code: [null, Validators.required],
 			first_name: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(15), Validators.pattern(new RegExp("\\S"))]],
 			last_name: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(15), Validators.pattern(new RegExp("\\S"))]],
 			image: [null],
 			email: [null, [Validators.required, Validators.email]],
 			password: [null, [Validators.required, Validators.pattern(new RegExp("\\S")), Validators.minLength(8)]],
-			country_code : ['+91'],
 			permissions: this.fb.array([
 			])
 		});
@@ -41,6 +43,12 @@ export class AddComponent implements OnInit {
 				this.getAdminInfo();
 			}
 		})
+	}
+
+	countryChanged(event: any) {
+		if (event) {
+			this.selectedCountry = event;
+		}
 	}
 
 	getAdminInfo() {
@@ -61,7 +69,10 @@ export class AddComponent implements OnInit {
 		this.userForm.patchValue(
 			userInfo
 		);
-		this.imageUrl = environment.homeURL + userInfo.image.media_file;
+		this.userForm.get('full_phone').setValue(userInfo.country_code + userInfo.phone_number);
+		if(userInfo.image != null) {
+			this.imageUrl = environment.homeURL + userInfo.image.media_file;
+		}
 	}
 
 
@@ -120,6 +131,11 @@ export class AddComponent implements OnInit {
 	}
 
 	addUser() {
+		if (this.userForm.get('full_phone').value) {
+			let phones = this.userForm.get('full_phone').value.split('+'+this.selectedCountry.dialCode);
+			this.userForm.get('phone_number').setValue(phones[1]);
+			this.userForm.get('country_code').setValue('+' + this.selectedCountry.dialCode);
+		}
 		if (this.userForm.valid) {	
 			Loading.circle();
 			let url = urls.addSubAdmin;

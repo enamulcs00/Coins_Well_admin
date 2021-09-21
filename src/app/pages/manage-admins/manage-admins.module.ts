@@ -7,6 +7,7 @@ import { AddComponent } from './add/add.component';
 import { ListComponent } from './list/list.component';
 import { CoreModule } from 'src/app/core/core.module';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { NgxMatIntlTelInputModule } from 'src/app/ngx-input-tel';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 		CommonModule,
 		ManageAdminsRoutingModule,
 		CoreModule,
-		MatCheckboxModule
+		MatCheckboxModule,
+		NgxMatIntlTelInputModule
 	]
 })
 export class ManageAdminsModule { }

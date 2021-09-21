@@ -38,6 +38,8 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { RequestTableModule} from './request/request-table/request-table.module';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { TwoFactorPageComponent } from './two-factor/two-factor.component';
+import { VerificationModuleModule } from '../verification-module/verification-module.module';
 
 @NgModule({
 	declarations: [
@@ -60,7 +62,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 		AddNotificationComponent, 
 		ChatComponent,
 		FaqTemplateComponent,
-		NotificationTableComponent
+		NotificationTableComponent,
+		TwoFactorPageComponent
 	],
 	imports: [
 		MatFormFieldModule,
@@ -82,7 +85,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 		MatNativeDateModule,
 		MatInputModule,
 		NgxCurrencyModule,
-		MatSlideToggleModule
+		MatSlideToggleModule,
+		VerificationModuleModule
 	],
 	exports:[
 		MaterialExtensionsExperimentalModule,
