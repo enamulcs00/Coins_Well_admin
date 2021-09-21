@@ -104,6 +104,25 @@ export class TableContentComponent implements OnInit {
 			}
 		})
 	}
+   
+    userConfirm(row)
+	{
+		const callAPI = (x) => {
+			this._common.put(`${urls.twofactorkey}${row.id}/`,{is_two_factor_authentication_enable:x}).subscribe((res) => {
+				this.toastr.success(res.message, "Success", { timeOut: 1050 });
+				this.setPage({
+					offset : this.page.pageNumber
+				})
+			});
+		}
+		this._common.confirm("Confirm", "Do you want to disable two factor authentication for this user ?").subscribe(res => {
+			if (res) {
+				callAPI(res);
+			} else {
+				callAPI(res);
+			}
+		})
+	}
 
 	changeFlag(row) {
 		const callAPI = (param: any) => {

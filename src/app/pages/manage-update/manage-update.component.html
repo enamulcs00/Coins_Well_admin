@@ -67,6 +67,21 @@
                   aria-controls="rateInstruction" aria-selected="false" (click)="TabRef('rateInstruction')">
                   Rate Instructions</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" id="Security-tab-z" data-toggle="tab" href="#Security" role="tab"
+                  aria-controls="Security" aria-selected="false" (click)="TabRef('Security')">
+                  Security</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="Fee-tab-z" data-toggle="tab" href="#Fee" role="tab"
+                  aria-controls="Fee" aria-selected="false" (click)="TabRef('Fee')">
+                  Fee</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="Cookies_Service-tab-z" data-toggle="tab" href="#Cookies_Service" role="tab"
+                  aria-controls="Cookies_Service" aria-selected="false" (click)="TabRef('Cookies_Service')">
+                  Cookies Service</a>
+              </li>
             </ul>
             <div class="tab-content" id="myTabContent1">
               <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -106,7 +121,6 @@
               <div class="tab-pane fade faq_section show" id="faq" role="tabpanel" aria-labelledby="faq-tab">
                 <app-faq-template></app-faq-template>
               </div>
-
               <div class="tab-pane fade show" id="csupport" role="tabpanel" aria-labelledby="csupport-tab">
                 <form [formGroup]="contactUs">
                   <div class="form-row mt-3">
@@ -178,7 +192,6 @@
                   </div>
                 </form>
                 <button class="btn btn-primary" (click)="AboutUs()">{{isLoading?'Processing':'Save'}}</button>
-
                 <!-- <h4 class="pt-4 pl-4">Not Data Found</h4> -->
               </div>
               <div class="tab-pane fade show" id="companyaddress" role="tabpanel" aria-labelledby="companyaddress-tab">
@@ -192,7 +205,6 @@
                         <mat-error *ngIf="Address.controls['address'].hasError('required')">
                           Please enter company address
                         </mat-error>
-
                       </mat-form-field>
                     </div>
                   </div>
@@ -306,7 +318,51 @@
 
                 <button class="btn btn-primary" (click)="Features()">{{isLoading?'Processing':'Save'}}</button>
               </div>
-
+              <div class="tab-pane fade show" id="Security" role="tabpanel" aria-labelledby="Security-tab">
+                <form [formGroup]="Security">
+                  <div class="form-row mt-3">
+                    <div class="form-group col-md-12">
+                      <ckeditor #editor formControlName="security" type="divarea">
+                      </ckeditor>
+                      <mat-error *ngIf="Security.controls['security'].hasError('required')">
+                        Please enter Security
+                      </mat-error>
+                    </div>
+                  </div>
+                </form>
+                <button class="btn btn-primary" (click)="SecuritySubmit()">{{isLoading?'Processing':'Save'}}</button>
+                <!-- <h4 class="pt-4 pl-4">Not Data Found</h4> -->
+              </div>
+              <div class="tab-pane fade show" id="Fee" role="tabpanel" aria-labelledby="Fee-tab">
+                <form [formGroup]="Fee">
+                  <div class="form-row mt-3">
+                    <div class="form-group col-md-12">
+                      <ckeditor #editor formControlName="fee" type="divarea">
+                      </ckeditor>
+                      <mat-error *ngIf="Fee.controls['fee'].hasError('required')">
+                        Please enter Fee !
+                      </mat-error>
+                    </div>
+                  </div>
+                </form>
+                <button class="btn btn-primary" (click)="FeeSubmit()">{{isLoading?'Processing':'Save'}}</button>
+                <!-- <h4 class="pt-4 pl-4">Not Data Found</h4> -->
+              </div>
+              <div class="tab-pane fade show" id="Cookies_Service" role="tabpanel" aria-labelledby="Cookies_Service-tab">
+                <form [formGroup]="Cookies_Service">
+                  <div class="form-row mt-3">
+                    <div class="form-group col-md-12">
+                      <ckeditor #editor formControlName="cookies_service" type="divarea">
+                      </ckeditor>
+                      <mat-error *ngIf="Cookies_Service.controls['cookies_service'].hasError('required')">
+                        Please enter Cookies Service !
+                      </mat-error>
+                    </div>
+                  </div>
+                </form>
+                <button class="btn btn-primary" (click)="FeeSubmit()">{{isLoading?'Processing':'Save'}}</button>
+                <!-- <h4 class="pt-4 pl-4">Not Data Found</h4> -->
+              </div>
             </div>
           </div>
         </div>

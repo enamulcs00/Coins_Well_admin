@@ -116,9 +116,14 @@
             </ng-template>
         </ngx-datatable-column> -->
 
-		<ngx-datatable-column name="ACTION" prop="status">
+		<ngx-datatable-column name="ACTION" [width]="240" prop="status">
 			<ng-template let-row="row" ngx-datatable-cell-template>
 				<ul class="action">
+					<li>
+						<a href="javascript:void(0)" (click)="userConfirm(row)" class="btn btn-primary">
+							<i class="mdi mdi-key" title="userConfirm"></i>
+						</a>
+					</li>
 					<li><a href="javascript:void(0)" (click)="navigate(row?.id,2)" class="btn btn-primary"><i
 								class="mdi mdi-eye-settings" title="View"></i></a>
 					</li>

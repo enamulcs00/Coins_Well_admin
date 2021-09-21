@@ -62,5 +62,6 @@ export const urls = {
     changeSubAdminStatus:'sub-admin/change-status/',
     editSubAdminStatus:'sub-admin/update-details/',
     verifyOtp : 'user/two-factor-authentication/',
-    getProfile : 'admin/get-profile/'
+    getProfile : 'admin/get-profile/',
+    twofactorkey:'admin/change-user-two-factor-authentication-status/'
 };

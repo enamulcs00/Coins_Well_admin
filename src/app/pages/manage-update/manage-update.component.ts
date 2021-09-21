@@ -28,7 +28,8 @@ export class ManageUpdateComponent implements OnInit,AfterViewInit {
   long: any;
   geoCoder: any;
   selectedCountry: any;
-  contactUs:FormGroup
+  contactUs:FormGroup;
+  Security:FormGroup;
   bankDetailForm:FormGroup
   bankList: any = [];
   baseUrl:string = environment.homeURL
@@ -42,6 +43,8 @@ export class ManageUpdateComponent implements OnInit,AfterViewInit {
   procedure:FormGroup
   REF: any;
   features:FormGroup;
+  Fee:FormGroup;
+  Cookies_Service:FormGroup;
   rateInstruction:FormGroup;
   maintainance:boolean=false;
   constructor(public service: CommonService, private router: Router, private _noti: NotificationsService,private fb:FormBuilder,private _common:CommonService,private toastr:ToastrService) { 
@@ -50,6 +53,15 @@ export class ManageUpdateComponent implements OnInit,AfterViewInit {
     })
     this.About = this.fb.group({
       about:['',[Validators.required]]
+    })
+    this.Security = this.fb.group({
+      security:['',[Validators.required]]
+    })
+    this.Cookies_Service = this.fb.group({
+      cookies_service:['',[Validators.required]]
+    })
+    this.Fee=this.fb.group({
+      fee:['',[Validators.required]]
     })
     this.privacyPolicy = this.fb.group({
       privacy:['',[Validators.required]]
@@ -149,18 +161,21 @@ ngAfterViewInit(){
   	this.service.get('cms/get-details/').subscribe((res: any) => {
       console.log('CMS',res);
       this.UpdatesInfo = res?.data;
-      this.termsCondition.controls['terms'].setValue(res?.data?.terms_conditon)
+      this.termsCondition.controls['terms'].patchValue(res?.data?.terms_conditon)
        this.lat = res?.data?.latitude
        this.long = res?.data?.longitude
-       this.Address.controls['address'].setValue(res?.data?.address)
-       this.privacyPolicy.controls['privacy'].setValue(res?.data?.privacy_policy)
-       this.procedure.controls['paymentprocedure'].setValue(res?.data?.payment_instructions)
-       this.About.controls['about'].setValue(res?.data?.about_us)
-       this.contactUs.controls['email'].setValue(res.data.email)
-       this.contactUs.controls['phone'].setValue(res.data.phone_no)
-       this.contactUs.controls['telegram_phone_number'].setValue(res.data.telegram_phone_number)
-       this.features.controls['features'].setValue(res.data.features)
-       this.rateInstruction.controls['rateInstruction'].setValue(res.data.rate_instructions)
+       this.Address.controls['address'].patchValue(res?.data?.address)
+       this.privacyPolicy.controls['privacy'].patchValue(res?.data?.privacy_policy)
+       this.procedure.controls['paymentprocedure'].patchValue(res?.data?.payment_instructions)
+       this.About.controls['about'].patchValue(res?.data?.about_us)
+       this.contactUs.controls['email'].patchValue(res?.data?.email)
+       this.contactUs.controls['phone'].patchValue(res?.data?.phone_no)
+       this.contactUs.controls['telegram_phone_number'].patchValue(res?.data?.telegram_phone_number)
+       this.features.controls['features'].patchValue(res?.data?.features)
+       this.rateInstruction.controls['rateInstruction'].patchValue(res?.data?.rate_instructions);
+       this.Security.controls['security'].patchValue(res?.data?.security);
+       this.Fee.controls['fee'].patchValue(res?.data?.fee);
+       this.Cookies_Service.controls['cookies_service'].patchValue(res?.data?.cookies_service);
 		})
 }
 GetAdminBank(){
@@ -204,6 +219,37 @@ AboutUs(){
     this.About.markAllAsTouched()
   }
 }
+
+SecuritySubmit(){
+  this.isLoading=true;
+  if(this.Security.valid){
+    let obj ={"security":this.Security.controls['security'].value}
+    this.updateFn(obj)
+  }else{
+    this.About.markAllAsTouched()
+  }
+}
+
+Cookies_ServiceSubmit(){
+  this.isLoading=true;
+  if(this.Cookies_Service.valid){
+    let obj ={"cookies_service":this.Cookies_Service.controls['cookies_service'].value}
+    this.updateFn(obj)
+  }else{
+    this.About.markAllAsTouched()
+  }
+}
+
+FeeSubmit(){
+  this.isLoading=true;
+  if(this.Fee.valid){
+    let obj ={"fee":this.Fee.controls['fee'].value}
+    this.updateFn(obj)
+  }else{
+    this.About.markAllAsTouched()
+  }
+}
+
 Terms(){
   if(this.termsCondition.valid){
     let obj ={"terms_conditon":this.termsCondition.controls['terms'].value}
@@ -293,6 +339,7 @@ public AddressChange(address: any) {
   }
 
   RateInstruction(){
+    this.isLoading=true;
     if(this.rateInstruction.valid){
       let obj ={
         "rate_instructions":this.rateInstruction.controls['rateInstruction'].value}
