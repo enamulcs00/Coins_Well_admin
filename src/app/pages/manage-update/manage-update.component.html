@@ -9,8 +9,8 @@
                 <i class="mdi mdi-monitor"></i></span> Manage Update
             </h4>
             <div>
-              <mat-slide-toggle [(ngModel)]="maintainance" (change)="maintenanceStatus()" >Maintenance</mat-slide-toggle>
-          </div>
+              <mat-slide-toggle [(ngModel)]="maintainance" (change)="maintenanceStatus()">Maintenance</mat-slide-toggle>
+            </div>
           </div>
         </div>
       </div>
@@ -73,8 +73,8 @@
                   Security</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" id="Fee-tab-z" data-toggle="tab" href="#Fee" role="tab"
-                  aria-controls="Fee" aria-selected="false" (click)="TabRef('Fee')">
+                <a class="nav-link" id="Fee-tab-z" data-toggle="tab" href="#Fee" role="tab" aria-controls="Fee"
+                  aria-selected="false" (click)="TabRef('Fee')">
                   Fee</a>
               </li>
               <li class="nav-item">
@@ -83,8 +83,8 @@
                   Cookies Service</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" id="AML-tab-z" data-toggle="tab" href="#AML" role="tab"
-                  aria-controls="AML" aria-selected="false" (click)="TabRef('AML')">
+                <a class="nav-link" id="AML-tab-z" data-toggle="tab" href="#AML" role="tab" aria-controls="AML"
+                  aria-selected="false" (click)="TabRef('AML')">
                   AML</a>
               </li>
             </ul>
@@ -324,36 +324,13 @@
                 <button class="btn btn-primary" (click)="Features()">{{isLoading?'Processing':'Save'}}</button>
               </div>
               <div class="tab-pane fade show" id="Security" role="tabpanel" aria-labelledby="Security-tab">
-                <form [formGroup]="Security">
-                  <div class="form-row mt-3">
-                    <div class="form-group col-md-12">
-                      <ckeditor #editor formControlName="security" type="divarea">
-                      </ckeditor>
-                      <mat-error *ngIf="Security.controls['security'].hasError('required')">
-                        Please enter Security
-                      </mat-error>
-                    </div>
-                  </div>
-                </form>
-                <button class="btn btn-primary" (click)="SecuritySubmit()">{{isLoading?'Processing':'Save'}}</button>
-                <!-- <h4 class="pt-4 pl-4">Not Data Found</h4> -->
+				<app-security></app-security>
               </div>
               <div class="tab-pane fade show" id="Fee" role="tabpanel" aria-labelledby="Fee-tab">
-                <form [formGroup]="Fee">
-                  <div class="form-row mt-3">
-                    <div class="form-group col-md-12">
-                      <ckeditor #editor formControlName="fee" type="divarea">
-                      </ckeditor>
-                      <mat-error *ngIf="Fee.controls['fee'].hasError('required')">
-                        Please enter Fee !
-                      </mat-error>
-                    </div>
-                  </div>
-                </form>
-                <button class="btn btn-primary" (click)="FeeSubmit()">{{isLoading?'Processing':'Save'}}</button>
-                <!-- <h4 class="pt-4 pl-4">Not Data Found</h4> -->
+                <app-fee></app-fee>
               </div>
-              <div class="tab-pane fade show" id="Cookies_Service" role="tabpanel" aria-labelledby="Cookies_Service-tab">
+              <div class="tab-pane fade show" id="Cookies_Service" role="tabpanel"
+                aria-labelledby="Cookies_Service-tab">
                 <form [formGroup]="Cookies_Service">
                   <div class="form-row mt-3">
                     <div class="form-group col-md-12">
@@ -365,23 +342,130 @@
                     </div>
                   </div>
                 </form>
-                <button class="btn btn-primary" (click)="Cookies_ServiceSubmit()">{{isLoading?'Processing':'Save'}}</button>
+                <button class="btn btn-primary"
+                  (click)="Cookies_ServiceSubmit()">{{isLoading?'Processing':'Save'}}</button>
                 <!-- <h4 class="pt-4 pl-4">Not Data Found</h4> -->
               </div>
               <div class="tab-pane fade show" id="AML" role="tabpanel" aria-labelledby="AML-tab">
-                <form [formGroup]="AML">
-                  <div class="form-row mt-3">
-                    <div class="form-group col-md-12">
-                      <ckeditor #editor formControlName="aml" type="divarea">
-                      </ckeditor>
-                      <mat-error *ngIf="AML.controls['aml'].hasError('required')">
-                        Please enter aml !
-                      </mat-error>
-                    </div>
+                <div class="card faq-box">
+                  <div class="card-body">
+                    <form [formGroup]="AML">
+                      <div class="row mt-3">
+                        <div formArrayName="specification" class="col-12">
+                          <div class="row">
+							  
+                            <div class="col-12 text-right  mb-3">
+                              <div class="input_button input_button2">
+                                <button type="button" mat-button (click)="addNewSpecification()"
+                                  class="btn btn-primary">
+                                  Add More
+                                </button>
+                              </div>
+                            </div>
+                            <div class="col-6" *ngFor="let quantity of specification().controls; let i =index" [formGroupName]="i">
+                              <div class="custom-file form-group" >
+                                <input type="file" (change)="onDocumentSelect($event,i)" accept=".png, .jpg, .jpeg"
+                                  id="customFile" class="custom-file-input">
+                                <label for="customFile"
+                                  class="custom-file-label">{{(quantity.get('image').value?"Image.jpg":"Choose Image")}}</label>
+                                <div class="ssb">
+                                  <mat-error *ngIf="quantity.get('image').hasError('image')">
+                                    Please enter Image!
+                                  </mat-error>
+                                </div>
+                              </div>               
+                              <div class="form-group mt-2">
+                                <mat-form-field class="row col-12" appearance="outline">
+                                  <mat-label> Title</mat-label>
+                                  <input matInput type="text"  formControlName="title" />
+                                  <div class="ssb">
+                                    <mat-error *ngIf="quantity.get('title').hasError('required')">
+                                      Please enter title!
+                                    </mat-error>
+                                  </div>
+                                </mat-form-field>
+                              </div>
+                              <div class="form-group">
+                                <mat-form-field class="row col-12" appearance="outline">
+                                  <mat-label>Description</mat-label>
+                                  <textarea row="5" matInput type="text"  formControlName="heading" class="form-control" >
+								  </textarea>
+                                  <div class="ssb">
+                                    <mat-error *ngIf="quantity.get('heading').hasError('required')">
+                                      Please enter Description!
+                                    </mat-error>
+                                  </div>
+                                </mat-form-field>
+                              </div>
+                              <button class="btn btn-primary" (click)="removeSpecification(i)">
+                                Remove
+                              </button>
+                            </div>
+                          </div>
+                          <!-- <table class="table table-bordered" formArrayName="specification">
+                            <tr>
+                              <th width="20%">
+                                <div class="input_button input_button2">
+                                  <button type="button" mat-button (click)="addNewSpecification()"
+                                    class="btn btn-primary">
+                                    Add More
+                                  </button>
+                                </div>
+                              </th>
+                            </tr>
+                            <tr *ngFor="let quantity of specification().controls; let i = index" [formGroupName]="i">
+                              <td style="width: 40%">
+
+                                <mat-form-field class="row col-12" appearance="outline">
+                                  <mat-label> Title</mat-label>
+                                  <input matInput type="text" min="0" formControlName="title" />
+                                  <div class="ssb">
+                                    <mat-error *ngIf="quantity.get('title').hasError('required')">
+                                      Please enter title!
+                                    </mat-error>
+                                  </div>
+                                </mat-form-field>
+                              </td>
+                              <td style="width: 40%">
+                                <mat-form-field class="row col-12" appearance="outline">
+                                  <mat-label>Heading</mat-label>
+                                  <input matInput type="text" min="0" formControlName="heading" />
+                                  <div class="ssb">
+                                    <mat-error *ngIf="quantity.get('heading').hasError('required')">
+                                      Please enter Heading!
+                                    </mat-error>
+                                  </div>
+                                </mat-form-field>
+                              </td>
+                              <td style="width: 40%">
+                                <div class="custom-file">
+                                  <input type="file" (change)="onDocumentSelect($event,i)" accept=".png, .jpg, .jpeg"
+                                    id="customFile" class="custom-file-input">
+                                  <label for="customFile"
+                                    class="custom-file-label">{{(quantity.get('image').value?"Image.jpg":"Choose Image")}}</label>
+                                  <div class="ssb">
+                                    <mat-error *ngIf="quantity.get('image').hasError('image')">
+                                      Please enter Image!
+                                    </mat-error>
+                                  </div>
+                                </div>
+                              </td>
+
+                              <td style=" vertical-align: middle">
+                                <button class="btn btn-primary" (click)="removeSpecification(i)">
+                                  Remove
+                                </button>
+                              </td>
+                            </tr>
+                          </table> -->
+                          <button class="btn btn-primary mt-3"
+                            (click)="AMLSubmit()">{{isLoading?"Loading":"Save"}}</button>
+                        </div>
+                      </div>
+                    </form>
                   </div>
-                </form>
-                <button class="btn btn-primary" (click)="AMLSubmit()">{{isLoading?'Processing':'Save'}}</button>
-                <!-- <h4 class="pt-4 pl-4">Not Data Found</h4> -->
+                </div>
+
               </div>
             </div>
           </div>

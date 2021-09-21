@@ -1,3 +1,5 @@
+import { FeeComponent } from './../auth/components/fee/fee.component';
+import { SecurityComponent } from './../auth/components/security/security.component';
 import { NotificationTableComponent } from '././manage-notification/notification-table/notification-table.component';
 import { NgModule } from '@angular/core';
 import { CommonModule, DecimalPipe } from '@angular/common';
@@ -60,7 +62,9 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 		AddNotificationComponent, 
 		ChatComponent,
 		FaqTemplateComponent,
-		NotificationTableComponent
+		NotificationTableComponent,
+		SecurityComponent,
+		FeeComponent
 	],
 	imports: [
 		MatFormFieldModule,
