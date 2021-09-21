@@ -82,6 +82,11 @@
                   aria-controls="Cookies_Service" aria-selected="false" (click)="TabRef('Cookies_Service')">
                   Cookies Service</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" id="AML-tab-z" data-toggle="tab" href="#AML" role="tab"
+                  aria-controls="AML" aria-selected="false" (click)="TabRef('AML')">
+                  AML</a>
+              </li>
             </ul>
             <div class="tab-content" id="myTabContent1">
               <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -360,7 +365,22 @@
                     </div>
                   </div>
                 </form>
-                <button class="btn btn-primary" (click)="FeeSubmit()">{{isLoading?'Processing':'Save'}}</button>
+                <button class="btn btn-primary" (click)="Cookies_ServiceSubmit()">{{isLoading?'Processing':'Save'}}</button>
+                <!-- <h4 class="pt-4 pl-4">Not Data Found</h4> -->
+              </div>
+              <div class="tab-pane fade show" id="AML" role="tabpanel" aria-labelledby="AML-tab">
+                <form [formGroup]="AML">
+                  <div class="form-row mt-3">
+                    <div class="form-group col-md-12">
+                      <ckeditor #editor formControlName="aml" type="divarea">
+                      </ckeditor>
+                      <mat-error *ngIf="AML.controls['aml'].hasError('required')">
+                        Please enter aml !
+                      </mat-error>
+                    </div>
+                  </div>
+                </form>
+                <button class="btn btn-primary" (click)="AMLSubmit()">{{isLoading?'Processing':'Save'}}</button>
                 <!-- <h4 class="pt-4 pl-4">Not Data Found</h4> -->
               </div>
             </div>

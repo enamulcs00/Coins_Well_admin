@@ -45,6 +45,7 @@ export class ManageUpdateComponent implements OnInit,AfterViewInit {
   features:FormGroup;
   Fee:FormGroup;
   Cookies_Service:FormGroup;
+  AML:FormGroup;
   rateInstruction:FormGroup;
   maintainance:boolean=false;
   constructor(public service: CommonService, private router: Router, private _noti: NotificationsService,private fb:FormBuilder,private _common:CommonService,private toastr:ToastrService) { 
@@ -57,6 +58,9 @@ export class ManageUpdateComponent implements OnInit,AfterViewInit {
     this.Security = this.fb.group({
       security:['',[Validators.required]]
     })
+    this.AML=this.fb.group({
+      aml:['',[Validators.required]]
+    });
     this.Cookies_Service = this.fb.group({
       cookies_service:['',[Validators.required]]
     })
@@ -176,6 +180,7 @@ ngAfterViewInit(){
        this.Security.controls['security'].patchValue(res?.data?.security);
        this.Fee.controls['fee'].patchValue(res?.data?.fee);
        this.Cookies_Service.controls['cookies_service'].patchValue(res?.data?.cookies_service);
+       this.AML.controls['aml'].patchValue(res?.data?.aml);
 		})
 }
 GetAdminBank(){
@@ -230,10 +235,21 @@ SecuritySubmit(){
   }
 }
 
+AMLSubmit(){
+  this.isLoading=true;
+  if(this.AML.valid){
+    let obj ={"aml":this.AML.controls['aml'].value}
+    this.updateFn(obj)
+  }else{
+    this.About.markAllAsTouched()
+  }
+}
+
 Cookies_ServiceSubmit(){
   this.isLoading=true;
   if(this.Cookies_Service.valid){
     let obj ={"cookies_service":this.Cookies_Service.controls['cookies_service'].value}
+    console.log(obj);
     this.updateFn(obj)
   }else{
     this.About.markAllAsTouched()
