@@ -117,9 +117,8 @@ export class TableContentComponent implements OnInit {
 		}
 		this._common.confirm("Confirm", "Do you want to disable two factor authentication for this user ?").subscribe(res => {
 			if (res) {
-				callAPI(res);
+				callAPI(false);
 			} else {
-				callAPI(res);
 			}
 		})
 	}
