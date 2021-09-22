@@ -14,14 +14,14 @@ import { environment } from 'src/environments/environment';
 export class HeaderComponent implements OnInit {
 	imgurl: string;
 
-	constructor(private _noti: NotificationsService, private _router: Router,private commn_:CommonService) {
-	
-	 }
+	constructor(private _noti: NotificationsService, private _router: Router, private commn_: CommonService) {
+
+	}
 
 	ngOnInit(): void {
-		this.Image();
+		this.fetchImage();
 	}
-  
+
 	logoutMe() {
 		this._noti.confirm("Logout!", "Do you want to logout ?").subscribe(x => {
 			if (x) {
@@ -30,17 +30,20 @@ export class HeaderComponent implements OnInit {
 			}
 		})
 	}
-	
-	Image()
-	{
-    this.commn_.get('admin/get-profile/').subscribe(res=>{
-		this.imgurl = environment.homeURL + res.data?.image?.media_file;
-	});
-	this.commn_.imageFlag.subscribe(res=>{
-		this.commn_.get('admin/get-profile/').subscribe(res=>{
-			this.imgurl = environment.homeURL + res.data?.image?.media_file;
+
+	fetchImage() {
+		this.commn_.get('admin/get-profile/').subscribe(res => {
+			if(res.data?.image != null) {
+				this.imgurl = environment.homeURL + res.data?.image?.media_file;
+			}
 		});
-	})
+		this.commn_.imageFlag.subscribe(res => {
+			this.commn_.get('admin/get-profile/').subscribe(res => {
+				if(res.data?.image != null) {
+					this.imgurl = environment.homeURL + res.data?.image?.media_file;
+				}
+			});
+		})
 	}
-   
+
 }
