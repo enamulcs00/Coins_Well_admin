@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[1],{"4KSJ":function(n,a,i){"use strict";function t(n){return/^^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/gi.test(n.value)?null:{validEmail:!0}}i.d(a,"a",(function(){return t}))}}]);

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { AuthService } from 'src/app/_services/auth.service';
@@ -19,7 +19,8 @@ export class TwoFactorComponent implements OnInit {
 	otpvalue: any;
 	OtpForm: FormGroup;
 	isLoading: boolean = false;
-	constructor(private fb: FormBuilder, private service: CommonService, private _noti: NotificationsService, private router: Router,private _diloag: MatDialog) { }
+	constructor(private fb: FormBuilder, private service: CommonService, private _noti: NotificationsService, private router: Router,private _diloag: MatDialog, public dialogRef: MatDialogRef<TwoFactorComponent>,
+		@Inject(MAT_DIALOG_DATA) public data: any) { }
 
 	ngOnInit(): void {
 		this.OtpForm = this.fb.group({
@@ -35,17 +36,29 @@ export class TwoFactorComponent implements OnInit {
 			let obj = {
 				"otp": this.otpvalue
 			}
-			this.service.postWithHeaders(urls.verifyOtp, obj, {
-				Authorization : `Bearer ${this.message}`
-			}).subscribe((res: any) => {
-				if (res.code == 200) {
-					this.status = true;
-					this._diloag.openDialogs[0].close(true);
-				} else {
-					this._noti.show('Failed', res.message, "Verification");
-					this._diloag.openDialogs[0].close(false);
-				}
-			})
+			if(this.data) {
+				this.service.postWithHeaders(urls.verifyOtp, obj, {
+					Authorization : `Bearer ${this.data.token}`
+				}).subscribe((res: any) => {
+					if (res.code == 200) {
+						this.status = true;
+						this._diloag.openDialogs[0].close(true);
+					} else {
+						this._noti.show('Failed', res.message, "Verification");
+						this._diloag.openDialogs[0].close(false);
+					}
+				})
+			} else {
+				this.service.post(urls.verifyOtp, obj).subscribe((res: any) => {
+					if (res.code == 200) {
+						this.status = true;
+						this._diloag.openDialogs[0].close(true);
+					} else {
+						this._noti.show('Failed', res.message, "Verification");
+						this._diloag.openDialogs[0].close(false);
+					}
+				})
+			}
 		} else {
 			this._noti.show('Failed', "Invalid Otp", "Verification");
 		}

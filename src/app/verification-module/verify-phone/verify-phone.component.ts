@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CommonService } from 'src/app/_services/common.service';
 import { NotificationsService } from 'src/app/_services/notifications.service';
 import { urls } from 'src/app/_services/urls';
@@ -15,10 +15,17 @@ export class VerifyPhoneComponent implements OnInit {
 	otpvalue: any;
 	otpForm: FormGroup;
 	isLoading: boolean = false;
-	constructor(private fb: FormBuilder, private service: CommonService, private _noti: NotificationsService, private _diloag: MatDialog) { }
+	constructor(private fb: FormBuilder, private service: CommonService, private _noti: NotificationsService, private _diloag: MatDialog, public dialogRef: MatDialogRef<VerifyPhoneComponent>,
+		@Inject(MAT_DIALOG_DATA) public data: any)  { }
 
 	ngOnInit(): void {
-		this.service.post(urls.sendPhoneOtp).subscribe();
+		if(this.data) {
+			this.service.postWithHeaders(urls.sendPhoneOtp, {}, {
+				Authorization: `Bearer ${this.data.token}`
+			}).subscribe();
+		} else {
+			this.service.post(urls.sendPhoneOtp).subscribe();
+		}
 		this.otpForm = this.fb.group({
 			otp: ['']
 		})
@@ -33,9 +40,17 @@ export class VerifyPhoneComponent implements OnInit {
 			let obj = {
 				"otp": this.otpvalue
 			}
-			this.service.post(urls.verifyPhoneOtp, obj).subscribe((res: any) => {
-				this._diloag.openDialogs[0].close(true);
-			})
+			if(this.data) {
+				this.service.postWithHeaders(urls.verifyPhoneOtp, obj, {
+					Authorization: `Bearer ${this.data.token}`
+				}).subscribe((res: any) => {
+					this._diloag.openDialogs[0].close(true);
+				})
+			} else {
+				this.service.post(urls.verifyPhoneOtp, obj).subscribe((res: any) => {
+					this._diloag.openDialogs[0].close(true);
+				})
+			}
 		} else {
 			this._noti.show('Failed', "Invalid Otp", "Verification");
 		}

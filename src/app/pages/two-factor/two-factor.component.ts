@@ -33,7 +33,7 @@ export class TwoFactorPageComponent implements OnInit {
 		if (userInfo) {
 			this.enable2FA = userInfo.is_two_factor_authentication_enable;
 			if(typeof userInfo.is_two_factor_sms_authentication_enable != "undefined") {
-				this.enable2FA = userInfo.is_two_factor_sms_authentication_enable;
+				this.enableSMS2FA = userInfo.is_two_factor_sms_authentication_enable;
 			}
 		}
 	}
@@ -118,31 +118,20 @@ export class TwoFactorPageComponent implements OnInit {
 	}
 
 	checkCodeSMSCode(val: boolean) {
-		if(val) {
-			const dialogRef = this.dialog.open(VerifyPhoneComponent, {
-				disableClose: true
-			});
-			dialogRef.afterClosed().subscribe(result => {
-				if (result) {
-					alert('API pending for this action');
-				} else {
-					this.enableSMS2FA = !this.enableSMS2FA
-				}
-			});
-		}
-	}
-
-	verifyEmail() {
-		const dialogRef = this.dialog.open(VerifyEmailComponent, {
+		const dialogRef = this.dialog.open(VerifyPhoneComponent, {
 			disableClose: true
 		});
 		dialogRef.afterClosed().subscribe(result => {
 			if (result) {
-				if(this.enableSMS2FA) {
-					this.enableTwoFactor();
-				} else {
-					this.verify2fa();
-				}	
+				this._common.post(urls.changeSMSstatus,{
+					is_two_factor_sms_authentication_enable : this.enableSMS2FA
+				}).subscribe(data=>{
+					if(this.enableSMS2FA) {
+						Notify.success("Your 2FA sms has been successfully enabled.");
+					} else {
+						Notify.success("Your 2FA sms has been successfully disabled.");
+					}
+				})
 			} else {
 				this.enableSMS2FA = !this.enableSMS2FA
 			}

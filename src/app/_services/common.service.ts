@@ -257,5 +257,18 @@ export class CommonService {
 		}
 		return true;
  	}
+
+	 updateProfileInfo() {
+		if (localStorage.getItem(environment.storageKey) != null) {
+			let userInfo = JSON.parse(localStorage.getItem(environment.storageKey));
+			this.get(urls.getProfile).subscribe(data => {
+				userInfo = {
+					...userInfo,
+					...data.data
+				};
+				localStorage.setItem(environment.storageKey, JSON.stringify(userInfo));
+			})
+		}
+	}
 	
 }

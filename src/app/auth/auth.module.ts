@@ -10,6 +10,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { OtpComponent } from './otp/otp.component';
 import { NgOtpInputModule } from 'ng-otp-input';
 import { SetpasswordComponent } from './setpassword/setpassword.component';
+import { VerificationModuleModule } from '../verification-module/verification-module.module';
+import { CoreModule } from '../core/core.module';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
 	declarations: [LoginComponent, SignupComponent, ForgetpasswordComponent, ResetpasswordComponent, OtpComponent, SetpasswordComponent],
@@ -17,7 +20,10 @@ import { SetpasswordComponent } from './setpassword/setpassword.component';
 		CommonModule,
 		AuthRoutingModule,
 		ReactiveFormsModule,
-		NgOtpInputModule
+		NgOtpInputModule,
+		VerificationModuleModule,
+		CoreModule,
+		MatDialogModule
 	],
 	entryComponents : [],
 	providers : []
