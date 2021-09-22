@@ -73,4 +73,5 @@ export const urls = {
     sendEmailOtpVerify : 'admin/send-mail-otp/',
     verifyEmailOtpVerify : 'admin/verify-otp/',
     // verifyOtp : 'user/send-phone-number-verify-otp/'
+    changeSuspend:'admin/change-suspended-status-by-userid/'
 };
