@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { AuthService } from 'src/app/_services/auth.service';
@@ -18,7 +19,7 @@ export class TwoFactorComponent implements OnInit {
 	otpvalue: any;
 	OtpForm: FormGroup;
 	isLoading: boolean = false;
-	constructor(private fb: FormBuilder, private service: CommonService, private _noti: NotificationsService, private router: Router,public bsModalRef: BsModalRef) { }
+	constructor(private fb: FormBuilder, private service: CommonService, private _noti: NotificationsService, private router: Router,private _diloag: MatDialog) { }
 
 	ngOnInit(): void {
 		this.OtpForm = this.fb.group({
@@ -39,14 +40,19 @@ export class TwoFactorComponent implements OnInit {
 			}).subscribe((res: any) => {
 				if (res.code == 200) {
 					this.status = true;
-					this.bsModalRef.hide();
+					this._diloag.openDialogs[0].close(true);
 				} else {
 					this._noti.show('Failed', res.message, "Verification");
+					this._diloag.openDialogs[0].close(false);
 				}
 			})
 		} else {
 			this._noti.show('Failed', "Invalid Otp", "Verification");
 		}
+	}
+	closeIt() {
+		this._diloag.openDialogs[0].close(false);
+
 	}
 
 }

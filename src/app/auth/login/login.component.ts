@@ -7,7 +7,7 @@ import { validEmail } from 'src/app/_validators/validEmail';
 import { NgxSpinnerService } from "ngx-spinner";
 import { Observable } from 'rxjs';
 import { BsModalService } from 'ngx-bootstrap/modal';
-import { TwoFactorComponent } from '../components/two-factor/two-factor.component';
+// import { TwoFactorComponent } from '../../verification-module/two-factor/two-factor.component';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -40,20 +40,23 @@ export class LoginComponent implements OnInit {
 			this._auth.login(body).subscribe(res => {
 				this.spinner.hide();
 				this.isLoading = false;
-				if(res.data.permissions.length > 0 && res.data.authy_user_id) {
-					this.askForTwoFactor(res.data.token).subscribe(()=>{
-						localStorage.setItem(environment.storageKey, JSON.stringify(res.data));
-						this._noti.show('success', "Admin logged in successfully.", "Login!");
-						this.router.navigate(['/dashboard']);
-					})
-				} else {
-					this.isLoading = false;
-					localStorage.setItem(environment.storageKey, JSON.stringify(res.data));
-					setTimeout(() => {
-					this.spinner.hide();},2000);
-					this._noti.show('success', "Admin logged in successfully.", "Login!");
-					this.router.navigate(['/dashboard']);
-				}
+				localStorage.setItem(environment.storageKey, JSON.stringify(res.data));
+				this._noti.show('success', "Admin logged in successfully.", "Login!");
+				this.router.navigate(['/dashboard']);
+				// if(res.data.permissions.length > 0 && res.data.authy_user_id) {
+				// 	this.askForTwoFactor(res.data.token).subscribe(()=>{
+				// 		localStorage.setItem(environment.storageKey, JSON.stringify(res.data));
+				// 		this._noti.show('success', "Admin logged in successfully.", "Login!");
+				// 		this.router.navigate(['/dashboard']);
+				// 	})
+				// } else {
+				// 	this.isLoading = false;
+				// 	localStorage.setItem(environment.storageKey, JSON.stringify(res.data));
+				// 	setTimeout(() => {
+				// 	this.spinner.hide();},2000);
+				// 	this._noti.show('success', "Admin logged in successfully.", "Login!");
+				// 	this.router.navigate(['/dashboard']);
+				// }
 			}, error => {
 				this.isLoading = false;
 				setTimeout(() => {
@@ -62,19 +65,6 @@ export class LoginComponent implements OnInit {
 		} else {
 			this.loginForm.markAllAsTouched();
 		}
-	}
-
-	askForTwoFactor(token) {
-		return new Observable((resolve) => {
-			let bsModalRef = this.modalService.show(TwoFactorComponent, {
-				initialState: {
-					message: token
-				}
-			});
-			bsModalRef.onHidden.subscribe(x => {
-				resolve.next(bsModalRef.content.status);
-			});
-		});
 	}
 }
 

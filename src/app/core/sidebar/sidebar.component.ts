@@ -13,7 +13,6 @@ export class SidebarComponent implements OnInit {
 	userInfo : any = JSON.parse(localStorage.getItem(environment.storageKey));
 	permissions = this.userInfo.permissions;
 	constructor(public commn_: CommonService) {
-		console.log("permissions",this.permissions);
 	}
 
 	ngOnInit(): void {

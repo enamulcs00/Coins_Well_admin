@@ -5,11 +5,13 @@ import { VerifyPhoneComponent } from './verify-phone/verify-phone.component';
 import { CoreModule } from '../core/core.module';
 import { NgOtpInputModule } from 'ng-otp-input';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { TwoFactorComponent } from './two-factor/two-factor.component';
 
 @NgModule({
 	declarations: [
 		VerifyEmailComponent,
-		VerifyPhoneComponent
+		VerifyPhoneComponent,
+		TwoFactorComponent
 	],
 	imports: [
 		CommonModule,
@@ -19,7 +21,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 	],
 	exports : [
 		VerifyEmailComponent,
-		VerifyPhoneComponent
+		VerifyPhoneComponent,
+		TwoFactorComponent
 	]
 })
 export class VerificationModuleModule { }

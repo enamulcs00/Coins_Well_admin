@@ -1,0 +1,12 @@
+<form id="form" class="mx-auto center_auth p-5 pb-2" [formGroup]="OtpForm">
+    <span class="mdi mdi-close" (click)="closeIt()"></span>
+    <h1 class="text-center">TWO-FACTOR AUTHENTICATION</h1>
+    <div class="form-group text-center">
+        <label>Enter 6-digit code from your authenticator application</label>
+        <ng-otp-input (onInputChange)="onOtpChange($event)" [config]="{length:6}"></ng-otp-input>
+    </div>
+    <div class="form__buttons">
+        <button type="button" class="btn btn-primary btn-lg btn-block" (click)="VerifyOtp()">{{
+            (isLoading)?'Processing...':'Submit' }}</button>
+    </div>
+</form>

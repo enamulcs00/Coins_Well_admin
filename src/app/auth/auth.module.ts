@@ -10,17 +10,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { OtpComponent } from './otp/otp.component';
 import { NgOtpInputModule } from 'ng-otp-input';
 import { SetpasswordComponent } from './setpassword/setpassword.component';
-import { TwoFactorComponent } from './components/two-factor/two-factor.component';
 
 @NgModule({
-	declarations: [LoginComponent, SignupComponent, ForgetpasswordComponent, ResetpasswordComponent, OtpComponent, SetpasswordComponent, TwoFactorComponent],
+	declarations: [LoginComponent, SignupComponent, ForgetpasswordComponent, ResetpasswordComponent, OtpComponent, SetpasswordComponent],
 	imports: [
 		CommonModule,
 		AuthRoutingModule,
 		ReactiveFormsModule,
 		NgOtpInputModule
 	],
-	entryComponents : [TwoFactorComponent],
+	entryComponents : [],
 	providers : []
 })
 export class AuthModule { }

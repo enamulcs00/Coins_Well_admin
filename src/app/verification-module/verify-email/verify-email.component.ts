@@ -21,8 +21,8 @@ export class VerifyEmailComponent implements OnInit {
 
 	ngOnInit(): void {
 		let userInfo = JSON.parse(localStorage.getItem(environment.storageKey));
-		this.service.post(urls.sendEmailOtp,{
-			email : userInfo.email
+		this.service.post(urls.sendEmailOtpVerify, {
+			email: userInfo.email
 		}).subscribe();
 		this.otpForm = this.fb.group({
 			otp: ['']
@@ -34,11 +34,13 @@ export class VerifyEmailComponent implements OnInit {
 	}
 
 	verifyOtp() {
+		let userInfo = JSON.parse(localStorage.getItem(environment.storageKey));
 		if (this.otpvalue) {
 			let obj = {
-				"otp": this.otpvalue
+				"otp": this.otpvalue,
+				email: userInfo.email
 			}
-			this.service.post(urls.verifyPhoneOtp, obj).subscribe((res: any) => {
+			this.service.post(urls.verifyEmailOtpVerify, obj).subscribe((res: any) => {
 				if (res.code == 200) {
 					this.status = true;
 				} else {

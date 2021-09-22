@@ -67,5 +67,10 @@ export const urls = {
     sendPhoneOtp : 'user/send-phone-number-otp/',
     verifyPhoneOtp : 'user/send-phone-number-verify-otp/',
     sendEmailOtp : 'user/resend-mail-otp/',
+    getQRCode : 'user/get-user-two-factor-authentication-qr-code/',
+    sendOtpVerify : 'user/send-phone-number-otp/',
+    twoAuthSend : 'user/change-two-factor-authentication-status/',
+    sendEmailOtpVerify : 'admin/send-mail-otp/',
+    verifyEmailOtpVerify : 'admin/verify-otp/',
     // verifyOtp : 'user/send-phone-number-verify-otp/'
 };

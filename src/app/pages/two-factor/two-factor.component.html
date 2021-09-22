@@ -1,1 +1,58 @@
-<button (click)="checkThisOne()">Click Here</button>
+<button (click)="verifyEmail()">Click me </button> 
+<div class="form-bx mt-40 p-5">
+	<div class="acc-upgrade">
+		<h3>Setup 2FA (Two-Factor Authentication)</h3>
+		<p>Secure your payment and login process.</p>
+    </div>   
+    <ng-container>
+        <div class="enable-disbale">
+            <div class="mt-2">
+                <div>
+                    <img src="assets/img/authy.png" style="width: 30px;" alt="">
+                    <span style="font-size: 22px;
+                    margin-left: 5px;" class="ml-2">Authy</span>
+                </div>
+                <div class="Instructions ml-1">
+                    <p>Download and install AUTHY app on google play store or on App Store.</p>
+                </div>
+            </div>
+            <mat-slide-toggle [color]="'primary'" (change)="checkCode(enable2FA)" class="example-margin" [(ngModel)]="enable2FA"></mat-slide-toggle>
+        </div>
+        <ng-container *ngIf="enable2FA">
+            <div class="text-center Instructions authy-code-parent">
+                <div style="width: 40%;">
+                    <div id="barcode" style="margin: auto; width: 150px;">
+                    </div>
+                    <p class="mt-2">Scan the QR code in the authy app.</p>
+                </div>
+                <span style="font-size: 20px;">
+                    OR
+                </span>
+                <div style="width: 40%;">
+                    <h3 style="word-break: break-all;
+                    font-size: 20px;">{{ keySign }}</h3>
+                    <p class="mt-2">If you are unable to scan the QR code. Please enter the code manually into the Authy app.</p>
+                </div>
+            </div>
+            <div class="mt-5 w-100 text-center">
+                <button style="width: 200px;" (click)="verify2fa()" class="btn btn-primary">Verify</button>
+            </div>
+        </ng-container>
+    </ng-container>
+
+    <ng-container>
+        <div class="enable-disbale">
+            <div class="mt-2">
+                <div>
+                    <img src="assets/img/sms.png" style="width: 30px;" alt="">
+                    <span style="font-size: 22px;
+                    margin-left: 5px;" class="ml-2">SMS</span>
+                </div>
+                <div class="Instructions ml-1">
+                    <p>Enable the sms two factor authentication.</p>
+                </div>
+            </div>
+            <mat-slide-toggle [color]="'primary'" (change)="checkCodeSMSCode(enableSMS2FA)" class="example-margin" [(ngModel)]="enableSMS2FA"></mat-slide-toggle>
+        </div>
+    </ng-container>
+</div>
