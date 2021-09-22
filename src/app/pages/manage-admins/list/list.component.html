@@ -133,10 +133,11 @@
                                 <ngx-datatable-column name="ACTION" prop="status">
                                     <ng-template let-row="row" ngx-datatable-cell-template>
                                         <ul class="action">
-                                            <!-- <li><a href="javascript:void(0)" (click)="navigate(row?.id,2)"
-                                                    class="btn btn-primary"><i class="mdi mdi-eye-settings"
-                                                        title="View"></i></a>
-                                            </li> -->
+                                            <li>
+                                                <a href="javascript:void(0)" (click)="userConfirm(row)" class="btn btn-primary">
+                                                    <i class="mdi mdi-key" title="Disable Two factor authentication"></i>
+                                                </a>
+                                            </li>
                                             <li><a (click)="navigate(row?.id)" href="javascript:void(0)"
                                                     class="btn btn-primary"><i class="mdi mdi-pen" title="Edit"></i></a>
                                             </li>
