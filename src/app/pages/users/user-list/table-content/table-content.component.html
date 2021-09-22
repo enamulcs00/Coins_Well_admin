@@ -99,23 +99,16 @@
 				</label>
 			</ng-template>
 		</ngx-datatable-column>
-
-		<!-- <ngx-datatable-column [width]="100" name="STATUS" prop="status">
-            <ng-template let-row="row" ngx-datatable-cell-template>
-                <button class="btn btn-success" (click)="ChangeStatus(row)" *ngIf="row.status==true || row.status==null">Approve</button>
-                <button class="btn btn-danger" (click)="ChangeStatus(row)" *ngIf="row.status==false || row.status==null">Reject</button>
-            </ng-template>
-        </ngx-datatable-column> -->
-
-		<!-- <ngx-datatable-column name="ACCOUNT STATUS" prop="account_status">
-            <ng-template let-row="row" ngx-datatable-cell-template>
-                <select name="" id="" [(ngModel)]="row.account_status" class="form-control">
-                    <option value="Banned">Banned</option>
-                    <option value="Suspend">Suspend</option>
-                </select>
-            </ng-template>
-        </ngx-datatable-column> -->
-
+       
+		<ngx-datatable-column [width]="120" name="Suspended" prop="flag">
+			<ng-template let-row="row" ngx-datatable-cell-template>
+				<label class="switch">
+					<input type="checkbox" [(ngModel)]="row.is_suspended" (change)="changeSuspense(row)">
+					<span class="slider round"></span>
+				</label>
+			</ng-template>
+		</ngx-datatable-column>
+     
 		<ngx-datatable-column name="ACTION" [width]="240" prop="status">
 			<ng-template let-row="row" ngx-datatable-cell-template>
 				<ul class="action">

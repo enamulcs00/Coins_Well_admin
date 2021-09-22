@@ -159,6 +159,42 @@ export class TableContentComponent implements OnInit {
 		})
 	}
 
+	changeSuspense(row) {
+		const callAPI = (param: any) => {
+			this._common.put(`${urls.changeSuspend}${row.id}/`, param).subscribe((res) => {
+				this.toastr.success(res.message, "Success", { timeOut: 1050 });
+				this.setPage({ offset: 0 });
+			});
+		}
+		this._common.confirm("Confirm", "Do you want to change suspended status of selected user ?").subscribe(res => {
+			if (res) {
+				if (row.is_suspended) {
+					//reason popup open here
+					this._common.reasonConfirm("Reject Reason", "").subscribe((x: any) => {
+						console.log(x);
+						if (x) {
+							//Simple API call here with descripition
+							callAPI({
+								is_suspended: row.is_suspended,
+								description: x
+							});
+						} else {
+							row.is_suspended = !row.is_suspended;
+						}
+					})
+				} else {
+					callAPI({
+						is_suspended: row.is_suspended
+					});
+					//simple API call here
+				}
+				//Reject API call here
+			} else {
+				row.is_suspended = !row.is_suspended;
+			}
+		})
+	}
+
 	documentModal(id) {
 		const callAPI = () => {
 			this._common.put(`${urls.acceptDoc}${id}/`,{}).subscribe((res) => {
