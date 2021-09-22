@@ -64,5 +64,5 @@ export const urls = {
     verifyOtp : 'user/two-factor-authentication/',
     getProfile : 'admin/get-profile/',
     twofactorkey:'admin/change-user-two-factor-authentication-status/',
-    changeSuspend:'admin/change-is_suspended-status-by-userid/'
+    changeSuspend:'admin/change-suspended-status-by-userid/'
 };
