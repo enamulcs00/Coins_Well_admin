@@ -13,7 +13,9 @@
 					<div class="card-header">
 						<div class="card-title">Buy Orders</div>						
 						<div class="card-controls">
-							<!-- <a href="#" class="js-card-refresh icon"> </a> -->
+							<a class="icon">
+								<i style="cursor: pointer;" (click)="exportCSV('3',buyOrdersGraph.filterType)" class="icon-placeholder mdi mdi-file-excel"></i>
+							</a>
 							<div class="dropdown">
 								<a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									<i class="icon mdi  mdi-dots-vertical"></i> </a>
@@ -47,6 +49,9 @@
 					<div class="card-header">
 						<div class="card-title">Sell Orders</div>						
 						<div class="card-controls">
+							<a class="icon">
+								<i style="cursor: pointer;" (click)="exportCSV('4',sellOrdersGraph.filterType)" class="icon-placeholder mdi mdi-file-excel"></i>
+							</a>
 							<div class="dropdown">
 								<a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									<i class="icon mdi  mdi-dots-vertical"></i>
@@ -80,6 +85,9 @@
 					<div class="card-header">
 						<div class="card-title">Deposit Orders</div>						
 						<div class="card-controls">
+							<a class="icon">
+								<i style="cursor: pointer;" (click)="exportCSV('1',depositOrdersGraph.filterType)" class="icon-placeholder mdi mdi-file-excel"></i>
+							</a>
 							<div class="dropdown">
 								<a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									<i class="icon mdi  mdi-dots-vertical"></i>
@@ -113,6 +121,9 @@
 					<div class="card-header">
 						<div class="card-title">Withdraw Orders</div>						
 						<div class="card-controls">
+							<a class="icon">
+								<i style="cursor: pointer;" (click)="exportCSV('2',withdrawOrdersGraph.filterType)" class="icon-placeholder mdi mdi-file-excel"></i>
+							</a>
 							<div class="dropdown">
 								<a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									<i class="icon mdi  mdi-dots-vertical"></i>
@@ -147,7 +158,7 @@
 						<div class="card-controls">
 							<div class="dropdown">
 								<a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<i class="icon mdi  mdi-dots-vertical"></i>
+									<i class="icon mdi mdi-dots-vertical"></i>
 								</a>
 								<div class="dropdown-menu dropdown-menu-right">
 									<button class="dropdown-item" (click)="feesOrders.filterType = 1; getAnayticsGraph('fee')"

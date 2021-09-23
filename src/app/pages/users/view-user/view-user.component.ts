@@ -59,7 +59,6 @@ export class ViewUserComponent implements OnInit {
 
 	onSelect(data: string): void {
 		this.value = data;
-		console.log("{ user_id : this.localId }",{ user_id : this.localId });
 		this.commn_.put(urls.readunReadRequest + data, { user_id : this.localId }).subscribe(data => {
 			this.commn_.onReadNotification.next('');
 		});
@@ -83,14 +82,12 @@ export class ViewUserComponent implements OnInit {
 			});
 		}
 		this.commn_.dconfirm("Documents", id).subscribe(x => {
-			console.log(x);
 			if (x) {
 				callAPI();
 
 			}
 			else if (x == false) {
 				this.commn_.reasonConfirm("Reject Reason", "").subscribe((des: any) => {
-					console.log(des);
 					if (des) {
 						rCallAPI({
 							"user": id,
@@ -121,7 +118,6 @@ export class ViewUserComponent implements OnInit {
 			}
 			else if (x1 == false) {
 				this.commn_.reasonConfirm("Reject Reason", "").subscribe((des: any) => {
-					console.log(des);
 					if (des) {
 						rCallAPI({
 							"user": id,
@@ -136,11 +132,9 @@ export class ViewUserComponent implements OnInit {
 
 	getUserById() {
 		this.commn_.get(urls.getUserById + this.localId + "/").subscribe(res => {
-			console.log(res);
 			this.items = res.data;
 		});
 		this.commn_.get(urls.getBalance + this.localId + "/").subscribe(res => {
-			console.log(res);
 			this.bItems = res.data;
 		});
 	}

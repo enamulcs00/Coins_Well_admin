@@ -36,6 +36,7 @@
     "moment": "^2.29.1",
     "ng-otp-input": "^1.7.0",
     "ngx-bootstrap": "^6.2.0",
+    "ngx-csv": "^0.3.2",
     "ngx-currency": "^2.5.2",
     "ngx-google-places-autocomplete": "^2.0.5",
     "ngx-moment": "^5.0.0",
