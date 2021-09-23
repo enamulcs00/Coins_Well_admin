@@ -28,6 +28,7 @@ export class ListComponent implements OnInit {
 	page = new Page();
 	rows = new Array<any>();
 	ColumnMode = ColumnMode;
+	
 	definedColumns = [
 		{
 			"data": "id"
@@ -42,6 +43,7 @@ export class ListComponent implements OnInit {
 			"data": "email"
 		}
 	]
+
 	formData: any = {
 		"status": status,
 		"draw": 0,

@@ -76,12 +76,10 @@
 
 									</div>
 									<div class="user_details d-flex justify-content-start">
-										<!-- <h4 class="m-0">Wallet Details</h4> -->
 										<p class="m-0 mr-4"><strong>Naira Balance</strong></p>
 										<h5 class="m-0">${{bItems?.amount | number : '0.2-2'}}</h5>
 									</div>
 									<div class="user_details d-flex justify-content-start">
-										<!-- <h4 class="m-0">Wallet Details</h4> -->
 										<p class="m-0 mr-4"><strong>Crypto Balance</strong></p>
 										<h5 class="m-0" style="position: relative;right: 10px;">
 											${{bItems?.crypto_balance}}</h5>
@@ -111,27 +109,6 @@
 									</div>
 								</div>
 							</div>
-							<!-- <div class="col-md-6">
-                <div class="card m-b-30" style="box-shadow: none;">
-                  <div class="card-body">
-                    <div class="select_option d-flex justify-content-end">
-                      <select name="" id="">
-                        <option value="">Withdraw</option>
-                        <option value="">Deposit</option>
-                        <option value="">Sell</option>
-                        <option value="">Buy</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
-							<!-- <div class="col-md-12 mb-3">
-                <div class="buttons d-flex justify-content-end">
-                  <button type="button" class="btn btn-primary mr-3">Approved</button>
-                  <button type="button" class="btn btn-danger" data-toggle="modal"
-                    data-target="#reasonmodal">Reject</button>
-                </div>
-              </div> -->
 						</div>
 						<div class="row">
 							<div class="col-md-3 m-b-30">
@@ -367,13 +344,36 @@
 													</tab>
 												</tabset>
 											</tab>
-											<tab (selectTab)="onSelect('4/3/')">
+											<tab (selectTab)="onSelect('4/1/')">
 												<ng-template tabHeading>
 													Selling Request
 													<span *ngIf="getSum('Selling')" class="badge badge-danger">{{
 														getSum('Selling') }}</span>
 												</ng-template>
 												<tabset>
+													<tab [active]="value == '4/1/'" (selectTab)="onSelect('4/1/')">
+
+														<ng-template tabHeading>
+															BitCoin
+															<span class="badge badge-danger"
+																*ngIf="getUnreadCounts?.Buying['1']">{{
+																getUnreadCounts?.Buying['1'] }}</span>
+														</ng-template>
+	
+														<app-request-table [user_id]="localId" *ngIf="value  == '4/1/'"
+															[items]="items" [status]="'4/1/'"></app-request-table>
+													</tab>
+													<tab [active]="value == '4/2/'" (selectTab)="onSelect('4/2/')">
+														<ng-template tabHeading>
+															ERC20 USDT
+															<span class="badge badge-danger"
+																*ngIf="getUnreadCounts?.Buying['2']">{{
+																getUnreadCounts?.Buying['2'] }}</span>
+														</ng-template>
+	
+														<app-request-table [user_id]="localId" *ngIf="value  == '4/2/'"
+															[items]="items" [status]="'4/2/'"></app-request-table>
+													</tab>
 													<tab [active]="value == '4/3/'" (selectTab)="onSelect('4/3/')">
 
 														<ng-template tabHeading>
@@ -399,13 +399,36 @@
 													</tab>
 												</tabset>
 											</tab>
-											<tab (selectTab)="onSelect('3/3/')">
+											<tab (selectTab)="onSelect('3/1/')">
 												<ng-template tabHeading>
 													Buying Request
 													<span *ngIf="getSum('Buying')" class="badge badge-danger">{{
 														getSum('Buying') }}</span>
 												</ng-template>
 												<tabset>
+													<tab [active]="value == '3/1/'" (selectTab)="onSelect('3/1/')">
+
+														<ng-template tabHeading>
+															BitCoin
+															<span class="badge badge-danger"
+																*ngIf="getUnreadCounts?.Buying['1']">{{
+																getUnreadCounts?.Buying['1'] }}</span>
+														</ng-template>
+
+														<app-request-table [user_id]="localId" *ngIf="value  == '3/1/'"
+															[items]="items" [status]="'3/1/'"></app-request-table>
+													</tab>
+													<tab [active]="value == '3/2/'" (selectTab)="onSelect('3/2/')">
+														<ng-template tabHeading>
+															ERC20 USDT
+															<span class="badge badge-danger"
+																*ngIf="getUnreadCounts?.Buying['2']">{{
+																getUnreadCounts?.Buying['2'] }}</span>
+														</ng-template>
+
+														<app-request-table [user_id]="localId" *ngIf="value  == '3/2/'"
+															[items]="items" [status]="'3/2/'"></app-request-table>
+													</tab>
 													<tab [active]="value == '3/3/'" (selectTab)="onSelect('3/3/')">
 
 														<ng-template tabHeading>
