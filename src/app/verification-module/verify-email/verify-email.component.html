@@ -1,6 +1,6 @@
-<h3>Login</h3>
-<p>To secure your account, please complete the following verification.</p>
-<form id="form" class="mx-auto center_auth p-5 pb-2" [formGroup]="otpForm">
+<form id="form" class="mx-auto center_auth p-5 pb-2" [formGroup]="otpForm" style="padding-top: 0px !important;">
+    <h3>Login</h3>
+    <p>To secure your account, please complete the following verification.</p>
     <span class="mdi mdi-close" (click)="closeIt()"></span>
     <!-- <h1 class="text-center">Verify Email Otp</h1> -->
     <div class="form-group" *ngIf="userInfo?.is_two_factor_sms_authentication_enable">
