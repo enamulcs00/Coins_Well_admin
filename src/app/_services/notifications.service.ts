@@ -13,11 +13,13 @@ export class NotificationsService {
 	bsModalRef: BsModalRef;
 	show(type: any, message: string, title) {
 		message = message.charAt(0).toUpperCase() + message.slice(1).toLowerCase();
-		this._toast.clear();
+		// this._toast.clear();
 		if (type == 'success') {
 			this._toast.success(message);
 		} else if (type == 'error' || type == 'danger') {
-			this._toast.error(message, title);
+			this._toast.error(message, title, {
+				timeOut : 5000
+			});
 		} else if (type == 'warning') {
 			this._toast.warning(message, title);
 		}

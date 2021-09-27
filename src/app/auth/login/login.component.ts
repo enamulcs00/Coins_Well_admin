@@ -44,77 +44,48 @@ export class LoginComponent implements OnInit {
 			this._auth.login(body).subscribe(res => {
 				this.spinner.hide();
 				this.isLoading = false;
+				
 				if(res.data.is_two_factor_authentication_enable && res.data.is_two_factor_sms_authentication_enable) {
-					const dialogRef = this.dialog.open(TwoFactorComponent, {
+					const dialogRefEmail = this.dialog.open(VerifyEmailComponent, {
 						disableClose: true,
 						data : {
-							token : res.data.token
+							userinfo : res.data
 						}
 					});
-					dialogRef.afterClosed().subscribe(result => {
-						if (result) {
-							const dialogRefSMS = this.dialog.open(VerifyPhoneComponent, {
-								disableClose: true,
-								data : {
-									token : res.data.token
-								}
-							});
-							dialogRefSMS.afterClosed().subscribe(result => {
-								if (result) {
-									const dialogRefEmail = this.dialog.open(VerifyEmailComponent, {
-										disableClose: true,
-										data : {
-											token : res.data.token,
-											email : res.data.email
-										}
-									});
-									dialogRefEmail.afterClosed().subscribe(result => {
-										if (result) {
-											this.gotoDashboard(res);
-										} else {
-											this.gotoDashboard(res);
-										}
-									});
-								} 
-							});
-						} 
-					});
-				} else if(res.data.is_two_factor_sms_authentication_enable) {
-					const dialogRef = this.dialog.open(VerifyPhoneComponent, {
-						disableClose: true,
-						data : {
-							token : res.data.token
-						}
-					});
-					dialogRef.afterClosed().subscribe(result => {
-						if (result) {
-							const dialogRefEmail = this.dialog.open(VerifyEmailComponent, {
-								disableClose: true,
-								data : {
-									token : res.data.token,
-									email : res.data.email
-								}
-							});
-							dialogRefEmail.afterClosed().subscribe(result => {
-								if (result) {
-									this.gotoDashboard(res);
-								} else {
-									this.gotoDashboard(res);
-								}
-							});
-						} 
-					});
-				} else if(res.data.is_two_factor_authentication_enable) {
-					const dialogRef = this.dialog.open(TwoFactorComponent, {
-						disableClose: true,
-						data : {
-							token : res.data.token
-						}
-					});
-					dialogRef.afterClosed().subscribe(result => {
+					dialogRefEmail.afterClosed().subscribe(result => {
 						if (result) {
 							this.gotoDashboard(res);
-						} 
+						} else {
+							// this.gotoDashboard(res);
+						}
+					});
+				} else if(res.data.is_two_factor_sms_authentication_enable) {
+					const dialogRefEmail = this.dialog.open(VerifyEmailComponent, {
+						disableClose: true,
+						data : {
+							userinfo : res.data
+						}
+					});
+					dialogRefEmail.afterClosed().subscribe(result => {
+						if (result) {
+							this.gotoDashboard(res);
+						} else {
+							// this.gotoDashboard(res);
+						}
+					});
+				} else if(res.data.is_two_factor_authentication_enable) {
+					const dialogRefEmail = this.dialog.open(VerifyEmailComponent, {
+						disableClose: true,
+						data : {
+							userinfo : res.data
+						}
+					});
+					dialogRefEmail.afterClosed().subscribe(result => {
+						if (result) {
+							this.gotoDashboard(res);
+						} else {
+							// this.gotoDashboard(res);
+						}
 					});
 				} else {
 					this.gotoDashboard(res);

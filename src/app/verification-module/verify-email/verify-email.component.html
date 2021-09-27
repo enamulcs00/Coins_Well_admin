@@ -1,9 +1,65 @@
+<h3>Login</h3>
+<p>To secure your account, please complete the following verification.</p>
 <form id="form" class="mx-auto center_auth p-5 pb-2" [formGroup]="otpForm">
     <span class="mdi mdi-close" (click)="closeIt()"></span>
-    <h1 class="text-center">Verify Email Otp</h1>
-    <div class="form-group text-center">
-        <label>Enter 4-digit code sent on your registered email.</label>
-        <ng-otp-input (onInputChange)="onOtpChange($event)" [config]="{length:4}"></ng-otp-input>
+    <!-- <h1 class="text-center">Verify Email Otp</h1> -->
+    <div class="form-group" *ngIf="userInfo?.is_two_factor_sms_authentication_enable">
+        <label>E-mail verification code</label>
+        <div class="input-group mb-2 mr-sm-2">
+            <input formControlName="email_otp" type="text" style="height: 50px; border-right: 0px !important;    text-transform: uppercase;"
+                class="form-control" id="inlineFormInputGroupUsername2">
+            <div class="input-group-append">
+                <div class="input-group-text bg-white">
+                    <span>Verification code sent <i class="mdi mdi-alert-octagon"></i> </span>
+                </div>
+            </div>
+        </div>
+        <small id="passwordHelpBlock" class="form-text text-muted">
+            Enter the 4 digits code received by {{ returnEmail(userInfo?.email) }}.
+        </small>
+        <div class="error text-danger"
+            *ngIf="otpForm.get('email_otp').touched && otpForm.get('email_otp').hasError('required')">Please enter otp.
+        </div>
+        <div class="error text-danger"
+            *ngIf="otpForm.get('email_otp').touched && !otpForm.get('email_otp').hasError('required') && (otpForm.get('email_otp').hasError('minlength') || otpForm.get('email_otp').hasError('maxlength'))">
+            Please enter valid otp.</div>
+    </div>
+    <div class="form-group" *ngIf="userInfo?.is_two_factor_sms_authentication_enable">
+        <label>Phone verification code</label>
+        <div class="input-group mb-2 mr-sm-2">
+            <input formControlName="phone_otp" type="text" style="height: 50px; border-right: 0px !important;    text-transform: uppercase;"
+                class="form-control" id="inlineFormInputGroupUsername2">
+            <div class="input-group-append">
+                <div class="input-group-text bg-white">
+                    <span>Verification code sent <i class="mdi mdi-alert-octagon"></i> </span>
+                </div>
+            </div>
+        </div>
+        <small id="passwordHelpBlock" class="form-text text-muted">
+            Enter the 4 digits code sent to {{ returnMobile(userInfo?.phone_number) }}.
+        </small>
+        <div class="error text-danger"
+            *ngIf="otpForm.get('phone_otp').touched && otpForm.get('phone_otp').hasError('required')">Please enter otp.
+        </div>
+        <div class="error text-danger"
+            *ngIf="otpForm.get('phone_otp').touched && !otpForm.get('phone_otp').hasError('required') && (otpForm.get('phone_otp').hasError('minlength') || otpForm.get('phone_otp').hasError('maxlength'))">
+            Please enter valid otp.</div>
+    </div>
+    <div class="form-group" *ngIf="userInfo?.is_two_factor_authentication_enable">
+        <label>Authenticator code</label>
+        <div class="input-group mb-2 mr-sm-2">
+            <input formControlName="auth_otp" type="text" style="height: 50px;    text-transform: uppercase;" class="form-control"
+                id="inlineFormInputGroupUsername2">
+        </div>
+        <small id="passwordHelpBlock" class="form-text text-muted">
+            Enter the 6 digits code from Authy/Google Authenticator.
+        </small>
+        <div class="error text-danger"
+            *ngIf="otpForm.get('auth_otp').touched && otpForm.get('auth_otp').hasError('required')">Please enter otp.
+        </div>
+        <div class="error text-danger"
+            *ngIf="otpForm.get('auth_otp').touched && !otpForm.get('auth_otp').hasError('required') && (otpForm.get('auth_otp').hasError('minlength') || otpForm.get('auth_otp').hasError('maxlength'))">
+            Please enter valid otp.</div>
     </div>
     <div class="form__buttons">
         <button type="button" class="btn btn-primary btn-lg btn-block" (click)="verifyOtp()">{{
